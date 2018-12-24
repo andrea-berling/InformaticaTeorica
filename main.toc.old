@@ -11,3 +11,14 @@
 \contentsline {section}{\numberline {1.4}Definibilit\IeC {\`a} vs. Calcolabilit\IeC {\`a}}{6}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Paradosso di Russel}{7}{subsection.1.4.1}
 \contentsline {subsection}{\numberline {1.4.2}Paradosso di Berry}{7}{subsection.1.4.2}
+\contentsline {chapter}{\numberline {2}Il formalismo primitivo ricorsivo}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Ricorsione primitiva}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Slide 21}{10}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Esempi di funzioni definibili nel formalismo primitivo ricorsivo}{10}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Test di primalit\IeC {\`a}}{12}{section.2.2}
+\contentsline {section}{\numberline {2.3}Minimizzazione}{13}{section.2.3}
+\contentsline {section}{\numberline {2.4}Generazione numeri primi}{14}{section.2.4}
+\contentsline {section}{\numberline {2.5}Ricorsione multipla}{14}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Slide 33}{16}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}Funzione di Ackermann}{16}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Slide 37}{16}{subsection.2.6.1}

@@ -1,5 +1,5 @@
 NAME=main
-TEXFILES=numerability
+TEXFILES=numerability primitiverecursion
 TEXDIR=tex
 TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES))
 
