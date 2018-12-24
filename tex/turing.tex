@@ -345,3 +345,19 @@ interprete.
 Noi passeremo ad una nozione ancora più astratta. Questo perché vogliamo una teoria della
 calcolabilità che sia machine-independent. Non vogliamo essere costretti a ridurci sempre ad un
 modello computazionale particolare.
+
+L'idea è che dobbiamo pensare di avere una enumerazione dei programmi. $\phii$ è la funzione
+calcolata dall'$i$-esimo programma. Noi diremo la funzione $i$-esima.
+
+Vogliamo assicurarci che la numerazione dei programmi sia effettiva. Ad esempio, dato 100 voglio
+sapere qual è il programma 100. Vogliamo quindi una funzione universale $\mu$ tale che:
+\begin{equation*}
+    \mu(i,x) = \phi_{i}(x)
+\end{equation*}
+
+Questa è la macchina universale o interprete. Possiamo vedere $i$ come la descrizione del programma.
+
+Possiamo riformulare la tesi di Church in questo contesto come:
+\begin{quote}
+    ``$f \text{ è intuitivamente calcolabile } \implies \exists i. \phi_{i} = f$''
+\end{quote}
