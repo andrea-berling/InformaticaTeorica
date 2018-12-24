@@ -1,0 +1,478 @@
+\chapter{Il formalismo primitivo ricorsivo}
+
+\section{Ricorsione primitiva}
+
+Nei linguaggi di programmazione siamo abituati all'autoreferenzialità, o ricorsione. In generale
+bisogna fare attenzione.
+
+Esistono forme esplicite ed implicite di autoreferenziazione. Per le seconde ho un oggetto che ha
+una sezione universale nel suo scope e tale che l'oggetto stesso ci rientra. È una sorta di ordine
+superiore.
+
+Ad esempio:
+\begin{quote}
+    ``Tutte le sentenze universali sono false''
+\end{quote}
+
+Questa frase è implicitamente autoreferenziale. Nel suo raggio di applicabilità include se stessa.
+
+Per le formule aperte non ha senso parlare di verità. Si può parlare solo di verità in caso di
+formule chiuse, ovvero sentenze. I teoremi sono tutti chiusi. La sentenza sopra è dimostrabilmente falsa.
+
+Ci chiediamo se la definibilità di una funzione implichi la sua calcolabilità e anche se vale il 
+viceversa. Sappiamo già che la nozione di definibilità è legata al linguaggio che utilizzo.
+
+Possiamo dare una definizione precisa di calcolabilità? È una problematica delicata, legata al
+sistema di calcolo che utilizzo e alla definizione formale di algoritmo, che non è banale.
+
+%// TODO DEVE STARE PROPRIO QUA QUESTA AFFERMAZIONE?
+%È facile dimostrare che il while è più espressivo del for dato che è possibile implementare il
+%for con un while.
+
+Ci chiediamo, vogliamo davvero avere un loop infinito? In certi casi sì, ad esempio per stampare
+una lista di numeri primi ed interromperla quando voglio. Ma non è comune, molto spesso ci basta
+una iterazione determinata.
+
+Le funzioni dell'informatica sono di una categoria particolare: sono funzioni parziali. Le funzioni
+totali calcolabili sono un sottoinsieme delle funzioni parziali.
+
+Ci poniamo il problema di giustificare l'inclusione, nei nostri linguaggi di programmazione, di
+costrutti che possono causare divergenza. Hanno un'utilità che giustifica il rischio di non
+terminazione dei programmi.
+
+Noi siamo abituati a scrivere funzioni ricorsive. Ad esempio, $\textit{Fact}(n+1) =
+(n+1)*\textit{Fact}(n)$, assieme al caso base. Dal punto di vista matematico questo oggetto è
+strano. Non si può definire una cosa in funzione di se stessa. C'è modo di definire in una maniera
+più sensata a livello matematico una funzione ricorsiva, che sottintende una procedura? È una
+problematica interessante.
+
+La ricorsione primitiva è un tipo di ricorsione simile a quella finora vista ma con dei limiti
+semantici. In particolare possiamo dare il vincolo: nel corpo della definizione di $f(n+1)$ ci si
+può richiamare ricorsivamente solo su $n$. È equivalente ma più debole, dal punto di vista
+dell'espressività, limitare le chiamate ricorsive a oggetti più piccoli di $n+1$.
+
+La ricorsione primitiva, per vincoli strutturali, garantisce la terminazione. Siamo interessati a
+questa classe di funzioni perché c'è un teorema che dice che le funzioni definibili in questo modo
+sono esattamente quelle definibili con un for.
+
+Il seguente è un commento alle slides.
+
+\subsection{Slide 21}
+
+Quando ho più strade di espansione nei sistemi di riscrittura il problema di capire se la strada
+che scelgo è influente è il problema della confluenza, legato alla terminazione dell'espansione.
+
+Nell'esecuzione ci sono dei problemi che non abbiamo indicato esplicitamente, come la valutazione
+per valore e per nome, l'ordine di valutazione delle espressioni, i side effect, ecc.
+
+Non è chiaro cosa calcoli la funzione. È possibile semplificare il codice mediante inlining.
+
+----
+
+L'idea delle funzioni ricorsive primitive è che abbiamo un argomento su cui facciamo la ricorsione
+ed una serie di parametri aggiuntivi. Abbiamo due casi: $x = 0$ o $x = \textit{succ}(y)$.
+
+\begin{equation*}
+    f(x,\vec{z}) = 
+    \begin{cases}
+        f(0,\vec{z}) = g(\vec{z}) \\
+        f(y+1,\vec{z}) = h(y,f(y,\vec{z}),\vec{z}) \\
+    \end{cases}
+\end{equation*}
+
+Lavorare su una ``sottostruttura'' dell'input in ricorsione garantisce la terminazione della chiamata.
+La ricorsione primitiva è un sottocaso della ricorsione strutturale. Con la seconda ci si richiama
+solo su sottostrutture strette.
+
+\subsection{Esempi di funzioni definibili nel formalismo primitivo ricorsivo}
+
+Vediamo ora alcuni esempi di definizioni di funzioni comuni nel formalismo primitivo ricorsivo.
+
+\begin{equation*}
+    \textit{add}(x,y) = 
+    \begin{cases}
+        \textit{add}(0,y) = y \\
+        \textit{add}(x+1,y) = \textit{succ}(\textit{add}(x,y))
+    \end{cases}
+\end{equation*}
+
+\begin{equation*}
+    \textit{mult}(x,y) = 
+    \begin{cases}
+        \textit{mult}(0,y) = 0 \\
+        \textit{mult}(x+1,y) = \textit{add}(\textit{mult}(x,y),y)
+    \end{cases}
+\end{equation*}
+
+Il meccanismo della definizione di funzioni per ricorsione primitiva è naturale. Molte funzioni
+sono strutturate in maniera ricorsiva.
+
+\begin{equation*}
+    \textit{fact}(x) =
+    \begin{cases}
+        \textit{fact}(0) = 1 \\
+        \textit{fact}(x+1) = (x+1)*\textit{fact}(x)
+    \end{cases}
+\end{equation*}
+
+%La calcolabilità la definiamo sui numeri naturali, interi positivi.
+%Per la differenza fai un preambolo del tipo "Vediamo due definizioni della funzione sub, una
+%sbagliata ..."
+
+La seguente funzione mi restituisce 1 se l'input è 0 e 0 altrimenti.
+\begin{equation*}
+    \textit{test}(x) = 
+    \begin{cases}
+        \textit{test}(0) = 1 \\
+        \textit{test}(x+1) = 0
+    \end{cases}
+\end{equation*}
+
+Proviamo a definire la funzione differenza. Ricordiamo che abbiamo definito la calcolabilità sui
+numeri naturali, interi positivi. Di conseguenza non possiamo calcolare la differenza, ad esempio,
+tra 3 e 7. Noi vogliamo una funzione che calcoli $a - b$ se $a > b$. In tutti gli altri casi
+calcoliamo 0.
+
+% TODO naive o naïve?
+Una prima definizione naive di $a - b$ è la seguente:
+\begin{equation*}
+    \textit{sub}(a,b) =
+    \begin{cases}
+        \textit{sub}(0,b) = 0 \\
+        \textit{sub}(a+1,b) = \textit{succ}(\textit{sub}(a,b))
+    \end{cases}
+\end{equation*}
+
+Questa è sbagliata rispetto alla nostra specifica. Per $sub(1,1)$, ad esempio, restituisce 1. Una
+scelta migliore sarebbe andare in ricorsione su b.
+
+Una delle scelte da fare è su cosa andare in ricorsione. Può essere uno dei parametri oppure un
+nuovo valore costruito a partire dai parametri.
+
+Proviamo con la seguente definizione:
+\begin{equation*}
+    \textit{sub}(a,b) =
+    \begin{cases}
+        \textit{sub}(a,0) = a \\
+        \textit{sub}(a,b+1) = \textit{pred}(\textit{sub}(a,b))
+    \end{cases}
+\end{equation*}
+dove \textit{pred} restituisce 0 per 0 e $x-1$ in ogni altro caso.
+
+Questa definizione è un pò borderline, perché andrebbe dimostrato che cambiando il parametro su
+cui vado in ricorsione ottengo un formalismo equivalente a quello introdotto. Tuttavia ciò è
+possibile perciò la definizione rientra nel formalismo primitivo ricorsivo.
+
+Vogliamo ora una funzione che restituisca 1 se i parametri sono uguali, 0 altrimenti.
+
+\begin{equation*}
+    \textit{comp}(n,m) = test(\textit{add}(\textit{sub}(n,m),\textit{sub}(m,n)))
+\end{equation*}
+
+Benchè sembri limitante è veramente potente questo tipo di ricorsione.
+
+Quando parliamo di predicati intendiamo funzioni che restituiscano un booleano.
+
+Supponiamo di saper calcolare un certo predicato $P$. Possiamo calcolare anche la sua negazione.
+
+Data la funzione caratteristica di $P$, $c_{P}$, possiamo calcolare la funzione caratteristica di
+$\comp{P}$: $c_{\comp{P}}(x) = 1 - c_{P}(x)$.
+
+Date $c_{P}$ e $c_{Q}$ abbiamo che $c_{P \land Q}(x) = c_{P}(x) *
+c_{Q}(x)$.
+
+È possibile definire $c_{P \lor Q}$ con le leggi di de Morgan: $A \lor B = \comp{\comp{A \lor B}} =
+\comp{\comp{A} \land \comp{B}}$. Un altro modo è usano la funzione normalizzazione, che normalizza i
+numeri a 0 e 1:
+\begin{equation*}
+    c_{P \lor Q}(x) = \textit{norm}(c_{P}(x) + c_{Q}(x))
+\end{equation*}
+
+Dati dei predicati possiamo quindi calcolare i connettivi logici tra di loro nel nostro formalismo.
+Passiamo ora al discorso dei quantificatori.
+
+Per calcolare il quantificatore esistenziale dovrei avere una procedura del genere:
+
+% python listing?
+\begin{python}
+x = 0
+while $\lnot P(x)$:
+    x = x + 1
+\end{python}
+
+Questo potrebbe ciclare all'inifinito se l'esiste non vale. Abbiamo un problema duale con il
+quantificatore universale.
+
+È evidente che c'è un problema ma non è detto che questo non sia insormontabile.
+
+Quello che sappiamo senza dubbio calcolare è la quantificazione limitata, o bound. L'idea è che
+ho un upper bound finito alla mia quantificazione. Calcoleremmo quindi $g(n) = \exists x \leq n,
+P(x)$.
+
+Ovviamente possiamo calcolare la quantificazione limitata con la ricorsione primitiva. Nel caso del
+quantificatore universale:
+
+\begin{align*}
+    f(0) &= p(0) \\
+    f(n+1) &= p(n+1)*f(n)
+\end{align*}
+
+Tanti problemi aperti dell'aritmetica sono legati alla quantificazione: sapere se esiste un numero
+che ripetti tale proprietà o se una tale proprietà vale per tutti i numeri.
+
+È anche una maniera per approcciarsi ai problemi. Domandarsi se c'è un bound permette di rendere
+l'algoritmo più efficiente e certamente terminante.
+
+\section{Test di primalità}
+
+Vediamo ora un altro predicato interessante, il test di primalità.
+
+Perché escludiamo 1 dai numeri primi? Perché uno dei risultati più importanti dell'aritmetica è
+la fattorizzazione unica, che vale per tutti i numeri escludendo 1. Per mantenere quel teorema 1
+viene escluso.
+
+Definiamo la proprietà $P(x)$:
+
+\begin{equation*}
+    x > 1 \land \forall z (z | x \implies (z = 1 \lor z = x))
+\end{equation*}
+
+$z | x$ è notazione per $z$ divide $x$ (più precisamente, $z$ è un fattore di $x$).
+
+\begin{equation*}
+    z | x := \exists a, z * a = x := \exists a \leq x, z * a = x
+\end{equation*}
+
+Possiamo porre un bound anche al test di primalità: possiamo fermarci ad $x$. Siamo ora in grado sia di
+definire sia di calcolare la funzione di primalità:
+// TODO DA SCRIVERE
+
+\section{Minimizzazione}
+
+Vediamo ora un'altra operazione che opera su domini limitati che useremo molto spesso: la
+minimiazzazione.
+
+\begin{equation*}
+    \mu x, P(x)
+\end{equation*}
+
+Possiamo vederla come uno snippet del genere:
+
+\begin{python}
+x = 0
+while $\lnot P(x)$:
+    x = x + 1
+return x
+\end{python}
+
+Fissiamo un ordinamento e cerchiamo il primo $x$ che soddisfa $P(x)$. Quello che ci interessa alla fine
+del ciclo è il valore di $x$. Questo è, sostanzialmente, cosa l'operazione di minimizzazione fa.
+
+While è un costrutto imperativo. Noi preferiamo, per la nostra teoria della calcolabilità, un
+costrutto funzionale, da cui l'introduzione del $\mu$. Il risultato di questo operatore è $x$.
+
+Al solito col while abbiamo il problema che il while potrebbe non fermarsi mai. Quello che possiamo
+certamente sperare di scrivere, e quindi calcolare, nel nostro formalismo è una forma limitata di
+$\mu$. Cerchiamo il più piccolo $x$ minore di un certo $y$ su cui vale un predicato $P(x,\vec{z})$.
+
+\begin{equation*}
+    f(y,\vec{z}) = \mu x \leq y, P(x,\vec{z})
+\end{equation*}
+
+I parametri di $\vec{z}$ rappresentano parametri ulteriori che possono essere utili.
+
+Cosa vogliamo restituire se non troviamo $x$ nell'intervallo fissato? Dobbiamo restituire un valore
+e ne possiamo restituire uno qualunque. La cosa più naturale è restituire $y + 1$, se $y$ è il
+mio upper bound.
+
+Vogliamo trovare un modo per scrivere questa operazione, non necessariamente per calcolarla
+efficientemente.
+
+Definiamo prima il predicato $R$:
+\begin{equation*}
+    R(y,\vec{z}) = \forall x \leq y, \lnot P(x,\vec{z})
+\end{equation*}
+
+Questo mi dice ``fino a $y$ non ho trovato il minimo'', con $y$ compreso.
+
+$R$, come funzione, è una costante di valore 1 fino all'$y_{0}$ minimo per cui vale
+$P(y_{0},\vec{z})$. Da lì in poi il suo valore diventa costantemente 0.
+
+Possiamo ora scrivere $\mu x$:
+
+\begin{equation*}
+    \mu x \leq y, P(x,\vec{z}) = \sum_{w \leq y}\lnot R(w,\vec{z})
+\end{equation*}
+
+Possiamo definirlo in un altro modo. Prendiamo in considerazione il predicato $M$:
+
+\begin{equation*}
+    M(x,\vec{z}) = P(x,\vec{z}) \land \forall y < x, \not P(y,\vec{z})
+\end{equation*}
+
+Questo predicato mi dice ``$x$ è il più piccolo valore per cui vale $P$''. Come faccio però a trovare
+$x$? Si può moltiplicare $x$ per $M(x,\vec{z})$. Dato che dobbiamo testare tutti gli $x \leq y$, abbiamo
+che $\mu$ può essere espresso come:
+\begin{equation*}
+    \mu x \leq y, P(x,\vec{z}) = \sum_{x \leq y} x \cdot M(x,\vec{z})
+\end{equation*}
+
+\section{Generazione numeri primi}
+
+Come possiamo trovare il più piccolo numero primo successivo ad un numero $i$? Con la seguente
+funzione, ad esempio:
+\begin{equation*}
+    \Pi(i) = 
+    \begin{cases}
+        \Pi(0) = 2 \\
+        \Pi(x + 1) = \mu p. \textit{prime}(p) \land p > \Pi(x)
+    \end{cases}
+\end{equation*}
+
+Cosa manca? Bisogna dare un bound alla minimizzazione. C'è un teorema che dice che è sempre
+possibile trovare un numero primo tra $n$ e $2n$. Il bound che possiamo dare è $2\Pi(x)$.
+
+L'importante è dare un bound. C'è un altro bound, molto più grande, che andrebbe bene comunque:
+$\Pi(x)!$.
+
+Come si dimostra l'infinità dei numeri primi? Supponiamo che siano finiti e siano $p_{1}, p_{2},
+\dotsc, p_{n}$. Prendiamo il numero $p_{1}\cdot p_{2}\cdots p_{n} + 1$. Questo numero non è
+divisibile per nessun $p_{i}$ della mia enumerazione. Quindi o è un numero primo oppure i suoi
+fattori non fanno parte di quella lista. In ogni caso ho un assurdo.
+
+È una dimostrazione bella. La tecnica è analoga alla diagonalizzazione: costruisco un nuovo
+elemento da quelli di una lista che prova il mio assurdo.
+
+\section{Ricorsione multipla}
+
+Consideriamo una possibile codifica del piano e consideriamo la coppia $<n,m>$. Non siamo troppo
+interessati alla codifica della coppia in sè, ma alle funzioni che mi restituiscono le componenti
+della coppia.
+
+Abbiamo che, in generale, le componenti sono $\leq$ della (codifica della) coppia: $n \leq <n,m>$ e
+$m \leq <n,m>$.
+
+Supponiamo di voler calcolare $\pi_{1}(x)$, ovvero la prima proiezione della coppia $x$. Partiamo
+dalla seguente definizione:
+\begin{equation*}
+    \pi_{1}(x) = \mu n, \exists m, <n,m> = x
+\end{equation*}
+
+Manca un bound. Quale prendiamo? $x$:
+
+\begin{equation*}
+    \pi_{1}(x) = \mu n \leq x, \exists m \leq x, <n,m> = x
+\end{equation*}
+
+Talvolta la ricorsione può essere necessaria su più di un valore. Nel formalismo che abbiamo visto
+finora non abbiamo questa possibilità.
+
+Consideriamo la sequenza di Fibonacci:
+\begin{align*}
+    \textit{fib}(0) &= 1 \\
+    \textit{fib}(1) &= 1 \\
+    \textit{fib}(x+2) &= \textit{fib}(x+1) + \textit{fib}(x)
+\end{align*}
+
+La funzione di Fibonacci è intrinsicamente esponenziale, ma questo è il peggior metodo per
+calcolarlo. Siamo esponenziali nel numero di chiamate oltre ad esserlo nell'input. Inoltre così
+com'e scritta ora non rispetta i vincoli del formalismo primitivo ricorsivo.
+
+Qual è l'idea? Bisogna portarsi dietro un accumulatore.
+
+Vogliamo definire la seguente funzione:
+\begin{equation*}
+    \textit{fibo'}(x) = <\textit{fib}(x),\textit{fib}(x+1)>
+\end{equation*}
+
+Possiamo definirla nel formalismo primitivo ricosivo nel seguente modo:
+\begin{align*}
+    \textit{fibo'}(0) &= <1,1> \\
+    \textit{fibo'}(x+1) &= <\textit{fib}(x+1),\textit{fib}(x+2)> \\
+    &= <\pi_{2}(\textit{fibo'}(x)),\pi_{1}(\textit{fibo'}(x)) + \pi_{2}(\textit{fibo'}(x))>
+\end{align*}
+
+L'unica chiamata ricorsiva che faccio è $\textit{fibo'}(x)$.
+
+Questa funzione corrisponde all'incirca al seguente snippet:
+ 
+\begin{python}
+$acc_{0}$ =1
+$acc_{1}$ =1
+for i in range(x+1):
+    tmp = $acc_{0}$
+    $acc_{0}$ = $acc_{1}$
+    $acc_{1}$ = tmp + $acc_{1}$
+return $acc_{1}$
+\end{python}
+
+I seguenti sono commenti alle slides.
+
+\subsection{Slide 33}
+
+Questa tecnica è generale è prende il nome di ricorsione di coda.
+
+Tutte le funzioni ricorsive primitive possono essere espresse mediante un for. È possibile
+dimostrare anche il viceversa. Il formalismo primitivo ricorsivo è equivalente, a potere
+espressivo, ai programmi scrivibili con il for, ovvero senza while e senza ricorsione generale.
+
+\section{Funzione di Ackermann}
+
+\subsection{Slide 37}
+
+Vediamo ora una funzione che non è possibile scrivere nel formalismo primitivo ricorsivo. Va
+immaginata come una famiglia di funzioni dove il primo parametro mi istanza la particolare funzione.
+Abbiamo $\textit{ack}_{0}$, $\textit{ack}_{1}$, etc.
+
+I casi sono mutalmente disgiunti. Data una tripla qualsiasi di valori solo una riga si applica.
+
+La funzione termina? Sì, ma non è banale. L'argomento più importante della funzione è il primo.
+Se il primo decresce bene. Altrimenti vado a vedere gli altri. Questo mi dà un ordinamento delle
+mie chiamate ricorsive che mi da un'idea del fatto che la funzione è terminante.
+
+Cosa calcola? $\textit{ack}_{0}$ è abbastanza banale: è la somma. $\textit{ack}_{1}$ invece
+calcola il prodotto tra $x$ e $y$. $\textit{ack}_{2}$ calcola l'elevamento a potenza ($y^x$).
+
+$\textit{ack}_{i}$ itera $\textit{ack}_{i-1}$. Il prodotto itera la somma. L'elevamento a potenza
+itera la moltiplicazione la tetrazione itera l'elevamento a potenza.
+
+La funzione, benchè terminante, ha una complessità spaventosa.
+
+Perché non posso scriverla nel formalismo primitivo ricorsivo? Perché questa funzione cresce
+troppo velocemente. Cresce più velocemente di qualsiasi funzione esprimibile col formalismo
+primitivo ricorsivo. La funzione di Ackermann mi dà un bound computazionale alle funzioni
+esprimibili con il formalismo primitivo ricorsivo. Di conseguenza non può essere esprimibile nello
+stesso formalismo.
+
+Se riesco ad esprimere un bound computazionale alla complessità di un programma so che non è
+possibile calcolare quel bound nello stesso formalismo in cui ho espresso il mio programma.
+
+Tutte le singole istanze di Ackermann sono scrivibili nel formalismo primitivo. Ma non posso
+scrivere un programma che le esprima tutte. Il formalismo non è abbastanza parametrico.
+
+È sufficiente  aggiungere l'ordine superiore al formalismo primitivo per poter esprimere la
+funzione di Ackermann.
+
+La funzione di Ackermann è una funzione chiaramente calcolabile, essendo esprimibile in un qualche
+linguaggio di programmazione, ma non è esprimibile nel formalismo primitivo ricorsivo.
+
+Si può dimostrare che c'è un ordinamento ben fondato e quando facciamo le chiamate ricorsive nella
+funzione di Ackermann le variabili decrescono secondo questo ordine.
+
+Un ordinamento si dice ben fondato se non esistono catene discendenti infinite.
+
+Dire che ho un ordinamento ben fondato non è la stessa cosa di dire che di elementi minori di un
+dato elemento $m$ ce ne sono una quantità finita.
+
+Vediamo un esempio: l'ordinamento lessicografico. Considerando $\Nat \times \Nat$. Definiamo
+l'ordinamento $<_{p}$ nel seguente modo: $<n_{1},m_{1}> <_{p} <n_{2},m_{2}> \iff n_{1} < n_{2} \lor
+(n_{1} = n_{2} \land m_{1} < m_{2})$. Questo ordinamento è ben fondato. Vale che $\forall m, <2,m>
+<_{p} <3,7>$.
+
+Non è possibile costruire catene discendenti infinite. Proviamo a costruirne una:
+$<3,7> >_{p} <3,6> ... <3,0> >_{p} <2,10^{4}>$
+
+Arrivati qui posso ripetere il giochetto di prima finché non arrivo a 0, dopodiché dovrò
+decrementare la prima componente. Di queste sequenze ne posso fare di lunghezza arbitraria ma sempre
+finita. Questo ragionamento ci dà un'idea del perché la funzione di Ackermann termina (il
+principio alla base della dimostrazione è lo stesso).
