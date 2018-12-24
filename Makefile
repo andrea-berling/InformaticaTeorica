@@ -1,6 +1,6 @@
 NAME=main
-TEXFILES=numerability primitiverecursion
+TEXFILES=numerability primitiverecursion turing
 TEXDIR=tex
-TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES))
+TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES)) mystyle.sty
 
 include /usr/share/latex-mk/latex.gmk
