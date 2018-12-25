@@ -1,0 +1,341 @@
+\chapter{Problemi indecidibili}
+
+Ci chiediamo ora se ci sono dei problemi che non sono decidibili, ovvero non calcolabili in un
+formalismo Turing completo. Introduciamo l'argomento con uno dei problemi più noti in letteratura,
+l'\textit{Halting problem}.
+
+Prima però chiariamo meglio i concetti di totalità, calcolabilità e la relazione tra i due, oltre
+a introdurre i concetti di divergenza e convergenza.
+
+\section{Note introduttive su programmi e funzioni}
+
+Una qualsiasi funzione $\phii$ della nostra enumerazione delle funzioni calcolabili è una funzione
+parziale calcolabile: su alcuni input può non essere definita. 
+
+La calcolabilità non coincide con la totalità: esistono funzioni parziali calcolabili e funzioni
+totali non calcolabili.
+
+Le funzioni possono essere non definite in un punto. Se questo è il caso per una funzione
+calcolabile $i$ ed un punto $x$, avremo allora la divergenza del \emph{programma} $i$: $\phii(x)
+\diverges \iff \phii$ non è definita su input $x$. Divergenza e convergenza sono più proprietà del
+programma che della funzione che calcola. Nonostante qui usiamo il simbolo $\phi$ sia per i
+programmi che per le funzioni è bene ricordare che può avere un doppio ruolo e una semantica
+diversa associata ad esso. La relazione tra i due è: la funzione $i$ nella mia enumerazione di
+funzioni calcolabili è quella calcolata dal programma $i$ della mia enumerazione dei programmi.
+
+La divergenza non è una proprietà generale delle funzioni. Non ha senso dire $\phii \diverges$ senza
+specificare dove diverge; questo perché la convergenza e la divergenza sono proprietà puntuale:
+valgono per un dato input. Al massimo $\phii(x)$ per un qualche $x$ può divergere.
+
+\section{Il problema della fermata}
+
+Il problema che ci interessa è il cosiddetto ``problema della terminazione''. Le funzioni che
+stiamo calcolando sono funzioni parziali: i programmi corrispondenti possono potenzialmente
+divergere. Noi vorremmo calcolare la seguente funzione:
+\begin{equation*}
+\textit{Term}(i,x) =
+    \begin{cases}
+        1 \quad & \text{se $\phii(x) \converges$} \\
+        0 \quad & \text{se $\phii(x) \diverges$} 
+    \end{cases}
+\end{equation*}
+
+Questà è la specifica della mia funzione. È una funzione totale. Ci chiediamo a questo punto, è
+anche calcolabile? La risposta, come vedremo, sarà negativa.
+
+Per dimostrarlo supponiamo che \textit{Term} sia calcolabile e prendiamo in considerazione ora la
+funzione intermedia $g$:
+\begin{equation*}
+    g(x) =
+    \begin{cases}
+        1 \quad & \text{se $\textit{Term}(x,x) = 0$} \\
+        \diverges \quad & \text{se $\textit{Term}(x,x) = 1$} 
+    \end{cases}
+\end{equation*}
+
+Se \textit{Term} fosse calcolabile allora anche $g$ sarebbe calcolabile. Se $g$ è calcolabile deve
+esistere un $k$ tale che $\phik = g$. Ci può essere più di un programma che calcola g, ma a me ne
+basta uno.
+
+Ci chiediamo ora, legittimamente, qual è il comportamento di $\phik(k)$? Converge?
+
+Abbiamo che $\phik(k) = g(k)$. Quindi $\phik(k) \diverges \iff \textit{Term}(k,k) = 0 \iff g(k) = 1
+\iff g(k) \converges \iff \phik(k) \converges$. Questo è contraddittorio. Verrebbe da concludere che
+$\phik(k)$ converge. È tuttavia vero che $\phik(k) \converges \iff \textit{Term}(k,k) = 1 \iff g(k)
+\diverges \iff \phik(k) \diverges$. Ma anche questo è contradditorio. L'ipotesi da cui siamo partiti
+è che \textit{Term} fosse calcolabile. Concludiamo quindi che \textit{Term} non è calcolabile.
+
+%T(i,x) = 
+%\begin{cases}
+%    1 se \phii(x) è definita \\
+%    0 se \phii(x) è indefinita
+%\end{cases}
+%
+%Useremo la notazione \phii(x) \converges e \phii(x) \diverges.
+%
+%Definiamo allora g(x):
+%
+%g(x) =  se T(x,x) = 0 restituisco 1
+%        else \diverges
+%
+%Supponiamo che g sia \phi_{k}. Ci chiediamo: quanto vale T(k,k)? Ci sono due possibilità:
+%
+%0 = T(k,k) = g(k) = 1
+%
+%che è assurdo, oppure:
+%
+%1 = T(k,k) = g(k) = \diverges
+%
+%che è anche assurdo. Questo implica l'assurdità e la non calcolabilità di T.
+
+È il primo caso di una funzione che possiamo pensare ma che non riusciamo a calcolare, almeno con questa
+formulazione qui.
+
+La dimostrazione è un semplice ragionamento diagonale. Esistono quindi funzioni ben definite ma non
+calcolabili: non esiste un algoritmo che mi calcoli questo problema. Nella sua forma generale il
+problema delle terminazione non è algoritmico.
+
+Cosa vuol dire nella sua forma generale? Significa che valga per tutti gli $i$ e per tutti gli $x$.
+Per alcuni programmi e alcuni input è possibile dimostrare che il programma termina. Ci sono dei
+casi particolari che sono gestibili, ma non esiste un unico algoritmo che in modo uniforme su tutti
+gli $i$ e tutti gli $x$ sappia decidere se il programma $i$ termini su input $x$.
+
+Quali erano le nostre ipotesi? La calcolabilità dell'interprete e qualche piccola proprietà di
+chiusura sul mio formalismo. Non molto.
+
+Questa funzione non è esprimibile in un formalismo Turing completo. Non è tuttavia assurda l'idea
+che esista un agente di calcolo con più capacità della macchina di Turing e che sia in grado di
+calcolare \textit{Term}. È difficile da immaginare. Nella calcolabilità relativa si parte
+immaginando un oracolo che sia capace di calcolare \textit{Term} e ci si chiede da lì cosa si possa
+calcolare (e cosa no).
+
+\section{Proprietà s-m-n}
+
+%// TODO Va tenuta questa parte? C'entra poco.
+%Nota: Quando ho statements del tipo \forall x \exists y, dove ho dipendenze funzionali tra y e x, se ho che
+%ogni y è calcolabile in funzione di ogni x ho un teorema/dimostrazione intuizionistica/costruttiva.
+%Altrimenti siamo nella matematica classica (dove vale il princio del terzo escluso e la RAA e dove
+%nella mia dimostrazione non mostro gli x e y per cui vale). 
+
+L'ipotesi della calcolabilità dell'interprete è un'ipotesi importante. Supponiamo, nella nostra
+teoria della calcolabilità, che esista un modo per calcolarla. Questa proprietà è detta proprietà
+UTM, Universal Turing Machine: $\exists u \phiu(i,x) = \phii(x)$. È dimostrabile in tutti i
+formalismi Turing completi.
+
+La proprietà che andiamo ora a considerare è la cosiddetta proprietà s-m-n. Supponiamo di avere
+una funzione calcolabile $g(x,y)$. Cosa posso dire delle sue istanze?. Supponiamo di fissare $x$, ad
+esempio a 0. Ottengo $g(0,y)$, che è una funzione unaria che dipende solo da $y$. Possiamo indicare
+$g(0,y)$ come $f_{0}(y)$. In generale posso fare questo per $f_{k}(y) = g(k,y)$.
+
+// TODO Da rivedere l'esistenza di h
+Se tutte queste funzioni sono calcolabili per ognuna c'è una qualche funzione, delle mia
+enumerazione, che la calcola. Esisterà quindi un programma che la calcola. Esiste quindi
+$\phi_{h(k)}(y) = f_{k}(y) = g(k,y)$ che mi calcola $g(k,y)$. $h$ è una funzione che mi calcola
+l'indice del programma che calcola la $g$ che mi interessa. L'esistenza di $h$ è praticamente ovvia:
+se esiste un indice $k'$ per la funzione $g(k,y)$ allora questo $k'$ è calcolabile (mediante $h$).
+La domanda ora è: $h$ è calcolabile? La risposta è sì.
+
+Noi supporremo la proprietà s-m-n, ma questa è facilmente dimostrabile in tanti formalismi.
+\begin{thm}
+    \textbf{Proprietà s-m-n. } $\forall g$ calcolabile $\exists h$ totale e calcolabile tale che
+    \begin{equation*}
+        \forall x,y. \phi_{h(x)}(y) = g(x,y)
+    \end{equation*}
+\end{thm}
+
+Quello che stiamo facendo è una curryficazione. C'è un importante isomorfismo a livello di funzioni:
+lo spazio delle funzioni $(A \times B) \to C$ è isomorfo allo spazio delle funzioni $A \to (B \to
+C)$. L'operazione alla base della dimostrazione di questa affermazione e che mi permette di passare
+da una funzione del primo spazio alla sua corrispondente nel secondo si chiama curryficazione.
+L'idea è: data $g(x,y)$ fissiamo $x$. In questo modo ottengo $g(x,y)$, con $x$ fissato, ovvero una funzione
+unaria in $y$ da $B$ a $C$.
+
+Si può dimostrare anche con un argomento sulla cardinalità. Sappiamo che la cardinalità del primo
+spazio è $|C|^{|A \times B|} = |C|^{|A|\cdot|B|} = (|C|^{|B|})^{|A|}$, che è la cardinalita di $A
+\to B \to C$. Questo mi garantisce l'esistenza dell'isomorfismo. La dimostrazione precedente è un pò
+più strutturale (e costruttiva se così si vuol dire).
+
+$h$ fondamentalmente mi dà l'indice della funzione curryficata.
+
+In un certo senso s-m-n mi dice che il mio formalismo è chiuso rispetto alle
+curryficazioni/$\lambda$-astrazioni. UTM mi dice che il mio formalismo è chiuso rispetto alle
+$\lambda$-applcazioni.
+
+Possiamo generalizzare s-m-n a vettori $x$ e $y$ di parametri: 
+$\forall g \forall m \forall n \exists s$ totale calcolabile tale che
+\begin{equation*}
+    \phi_{s(\vec{x}_{m})}(\vec{y}_{n}) = g(\vec{x}_{m},\vec{y}_{n})
+\end{equation*}
+
+s-m-n serve per calcolare un numero come indice di un programma. Se non bisogna calcolare un indice
+di un programma in funzione di qualcos'altro non mi serve s-m-n. Noi vedremo molti casi in cui
+avremo proprio bisogno di quello.
+
+Vediamo un esempio di applicazione di s-m-n nella dimostrazione della non calcolabilità di alcune
+funzioni.
+
+La funzione che ci interessa indagare adesso è \textit{Tot} che determina se un certo programma è
+totale o meno. È anche questo un problema di decisione. La specifica della mia funzione è:
+\begin{equation*}
+    \textit{Tot}(i) =
+    \begin{cases}
+        1 \quad &\text{se $\forall x \phii(x) \converges$} \\
+        0 \quad &\text{altrimenti}
+    \end{cases}
+\end{equation*}
+
+Abbiamo prima però di un risultato intermedio. Un caso particolare caso del problema della
+terminazione è il problema della terminazione diagonale:
+\begin{equation*}
+    \textit{Term}(i) =
+    \begin{cases}
+        1 \quad &\text{se $\phii(i) \converges$} \\
+        0 \quad &\text{se $\phii(i) \diverges$} \\
+    \end{cases}
+\end{equation*}
+
+Se la terminazione diagonale non è calcolabile la terminazione generabile non è calolabile. Non è
+vera l'implicazione inversa. Ha senso quindi chiedersi se la terminazione diagonale è calcolabile.
+La risposta è no, e la dimostrazione è analoga a quella della terminazione generale.
+
+Dimostrare che una funzione non sia calcolabile non è banale. Devo dimostrare che non esiste un
+algoritmo tale che la calcoli. È molto più difficile rispetto a dimostrare la calcolabilità di una
+funzione.
+
+Abbiamo due strade. Assumiamo la calcolabilità di \textit{Tot} e troviamo un assurdo. Oppure usiamo
+un procedimento di riduzione: se è calcolabile \textit{Tot} deve essere calcolabile
+$\textit{Term}_{i}$. Da lì poi dimostriamo la non calcolabilità di $\textit{Term}_{i}$.
+
+Prendiamo $g(i,x) = \phii(i)$. Abbiamo due casi: o converge o diverge. Nel primo caso se fisso $i$
+la funzione curryficata che ottengo è totale. Nell'altro caso no.
+
+Per s-m-n abbiamo h totale e calcolabile tale che
+\begin{equation*}
+    \phi_{h(i)}(x) = g(i,x) = \phii(i)
+\end{equation*}
+
+Ora mi chiedo: quanto vale $\textit{Tot}(h(i))$? Abbiamo che
+\begin{equation*}
+    \textit{Tot}(h(i))=
+    \begin{cases}
+        1 \quad &\text{se $\phii(i) \converges$} \\
+        0 \quad &\text{se $\phii(i) \diverges$}
+    \end{cases}
+\end{equation*}
+
+Componendo \textit{Tot} con $h$ risolverei il problema della terminazione diagonale. Ma questo è
+assurdo. Da cui \textit{Tot} non è calcolabile.
+
+In questa dimostrazione parto da funzioni calcolabili che vado a comporre con la mia funzione di
+partenza (\textit{Tot}) e ottengo una funzione che mi potrebbe calcolare qualcosa che so non essere
+calcolabile. Da ciò concludo che la mia funzione di partenza non è calcolabile. È una
+dimostrazione diversa da quella del problema della terminazione.
+
+È interessante vedere questa dimostrazione anche ``al contrario'', in versione bottom up. Come
+faccio a dimostrare la non calcolabilità di \textit{Tot}? Assumo che sia calcolabile e la uso per
+risolvere un problema indecidibile. In questo caso vogliamo ridurci alla terminazione diagonale.
+Come facciamo? Possiamo farlo cercando una funzione $h$ tale che, per ogni $i$, $\phi_{h(i)}$ è totale sse
+$\phii(i) \converges$. Esiste questa funzione $h$? Sì, e possiamo dimostrarlo in due passaggi.
+
+Per prima cosa definiamo una funzione calcolabile binaria $g(i,x)$ che, in base alla terminazione di
+o meno di $\phii(i)$, ha un comportamento diverso che rispetti le condizioni che abbiamo posto su
+$\phi_{h(i)}$. Ad esempio
+\begin{equation*}
+    g(i,x) =
+    \begin{cases}
+        1 \quad &\text{se $\phii(i)\converges$} \\
+        \diverges \quad &\text{se $\phii(i)\diverges$} \\
+    \end{cases}
+\end{equation*}
+
+Questa funzione è calcolabile? Sì, è facilmente scrivibile in un linguaggio di programmazione. Ma a
+questo punto ho trovato la $h$ che cercavo, grazie alla proprietà s-m-n: $\exists h \text{ tot. e
+calc.} \phi_{h(i)}(x) = g(i,x)$. A questo punto, se mi chiedo se la funzione $\phi_{h(i)}$ è totale,
+utilizzando la funzione \textit{Tot}, mi sono ridotto al problema della terminazione diagonale.
+
+Consideriamo un caso particolare e poi proviamo a generalizzare. Stiamo analizzando programmi. Mi
+chiedo se un mio programma calcola la funzione identità. Si potrebbe generalizzare al capire se il
+mio programma ha un certo comportamento rispetto ad una funzione di riferimento.
+
+Vogliamo quindi
+\begin{equation*}
+    \textit{ID}(i) =
+    \begin{cases}
+        1 \quad &\text{se $\forall x, \phii(x) = x$} \\
+        0 \quad &\text{altrimenti}
+    \end{cases}
+\end{equation*}
+
+Possiamo dimostrare che questa funzione non è calcolabile, con la stessa tecnica di prima. Ci
+riduciamo al problema della terminazione.
+
+Costruiamo $g$ tale che
+\begin{equation*}
+    g(i,x) =
+    \begin{cases}
+        x \quad & \text{se $\phii(i) \converges$} \\
+        \diverges \quad & \text{se $\phii(i) \diverges$}
+    \end{cases}
+\end{equation*}
+
+Per s-m-n esiste $h$ tale che $\phi_{h(i)}(x) = g(i,x)$. Mi chiedo ora, $h(i)$ è la funzione
+identita?
+
+\begin{equation*}
+    \textit{ID}(h(i)) =
+    \begin{cases}
+        1 \quad &\text{se $\phii(i) \converges$} \\ 
+        0 \quad &\text{ se $\phii(i) \diverges$} \\
+    \end{cases}
+\end{equation*}
+
+Bisogna partire da una funzione calcolabile, altrimenti non si può applicare s-m-n. È parte
+fondamentale della dimostrazione mostrare che $g$ è calcolabile.
+
+\section{Il predicato $T$ di Kleene}
+
+Ci chiediamo ora se esista un predicato calcolabile $T(i,x,t)$ che mi dice se il programma $i$
+termina la computazione su input $x$ entro il tempo $t$.
+
+C'è il problema di come definiamo il tempo; tuttavia l'idea è che tutti i programmi di cui
+parliamo sono di tipo discreto, hanno un passo discreto di calcolo.
+
+È calcolabile? Intuitivamente sì. Immaginiamo di avere un interprete. Interpretiamo il programma
+$i$, seguendolo passo per passo per input $x$. Se dopo $t$ passi la computazione è terminata allora
+ho una risposta positiva; in caso contrario no.
+
+Esistono tante varianti del predicato $T$ di Kleene. Questa è una forma ``ternaria''. Possiamo pensare
+ad una versione ``quaternaria'' $T^{4}(i,x,y,t)$ che mi dice se il mio programma termina su output
+$y$ in $t$ o meno passi su input $x$.
+
+La forma originale di Kleene era un predicato ternario $T(i,x,\textit{tr})$, dove \textit{tr} è una
+traccia computazionale. Si può vedere come una sequenza di configurazioni istantanee. Non deve
+essere necessariamente completa, deve essere corretta. È ancora chiaramente decidibile se la traccia
+seguita sia quella passata in input. Questa forma in un certo senso comprende le prime due. L'idea è
+che la lunghezza della traccia è il tempo passato dall'inizio della computazione.
+
+Si può addirittura dimostrare che $T$ è primitivo ricorsivo in generale. Inoltre ha una complessità
+computazionale relativamente bassa. La complessità è lineare in $t$ e nelle altre componenti.
+
+C'è un corollario del predicato $T$ di Kleene. Se supponiamo questo predicato come primitivo
+possiamo scrivere, sulla base di questo, la macchina universale, la cui esistenza smette di essere
+primitiva nella nostra teoria della calcolabilità.
+
+Infatti possiamo definire $u$ nel seguente modo:
+
+\begin{equation*}
+    u(i,x) = \textit{fst}(\mu <y,t>, T(i,x,y,t))
+\end{equation*}
+
+Questo corrisponde a scrivere $\textit{fst}(\mu w, T(i,x,\textit{fst}(w),\textit{snd}(w)))$. Il
+\textit{fst} più esterno serve perché a me non interessa $t$, interessa $y$.
+
+Questo è un risultato importante e si chiama forma normale di Kleene. C'è un corollario
+importante. Si potrebbe limitare sintatticamente un programma ad un while con all'interno un for e
+questo non diminuirebbe il potere espressivo del formalismo, poichè l'interprete è scrivibile in
+questi termini.
+
+Un altro problema non calcolabile è il problema del raggiungimento di codice. Ovvero, dato un
+programma e un'istruzione il problema di decidere se il programma raggiungerà mai quell'istruzione
+non è calcolabile. Esistono delle tecniche ma queste non sono generali. Sono tipicamente usate dai
+compilatori per ottimizzare il codice oggetto ed eliminare parti di codice inutile.
