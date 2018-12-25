@@ -5,8 +5,11 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
+\usepackage{centernot}
 
 \usepackage{bm}
+
+\usepackage{tikz}
 
 \newcommand{\Nat}{\mathbb{N}}
 \newcommand{\StdNat}{\mathcal{N}}
@@ -20,6 +23,11 @@
 \newcommand{\phiu}{\phi_{u}}
 \newcommand{\diverges}{\uparrow}
 \newcommand{\converges}{\downarrow}
+\newcommand{\cod}{\textit{cod}}
+\newcommand{\dom}{\textit{dom}}
+\newcommand{\PClass}{\mathbb{P}}
+\newcommand{\NPClass}{\mathbb{NP}}
+\newcommand{\case}[2]{#1 \quad &\text{#2}}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Teorema}[chapter]
@@ -73,6 +81,16 @@ showstringspaces=false            %
 \newcommand\pythonexternal[2][]{{
 \pythonstyle
 \lstinputlisting[#1]{#2}}}
+
+\newcommand{\partialto}[1][]{%
+  \begin{tikzpicture}[#1]
+    \coordinate (x) at (0,0ex);
+    \node[circle,draw=black, fill=white, inner sep=0pt,minimum size=5pt] (y) at (1em,0ex) {};
+    \coordinate (z) at (2em,0ex);
+    \draw (x) -- (y);
+    \draw[->] (y) -- (z);
+  \end{tikzpicture}%
+}
 
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
