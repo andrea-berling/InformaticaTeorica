@@ -1,5 +1,5 @@
 NAME=main
-TEXFILES=numerability primitiverecursion turing
+TEXFILES=numerability primitiverecursion turing undecidableproblems
 TEXDIR=tex
 TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES)) mystyle.sty
 
