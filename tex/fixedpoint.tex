@@ -1,0 +1,89 @@
+\chapter{Teorema del punto fisso}
+
+\section{Il teorema del punto fisso di Kleene}
+
+I seguenti sono commenti alle slide.
+
+\subsection{Slide 102}
+
+La parte più a destra dell'uguale è la definizione della mia funzione $g$.
+
+Se prendiamo per $f$ la funzione successore ho per forza che nel mio ordinamento avrò due programmi
+adiacenti che si comportano nella stessa maniera. In questo modo non è possibile creare un
+ordinamento tale che questo non si verifichi. La ragione fondamentale è che non ho controllo sul
+comportamento dei programmi quando vado ed enumerarli.
+
+Punti fissi e ricorsione sono fondamentalmente la stessa cosa vista da due punti di vista diversi.
+
+La ricorsione è legata alla possibilità che nel corpo del mio programma sia visibile la funzione
+che sto definendo.
+
+Supponiamo di voler costruire un programma che stampi se stesso, ovvero che stampi il suo indice.
+Per semplicità lo vogliamo costante, ovvero tale che per ogni input stampi il suo indice: $\forall
+x, \phip(x) = p$.
+
+Prendiamo $g(i,x)$ così definita:
+\begin{equation*}
+    g(i,x) = i
+\end{equation*}
+
+Per s-m-n otteniamo una classe di programmi costanti $\phi_{h(i)}(x)$. Questi però stampano sempre
+$i$, anche se $h(i)$ è diverso da $i$, quindi non vanno bene. Sfruttando il teorema del punto fisso
+abbiamo però che esiste $\phip(x) = \phi_{h(p)}(x) = p$. Di conseguenza è sufficiente prendere il
+punto fisso di $h$, $p$.
+
+Se io voglio realizzare un comportamento ricorsivo posso farlo con il teorema del punto fisso di
+Kleene. Supponiamo di voler una funzione calcolabile $\phip$ tale che $\phip(x) = f(\phip(x))$, per
+qualche $f$. Si può? Sì. Abbiamo che $g(i,x) = f(\phii(x))$. Ma ora per s-m-n abbiamo che questo
+corrisponde a $\phi_{h(i)}(x)$. Ma ora abbiamo che $\phip(x) = \phi_{h(p)}(x) = f(\phip(x))$, se
+prendiamo come $p$ il punto fisso di $h$.
+
+In generale per punto fisso di una funzione intendiamo un input $x$ tale che $f(x) = x$. Il nostro senso
+è un pò particolare perché è un punto fisso estensionale.
+
+Il teorema dice fondamentalmente che $\forall f$ tot. calc. $\exists m, \phi_{f(m)} = \phi_{m}$.
+
+Sfruttando questo risultato vogliamo costruire un programma che dato $i$ mi restituisca qualcosa
+diverso dalla funzione $\phii$ per almeno un input, ovvero vogliamo $i$ tale che:
+\begin{equation*}
+    \exists x, g(i,x) \not= \phii(x).
+\end{equation*}
+
+Proviamo con $g(i,x) = \phii(x) + 1$. Per s-m-n esiste $h$ tale che $\phi_{h(i)}(x)$ identico a $g$. 
+Funziona? No, se $i$ è un indice per la funzione sempre divergente. Si può fare di meglio? No, per
+il teorema del punto fisso. Per qualunque trasformazione di programmi ho un punto fisso tale che
+$\phi_{h(m)} = \phim$. Non ho speranza di fare una modifica effettiva ed uniforme tale che il mio
+programma sia diverso da quello di partenza, e questo vale per ogni programma.
+
+Vediamo una nuova dimostrazione del teorema di Rice basata sul teorema del punto fisso di Kleene. È
+concettualmente diversa da quella vista in precedenza.
+
+Sia $A$ un insieme estensionale. $A$ è ricorsivo sse è banale. Supponiamo per assurdo che $A$ sia
+ricorsivo ma non banale, ovvero esista $i \in A$ e $j \in \comp{A}$. Posso definire $h$ tale che:
+\begin{equation*}
+    h(x) = 
+    \begin{cases}
+        \case{j}{se $x \in A$}\\
+        \case{i}{se $x \notin A$}
+    \end{cases}
+\end{equation*}
+
+Questa funzione sarebbe calcolabile per la ricorsività di $A$. Per il teorema del punto fisso,
+essendo $h$ totle e calcolabile, deve esistere $m$ tale che $\phim = \phi_{h(m)}$. Ci chiediamo ora,
+dove sta $m$? Se $m \in A$ allora stanno in $A$ anche tutti i programmi che si comportano come $m$,
+tra cui anche $h(m)$. Ma se $m \in A$ allora $h(m) = j$, quindi $h(m) \notin A$. Se invece $m \notin
+A$ allora $h(m) \notin A$. Ma per definizione di $h$ si ha che $h(m) = i \in A$. Ecco la mia
+contraddizione.
+
+Tutte le volte che cerchiamo programmi che dipendono, intensionalmente o meno, dall'indice del
+programma che sto cercando devo fare riferimento al teorema del punto fisso.
+
+\section{Il secondo teorema del punto fisso}
+
+Pensiamo ora ad una funzione binaria $f(x,y)$. Possiamo generalizzare il teorema del punto fisso:
+\begin{thm}
+    $\forall f^{2}$ totale calcolabile $\exists s$ totale calcolabile tale che $\forall y, \phi_{f(s(y),y)} = \phi_{s(y)}$
+\end{thm}
+\begin{proof}
+    La dimostrazione è nella slide 103
+\end{proof}
