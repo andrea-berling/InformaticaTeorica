@@ -1,0 +1,81 @@
+\chapter{La gerarchia aritmetica}
+
+\section{Aritmetica e incompletezza}
+
+I seguenti sono commenti alle slide.
+
+\subsection{Slide 120}
+
+Quando vogliamo parlare di qualcosa abbiamo bisogno di un linguaggio. Partiamo da un insieme di
+segni.
+
+Occhio a non fare confusione tra termine che rappresenta un numero e numero stesso. Ad esempio 3
+(il numero) vs $S(S(S(0))))$ (il termine per il numero 3).
+
+Non tutti gli insiemi sono aritmetici. I possibili sottoinsiemi di $\Nat$ sono più che numerabili,
+non posso aspettarmi di descrivere tutti questi nell'aritmetica.
+
+\subsection{Slide 121}
+
+È ragionevole chiedersi se anche le funzioni aritmetiche sono chiuse rispetto ai metodi tipici per
+comporre le funzioni: definire nuove funzioni a partire da quelle esistenti ad esempio.
+
+Il primo modo che ci può venire in mente è la composizione di funzioni.
+
+Possiamo prendere la descrizione delle funzioni come la specifica di un programma. Ci poniamo quindi
+il problema di quali funzioni sono specificabili.
+
+\subsection{Slide 122}
+
+Altre operazioni tipiche sono la ricorsione primitiva, la minimizzazione.
+
+Se abbiamo la minimizzazione (che corrisponde circa ad un while) possiamo avere subito la ricorsione
+primitiva (che corrisponde ad un for).
+
+\subsection{Slide 124}
+
+Mi serve anche l'uguaglianza nel mio formalismo.
+
+\section{Slide 127}
+
+È difficile descrivere in maniera categorica una teoria. Esistono poche teorie per cui non sia
+possibile cambiare il modello e ribaltarla completamente.
+
+\section{La gerarchia aritmetica}
+
+L'uguaglianza tra numeri naturali è decidibile. Questo non è banale, ad esempio per i numeri reali
+non è nemmeno semidecidibile l'uguaglianza; per essi è semidecidibile la disuguaglianza.
+
+Data una formula aritmetica possiamo spostare tutti quantificatori all'inizio della formula. La mia
+formula acquista quindi la forma $Q_{1} x_{1} Q_{2} x_{2} Q_{3}x_{3} \dotsc Q_{n}x_{n}P$, con $P$ senza
+quantificatori e con $P$ decidibile. Se abbiamo dei quantificatori uniformi che si susseguono possiamo
+collassarli. Ad esempio $\forall x_{1} \forall x_{2} \dotsc$ diventa $\forall <x_{1},x_{2}> \dotsc$. Nella
+formula si parlerà poi di proiezioni della codifica al posto delle singole istanze delle variabili
+collassate. Ad esempio $\textit{fst}(x)$ invece che $x_{1}$, $\pi_{n}(x)$ invece che $x_{n}$.
+
+Nel collasso c'è un cambio di notazione. Il $\forall$ diventa $\Pi_{n}$, con $n$ uguale al numero di
+inversioni $\forall$ $\exists$. Lo stesso discorso vale per $\exists$ e $\Sigma_{n}$. Ad esempio,
+$\forall \exists \forall$ è di classe $\Pi_{3}$, e $\exists \forall$ è di classe $\Sigma_{2}$. Esiste poi
+$\Delta_{n} = \Pi_{n} \cap \Sigma_{n}$.
+
+Quali sono le formule $\Sigma_{1}$? Quelle semidecidibili. Perché? Perché sono proiezione
+esistenziale di precidati decidibili.
+
+Se $A \in \Sigma_{n}$ allora $\comp{A} \in \Pi_{n}$. $\Pi_{1}$ corrisponde alla classe degli insiemi
+co-r.e. Come conseguenza ho che $\Delta_{1}$ è la classe degli insiemi ricorsivi.
+
+La gerarchia degli insiemi è interessante perché da una classificazione degli insiemi per
+complessità computazionale.
+
+Il ragionamento vale per tutti i tipi di proprietà, non solo quelle estensionali. In generale si
+vuole dare una descrizione aritmetica di un programma. Da questa poi sarà possibile fare dei
+ragionamenti per capire ``quanto sia difficile''. Ad esempio, sia $P(i) = ``W_{i} \text{ è
+finito}$''. La sua
+descrizione aritmetica sarebbe $\exists x \forall y \forall t \forall m, y \geq x \implies \lnot
+T(i,y,m,t)$. Ho che $P(i) \in \Sigma_{2}$. Mi aspetto che non sia ne r.e. ne co-r.e., e in effetti non
+lo è. Va comunque ricordato che l'appartenenza ad una classe non è mutalmente esclusiva. Potrei
+avere proprietà $\Sigma_{2}$ che appartengono a $\Sigma_{1}$. Questo di solito accade quando i
+quantificatori sono bound, che è la stessa situazione che avremmo se non esistessero.
+
+In $\Delta_{n}$ stanno insiemi descrivibili sia con una formula in $\Pi_{n}$ che con una formula in
+$\Sigma_{n}$.
