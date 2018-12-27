@@ -1,5 +1,6 @@
 NAME=main
-TEXFILES=numerability primitiverecursion turing undecidableproblems recursivesets rice fixedpoint
+TEXFILES=numerability primitiverecursion turing undecidableproblems recursivesets rice fixedpoint\
+reducibility
 TEXDIR=tex
 TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES)) mystyle.sty
 
