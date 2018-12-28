@@ -1,0 +1,217 @@
+\chapter{Esercizi svolti in classe}
+
+\section{Compito Parziale Gennaio 2018}
+
+\subsection{Esercizio 1}
+
+\begin{enumerate}[label=(\alph*) ]
+    \item Basta prendere un semidecisore per un insieme r.e. non ricorsivo. 
+    \item Supponendo che $f^{-1}(A)$ non sia vuoto, dato che se è vuoto è già r.e., possiamo
+    costruire una enumerazione di $f^{-1}(A)$ sfruttando il semidecisore di $A$:
+    \begin{equation*}
+        e_{f^{-1}(A)}(<x,t>) =
+        \begin{cases}
+            \case{x}{se $T(i,x,t,y) \land s_{A}(y)$}\\
+            \case{a_{0}}{altrimenti}\\
+        \end{cases}
+    \end{equation*}
+    dove $a_{0}$ è un elemento qualsiasi di $f^{-1}(A)$ e $i$ è un indice per $f$.
+\end{enumerate}
+
+%b) ho facilmente il semidecisore di f^{-1}(A): mi basta calcolare f(x). Se termina ho che x \in
+%f^{-1}(A), altrimenti divergo.
+% Nota personale: Ma se f termina e f(x) \notin A non dovrei divergere comunque? Ho due fonti di divergenza: f e il
+% semidecisore di A
+
+Cosa posso dire della controimmagine di un insieme $A$ attraverso una funzione $f$? 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \diagbox{$f$}{$A$} & Ricorsivo & R.E.\\
+    \hline
+    totale & $f^{-1}(A)$ è Ricorsivo & $f^{-1}(A)$ è r.e. \\
+    \hline
+    parziale & $f^{-1}(A)$ è r.e. & $f^{-1}(A)$ è r.e. \\
+    \hline
+    \end{tabular}
+\end{table}
+
+%f \ A    | Ricorsivo | R.E.
+%--------------------------
+%totale   | Ricorsivo | R.E.
+%--------------------------
+%parziale | R.E.      | R.E.
+
+Questo vale in generale. Per alcuni casi particolari potrei avere situazioni più precise. Ad
+esempio funzione parziale e A ricorsivo e controimmagine ricorsiva.
+
+E dell'immagine cosa possiamo dire? L'immagine di un insieme r.e. attraverso $f$ rimane r.e.
+(un'ovvietà). E se $f$ è totale e $A$ è ricorsivo? Non posso dire con certezza che l'immagine
+sarà ricorsiva. Se ad esempio prendo la funzione di enumerazione di un insieme r.e. ottengo
+un'immagine r.e. a partire da un insieme ricorsivo ($\Nat$).
+
+\subsection{Esercizio 2}
+
+La funzione di enumerazione di un insieme r.e. può sempre essere iniettiva (\ie posso enumerare
+senza ripetizioni), non può essere mai crescente.
+
+\subsection{Esercizio 3}
+
+La specifica di $\textit{count}_{f}$ è totale, vediamo se esiste un programma che la rispetti.
+
+Posso scegliere la mia $f$ come voglio per mostrare un controesempio nella mia dimostrazione che
+$\textit{count}_{f}$ non è calcolabile.
+
+Scegliamo per $f$ la funzione di enumerazione di $K$. $count_{f}(n) = 0 \iff n \notin K$.
+
+\section{Esercizio 4}
+
+Se $\phii$ fosse totale non avrei problemi, visiterei progressivamente i miei input finché non trovo
+il più piccolo per cui vale quella proprietà.
+
+La congettura è che $g$ non sia calcolabile. Costruiamo una funzione $\phi$ tale che $g$ non sia
+calcolabile per $\phi$.
+
+Sia $f(i,x)$ tale che:
+\begin{equation*}
+    f(i,x) =
+    \begin{cases}
+        \case{0}{se $x = 0$ e $\phii(i) \converges$}\\
+        \case{1}{se $x \geq 1$}
+    \end{cases}
+\end{equation*}
+
+Per s-m-n ho $h$ che mi curryfica la mia funzione. Ora, cosa posso dire per $g(h(i))$?
+
+\begin{equation*}
+    g(h(i)) =
+    \begin{cases}
+        \case{0}{se $\phii(i) \converges$}\\
+        \case{1}{se $\phii(i) \diverges$}\\
+    \end{cases}
+\end{equation*}
+
+\subsection{Esercizio 5}
+
+In questo tipo di esercizi posso usare i meta-teoremi di Rice e Rice-Shapiro.
+
+Il seguente insieme è compatto, monotono non r.e.:
+
+\begin{equation*}
+    A = \set{ i \mid W_{i} \cap \comp{K} \not= \emptyset} = \set{ i \mid dom(\phii) \cap \comp{K}
+    \not= \emptyset } = \set{ i \mid \exists x, \phii(x) \converges \land \phi_{x}(x) \diverges}
+\end{equation*}
+
+Se estendo $A$ avrò sempre intersezione non vuota, quindi vale la monotonia. Se l'intersezione è diversa dal vuoto
+ho $x$ che appartiene all'intersezione. Posso restringermi a quell'$x$, e quindi vale la compattezza.
+
+$A$ non è r.e. Dato un numero $x$ esiste sempre una funzione totale calcolabile tale che $W_{h(x)}
+= \set{x}$ (si costruisce con s-m-n). Ora, $h(x) \in A \iff W_{h(x)} = \set{x} \cap \comp{K} \not=
+\emptyset \iff x \in \comp{K}$.
+
+Per dimostrae che A non è r.e. posso provare a dimostrare che $\comp{K} \leq A$. Per mostrare
+che $A$ non è ricorsivo cerco in genere una riduzione da $K$ ad $A$ ($K \leq A$). Va tuttavia
+ricordato che non tutti gli insieri r.e. sono completi.
+
+Vediamo una definizione del parallelo, ovvero a precisare cosa significa lanciare in parallelo due
+programmi.
+
+Definiamo:
+\begin{equation*}
+    (f || g)(x) =
+    \begin{cases}
+        \case{\diverges}{se $f(x) \diverges$ e $g(x) \diverges$} \\
+        \case{f(x)}{se $f(x) \converges$ e $g(x) \diverges$} \\
+        \case{g(x)}{se $f(x) \diverges$ e $g(x) \converges$} \\
+        \case{\max\set{f(x),g(x)}}{se $f(x) \converges$ e $g(x) \converges$}
+    \end{cases}
+\end{equation*}
+
+Questa funzione è calcolabile? Intuitivamente no: supponiamo che lanciando il nostro programma $f$ 
+termini. Non possiamo determinare se $g$ divergerà, quindi non saremo mai certi di cosa restituire.
+
+Più precisamente, scegliamo per $f$ il semidecisore di $K$ e per $g$ la funzione costante $\bm{0}$.
+Abbiamo che
+\begin{equation*}
+    (f || g)(x) =
+    \begin{cases}
+        \case{1}{se $\phix(x)\converges$}\\
+        \case{0}{se $\phix(x)\diverges$}\\
+    \end{cases}
+\end{equation*}
+
+Sarebbe bello se, dato un programma qualsiasi, ne esistesse una estensione totale. In questo modo
+potrei lavorare sempre con l'estensione e avrei una funzione totale.
+
+La domanda è, può una data funzione $\phii$ essere estesa a una funzione totale calcolabile? La
+risposta è in generale no. Esistono funzioni parziali per cui non può esistere una estensione
+totale.
+
+La funzione che consideriamo, tra le tante, è $f(x) = \phix(x) + 1$. Sia $\cap{f}$ una estensione
+totale di $f$ con indice $m$ ($\phim$). Abbiamo che $\phim(m) \converges$, essendo $\phim$ totale,
+ed $f(m)$ deve di conseguenza convergere, per sua definizione. Ora, $\cap{f}(m)$ dovrebbe evere lo
+stesso valore di $f(m)$, essendo una sua estensione. Ma allora avremmo $\phim(m) = f(m) = \phim(m) +
+1$, il che è assurdo.
+
+Consideriamo l'insieme $A = \set{i \mid \phii \text{ è estendibile}}$. Come lo classifichiamo? Essendo una
+proprietà estensionale possiamo applicare i nostri meta-teoremi. Abbiamo inoltre, grazie al
+risultato precedente, che esistono funzioni non estendibili (il che non è banale). Ora
+immediatamente per Rice so che $A$ non è ricorsivo. È sicuramente compatto, dato
+che $f_{\emptyset}$ è estendibile banalmente. Non è invece monotono, dato che se estendo una
+funzione con una estensione totale ho che quest'ultima non è più estendibile.
+
+Classificare l'insieme $A = \set{i \mid \phii(i) = i}$. Non essendo la proprietà caratterizzante
+estensionale non posso applicare Rice o Rice Shapiro. Ho che la proprietà è sicuremante
+semidecidibile, dato che il semidecisore è il programma che, lanciando $\phii$ su input $i$, mi dica 1
+se ho output $i$, 0 altrimenti e che diverge se $\phii(i)$ diverge.
+
+È ricorsivo? Se abbiamo il sospetto che non lo sia possiamo fare la riduzione da $K$ ad $A$.
+
+Consideriamo la funzione binaria $g(i,x)$:
+\begin{equation*}
+    g(i,x) =
+    \begin{cases}
+        \case{x}{se $\phii(i) \converges$} \\
+        \case{\diverges}{altrimenti}
+    \end{cases}
+\end{equation*}
+
+Per s-m-n esiste $h$ totale calcolabile tale che $\phi_{h(i)}(x) = g(i,x)$. Ora, $h(i)$ è una buona funzione di
+riduzione?
+
+Abbiamo che:
+\begin{itemize}
+    \item $i \in K \implies \phi_{h(i)}(h(i)) = h(i) \implies h(i) \in A$
+    \item $i \notin K \implies \phi_{h(i)}$ diverge sempre, in particolare $\phi_{h(i)}(h(i)) \not= h(i) \implies
+    h(i) \notin K$
+\end{itemize}
+
+Sia $A$ r.e. non ricorsivo. Sia $B$ finito. Consideriamo $A \cup B$. Dimostrare che è r.e. ma non
+ricorsivo.
+
+L'ipotesi di finitezza di $B$ è fondamentale. Se avessi avuto solo $B$ ricorsivo avrei potuto prendere
+$\Nat$ e ottenere un insieme ricorsivo.
+
+Supponiamo di avere il decisore per $A \cup B$, $c_{A \cup B}(n)$. Quanto è diversa questa funzione dal
+semidecisore di $A$? È diversa per un sottoinsieme di $B$, ovvero un numero finito di punti.
+
+Consideriamo i punti in $B \setminus A = {b_{1},\dotsc,b_{k}}$. Posso ora costruire un decisore
+per $A$ nel seguente modo:
+\begin{python}
+def $c_{A}(x)$:
+    if $x = b_{1}$:
+        return 0
+    else if $x = b_{2}$:
+        return 0
+    $\vdots$
+    else:
+        return $c_{A \cup B}(x)$
+\end{python}
+
+Non è un problema la non calcolabilità di $B \setminus A$, l'importante è l'esistenza di questi
+punti.
+
+Un conto è quando non esiste un programma, un conto è quando un programma esiste ma non ho modo di
+calcolarlo a partire da certe informazioni.
