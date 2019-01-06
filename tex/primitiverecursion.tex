@@ -48,16 +48,51 @@ problematica interessante.
 
 La ricorsione primitiva è un tipo di ricorsione simile a quella finora vista ma con dei limiti
 semantici. In particolare possiamo dare il vincolo: nel corpo della definizione di $f(n+1)$ ci si
-può richiamare ricorsivamente solo su $n$. È equivalente ma più debole, dal punto di vista
-dell'espressività, limitare le chiamate ricorsive a oggetti più piccoli di $n+1$.
+può richiamare ricorsivamente solo su $n$.  È equivalente limitare le chiamate ricorsive a oggetti
+più piccoli di $n+1$.
+%È equivalente ma più debole, dal punto di vista dell'espressività, limitare le chiamate ricorsive a
+%oggetti più piccoli di $n+1$. // ?? Equivalente ma piu' debole?
 
 La ricorsione primitiva, per vincoli strutturali, garantisce la terminazione. Siamo interessati a
 questa classe di funzioni perché c'è un teorema che dice che le funzioni definibili in questo modo
 sono esattamente quelle definibili con un for.
 
-Il seguente è un commento alle slides.
+Prendiamo come primitive alcune funzioni nel nostro linguaggio primitivo ricorsivo $\Lang$:
+\begin{enumerate}
+    \item le funzioni costanti:
+        \begin{equation*}
+            c^{k}_{m}(x_{1},x_{2},\dotsc,x_{k}) = m \quad \text{$m$ in $\Nat$}
+        \end{equation*}
+    \item le proiezioni:
+        \begin{equation*}
+            \pi_{i}^{k}(x_{1},x_{2},\dotsc,x_{k}) = x_{i} \quad \text{per qualche $1 \leq i \leq k$}
+        \end{equation*}
+    \item la funzione successore:
+        \begin{equation*}
+            s(x) = x + 1
+        \end{equation*}
+\end{enumerate}
 
-\subsection{Slide 21}
+Ammettiamo inoltre due schemi composizionali per definire nuove funzioni a partire da quelle gia'
+esistenti:
+\begin{enumerate}
+    \item Composizione: se $h : \Nat^{n} \to \Nat$ e $g_{1},g_{2},\dotsc,g_{n}:\Nat^{k} \to \Nat$
+    appartengono a $\Lang$, anche la funzione $f: \Nat^{k} \to \Nat$ cosi' definita:
+    \begin{equation*}
+        f(\vec{x}) = h(g_{1}(\vec{x}),g_{2}(\vec{x}),\dotsc,g_{n}(\vec{x}))
+    \end{equation*}
+    appartiene a $\Lang$, con $\vec{x} = (x_{1},x_{2},\dotsc,x_{k})$.
+    \item Ricorsione primitiva: se $g: \Nat^{k} \to \Nat$,$h: \Nat^{k+2}\to \Nat$ appartengono a
+    $\Lang$, allora che $f: \Nat^{k+1} \to \Nat$, cosi' definita:
+    \begin{equation*}
+        f(n,\vec{x}) =
+        \begin{cases}
+            \case{f(0,\vec{x}) = g(\vec{x})}{}\\
+            \case{f(y+1,\vec{x}) = h(y,f(y,\vec{x}),\vec{x})}{}\\
+        \end{cases}
+    \end{equation*}
+    appartiene a $\Lang$, con $\vec{x} = (x_{1},x_{2},\dotsc,x_{k})$.
+\end{enumerate}
 
 Quando ho più strade di espansione nei sistemi di riscrittura il problema di capire se la strada
 che scelgo è influente è il problema della confluenza, legato alla terminazione dell'espansione.
@@ -65,20 +100,10 @@ che scelgo è influente è il problema della confluenza, legato alla terminazion
 Nell'esecuzione ci sono dei problemi che non abbiamo indicato esplicitamente, come la valutazione
 per valore e per nome, l'ordine di valutazione delle espressioni, i side effect, ecc.
 
-Non è chiaro cosa calcoli la funzione. È possibile semplificare il codice mediante inlining.
-
-----
+%Non è chiaro cosa calcoli la funzione. È possibile semplificare il codice mediante inlining.
 
 L'idea delle funzioni ricorsive primitive è che abbiamo un argomento su cui facciamo la ricorsione
-ed una serie di parametri aggiuntivi. Abbiamo due casi: $x = 0$ o $x = \textit{succ}(y)$.
-
-\begin{equation*}
-    f(x,\vec{z}) = 
-    \begin{cases}
-        f(0,\vec{z}) = g(\vec{z}) \\
-        f(y+1,\vec{z}) = h(y,f(y,\vec{z}),\vec{z}) \\
-    \end{cases}
-\end{equation*}
+ed una serie di parametri aggiuntivi.
 
 Lavorare su una ``sottostruttura'' dell'input in ricorsione garantisce la terminazione della chiamata.
 La ricorsione primitiva è un sottocaso della ricorsione strutturale. Con la seconda ci si richiama
@@ -133,8 +158,7 @@ numeri naturali, interi positivi. Di conseguenza non possiamo calcolare la diffe
 tra 3 e 7. Noi vogliamo una funzione che calcoli $a - b$ se $a > b$. In tutti gli altri casi
 calcoliamo 0.
 
-% TODO naive o naïve?
-Una prima definizione naive di $a - b$ è la seguente:
+Una prima definizione naïve di $a - b$ è la seguente:
 \begin{equation*}
     \textit{sub}(a,b) =
     \begin{cases}
@@ -213,8 +237,8 @@ Ovviamente possiamo calcolare la quantificazione limitata con la ricorsione prim
 quantificatore universale:
 
 \begin{align*}
-    f(0) &= p(0) \\
-    f(n+1) &= p(n+1)*f(n)
+    f(0) &= P(0) \\
+    f(n+1) &= P(n+1)*f(n)
 \end{align*}
 
 Tanti problemi aperti dell'aritmetica sono legati alla quantificazione: sapere se esiste un numero
@@ -243,9 +267,8 @@ $z | x$ è notazione per $z$ divide $x$ (più precisamente, $z$ è un fattore di
     z | x := \exists a, z * a = x := \exists a \leq x, z * a = x
 \end{equation*}
 
-Possiamo porre un bound anche al test di primalità: possiamo fermarci ad $x$. Siamo ora in grado sia di
-definire sia di calcolare la funzione di primalità:
-// TODO DA SCRIVERE
+Possiamo porre un bound anche al test di primalità: possiamo fermarci ad $x$. Siamo quindi in grado di
+definire (e calcolare) il test di primalità.
 
 \section{Minimizzazione}
 
@@ -307,7 +330,7 @@ Possiamo ora scrivere $\mu x$:
 Possiamo definirlo in un altro modo. Prendiamo in considerazione il predicato $M$:
 
 \begin{equation*}
-    M(x,\vec{z}) = P(x,\vec{z}) \land \forall y < x, \not P(y,\vec{z})
+    M(x,\vec{z}) = P(x,\vec{z}) \land \forall y < x, \lnot P(y,\vec{z})
 \end{equation*}
 
 Questo predicato mi dice ``$x$ è il più piccolo valore per cui vale $P$''. Come faccio però a trovare
@@ -406,10 +429,6 @@ for $i$ in range(x+1):
 return $acc_{1}$
 \end{python}
 
-I seguenti sono commenti alle slides.
-
-\subsection{Slide 33}
-
 Questa tecnica è generale è prende il nome di ricorsione di coda.
 
 Tutte le funzioni ricorsive primitive possono essere espresse mediante un for. È possibile
@@ -418,11 +437,17 @@ espressivo, ai programmi scrivibili con il for, ovvero senza while e senza ricor
 
 \section{Funzione di Ackermann}
 
-\subsection{Slide 37}
-
 Vediamo ora una funzione che non è possibile scrivere nel formalismo primitivo ricorsivo. Va
 immaginata come una famiglia di funzioni dove il primo parametro mi istanza la particolare funzione.
 Abbiamo $\textit{ack}_{0}$, $\textit{ack}_{1}$, etc.
+
+\begin{align*}
+    \textit{ack}(0, 0, y ) &= y\\
+    \textit{ack}(0, x + 1, y ) &= \textit{ack}(0, x, y ) + 1\\
+    \textit{ack}(1, 0, y ) &= 0\\
+    \textit{ack}(z + 2, 0, y ) &= 1\\
+    \textit{ack}(z + 1, x + 1, y ) &= \textit{ack}(z, \textit{ack}(z + 1, x, y ), y )
+\end{align*}
 
 I casi sono mutalmente disgiunti. Data una tripla qualsiasi di valori solo una riga si applica.
 

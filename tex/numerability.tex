@@ -80,15 +80,15 @@ Le seguenti sono note alle slide
 
 \begin{defn}
     Un insieme $A$ si dice numerabile se esiste una funzione suriettiva $f$ dall'insieme
-    dei numeri naturali $\Nat$ in $A$. $f$ e' detta funzione di enumerazione.
+    dei numeri naturali $\Nat$ in $A$. $f$ è detta funzione di enumerazione.
 \end{defn}
 
-Un esempio di insieme numerabile e' $\Nat$. Inoltre ogni sottoinsieme di un insieme numerabile e'
+Un esempio di insieme numerabile è $\Nat$. Inoltre ogni sottoinsieme di un insieme numerabile è
 ancora numerabile. La funzione $f$ ci dà anche un metodo di enumerazione degli elementi del
 codominio di $f$.
 
 \begin{lem}
-   Sia $A$ numerabile. Allora $\set{*} \oplus A$ e' ancora numerabile.
+   Sia $A$ numerabile. Allora $\set{*} \oplus A$ è ancora numerabile.
 \end{lem}
 \begin{proof}
     Sia $f : \Nat \to A$ la funzione di enumerazione di $A$. definiamo $g : \Nat \to \set{*} \oplus A$
@@ -100,20 +100,20 @@ codominio di $f$.
             \case{g(x+1)=f(x)}{}\\
         \end{cases}
     \end{equation*}
-    Chiaramente $g$ e' suriettiva.
+    Chiaramente $g$ è suriettiva.
 \end{proof}
 
 Aggiungere un elemento non intacca la numerabilità di un insieme. Basta uno shift per avere una
 nuova enumerazione di $A$. La numerabilità è resistente all'operazione di estensione.
 \begin{cor}
-    Sia $A$ numerabile e $D$ finito. Allora $D \oplus A$ `e ancora numerabile.
+    Sia $A$ numerabile e $D$ finito. Allora $D \oplus A$ è ancora numerabile.
 \end{cor}
 
 \begin{lem}
-    L'unione di due insiemi numerabili $A$ e $B$ `e ancora numerabile.
+    L'unione di due insiemi numerabili $A$ e $B$ è ancora numerabile.
 \end{lem}
 \begin{proof}
-    Siano $f$ e $g$ le due funzioni di enumerazione di $A$ e $B$. $A \oplus B$ `e allora enumerato dalla seguente
+    Siano $f$ e $g$ le due funzioni di enumerazione di $A$ e $B$. $A \oplus B$ è allora enumerato dalla seguente
     funzione $h$:
     \begin{equation*}
         h(x) =
@@ -125,10 +125,10 @@ nuova enumerazione di $A$. La numerabilità è resistente all'operazione di este
 \end{proof}
 
 \begin{cor}
-    Un unione finita di insiemi numerabili `e numerabile.
+    Un unione finita di insiemi numerabili è numerabile.
 \end{cor}
 \begin{cor}
-    Se $D$ `e finito e $A$ `e numerabile allora $D \times A$ `e numerabile.
+    Se $D$ è finito e $A$ è numerabile allora $D \times A$ è numerabile.
 \end{cor}
 \begin{proof}
     Per $A,B$ numerabili abbiamo $A \oplus B$ numerabile. Prendiamo in considerazione l'unione
@@ -137,7 +137,7 @@ nuova enumerazione di $A$. La numerabilità è resistente all'operazione di este
         \overbrace{\underset{0}{A} \oplus \underset{1}{A} \oplus \cdots \oplus
         \underset{k}{A}}^{\text{$k$ volte}}
     \end{equation*}
-    Questo insieme e' chiaramente numerabile. Chiamiamolo $A_{k}$. Abbiamo che:
+    Questo insieme è chiaramente numerabile. Chiamiamolo $A_{k}$. Abbiamo che:
     \begin{equation*}
         A_{k} = \bigcup_{i=0}^{k-1}\set{<i,a> \mid a \in A} = \set{<i,a> \mid a \in A, i \in
         \set{0,\dotsc,k-1}} = A \times K
@@ -164,18 +164,18 @@ Questa codifica si ottiene nel seguente modo:
 \begin{equation*}
     <i,j> = j + \sum_{k=0}^{i+j}k = \frac{(i+j)^{2}+i+3j}{2}
 \end{equation*}
-ed e' giustificata dal ragionamento seguente: la somma delle componenti $i$ ed $j$ per i punti su di una
-stessa diagonale `e costante e pari al numero di diagonali gi`a interamente percorse. Il numero di
-punti del piano gi`a visitati in queste diagonali `e
+ed è giustificata dal ragionamento seguente: la somma delle componenti $i$ ed $j$ per i punti su di una
+stessa diagonale è costante e pari al numero di diagonali già interamente percorse. Il numero di
+punti del piano già visitati in queste diagonali è
 \begin{equation*}
     \sum_{k=0}^{i+j}k = \frac{(i+j)(i+j+1)}{2}
 \end{equation*}
-Per visitare l'elemento $<i,j>$ dovro` ancora percorrere $j$ passi lungo l'ultima diagonale, da cui
+Per visitare l'elemento $<i,j>$ dovrò ancora percorrere $j$ passi lungo l'ultima diagonale, da cui
 la formula precedente.
 
 Importante: Il dove tailing non è la diagonalizzazione.
 
-Come corollario abbiamo che il prodotto cartesiano di due insiemi numerabili e' numerabile.
+Come corollario abbiamo che il prodotto cartesiano di due insiemi numerabili è numerabile.
 
 È facile dimostrare che posso avere delle biezioni tra $\Nat^{k}$ e $\Nat$, in modo da codificare
 delle tuple di numeri con un numero solo. In altre parole c'è una procedura algoritmica che mi
@@ -192,11 +192,11 @@ conseguenza $\Nat^{k}$, per $k$ naturale, è ancora numerabile.
     \begin{equation*}
         h(n,m) = g_{f(n)}(m)
     \end{equation*}
-    `e suriettiva.
+    è suriettiva.
 \end{proof}
 
 \begin{lem}
-    Se $A$ e' un insieme numerabile, anche $\bigcup_{i \in \Nat} A^{i}$ `e numerabile.
+    Se $A$ è un insieme numerabile, anche $\bigcup_{i \in \Nat} A^{i}$ è numerabile.
 \end{lem}
 
 Consideriamo l'operatore di Kleene sull'alfabeto $\Sigma$: $\Sigma^{*}$. Anche questo insieme è
@@ -340,7 +340,7 @@ insieme che la rispetti.
 
 \subsection{Paradosso di Berry}
 
-%Berry era un bibiliotecario che si era appassionato un pò di matematica. // curiosita' storiche
+%Berry era un bibiliotecario che si era appassionato un pò di matematica. // curiosità storiche
 C'è un principio importante nei numeri naturali che dice che dato un sottoinsieme finito dei numeri
 naturali esiste un elemento dei naturali che è il più piccolo numero naturale che non appartiene a
 questo sottoinsieme.
