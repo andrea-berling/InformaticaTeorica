@@ -2,11 +2,25 @@
 
 \section{Il teorema del punto fisso di Kleene}
 
-I seguenti sono commenti alle slide.
-
-\subsection{Slide 102}
-
-La parte più a destra dell'uguale è la definizione della mia funzione $g$.
+\begin{thm}
+    Per ogni funzione totale calcolabile $f$ esiste $m$ tale che 
+    \begin{equation*}
+        \phi_{f(m)} = \phi_{m}
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    Sia $g$ così definita:
+    \begin{equation*}
+        g(x,y) = \phi_{f(\phix(x))}(y)
+    \end{equation*}
+    Per s-m-n esiste $h$ tale che $\phi_{h(x)}(y) = g(x,y)$, per $x,y$ arbitari. Sia $p$ un indice
+    per $h$ e poniamo $m = \phip(p) = h(p)$. $m$ è sicuramente definito, essendo $h$ totale.
+    Abbiamo ora che, per ogni $y$:
+    \begin{equation*}
+        \phim(y) = \phi_{\phip(p)}(y) = \phi_{h(p)}(y) = g(p,y) = \phi_{f(\phip(p))}(y) =
+        \phi_{f(m)}(y)
+    \end{equation*}
+\end{proof}
 
 Se prendiamo per $f$ la funzione successore ho per forza che nel mio ordinamento avrò due programmi
 adiacenti che si comportano nella stessa maniera. In questo modo non è possibile creare un
@@ -38,10 +52,8 @@ qualche $f$. Si può? Sì. Abbiamo che $g(i,x) = f(\phii(x))$. Ma ora per s-m-n 
 corrisponde a $\phi_{h(i)}(x)$. Ma ora abbiamo che $\phip(x) = \phi_{h(p)}(x) = f(\phip(x))$, se
 prendiamo come $p$ il punto fisso di $h$.
 
-In generale per punto fisso di una funzione intendiamo un input $x$ tale che $f(x) = x$. Il nostro senso
-è un pò particolare perché è un punto fisso estensionale.
-
-Il teorema dice fondamentalmente che $\forall f$ tot. calc. $\exists m, \phi_{f(m)} = \phi_{m}$.
+In generale per punto fisso di una funzione intendiamo un input $x$ tale che $f(x) = x$. Il nostro
+senso è un pò particolare perché è un punto fisso estensionale.
 
 Sfruttando questo risultato vogliamo costruire un programma che dato $i$ mi restituisca qualcosa
 diverso dalla funzione $\phii$ per almeno un input, ovvero vogliamo $i$ tale che:
@@ -69,7 +81,7 @@ ricorsivo ma non banale, ovvero esista $i \in A$ e $j \in \comp{A}$. Posso defin
 \end{equation*}
 
 Questa funzione sarebbe calcolabile per la ricorsività di $A$. Per il teorema del punto fisso,
-essendo $h$ totle e calcolabile, deve esistere $m$ tale che $\phim = \phi_{h(m)}$. Ci chiediamo ora,
+essendo $h$ totale e calcolabile, deve esistere $m$ tale che $\phim = \phi_{h(m)}$. Ci chiediamo ora,
 dove sta $m$? Se $m \in A$ allora stanno in $A$ anche tutti i programmi che si comportano come $m$,
 tra cui anche $h(m)$. Ma se $m \in A$ allora $h(m) = j$, quindi $h(m) \notin A$. Se invece $m \notin
 A$ allora $h(m) \notin A$. Ma per definizione di $h$ si ha che $h(m) = i \in A$. Ecco la mia
@@ -85,5 +97,21 @@ Pensiamo ora ad una funzione binaria $f(x,y)$. Possiamo generalizzare il teorema
     $\forall f^{2}$ totale calcolabile $\exists s$ totale calcolabile tale che $\forall y, \phi_{f(s(y),y)} = \phi_{s(y)}$
 \end{thm}
 \begin{proof}
-    La dimostrazione è nella slide 103
+    Definiamo la funzione $g$ come
+    \begin{equation*}
+         g(x,y,z) = \phi_{f(\phix(x),y)}(z)
+    \end{equation*}
+    Per s-m-n esiste $h$ totale calcolabile tale che:
+    \begin{equation*}
+        \phi_{h(x,y)}(z) = g(x,y,z)
+    \end{equation*}
+    Definiamo ora $g'(y,x) = h(x,y)$. Per s-m-n esiste $r$ totale calcolabile tale che
+    \begin{equation*}
+        \phi_{r(y)}(x) = g'(y,x) = h(x,y)
+    \end{equation*}
+    Definiamo ora la funzione $s(y) = \phi_{r(y)}(r(y))$. Abbiamo che, per ogni $z$:
+    \begin{equation*}
+        \phi_{s(y)}(z) = \phi_{\phi_{r(y)}(r(y))}(z) = \phi_{h(r(y),y)} =
+        \phi_{f(\phi_{r(y)}(r(y)),y)}(z) = \phi_{f(s(y),y)}(z)
+    \end{equation*}
 \end{proof}
