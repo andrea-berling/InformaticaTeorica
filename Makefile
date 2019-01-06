@@ -3,5 +3,7 @@ TEXFILES=numerability primitiverecursion turing undecidableproblems recursiveset
 reducibility arithmetichierarchy excercises
 TEXDIR=tex
 TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES)) mystyle.sty
+USE_PDFLATEX=true
+VIEWPDF=xpdf
 
 include /usr/share/latex-mk/latex.gmk
