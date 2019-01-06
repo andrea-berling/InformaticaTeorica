@@ -1,0 +1,18 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\begin{document}
+\begin{tikzpicture}
+
+\node (x) at (0,0) {$x$};
+\node (l) at (0,2) {$\Lang$};
+\draw (2,0.5) rectangle (4,1.5);
+\node (xl) at (5,1) {$x \overset{?}{\in} \Lang$};
+\node (target) at (1.75,1) {};
+\draw[->] (x) to [bend right] (target);
+\draw[->] (l) to [bend left] (target);
+
+\end{tikzpicture}
+\end{document}

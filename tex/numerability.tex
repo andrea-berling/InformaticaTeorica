@@ -20,7 +20,11 @@ Un'altra problematica interessante è la seguente: a volte l'input stesso dei no
 infinito.  Ad esempio, il nostro programma potrebbe essere un automa per un linguaggio libero da
 contesto. Il nostro input, un linguaggio, può essere un insieme infinito. 
 
-(Figura 1 sul quaderno)
+\begin{figure}[h]
+    \centering
+    \includegraphics{img/LanguageExample.pdf}
+    \caption{Schematizzazione di un automa per un linguaggio $\Lang$}
+\end{figure}
 
 Come facciamo a dare al programma un input infinito? L'unico modo è fornire al programma una
 descrizione finita dell'input. Creiamo quindi una struttura generativa finita che, da un insieme
@@ -54,11 +58,11 @@ infinito. La comunicazione presuppone una descrizione finita dell'oggetto infini
 Tutta la nostra intuizione è basata sul finito. Tuttavia molte cose che non valgono per il finito
 valgono per l'infinito. Ad esempio è possibile mettere in corrispondenza biunivoca un sottoinsieme
 stretto di un insieme infinito con l'insieme stesso, a differenza del caso finito. Questo è fuori
-dalla nostra intuizione immediata di insiemi.
+dalla nostra intuizione immediata degli insiemi.
 
 A volte vogliamo fare ricerche infinite, e.g. su strutture dati infinite. Ad esempio potrei voler
 verificare che una stringa $x$ appartenga ad un linguaggio $\Lang$ generando tutte le stringhe da
-una grammatica per $\Lang$ e decidere ``Si''' se $x$ compare. Ho un modo per dire se in una ricerca
+una grammatica per $\Lang$ e decidere ``Sì'' se $x$ compare. Ho un modo per dire se in una ricerca
 troverò quello che cerco? In generale no. Questo problema è fondamentale perché è
 frequentissimo. Parleremo in questi casi qui di semi-decisione. Notiamo inoltre che sul
 complementare, ovvero $x \notin \Lang$, non possiamo dire niente.
@@ -66,7 +70,7 @@ complementare, ovvero $x \notin \Lang$, non possiamo dire niente.
 Noi considereremo funzioni da $\Nat$ a $\Nat$ o, al massimo, da $\Nat^{k}$ a $\Nat$. Questo perché
 i numeri naturali sono la più semplice struttura infinita. Questo non ci pone limitazioni di alcun
 tipo. Se noi siamo interessati ad aspetti di calcolabilità tutto è alla fine riconducibile ad un
-numero binario. Questa traduzione da oggetto qualsiasi ad un numero naturale prende il nome di
+numero binario. Questa traduzione da un oggetto qualsiasi ad un numero naturale prende il nome di
 Gödelizzazione. Ai tempi ($\sim 1930$) fu un'idea rivoluzionaria, ma dal punto di vista di un informatico
 dovrebbe sembrare più naturale.
 
@@ -74,22 +78,72 @@ dovrebbe sembrare più naturale.
 
 Le seguenti sono note alle slide
 
-\subsection{Slide 6}
+\begin{defn}
+    Un insieme $A$ si dice numerabile se esiste una funzione suriettiva $f$ dall'insieme
+    dei numeri naturali $\Nat$ in $A$. $f$ e' detta funzione di enumerazione.
+\end{defn}
 
-La funzione $f$ ci dà anche un metodo di enumerazione degli elementi del codominio di $f$.
+Un esempio di insieme numerabile e' $\Nat$. Inoltre ogni sottoinsieme di un insieme numerabile e'
+ancora numerabile. La funzione $f$ ci dà anche un metodo di enumerazione degli elementi del
+codominio di $f$.
 
-\subsection{Slide 7}
+\begin{lem}
+   Sia $A$ numerabile. Allora $\set{*} \oplus A$ e' ancora numerabile.
+\end{lem}
+\begin{proof}
+    Sia $f : \Nat \to A$ la funzione di enumerazione di $A$. definiamo $g : \Nat \to \set{*} \oplus A$
+    nel modo seguente:
+    \begin{equation*}
+        g(x) =
+        \begin{cases}
+            \case{g(0)=*}{}\\
+            \case{g(x+1)=f(x)}{}\\
+        \end{cases}
+    \end{equation*}
+    Chiaramente $g$ e' suriettiva.
+\end{proof}
 
 Aggiungere un elemento non intacca la numerabilità di un insieme. Basta uno shift per avere una
 nuova enumerazione di $A$. La numerabilità è resistente all'operazione di estensione.
+\begin{cor}
+    Sia $A$ numerabile e $D$ finito. Allora $D \oplus A$ `e ancora numerabile.
+\end{cor}
 
-\subsection{Slide 8}
+\begin{lem}
+    L'unione di due insiemi numerabili $A$ e $B$ `e ancora numerabile.
+\end{lem}
+\begin{proof}
+    Siano $f$ e $g$ le due funzioni di enumerazione di $A$ e $B$. $A \oplus B$ `e allora enumerato dalla seguente
+    funzione $h$:
+    \begin{equation*}
+        h(x) =
+        \begin{cases}
+            \case{h(2x)=f(x)}{}\\
+            \case{h(2x+1)=g(x)}{}\\
+        \end{cases}
+    \end{equation*}
+\end{proof}
 
-Dimostrazione del secondo corollario sul quaderno azzurro.
-
-// DA RIPORTARE QUI
-
-\subsection{Slide 9}
+\begin{cor}
+    Un unione finita di insiemi numerabili `e numerabile.
+\end{cor}
+\begin{cor}
+    Se $D$ `e finito e $A$ `e numerabile allora $D \times A$ `e numerabile.
+\end{cor}
+\begin{proof}
+    Per $A,B$ numerabili abbiamo $A \oplus B$ numerabile. Prendiamo in considerazione l'unione
+    disgiunta di A con se stesso $k$ volte:
+    \begin{equation*}
+        \overbrace{\underset{0}{A} \oplus \underset{1}{A} \oplus \cdots \oplus
+        \underset{k}{A}}^{\text{$k$ volte}}
+    \end{equation*}
+    Questo insieme e' chiaramente numerabile. Chiamiamolo $A_{k}$. Abbiamo che:
+    \begin{equation*}
+        A_{k} = \bigcup_{i=0}^{k-1}\set{<i,a> \mid a \in A} = \set{<i,a> \mid a \in A, i \in
+        \set{0,\dotsc,k-1}} = A \times K
+    \end{equation*}
+    da cui l'asserto.
+\end{proof}
 
 Possiamo enumerare $\Nat \times \Nat$? Vediamo com'è fatto questo insieme. Avremo $(0,0), (0,1),
 (0,2),\dotsc$, dopodiché, sulla prossima riga, avremo $(1,0), (1,1), (1,2),\dotsc$, e così via
@@ -100,18 +154,50 @@ le colonne sono infinite, iterando su una riga non passerò mai alla prossima. C
 Dove tailing. Numeriamo per diagonali. Ce ne sono altre di numerazioni possibili. Va bene qualsiasi
 ``gioco dell'oca'' che passa per ogni coppia una e una sola volta.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/DoveTailing.jpg}
+    \caption{Dove tailing}
+\end{figure}
+
+Questa codifica si ottiene nel seguente modo:
+\begin{equation*}
+    <i,j> = j + \sum_{k=0}^{i+j}k = \frac{(i+j)^{2}+i+3j}{2}
+\end{equation*}
+ed e' giustificata dal ragionamento seguente: la somma delle componenti $i$ ed $j$ per i punti su di una
+stessa diagonale `e costante e pari al numero di diagonali gi`a interamente percorse. Il numero di
+punti del piano gi`a visitati in queste diagonali `e
+\begin{equation*}
+    \sum_{k=0}^{i+j}k = \frac{(i+j)(i+j+1)}{2}
+\end{equation*}
+Per visitare l'elemento $<i,j>$ dovro` ancora percorrere $j$ passi lungo l'ultima diagonale, da cui
+la formula precedente.
+
 Importante: Il dove tailing non è la diagonalizzazione.
+
+Come corollario abbiamo che il prodotto cartesiano di due insiemi numerabili e' numerabile.
 
 È facile dimostrare che posso avere delle biezioni tra $\Nat^{k}$ e $\Nat$, in modo da codificare
 delle tuple di numeri con un numero solo. In altre parole c'è una procedura algoritmica che mi
 permette di passare da una tupla al corrispondente numero $n$ e da $n$ alla corrispondente tupla. Di
 conseguenza $\Nat^{k}$, per $k$ naturale, è ancora numerabile.
 
-L'unione numerabile di insiemi numerabili è ancora numerabile.
+\begin{lem}
+    L'unione di un insieme numerabile di insiemi numerabili è ancora numerabile.
+\end{lem}
+\begin{proof}
+    Sia $A$ un insieme numerabile e sia $f$ la sua funzione di enumerazione. Sia $\set{B_{a}\mid a
+    \in A}$ una collezione di insiemi numerabili, ciascuno enumerato da una funzione $g_{a}$. La funzione
+    $h : \Nat \times \Nat \to \bigcup_{a \in A}B_{a}$ definita da
+    \begin{equation*}
+        h(n,m) = g_{f(n)}(m)
+    \end{equation*}
+    `e suriettiva.
+\end{proof}
 
-\begin{equation*}
-    \bigcup_{i \in \Nat} A_{i} = \{<i,a> \mid i \in \Nat, a \in A_{i}\}
-\end{equation*}
+\begin{lem}
+    Se $A$ e' un insieme numerabile, anche $\bigcup_{i \in \Nat} A^{i}$ `e numerabile.
+\end{lem}
 
 Consideriamo l'operatore di Kleene sull'alfabeto $\Sigma$: $\Sigma^{*}$. Anche questo insieme è
 numerabile, perché è l'unione numerabile di insiemi numerabili (ricordiamo che $A^{k}$ è numerabile).
@@ -128,7 +214,7 @@ L'insieme di funzioni da $A$ a $B$ ha cardinalità $B^{A}$.
 
 Possiamo caratterizzare l'insieme delle coppie su $A$, $A \times A = A^{2}$, come una funzione
 dall'insieme $\BOOL = \{0,1\}$ all'insieme $A$. $f(x)$ può essere così definita: data
-una coppia $<a_{1},a_{2}>$, $f(x)$: $ x \to $ if $x$ then $a_{1}$ else $a_{2}$. Al posto dei booleani potremmo
+una coppia $<a_{1},a_{2}>$, $f(x)$: $ x \mapsto $ if $x$ then $a_{1}$ else $a_{2}$. Al posto dei booleani potremmo
 avere un qualsiasi insieme di cardinalità 2.
 
 $A^{K}$ è isomorfo all'insieme delle funzioni $f: K \to A$.
@@ -165,11 +251,11 @@ elemento fa parte del sottoinsieme e 0 altrimenti.
 
 La tecnica con cui si dimostra questo teorema è detta tecnica diagonale, o diagonalizzazione.
 Un'idea intuitiva che giustifica il nome è la seguente: consideriamo una tabella indicizzata per
-colonne dagli $a \in A$ e sulle colonne dagli $f(a)$ per ogni $a \in A$. Nella cella $(i,j)$ della
+colonne dagli $a \in A$ e sulle righe dagli $f(a)$ per ogni $a \in A$. Nella cella $(i,j)$ della
 tabella avrò 1 se $a_{j} \in f(a_{i})$ e 0 altrimenti. Abbiamo per ogni riga la funzione
 caratteristica di $f(a)$, per ogni $a \in A$. Abbiamo ora che la funzione caratteristica di
 $\Delta_{f}$ è costruita andando sulla diagonale e prendendo l'elemento $j$ in $\Delta$ se in
-corrispondenza sulla diagonale, ovvero alla riga $i$ ho 0, lasciandolo fuori altrimenti. Di
+corrispondenza sulla diagonale, ovvero alla riga $i$, ho 0, lasciandolo fuori altrimenti. Di
 conseguenza la funzione caratteristica che vado a costruire per definire $\Delta$ è diversa da
 tutte le funzioni caratteristiche sulle righe almeno per un elemento.
 
@@ -242,10 +328,9 @@ una proprietà $P(x)$ possiamo costruire un insieme che la rispetti:
 \begin{equation*}
     \frac{P(t)}{t \in \{x \mid P(x)\}} % the proving package may be useful here
 \end{equation*}
-//TODO USE PROVING PACKAGE OR SOME OTHER PACKAGE FOR RULE INFERENCE
 Vale anche l'implicazione inversa
 
-Pensiamo alla proprietà $P(x) = x \notin x$. Possiamo costruire l'insieme $U = \{x \mid x \notin x\}$. Ci
+Pensiamo alla proprietà $P(x) = ``x \notin x''$. Possiamo costruire l'insieme $U = \{x \mid x \notin x\}$. Ci
 chiediamo ora: $U \in U$? Abbiamo che $U \in U \iff U \notin U$. Ma questo è paradossale.
 
 Il problema è che all'inizio del secolo si era tentato di basare la teoria insiemistica sul
@@ -255,9 +340,10 @@ insieme che la rispetti.
 
 \subsection{Paradosso di Berry}
 
-Berry era un bibiliotecario che si era appassionato un pò di matematica. C'è un principio
-importante nei numeri naturali che dice che dato un sottoinsieme finito dei numeri naturali esiste un
-elemento dei naturali che è il più piccolo numero naturale che non appartiene a questo sottoinsieme.
+%Berry era un bibiliotecario che si era appassionato un pò di matematica. // curiosita' storiche
+C'è un principio importante nei numeri naturali che dice che dato un sottoinsieme finito dei numeri
+naturali esiste un elemento dei naturali che è il più piccolo numero naturale che non appartiene a
+questo sottoinsieme.
 
 Supponiamo di definire i numeri con stringhe di lunghezza $d$. Abbiamo quindi un insieme di numeri
 che posso definire con al più $d$ caratteri. Possiamo definire $n_d$ come il più piccolo numero
@@ -268,10 +354,9 @@ Prendiamo ad esempio $d=100$. Abbiamo che $n_{100}$ non è definibile con meno d
 è definito dalla stringa: ``$n_{100}$ non è definibile con meno di 100 caratteri'', che ha meno di 100
 caratteri. Questo è assurdo.
 
-// DA RIVEDERE
-Più formalmente, supponiamo che la definizione sia data dalla stringa $s$ e prendiamo $d_{s} = |s|$.
-$n_{d_{s}}$ è il più piccolo numero non definibile con meno di $d_{s}$ caratteri. Ma $n_{d_{s}}$ è
-definito da $s$. Assurdo.
+%Più formalmente, supponiamo che la definizione sia data dalla stringa $s$ e prendiamo $d_{s} = |s|$.
+%$n_{d_{s}}$ è il più piccolo numero non definibile con meno di $d_{s}$ caratteri. Ma $n_{d_{s}}$ è
+%definito da $s$. Assurdo. // Non mi sembra corretta
 
 Ci sono paradossi e paradossi. Alcune sono cose che sembrano strane ma in realtà non lo sono così
 tanto. Altri sono proprio cattivi, mettono in questione aspetti fondamentali della nostra
