@@ -1,0 +1,35 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (-1,0) -- (6,0);
+    \draw[->] (0,-1) -- (0,5);
+    \draw (1,2) circle [radius=0.75cm];
+    \draw (3.5,2.5) circle [radius=1cm];
+    \draw (2.5,4) circle [radius=0.6cm];
+    \node at (1,2) {$B$};
+    \node at (3.5,2.5) {$B$};
+    \node at (2.5,4) {$B$};
+    \draw[dashed] (0.25,2) -- (0.25,0);
+    \draw[dashed] (1.75,2) -- (1.75,0);
+    \draw[thick] (0.25,0) -- (1.75,0);
+    \draw (0.25,2pt) -- (0.25,-2pt);
+    \draw (1.75,2pt) -- (1.75,-2pt);
+    \draw[dashed] (2.5,2.5) -- (2.5,0);
+    \draw[dashed] (4.5,2.5) -- (4.5,0);
+    \draw[thick] (2.5,0) -- (4.5,0);
+    %\draw (2.5,2pt) -- (2.5,-2pt);
+    \draw (4.5,2pt) -- (4.5,-2pt);
+    \draw[dashed] (1.9,4) -- (1.9,0);
+    \draw[dashed] (3.1,4) -- (3.1,0);
+    \draw[thick] (1.9,0) -- (3.1,0);
+    \draw (0.25,2pt) -- (0.25,-2pt);
+    \draw (1.9,2pt) -- (1.9,-2pt);
+    %\draw (3.1,2pt) -- (3.1,-2pt);
+    \node at (1,-0.25) {$A$};
+    \node at (3.2,-0.25) {$A$};
+\end{tikzpicture}
+\end{document}
