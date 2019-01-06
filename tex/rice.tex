@@ -106,8 +106,8 @@ $\phij$, e dove $\phii$ non è definita $\phij$ può darmi una nuova informazion
 
 Qualunque funzione è un'estensione della funzione che diverge sempre. Sia $P(i)$ una proprietà
 ``testabile''. Supponiamo che $P(i)$ e supponiamo che $\phii \subseteq \phij$. Cosa possiamo dire su
-$\phij$ rispetto a $P$? Per fissare le idee, prendiamo $P(i)$ = $\phii \text{converge su tutti i
-numeri minori di 100}$. Supponiamo esista un $a$ per cui vale $P$. Se ho che $b$ estende $a$, ovvero
+$\phij$ rispetto a $P$? Per fissare le idee, prendiamo $P(i)$ = ``$\phii \text{ converge su tutti i
+numeri minori di 100}$''. Supponiamo esista un $a$ per cui vale $P$. Se ho che $b$ estende $a$, ovvero
 $\phia \subseteq \phib$, allora necessariamente $P(b)$: qualunque estensione di un programma che
 converge su input minori di 100 continuerà a farlo.
 
@@ -124,8 +124,14 @@ e $P(b)$. Questa proprietà dei predicati estensionali è detta compattezza.
 Abbiamo dei massimi nell'ordinamento basato su estensione? Sì, tutte le funzioni totali, dette in
 questo contesto massimali. Non sono però in relazione tra loro, sono distinte.
 
-// TODO RIPORTARE SCHEMA
-(Vedi schema sul quaderno azzurro).
+\begin{figure}[!h]
+    \centering
+    \includegraphics{img/ExtensionHierarchy.pdf}
+    \caption{Una proprietà $P$ è monotona se tutte vale per tutte le estensioni di una funzione $a$
+    per cui vale. È compatta se vale per una qualche restrizione finita $b$ di $a$}
+\end{figure}
+
+\newpage
 
 Vediamo ora alcuni esempi di proprietà e chiediamoci quali sono compatte e quali monotone (e quali
 entrambe).
@@ -142,8 +148,8 @@ semidecidibilità.
 Prendiamo $P(i) = ``\dom(\phii)$ finito''. È monotona? No. È compatta? Sì. Per il complementare? È
 monotono? Sì. È compatto? No.
 
-Prendiamo $P(i) = ``\dom(\phii)$ infinito e $\comp{\dom(\phii)}$ finito (?)''. È monotona? No. È
-compatta? No.
+%Prendiamo $P(i) = ``\dom(\phii)$ infinito e $\comp{\dom(\phii)}$ finito (?)''. È monotona? No. È
+%compatta? No.
 
 Una proprietà come $P(i) = `` \phii$ è primitiva ricorsiva'' non è neppure semidecidibile, oltre a non
 essere decidibile per il teorema di Rice. Il motivo è che $P(i)$ non è compatta: il formalismo
@@ -152,6 +158,14 @@ primitivo ricorsivo mi permette di definire solo funzioni totali.
 \subsection{Il teorema di Rice-Shapiro}
 
 I nomi di questo teorema variano nella letteratura. Per noi è il teorema di Rice-Shapiro.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/YinYang.jpg}
+    \caption{Visualizzazione della dimostrazione del teorema di Rice}
+\end{figure}
+
+\newpage
 
 Il simbolo dello yin-yang mi deve sottolineare l'impossibilità di separare le due aree, perché le
 due cose che sto tentando di separare sono processi in movimento che continuamente si trasformano
@@ -182,7 +196,7 @@ l'estensionalità. La prima cosa posso calcolarla, la seconda no.
 \begin{proof}
     La monotonia mi dice che $\forall i,j$ se $i \in A$ e $\phii \subseteq \phij$ allora $j \in
     A$. Supponiamo che $A$ sia estensionale e r.e. Supponiamo che $A$ non sia monotono. Allora
-    devono esistere $i,j$ tali che $i \in A$, $\phi \subseteq \phij$ e $j \notin A$. Proveremo a
+    devono esistere $i,j$ tali che $i \in A$, $\phii \subseteq \phij$ e $j \notin A$. Proveremo a
     costruire un programma che si comporta come $i$ in un caso e come $j$ nell'altro caso.
     Costruiamo $h$ totale e calcolabile che vogliamo si comporti come $i$ se $\phix(x) \diverges$,
     come $j$ se $\phix(x) \converges$. Supponiamo di averla già: vedremo poi se possiamo
