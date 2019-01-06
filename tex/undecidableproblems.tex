@@ -24,7 +24,7 @@ diversa associata ad esso. La relazione tra i due è: la funzione $i$ nella mia 
 funzioni calcolabili è quella calcolata dal programma $i$ della mia enumerazione dei programmi.
 
 La divergenza non è una proprietà generale delle funzioni. Non ha senso dire $\phii \diverges$ senza
-specificare dove diverge; questo perché la convergenza e la divergenza sono proprietà puntuale:
+specificare dove diverge; questo perché la convergenza e la divergenza sono proprietà puntuali:
 valgono per un dato input. Al massimo $\phii(x)$ per un qualche $x$ può divergere.
 
 \section{Il problema della fermata}
@@ -119,15 +119,14 @@ calcolare (e cosa no).
 
 L'ipotesi della calcolabilità dell'interprete è un'ipotesi importante. Supponiamo, nella nostra
 teoria della calcolabilità, che esista un modo per calcolarla. Questa proprietà è detta proprietà
-UTM, Universal Turing Machine: $\exists u \phiu(i,x) = \phii(x)$. È dimostrabile in tutti i
+UTM, Universal Turing Machine: $\exists u, \phiu(i,x) = \phii(x)$. È dimostrabile in tutti i
 formalismi Turing completi.
 
 La proprietà che andiamo ora a considerare è la cosiddetta proprietà s-m-n. Supponiamo di avere
-una funzione calcolabile $g(x,y)$. Cosa posso dire delle sue istanze?. Supponiamo di fissare $x$, ad
+una funzione calcolabile $g(x,y)$. Cosa posso dire delle sue istanze? Supponiamo di fissare $x$, ad
 esempio a 0. Ottengo $g(0,y)$, che è una funzione unaria che dipende solo da $y$. Possiamo indicare
 $g(0,y)$ come $f_{0}(y)$. In generale posso fare questo per $f_{k}(y) = g(k,y)$.
 
-// TODO Da rivedere l'esistenza di h
 Se tutte queste funzioni sono calcolabili per ognuna c'è una qualche funzione, delle mia
 enumerazione, che la calcola. Esisterà quindi un programma che la calcola. Esiste quindi
 $\phi_{h(k)}(y) = f_{k}(y) = g(k,y)$ che mi calcola $g(k,y)$. $h$ è una funzione che mi calcola
@@ -186,7 +185,7 @@ totale o meno. È anche questo un problema di decisione. La specifica della mia 
     \end{cases}
 \end{equation*}
 
-Abbiamo prima però di un risultato intermedio. Un caso particolare caso del problema della
+Abbiamo bisogno però prima di un risultato intermedio. Un caso particolare caso del problema della
 terminazione è il problema della terminazione diagonale:
 \begin{equation*}
     \textit{Term}(i) =
