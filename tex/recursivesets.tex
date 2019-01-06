@@ -133,7 +133,7 @@ funzione di enumerazione, nel seguente modo:
         return 1
 \end{python}
 
-Questa $c_{A}$ pero' non calcola la funzione caratteristica di $A$, bensì la funzione
+Questa $c_{A}$ però non calcola la funzione caratteristica di $A$, bensì la funzione
 semicaratteristica di A,che indicheremo con $s_{A}$.
 \begin{equation*}
     s_{A}(x) =
@@ -200,8 +200,13 @@ $\comp{K}$. Se infatti $\comp{K}$ fosse r.e. allora $K$ sarebbe ricorsivo.
 
 Abbiamo una gerarchia degli insiemi fatta in questo modo: 
 
-// TODO RICOPIARE LA FIGURA DELLA GERARCHIA
-(Figura sul quaderno azzurro)
+\begin{figure}[h]
+    \centering
+    \includegraphics{img/RecursiveHierarchy.pdf}
+    \caption{Gerarchia degli insiemi r.e. e ricorsivi}
+\end{figure}
+
+\newpage
 
 \section{Enumerazioni iniettive e monotone}
 
@@ -430,18 +435,37 @@ Un'ulteriore caratterizzazione degli insiemi r.e. è la seguente:
 \begin{thm}
     $A$ è r.e. sse $\exists B$ ricorsivo tale che $A = \{x \mid \exists y, <x,y> \in B\}$.
 \end{thm}
+\begin{proof}
+    Vediamo i due versi del $\iff$ separatamente:
+    \begin{itemize}
+        \item $\implies$ Sia $c_{B}$ la funzione caratteristica di $B$. Allora $A = \dom(f)$, con
+        \begin{equation*}
+            f(m) = \mu n, c_{B}(<n,m>) = 1
+        \end{equation*}
+        \item $\implied$ Sia $A = \dom(\phii)$. Quindi $m \in A$ sse $\phii(m) \converges$, ovvero
+        se $\exists t, T^{3}(i,m,t) = 1$, dove $T$ è il predicato ternario di Kleene.
+        Basta quindi porre:
+        \begin{equation*}
+            B = \set{<m,t> \mid \exists t, T^{3}(i,m,t)}
+        \end{equation*}
+    \end{itemize}
+\end{proof}
 
 Possiamo vedere $B$ come una codifica delle coppie oppure come un insieme di coppie, non è
 importante.
 
 $A$ è la proiezione esistenziale di $B$ 
 
-// TODO RIPORTARE FIGURA
-(vedi figura sul quaderno azzurro).
+\begin{figure}[h]
+    \centering
+    \includegraphics{img/ExistentialProjection.pdf}
+    \caption{Proiezione esitenziale di $B$}
+\end{figure}
 
 Il teorema è importante. Se ho un insieme ricorsivo e ne faccio la proiezione esistenziale ottengo
-un insieme r.e. $x \in A$ sse $\exists y, (x,y) \in B$. Posso verificare che $(x,y)$ sia in $B$
-perché $B$ è ricorsivo, con un algoritmo del genere ad esempio: $\mu y, (x,y) \in B$.
+un insieme r.e. $x \in A$ sse $\exists y, (x,y) \in B$. Posso verificare se $(x,y)$ sta in $B$
+perché $B$ è ricorsivo. Posso quindi semidecidere l'appartenenza di $x$ ad $A$ con un algoritmo del
+genere ad esempio: $\mu y, (x,y) \in B$.
 
 Se io faccio una ricerca in un dominio ricorsivo non è detto che questa termini. Se potessi dare dei
 bound alla mia ricerca o avessi altre ipotesi potrei trasformare il mio algoritmo di semidecisione
@@ -461,13 +485,8 @@ logica del prim'ordine. Dimostrare $F$ con questo algoritmo significa andare a c
 delle formule generate, un certificato per $F$. 
 
 Un altro esempio è: dato un programma datemi un certificato per la sua appartenenza a $K$. Questo
-certificato potrebbe essere il tempo $t$ in cui $\phi_{x}(x)$ termina.
-
-La dimostrazione procede proprio in questo modo:
-
-\begin{proof}
-    $A$ è r.e. sse $A = \dom(\phii)$. Possiamo vedere $A = \{x \mid \exists t, T^{3}(i,x,t)\}$
-\end{proof}
+certificato potrebbe essere il tempo $t$ in cui $\phi_{x}(x)$ termina. La dimostrazione che abbiamo
+visto procede proprio in questo modo.
 
 Il certificato non è un concetto ben definito, sta a noi decidere cosa sia un certificato. Un
 certificato per un teorema potrebbe benissimo essere sia una prova che semplicemente la dimensione
@@ -481,3 +500,74 @@ indicarlo: $W_{i}$. Possiamo con questa notazione definire $K$ come $K = \{i \mi
 L'importanza di questa caratterizzazione è data dal fatto che essa induce una enumerazione di tutti
 gli insieri r.e., basata sui domini di convergenza delle funzioni della mia enumerazione delle
 funzioni calcolabili.
+
+\section{Ulteriori proprietà di chiusura degli insiemi r.e.}
+
+\begin{thm}
+    Siano $A,B \subseteq \Nat$ e $f : \Nat \to \Nat$. Abbiamo che:
+    \begin{enumerate}
+        \item se $A$ è ricorsivo e $f$ è totale calcolabile, allora $f^{-1}(A)$ è ricorsivo
+        \item se $A$ è r.e. e $f$ è calcolabile, allora $f^{-1}(A)$ è r.e.
+        \item se $A$ è r.e. e $f$ è calcolabile, allora $f(A)$ è r.e.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Vediamo i tre punti uno per uno:
+    \begin{enumerate}
+        \item $c_{f^{-1}(A)}(x) = c_{A}(f(x))$
+        \item Sia $A = \dom(g)$, con $g$ calcolabile. Consideriamo la seguente funzione:
+        \begin{equation*}
+            h(x) = g(f(x))
+        \end{equation*}
+        Questa funzione termina su $x$ sse $x \in \dom(f) \land f(x) \in \dom(g)$. Ma $\dom(g) = A$, quindi $h$ termina
+        su tutti quegli $x$ tali che $f(x) \in A$. Ma quindi $f^{-1}(A) = \dom(h)$.
+        \item Sia $A = \cod(g)$. Consideriamo la seguente funzione:
+        \begin{equation*}
+            h(x) = f(g(x))
+        \end{equation*}
+        Abbiamo che $\cod(h) = f(\cod(g))$. Ma $\cod(g) = A$, quindi $f(A) = \cod(h)$.
+    \end{enumerate}
+\end{proof}
+
+Vediamo ora che le famiglie r.e. di insieme r.e. sono chiuse per unione ma non per intersezione. Per
+farlo ci servirà l'enumerazione degli insiemi r.e. indotta dai domini delle funzioni calcolabili.
+\begin{lem}
+    Valgono le seguenti proprietà per gli insiemi r.e.:
+    \begin{enumerate}
+        \item $\forall x, \displaystyle\bigcup_{i \in W_{x}}W_{i}$ è r.e.;
+        \item $\exists x, \displaystyle\bigcap_{i \in W_{x}}W_{i}$ non è r.e.;
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    Vediamo i due punti uno per uno:
+    \begin{enumerate}
+        \item possiamo scrivere il semidecisore di $\displaystyle\bigcup_{i \in W_{x}}W_{i}$ come
+        segue, mediante dove-tailing:
+        \begin{equation*}
+            s_{\bigcup_{i \in W_{x}}W_{i}}(x) = \mu <i,t>, T(i,x,t)
+        \end{equation*}
+        \item 
+        Sia $g$ la funzione così definita:
+        \begin{equation*}
+            g(i,x) =
+            \begin{cases}
+                \case{\diverges}{se $T(x,x,i)$} \\
+                \case{0}{altrimenti} \\
+            \end{cases}
+        \end{equation*}
+        Per s-m-n esiste $h$ totale calcolabile tale che:
+        \begin{equation*}
+            W_{h(i)} = \set{x \mid \lnot T(x,x,i)}
+        \end{equation*}
+        dove $T$ è il predicato ternario di Kleene. Si dimostra facilmente che:
+        \begin{equation*}
+            \bigcap_{i \in \Nat}W_{h(i)} = \comp{K}
+        \end{equation*}
+        Poichè $\displaystyle\bigcap_{i \in \Nat}W_{h(i)} = \displaystyle\bigcap_{i \in
+        \cod(h)}W_{i}$ l'asserto risulta verificato.
+    \end{enumerate}
+\end{proof}
+
+Ulteriore nota, nella seconda dimostrazione abbiamo che gli insiemi $W_{h(i)}$ sono ricorsivi e $h$
+può essere scelta monotona crescente, quindi una intersezione ricorsiva di insiemi ricorsivi non è
+in generale r.e.
