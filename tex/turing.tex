@@ -24,20 +24,39 @@ esprime il programma. Questa stringa può essere letta come un numero. Dire che 
 calcolabile è equivalente a definire l'interprete per tale funzione, se vogliamo dare una
 definizione operativa.
 
-I seguenti sono commenti alle slides.
+Sia data una enumerazione effettiva (e.g. lessicografica) $P_{n}$ dei programmi del
+linguaggio $\Lang$, e sia $\phi_{n}$ la funzione calcolata dal programma $P_{n}$.
 
-\subsection{Slide 47}
+$P_{n}$ è un livello intensionale, una descrizione di una funzione. $\phi_{n}$ è la funzione
+calcolata dal programma $n$-esimo.
 
-$\phi_{n}$ è la funzione che calcola il programma $P_{n}$, $n$-esimo elemento di un ordinamento (ad
-esempio lessicografico) dei programmi esprimibili nel linguaggio $\Lang$.
+Un interprete per $\Lang$ `e una funzione che preso in input l'indice $n$ di un programma ed un
+input $m$ simula il comportamento di $P_{n}$ su tale input, cio`e una funzione $I$ tale che
+\begin{equation*}
+    I (n, m) = \phi_{n}(m)
+\end{equation*}
 
-$P_{n}$ è un livello intensionale, una descrizione di una funzione. $\phi_{n}$ è la funzione calcolata
-dal programma $n$-esimo.
+Se la numerazione dei programmi `e effettiva, $I$ `e intuitivamente calcolabile.
 
-Data una numerazione effettiva l'interprete è intuitivamente calcolabile. È fondamentale la
-numerazione: dato $n$ devo poter sapere qual'è la funzione $n$-esima da interpretare.
+È fondamentale la numerazione: dato $n$ devo poter sapere qual'è la funzione $n$-esima da interpretare.
 
-\subsection{Slide 48}
+Ci chiediamo se l'interprete per $\Lang$ puo` essere scritto in $\Lang$, cio`e se esiste $u$ tale
+che $I = \phiu$.
+
+La risposta è no. Supponiamo infatti che esista $u$ tale che $I(n, m) = \phiu(n, m) = \phi_{n}(m)$.
+Consideriamo la funzione
+\begin{equation*}
+    f(x) = \phiu(x,x) + 1 = \phix(x)+1
+\end{equation*}
+
+Se il linguaggio $\Lang$ `e chiuso per composizione $f \in \Lang$, e dunque deve esistere un
+programma $i$ tale che $\phii = f$.
+
+Ma allora
+\begin{equation*}
+    \phii(i) = f(i) = \phii(i) + 1
+\end{equation*}
+che è assurdo
 
 L'argomento è sempre diagonale. Mi muovo sulla digaonale mentre sui lati ho due infinità (numero
 dei programmi e lunghezza dei programmi ad esempio).
@@ -45,6 +64,10 @@ dei programmi e lunghezza dei programmi ad esempio).
 L'interprete è un esempio di funzione intuitivamente calcolabile ma non esprimibile in un formalismo
 totale. Tipicamente è sempre possibile, dato un linguaggio che esprime funzioni totali, trovare un
 linguaggio più espressivo.
+
+\begin{thm}
+    Nessun formalismo totale `e in grado di esprimere il proprio interprete.
+\end{thm}
 
 La completezza algoritmica è un concetto obsoleto. Gli algoritmi a cui siamo spesso interessati sono
 quelli polinomiali in complessità. A questo punto, perché non restringersi a linguaggi di
@@ -62,17 +85,17 @@ informazioni a priori.
 Nei linguaggi di programmazione comuni (C, Python, ecc.) posso scrivere l'interprete per il
 linguaggio stesso. Perché? Perché non ho garanzie di terminazione ($\phii(i)$ divergerebbe).
 
-\subsection{Slide 46}
-
 Abbiamo una gerarchia nota dei linguaggi totali. Un'interessante caratterizzazione del sistema T è
 che le funzioni calcolabili in questo sistema sono esattamente quelle calcolabili nell'aritmetica di
 Peano al primo ordine.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/TotalHierarchy.jpg}
+    \caption{Gerarchia dei formalismi totali}
+\end{figure}
+
 \section{Tesi di Church}
-
-I seguenti sono commenti alle slides.
-
-\subsection{Slide 50}
 
 Che succede se rinunciamo a questa idea della totalità? Sappiamo che non daremo luogo a paradossi.
 Tuttavia rimane il problema: siamo nella situazione dei formalismi totali, e cioè esiste una
@@ -89,12 +112,16 @@ Quello che possiamo fare è confrontare formalismi a livello di potere espressiv
 si sono considerati più si è avvalorata l'idea che la classe di funzioni che possiamo calcolare sia
 la stessa, ed in particolare quella delle funzioni calcolabili da una macchina di Turing.
 
+La tesi di Church puo' essere espressa nella maniera seguente:
+\begin{thm}
+    Le funzioni calcolabili sono esattamente quelle intuitivamente calcolabili medi-
+    ante una procedura effettiva di calcolo.
+\end{thm}
+
 Ci sono delle funzioni intuitivamente definibili ma non calcolabili? Non lo sappiamo. Rimane un
 problema aperto.
 
 \section{Alcuni formalismi Turing completi}
-
-\subsection{Slide 52}
 
 Dimostrare la Turing-completezza dei linguaggi moderni è complesso. Molti formalismi sono stati
 studiati e sono stati trovati tutti equivalenti a potere espressivo.
@@ -124,7 +151,7 @@ combinatoria, ad esempio, non è così invece.
 L'idea del $\lambda$-calcolo è che voglio un linguaggio per descrivere funzioni. Ho bisogno di:
 \begin{itemize}
     \item variabili
-    \item un meccanismo per definire funzioni. Introduciamo quindi, data un termine $M$,$\lambda
+    \item un meccanismo per definire funzioni. Introduciamo quindi, dato un termine $M$,$\lambda
     x. M$. Questa è l'operazione di introduzione (o costruzione) della funzione. Manca l'operazione di
     eliminazione (o distruzione)
     \item introduciamo quindi l'applicazione: $(M N)$
@@ -164,35 +191,58 @@ livello e scrivere i propri programmi utilizzando questa architettura.
 
 \section{Macchine di Turing}
 
-I seguenti sono commenti alle slides
-
-\subsection{Slide 54}
-
 Finché lavoro con linguaggi ad alto livello è difficile convicersi che abbiano lo stesso potere
 espressivo delle macchine di Turing. Inoltre rimane il dubbio: siamo sicuri di non aver tralasciato
 un costrutto che permette di fare un balzo nel potere espressivo?
 
 La macchina di Turing che consideriamo ha un nastro solo. È un nastro di memoria infinito. Esiste?
-No, è un'astrazione matematica.
+No, è un'astrazione matematica. E' diviso in celle di dimensione fissata. Ogni cella puo` contenere
+un carattere di un alfabeto dato, compreso un carattere b (bianco) di inizializzaizone.
+
+Abbiamo una testina di lettura mobile e un automa a stati finiti per la definizione del programma.
 
 Un programma è composto da una lista infinita di operazioni che associano ad una coppia
-$<\text{carattere},\text{stato interno}>$ una tripla $<\text{nuovo carattere}, \text{nuovo stato},
-\text{mossa}>$, dove mossa e' \textit{dx} o \textit{sx}.
+$<\text{carattere},\text{stato interno}>$ una tripla $<$nuovo carattere, nuovo stato,
+mossa$>$, dove mossa e' \textit{dx} o \textit{sx}.
 
-\subsection{Slide 55}
+Quello che possiamo fare è:
+\begin{itemize}
+    \item leggere e scrivere il carattere individuato dalla testina
+    \item spostare la testina di una posizione verso destra o verso sinistra
+    \item leggere e scrivere il carattere individuato dalla testina
+\end{itemize}
+
+Una Macchina di Turing (one-tape, deterministica) `e una tupla $<Q,\Gamma,b,\Sigma,\delta,q_{0},F>$
+dove:
+\begin{itemize}
+    \item $Q$ `e un insieme finito di stati
+    \item $\Gamma$ `e l'alfabeto finito del nastro
+    \item $b$ `e il carattere bianco
+    \item $\Sigma \subseteq \Gamma \setminus \set{b}$ `e l'insieme dei caratteri di input/output
+    \item $q_{0} \in Q$ `e lo stato iniziale
+    \item $F \subseteq Q$ `e l'insieme degli stati finali (o di accettazione)
+    \item $\delta: Q \setminus F \times \Gamma \to Q \times \Gamma \times \set{L,R}$ `e la funzione di transizione.
+\end{itemize}
+
+La funzione di transizione ha un grafo finito. Ogni elemento del grafo `e una quintupla $(q, a, q',
+a', M)$ tale che $(q, a) = (q', a', M)$. L'insieme finito delle quintuple può essere visto come
+l'insieme delle istruzioni della macchina (programma), e la determina univocamente.
 
 La computazione deve essere deterministica. Dato un input alla funzione di transizione ci può
 essere un solo output.
 
-\subsection{Slide 56}
+Dobbiamo rispondere ad alcune considerazioni. Ad esempio, dove si trova la testina rispetto
+all'input?  Innanzitutto suppuniamo che il nastro sia inizializzato con la stringa di input (un
+carattere per ogni cella). Supponiamo poi che la testina parta dall'inizio dell'input. Tutte le
+altre celle del nastro sono inizializzate col carattere speciale $b$.
 
-Devo rispondere ad alcune considerazioni. Ad esempio, dove si trova la testina rispetto all'input?
-Noi supponiamo che la testina parta dall'inizio dell'input.
+Se abbiamo un nastro solo su quello scriviamo l'input e alla fine su quello troviamo l'output.
+Dobbiamo decidere come interpretarlo; ci sono vari modi standard. Per noi nel momento in cui la
+macchina si arresta l'output `e la piu` lunga stringa di caratteri in $\Gamma$ (in particolare,
+senza $b$) alla destra della testina
 
-Se ho un nastro solo su quello scrivo l'input e alla fine su quello trovo l'output. Devo decidere
-come interpretarlo; ci sono vari modi standard.
+Vediamo un esempio di macchina di Turing 
 
-// TODO SEE IF THERE IS A ASCII ART PACKAGE FOR THIS
 \begin{verbatim}
     -----------------
       |0|1|1|0|#|
@@ -226,8 +276,6 @@ Ad ogni coppia stato simbolo viene associata una tripla nuovo stato, nuovo simbo
 una infinità di varianti (tutte equivalenti dal punto di vista del potere formale).
 
 La mossa da fare sarà unica perché la macchina è deterministica.
-
-% defnition?
 
 Una configurazione istantanea è una descrizione istantanea della configurazione della macchina. Non
 corrisponde allo stato interno della macchina, ma quest'ultimo ne fa parte. La si può pensare come
@@ -317,15 +365,15 @@ Perché ho bisogno di un nasto per memorizzare gli stati? Perché questi devono 
 non so a priori quanto grande sarà la mia codifica.
 
 \begin{verbatim}
-    ------------------------------------------------------------------------------------
+    -------------------------------------------------------
         ||q_{0}|0|q_{1}|0|R||q_{1}|0|q_{1}|0|R||
-    ------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------
+    -------------------------------------------------------
+    -------------------------------------------------------
         ||q_{0}|0||
-    ------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------
+    -------------------------------------------------------
+    -------------------------------------------------------
         |0|1|1|0|#|
-    ------------------------------------------------------------------------------------
+    -------------------------------------------------------
 \end{verbatim}
 
 Ho tre nastri: il nastro degli stati, il nastro che simula la macchina di Turing ed il nastro
