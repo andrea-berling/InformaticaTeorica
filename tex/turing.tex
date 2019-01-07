@@ -30,17 +30,17 @@ linguaggio $\Lang$, e sia $\phi_{n}$ la funzione calcolata dal programma $P_{n}$
 $P_{n}$ è un livello intensionale, una descrizione di una funzione. $\phi_{n}$ è la funzione
 calcolata dal programma $n$-esimo.
 
-Un interprete per $\Lang$ `e una funzione che preso in input l'indice $n$ di un programma ed un
-input $m$ simula il comportamento di $P_{n}$ su tale input, cio`e una funzione $I$ tale che
+Un interprete per $\Lang$ è una funzione che preso in input l'indice $n$ di un programma ed un
+input $m$ simula il comportamento di $P_{n}$ su tale input, cioè una funzione $I$ tale che
 \begin{equation*}
     I (n, m) = \phi_{n}(m)
 \end{equation*}
 
-Se la numerazione dei programmi `e effettiva, $I$ `e intuitivamente calcolabile.
+Se la numerazione dei programmi è effettiva, $I$ è intuitivamente calcolabile.
 
 È fondamentale la numerazione: dato $n$ devo poter sapere qual'è la funzione $n$-esima da interpretare.
 
-Ci chiediamo se l'interprete per $\Lang$ puo` essere scritto in $\Lang$, cio`e se esiste $u$ tale
+Ci chiediamo se l'interprete per $\Lang$ può essere scritto in $\Lang$, cioè se esiste $u$ tale
 che $I = \phiu$.
 
 La risposta è no. Supponiamo infatti che esista $u$ tale che $I(n, m) = \phiu(n, m) = \phi_{n}(m)$.
@@ -49,7 +49,7 @@ Consideriamo la funzione
     f(x) = \phiu(x,x) + 1 = \phix(x)+1
 \end{equation*}
 
-Se il linguaggio $\Lang$ `e chiuso per composizione $f \in \Lang$, e dunque deve esistere un
+Se il linguaggio $\Lang$ è chiuso per composizione $f \in \Lang$, e dunque deve esistere un
 programma $i$ tale che $\phii = f$.
 
 Ma allora
@@ -66,7 +66,7 @@ totale. Tipicamente è sempre possibile, dato un linguaggio che esprime funzioni
 linguaggio più espressivo.
 
 \begin{thm}
-    Nessun formalismo totale `e in grado di esprimere il proprio interprete.
+    Nessun formalismo totale è in grado di esprimere il proprio interprete.
 \end{thm}
 
 La completezza algoritmica è un concetto obsoleto. Gli algoritmi a cui siamo spesso interessati sono
@@ -112,7 +112,7 @@ Quello che possiamo fare è confrontare formalismi a livello di potere espressiv
 si sono considerati più si è avvalorata l'idea che la classe di funzioni che possiamo calcolare sia
 la stessa, ed in particolare quella delle funzioni calcolabili da una macchina di Turing.
 
-La tesi di Church puo' essere espressa nella maniera seguente:
+La tesi di Church può essere espressa nella maniera seguente:
 \begin{thm}
     Le funzioni calcolabili sono esattamente quelle intuitivamente calcolabili medi-
     ante una procedura effettiva di calcolo.
@@ -196,14 +196,14 @@ espressivo delle macchine di Turing. Inoltre rimane il dubbio: siamo sicuri di n
 un costrutto che permette di fare un balzo nel potere espressivo?
 
 La macchina di Turing che consideriamo ha un nastro solo. È un nastro di memoria infinito. Esiste?
-No, è un'astrazione matematica. E' diviso in celle di dimensione fissata. Ogni cella puo` contenere
+No, è un'astrazione matematica. E' diviso in celle di dimensione fissata. Ogni cella può contenere
 un carattere di un alfabeto dato, compreso un carattere b (bianco) di inizializzaizone.
 
 Abbiamo una testina di lettura mobile e un automa a stati finiti per la definizione del programma.
 
 Un programma è composto da una lista infinita di operazioni che associano ad una coppia
 $<\text{carattere},\text{stato interno}>$ una tripla $<$nuovo carattere, nuovo stato,
-mossa$>$, dove mossa e' \textit{dx} o \textit{sx}.
+mossa$>$, dove mossa è \textit{dx} o \textit{sx}.
 
 Quello che possiamo fare è:
 \begin{itemize}
@@ -212,19 +212,19 @@ Quello che possiamo fare è:
     \item leggere e scrivere il carattere individuato dalla testina
 \end{itemize}
 
-Una Macchina di Turing (one-tape, deterministica) `e una tupla $<Q,\Gamma,b,\Sigma,\delta,q_{0},F>$
+Una Macchina di Turing (one-tape, deterministica) è una tupla $<Q,\Gamma,b,\Sigma,\delta,q_{0},F>$
 dove:
 \begin{itemize}
-    \item $Q$ `e un insieme finito di stati
-    \item $\Gamma$ `e l'alfabeto finito del nastro
-    \item $b$ `e il carattere bianco
-    \item $\Sigma \subseteq \Gamma \setminus \set{b}$ `e l'insieme dei caratteri di input/output
-    \item $q_{0} \in Q$ `e lo stato iniziale
-    \item $F \subseteq Q$ `e l'insieme degli stati finali (o di accettazione)
-    \item $\delta: Q \setminus F \times \Gamma \to Q \times \Gamma \times \set{L,R}$ `e la funzione di transizione.
+    \item $Q$ è un insieme finito di stati
+    \item $\Gamma$ è l'alfabeto finito del nastro
+    \item $b$ è il carattere bianco
+    \item $\Sigma \subseteq \Gamma \setminus \set{b}$ è l'insieme dei caratteri di input/output
+    \item $q_{0} \in Q$ è lo stato iniziale
+    \item $F \subseteq Q$ è l'insieme degli stati finali (o di accettazione)
+    \item $\delta: Q \setminus F \times \Gamma \to Q \times \Gamma \times \set{L,R}$ è la funzione di transizione.
 \end{itemize}
 
-La funzione di transizione ha un grafo finito. Ogni elemento del grafo `e una quintupla $(q, a, q',
+La funzione di transizione ha un grafo finito. Ogni elemento del grafo è una quintupla $(q, a, q',
 a', M)$ tale che $(q, a) = (q', a', M)$. L'insieme finito delle quintuple può essere visto come
 l'insieme delle istruzioni della macchina (programma), e la determina univocamente.
 
@@ -238,7 +238,7 @@ altre celle del nastro sono inizializzate col carattere speciale $b$.
 
 Se abbiamo un nastro solo su quello scriviamo l'input e alla fine su quello troviamo l'output.
 Dobbiamo decidere come interpretarlo; ci sono vari modi standard. Per noi nel momento in cui la
-macchina si arresta l'output `e la piu` lunga stringa di caratteri in $\Gamma$ (in particolare,
+macchina si arresta l'output è la più lunga stringa di caratteri in $\Gamma$ (in particolare,
 senza $b$) alla destra della testina
 
 Vediamo un esempio di macchina di Turing 
