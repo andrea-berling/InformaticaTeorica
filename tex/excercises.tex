@@ -15,7 +15,8 @@ Data una funzione $f:\Nat \to \Nat$ e un insieme $A \subseteq N$, la controimmag
     $f^{-1}(A)$ è r.e
 \end{enumerate}
 
-Soluzione:
+\subsubsection{Soluzione}
+
 \begin{enumerate}[label=(\alph*) ]
     \item Basta prendere un semidecisore per un insieme r.e. non ricorsivo e $\Nat$. 
     \item Possiamo definire $s_{f^{-1}(A)}$ a partire da $s_{A}$:
@@ -24,7 +25,7 @@ Soluzione:
     \end{equation*}
 \end{enumerate}
 
-Approfondimento:
+\subsubsection{Approfondimento}
 
 Cosa posso dire della controimmagine di un insieme $A$ attraverso una funzione $f$? 
 
@@ -54,7 +55,7 @@ un'immagine r.e. a partire da un insieme ricorsivo ($\Nat$).
 È possibile enumerare ogni insieme r.e. infinito mediante una funzione di enumerazione crescente?
 Motivare adeguatamente la risposta.
 
-Soluzione:
+\subsubsection{Soluzione}
 
 La funzione di enumerazione di un insieme r.e. può sempre essere iniettiva (\ie posso enumerare
 senza ripetizioni), ma non può essere mai crescente. Questo perchè se posso enumerare in maniera
@@ -71,7 +72,7 @@ volte $n$ compare nella enumerazione, fino ad un massimo di $100$ (se $n$ compar
 \end{equation*}
 È possibile calcolare $\textit{count}_{f}$?
 
-Soluzione:
+\subsubsection{Soluzione}
 
 La specifica di $\textit{count}_{f}$ è totale, vediamo se esiste un programma che la rispetti.
 Intuitivamente sembrerebbe di no.
@@ -87,12 +88,12 @@ Scegliamo per $f$ la funzione di enumerazione di $K$. Abbiamo che
 Quindi se $\textit{count}_{f}$ potrei risolvere la terminazione diagonale. Ma questo è assurdo, da
 cui la non calcolabilità di $\textit{count}_{f}$.
 
-\section{Esercizio 4}
+\subsection{Esercizio 4}
 
 È possibile  calcolare  il  più  piccolo  input $x$ su cui un programma da un output maggiore o
 uguale di $x$?
 
-Soluzione:
+\subsubsection{Soluzione}
 
 Se $\phii$ fosse totale non avrei problemi, visiterei progressivamente i miei input finché non trovo
 il più piccolo per cui vale quella proprietà.
@@ -128,7 +129,7 @@ Classificare il seguente insieme:
     A = \set{i \mid \text{$\phii$ è una funzione (parziale) periodica}}
 \end{equation*}
 
-Soluzione:
+\subsubsection{Soluzione}
 
 In questo tipo di esercizi posso usare i meta-teoremi di Rice e Rice-Shapiro.
 
@@ -137,7 +138,7 @@ un certo input $k$ su cui diverge possiamo restingere la funzione alla funzione 
 che ha un periodo $T$ su qualsiasi input. Per quanto riguarda la monotonia abbiamo che la funzione
 sempre divegente, che è periodica, può essere estesa ad una funzione non periodica.
 
-Approfondimento:
+\subsubsection{Approfondimento}
 
 Il seguente insieme è compatto, monotono non r.e.:
 
@@ -247,7 +248,7 @@ Abbiamo che:
 
 Abbiamo quindi che $A$ non è ricorsivo.
 
-\section{Differenza tra un insieme r.e. ed un insieme finito}
+\subsection{Differenza tra un insieme r.e. ed un insieme finito}
 
 Sia $A$ r.e. non ricorsivo. Sia $B$ finito. Consideriamo $A \cup B$. Vogliamo dimostrare che è r.e.
 ma non ricorsivo.

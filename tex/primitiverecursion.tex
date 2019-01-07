@@ -73,17 +73,17 @@ Prendiamo come primitive alcune funzioni nel nostro linguaggio primitivo ricorsi
         \end{equation*}
 \end{enumerate}
 
-Ammettiamo inoltre due schemi composizionali per definire nuove funzioni a partire da quelle gia'
+Ammettiamo inoltre due schemi composizionali per definire nuove funzioni a partire da quelle già
 esistenti:
 \begin{enumerate}
     \item Composizione: se $h : \Nat^{n} \to \Nat$ e $g_{1},g_{2},\dotsc,g_{n}:\Nat^{k} \to \Nat$
-    appartengono a $\Lang$, anche la funzione $f: \Nat^{k} \to \Nat$ cosi' definita:
+    appartengono a $\Lang$, anche la funzione $f: \Nat^{k} \to \Nat$ così definita:
     \begin{equation*}
         f(\vec{x}) = h(g_{1}(\vec{x}),g_{2}(\vec{x}),\dotsc,g_{n}(\vec{x}))
     \end{equation*}
     appartiene a $\Lang$, con $\vec{x} = (x_{1},x_{2},\dotsc,x_{k})$.
     \item Ricorsione primitiva: se $g: \Nat^{k} \to \Nat$,$h: \Nat^{k+2}\to \Nat$ appartengono a
-    $\Lang$, allora che $f: \Nat^{k+1} \to \Nat$, cosi' definita:
+    $\Lang$, allora che $f: \Nat^{k+1} \to \Nat$, così definita:
     \begin{equation*}
         f(n,\vec{x}) =
         \begin{cases}
