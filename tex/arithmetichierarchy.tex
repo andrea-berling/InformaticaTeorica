@@ -2,41 +2,151 @@
 
 \section{Aritmetica e incompletezza}
 
-I seguenti sono commenti alle slide.
-
-\subsection{Slide 120}
-
 Quando vogliamo parlare di qualcosa abbiamo bisogno di un linguaggio. Partiamo da un insieme di
 segni.
 
-Occhio a non fare confusione tra termine che rappresenta un numero e numero stesso. Ad esempio 3
-(il numero) vs $S(S(S(0))))$ (il termine per il numero 3).
+Il linguaggio dell'aritmetica è il linguaggio del primo ordine basato sulla
+seguente segnatura:
+\begin{equation*}
+    0,S,+,\cdot,=
+\end{equation*}
+
+Indichiamo con $\bar{n}$ il termine che rappresenta il numero $n$. Occhio a non fare confusione tra
+termine che rappresenta un numero e numero stesso. Ad esempio 3 (il numero) vs $S(S(S(0))))$ (il
+termine per il numero 3).
+
+\begin{defn}
+    $A \subseteq \Nat^{k}$ si dice aritmetico se esiste una formula aritmetica
+    $\psi(x_{1},\dotsc,x_{k})$ tale che
+    \begin{equation*}
+        (n_{1},\dotsc,n_{k}) \in A \iff \StdNat \models \psi[\bar{n_{1}}/x_{1},\dotsc,\bar{n_{k}}/x_{k}]
+    \end{equation*}
+    ovvero $\psi(x_{1},\dotsc,x_{k})$ è vera sui numeri naturali. Diremo in questo caso che $\psi$ è una
+    descrizione aritmetica di $A$.
+\end{defn}
+
+Ad esempio, l'insieme dei numeri primi è aritmetico, in quanto puo` essere
+descritto dalla seguente formula aritmetica:
+\begin{equation*}
+    \psi(n) = n \geq 2 \land \forall y, 1 < y \land y < n \implies \forall z, y \cdot z \not= n
+\end{equation*}
 
 Non tutti gli insiemi sono aritmetici. I possibili sottoinsiemi di $\Nat$ sono più che numerabili,
 non posso aspettarmi di descrivere tutti questi nell'aritmetica.
 
-\subsection{Slide 121}
+Gli insiemi aritmetici sono chiusi rispetto alle operazioni di unione, intersezione
+e complementazione.
+
+\begin{defn}
+    Una funzione $f$ si dice aritmetica se il suo grafo è un insieme aritmetico.
+\end{defn}
+
+Le seguenti funzioni sono aritmetiche:
+\begin{itemize}
+    \item la costante 0, descritta dalla formula $\psi(y) := y = 0$;
+    \item la funzione unaria successore, descritta dalla formula $\psi(x,y) := y = S(x)$;
+    \item la funzione binaria somma, descritta dalla formula $\psi(x_{1},x_{2},y) := y = x_{1} + x_{2}$;
+    \item la funzione binaria prodotto, descritta dalla formula $\psi(x_{1},x_{2},y) := y = x_{1} \cdot x_{2}$;
+    \item la proiezione $k$-aria $\pi_{i}^{k}$, descritta dalla formula $\psi(x_{1},x_{2},\dotsc,x_{k},y) :=
+    y = x_{k}$;
+\end{itemize}
 
 È ragionevole chiedersi se anche le funzioni aritmetiche sono chiuse rispetto ai metodi tipici per
-comporre le funzioni: definire nuove funzioni a partire da quelle esistenti ad esempio.
+comporre le funzioni: definire nuove funzioni a partire da quelle esistenti.
 
 Il primo modo che ci può venire in mente è la composizione di funzioni.
 
-Possiamo prendere la descrizione delle funzioni come la specifica di un programma. Ci poniamo quindi
-il problema di quali funzioni sono specificabili.
+\begin{lem}
+    La composizione di funzioni aritmetiche è aritmetica.
+\end{lem}
+\begin{proof}
+    Sia $f(x) = g(h(x))$ e siano $\psi_{g}(x,y)$ e $\psi_{h}(x,y)$ le descrizioni aritmetiche di $g$
+    e $h$.
 
-\subsection{Slide 122}
+    Definiamo
+    \begin{equation*}
+        \psi_{f}(x,z) = \exists y, \psi_{h}(x,y) \land \psi_{g}(y,z)
+    \end{equation*}
 
-Altre operazioni tipiche sono la ricorsione primitiva, la minimizzazione.
+    Si può dimostrare che $\psi_{f}$ è una descrizione aritmetica di $f$.
+\end{proof}
+
+Altre operazioni di definizione di nuove funzioni tipiche sono la ricorsione primitiva e la minimizzazione.
 
 Se abbiamo la minimizzazione (che corrisponde circa ad un while) possiamo avere subito la ricorsione
 primitiva (che corrisponde ad un for).
 
-\subsection{Slide 124}
+\begin{lem}
+    Una funzione definita per minimizzazione di una funzione aritmetica è ancora aritmetica.
+\end{lem}
+\begin{proof}
+    Sia
+    \begin{equation*}
+        f(x) = \mu y, (g(x,y)=0)
+    \end{equation*}
+    e supponiamo che $\psi_{g}$ sia una descrizione aritmetica di $g$. $f$ è descritta dalla
+    seguente formula:
+    \begin{equation*}
+        \psi_{f}(x,y) = \psi_{g}(x,y,0) \land \forall z, z < y \implies \exists m, (\psi_{g}(x,z,m)
+        \land m \not= 0)
+    \end{equation*}
+\end{proof}
+
+Possiamo prendere la descrizione delle funzioni come la specifica di un programma. Ci poniamo quindi
+il problema di quali funzioni sono specificabili.
+
+\begin{thm}
+    Tutte le funzioni calcolabili sono aritmetiche.    
+\end{thm}
+
+Questo è conseguenza del fatto che ogni funzione calcolabile può essere espressa in un formalismo che
+contiene somma, prodotto, costanti, proiezioni ed è chiuso per composizione e minimizzazione.
 
 Mi serve anche l'uguaglianza nel mio formalismo.
 
-\section{Slide 127}
+\begin{thm}
+    Ogni insieme ricorsivamente enumerabile è aritmetico.
+\end{thm}
+\begin{proof}
+    Se $A$ è r.e. esiste $f$ parziale calcolabile tale che $A = \dom(f)$. Sia $\psi_{f}(x,y)$ una
+    descrizione aritmetica di $f$. Allora:
+    \begin{equation*}
+        n \in A \iff \StdNat \models \exists y, \psi(\bar{n},y)
+    \end{equation*}
+    e dunque $\psi_{A}(x) = \exists y, \psi(x,y)$ è una descrizione aritmetica di $A$.
+\end{proof}
+
+\begin{thm}
+    L'insieme delle formule aritmetiche vere non è ricorsivamente enumerabile.
+\end{thm}
+\begin{proof}
+    Sia $\set{\psi_{n}}_{n \in \Nat}$ una enumerazione effettiva delle formule aritmetiche in una
+    variabile. Consideriamo l'insieme $A$ così definito
+    \begin{equation*}
+        n \in A \iff \StdNat \models \lnot \psi_{n}(\bar{n})
+    \end{equation*}
+    Se la verità aritmetica fosse semidecidibile allora $A$ sarebbe r.e. Dunque $A$ dovrebbe essere
+    aritmetico e dovrebbe esistere una formula $\psi_{a}$ per cui
+    \begin{equation*}
+        n \in A \iff \StdNat \models \lnot \psi_{a}(\bar{n})
+    \end{equation*}
+    Ma per $n=a$ otteniamo una contraddizione.
+\end{proof}
+
+\begin{thm}
+    Ogni sistema formale aritmetico, se consistente, è incompleto (i.e. esistono formule
+    aritmetiche valide ma non dimostrabili).
+\end{thm}
+
+Un sistema formale è definito da un insieme ricorsivo di assiomi e un insieme di
+regole di inferenza che permettono di dedurre nuovi teoremi a partire dagli
+assiomi in un numero finito di applicazioni.
+
+Pertanto le formule aritmetiche dimostrabili costituiscono un insieme
+ricorsivamente enumerabile.
+
+Poichè le formule vere non sono r.e. esistono necessariamente delle formule
+vere ma non dimostrabili.
 
 È difficile descrivere in maniera categorica una teoria. Esistono poche teorie per cui non sia
 possibile cambiare il modello e ribaltarla completamente.
@@ -64,7 +174,7 @@ esistenziale di precidati decidibili.
 Se $A \in \Sigma_{n}$ allora $\comp{A} \in \Pi_{n}$. $\Pi_{1}$ corrisponde alla classe degli insiemi
 co-r.e. Come conseguenza ho che $\Delta_{1}$ è la classe degli insiemi ricorsivi.
 
-La gerarchia degli insiemi è interessante perché da una classificazione degli insiemi per
+La gerarchia degli insiemi è interessante perché dà una classificazione degli insiemi per
 complessità computazionale.
 
 Il ragionamento vale per tutti i tipi di proprietà, non solo quelle estensionali. In generale si
