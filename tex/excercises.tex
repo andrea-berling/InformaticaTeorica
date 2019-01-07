@@ -4,24 +4,27 @@
 
 \subsection{Esercizio 1}
 
+Data una funzione $f:\Nat \to \Nat$ e un insieme $A \subseteq N$, la controimmagine di $A$ via $f$ è l’insieme
+\begin{equation*}
+    f^{-1}(A) = \set{x \mid f(x) \in A}
+\end{equation*}
 \begin{enumerate}[label=(\alph*) ]
-    \item Basta prendere un semidecisore per un insieme r.e. non ricorsivo. 
-    \item Supponendo che $f^{-1}(A)$ non sia vuoto, dato che se è vuoto è già r.e., possiamo
-    costruire una enumerazione di $f^{-1}(A)$ sfruttando il semidecisore di $A$:
-    \begin{equation*}
-        e_{f^{-1}(A)}(<x,t>) =
-        \begin{cases}
-            \case{x}{se $T(i,x,t,y) \land s_{A}(y)$}\\
-            \case{a_{0}}{altrimenti}\\
-        \end{cases}
-    \end{equation*}
-    dove $a_{0}$ è un elemento qualsiasi di $f^{-1}(A)$ e $i$ è un indice per $f$.
+    \item dare un esempio di una funzione parziale calcolabile $f$ e di un insieme ricorsivo $A$
+    tale che $f^{-1}(A)$ è r.e.  ma non ricorsivo
+    \item dimostrare che per ogni funzione parziale calcolabile $f$, se $A$ è r.e. allora anche
+    $f^{-1}(A)$ è r.e
 \end{enumerate}
 
-%b) ho facilmente il semidecisore di f^{-1}(A): mi basta calcolare f(x). Se termina ho che x \in
-%f^{-1}(A), altrimenti divergo.
-% Nota personale: Ma se f termina e f(x) \notin A non dovrei divergere comunque? Ho due fonti di divergenza: f e il
-% semidecisore di A
+Soluzione:
+\begin{enumerate}[label=(\alph*) ]
+    \item Basta prendere un semidecisore per un insieme r.e. non ricorsivo e $\Nat$. 
+    \item Possiamo definire $s_{f^{-1}(A)}$ a partire da $s_{A}$:
+    \begin{equation*}
+        s_{f^{-1}(A)}(x) = s_{A}(f(x))
+    \end{equation*}
+\end{enumerate}
+
+Approfondimento:
 
 Cosa posso dire della controimmagine di un insieme $A$ attraverso una funzione $f$? 
 
@@ -38,14 +41,8 @@ Cosa posso dire della controimmagine di un insieme $A$ attraverso una funzione $
     \end{tabular}
 \end{table}
 
-%f \ A    | Ricorsivo | R.E.
-%--------------------------
-%totale   | Ricorsivo | R.E.
-%--------------------------
-%parziale | R.E.      | R.E.
-
-Questo vale in generale. Per alcuni casi particolari potrei avere situazioni più precise. Ad
-esempio funzione parziale e A ricorsivo e controimmagine ricorsiva.
+Questo vale in generale. Per alcuni casi particolari potrei avere situazioni più particolari. Ad
+esempio funzione parziale e $A$ ricorsivo e controimmagine ricorsiva.
 
 E dell'immagine cosa possiamo dire? L'immagine di un insieme r.e. attraverso $f$ rimane r.e.
 (un'ovvietà). E se $f$ è totale e $A$ è ricorsivo? Non posso dire con certezza che l'immagine
@@ -54,25 +51,54 @@ un'immagine r.e. a partire da un insieme ricorsivo ($\Nat$).
 
 \subsection{Esercizio 2}
 
+È possibile enumerare ogni insieme r.e. infinito mediante una funzione di enumerazione crescente?
+Motivare adeguatamente la risposta.
+
+Soluzione:
+
 La funzione di enumerazione di un insieme r.e. può sempre essere iniettiva (\ie posso enumerare
-senza ripetizioni), non può essere mai crescente.
+senza ripetizioni), ma non può essere mai crescente. Questo perchè se posso enumerare in maniera
+crescente un insieme $A$ ho che $A$ è ricorsivo. Dato che esistono insiemi r.e. non ricorsivi ho che
+non posso enumerare tutti gli insiemi r.e. mediante una funzione crescente.
 
 \subsection{Esercizio 3}
 
+Data una funzione di enumerazione $f$ totale e calcolabile, la funzione $\textit{count}_{f}(n)$ conta quante
+volte $n$ compare nella enumerazione, fino ad un massimo di $100$ (se $n$ compare più di $100$ volte, l’output
+è $100$):
+\begin{equation*}
+    \textit{count}_{f}(n) = \min(100,|\set{x \mid f(x) = n}|)
+\end{equation*}
+È possibile calcolare $\textit{count}_{f}$?
+
+Soluzione:
+
 La specifica di $\textit{count}_{f}$ è totale, vediamo se esiste un programma che la rispetti.
+Intuitivamente sembrerebbe di no.
 
 Posso scegliere la mia $f$ come voglio per mostrare un controesempio nella mia dimostrazione che
 $\textit{count}_{f}$ non è calcolabile.
 
-Scegliamo per $f$ la funzione di enumerazione di $K$. $count_{f}(n) = 0 \iff n \notin K$.
+Scegliamo per $f$ la funzione di enumerazione di $K$. Abbiamo che
+\begin{equation*}
+    count_{e_{K}}(n) = 0 \iff n \notin K.
+\end{equation*}
+
+Quindi se $\textit{count}_{f}$ potrei risolvere la terminazione diagonale. Ma questo è assurdo, da
+cui la non calcolabilità di $\textit{count}_{f}$.
 
 \section{Esercizio 4}
+
+È possibile  calcolare  il  più  piccolo  input $x$ su cui un programma da un output maggiore o
+uguale di $x$?
+
+Soluzione:
 
 Se $\phii$ fosse totale non avrei problemi, visiterei progressivamente i miei input finché non trovo
 il più piccolo per cui vale quella proprietà.
 
-La congettura è che $g$ non sia calcolabile. Costruiamo una funzione $\phi$ tale che $g$ non sia
-calcolabile per $\phi$.
+La congettura è che $g$ non sia calcolabile. Costruiamo una funzione $\phi_{h(i)}$ tale che $g$ non sia
+calcolabile per $\phi_{h(i)}$.
 
 Sia $f(i,x)$ tale che:
 \begin{equation*}
@@ -93,9 +119,25 @@ Per s-m-n ho $h$ che mi curryfica la mia funzione. Ora, cosa posso dire per $g(h
     \end{cases}
 \end{equation*}
 
+Da cui la non calcolabilità di $g$.
+
 \subsection{Esercizio 5}
 
+Classificare il seguente insieme:
+\begin{equation*}
+    A = \set{i \mid \text{$\phii$ è una funzione (parziale) periodica}}
+\end{equation*}
+
+Soluzione:
+
 In questo tipo di esercizi posso usare i meta-teoremi di Rice e Rice-Shapiro.
+
+Abbiamo che $A$ è compatto ma non monotono. Infatti se una funzione $phi_{i}$ ha un periodo $T$ per
+un certo input $k$ su cui diverge possiamo restingere la funzione alla funzione sempre divergente
+che ha un periodo $T$ su qualsiasi input. Per quanto riguarda la monotonia abbiamo che la funzione
+sempre divegente, che è periodica, può essere estesa ad una funzione non periodica.
+
+Approfondimento:
 
 Il seguente insieme è compatto, monotono non r.e.:
 
@@ -104,19 +146,26 @@ Il seguente insieme è compatto, monotono non r.e.:
     \not= \emptyset } = \set{ i \mid \exists x, \phii(x) \converges \land \phi_{x}(x) \diverges}
 \end{equation*}
 
-Se estendo $A$ avrò sempre intersezione non vuota, quindi vale la monotonia. Se l'intersezione è diversa dal vuoto
-ho $x$ che appartiene all'intersezione. Posso restringermi a quell'$x$, e quindi vale la compattezza.
+Se estendo una funzione $\phii$, con $i \in A$, avrò sempre intersezione non vuota, quindi vale la
+monotonia. Se l'intersezione è diversa dal vuoto ho che, per ogni funzione $\phii$ con $i \in A$,
+esiste un $x$ che appartiene all'intersezione. Posso restringermi a quell'$x$ e ottengo una funzione
+il cui indice sta ancora in $A$, e quindi vale la compattezza.
 
 $A$ non è r.e. Dato un numero $x$ esiste sempre una funzione totale calcolabile tale che $W_{h(x)}
 = \set{x}$ (si costruisce con s-m-n). Ora, $h(x) \in A \iff W_{h(x)} = \set{x} \cap \comp{K} \not=
 \emptyset \iff x \in \comp{K}$.
 
-Per dimostrae che A non è r.e. posso provare a dimostrare che $\comp{K} \leq A$. Per mostrare
-che $A$ non è ricorsivo cerco in genere una riduzione da $K$ ad $A$ ($K \leq A$). Va tuttavia
-ricordato che non tutti gli insieri r.e. sono completi.
+In generale per dimostrae che un insieme $A$ non è r.e. posso provare a dimostrare che $\comp{K}
+\leq A$. Per mostrare che $A$ non è ricorsivo cerco in genere una riduzione da $K$ ad $A$ ($K \leq
+A$). Va tuttavia ricordato che non tutti gli insieri r.e. sono completi, quindi questa seconda
+procedura non vale per tutti gli insiemi r.e. non ricorsivi.
 
-Vediamo una definizione del parallelo, ovvero a precisare cosa significa lanciare in parallelo due
-programmi.
+\section{Altri esercizi}
+
+\subsection{Esecuzione parallela}
+
+Vediamo una definizione del parallelo, ovvero a dare una definizione più precisa di cosa significa
+lanciare in parallelo due programmi.
 
 Definiamo:
 \begin{equation*}
@@ -142,6 +191,10 @@ Abbiamo che
     \end{cases}
 \end{equation*}
 
+Quindi la funzione non è calcolabile.
+
+\subsection{Estensione totale di funzioni parziali}
+
 Sarebbe bello se, dato un programma qualsiasi, ne esistesse una estensione totale. In questo modo
 potrei lavorare sempre con l'estensione e avrei una funzione totale.
 
@@ -159,15 +212,19 @@ Consideriamo l'insieme $A = \set{i \mid \phii \text{ è estendibile}}$. Come lo 
 proprietà estensionale possiamo applicare i nostri meta-teoremi. Abbiamo inoltre, grazie al
 risultato precedente, che esistono funzioni non estendibili (il che non è banale). Ora
 immediatamente per Rice so che $A$ non è ricorsivo. È sicuramente compatto, dato
-che $f_{\emptyset}$ è estendibile banalmente. Non è invece monotono, dato che se estendo una
-funzione con una estensione totale ho che quest'ultima non è più estendibile.
+che $f_{\emptyset}$ è estendibile banalmente. Non è invece monotono, dato che se estendo la funzione
+$f_{\emptyset}$ con la funzione $f(x) = \phi_{x}(x) + 1$  ho che $f$ non è più estendibile per il
+risultato precedente.
 
-Classificare l'insieme $A = \set{i \mid \phii(i) = i}$. Non essendo la proprietà caratterizzante
-estensionale non posso applicare Rice o Rice Shapiro. Ho che la proprietà è sicuremante
-semidecidibile, dato che il semidecisore è il programma che, lanciando $\phii$ su input $i$, mi dica 1
-se ho output $i$, 0 altrimenti e che diverge se $\phii(i)$ diverge.
+\subsection{Classificazione di un insieme non estensionale}
 
-È ricorsivo? Se abbiamo il sospetto che non lo sia possiamo fare la riduzione da $K$ ad $A$.
+Supponiamo di voler classificare l'insieme $A = \set{i \mid \phii(i) = i}$. Non essendo la proprietà
+caratterizzante estensionale non posso applicare Rice o Rice-Shapiro. Ho che la proprietà è
+sicuremante semidecidibile, dato che il semidecisore è il programma che, lanciando $\phii$ su input
+$i$, mi dica 1 se ho output $i$, 0 altrimenti e che diverge se $\phii(i)$ diverge.
+
+È ricorsivo? Se abbiamo il sospetto che non lo sia possiamo provare a fare una riduzione da $K$ ad
+$A$.
 
 Consideriamo la funzione binaria $g(i,x)$:
 \begin{equation*}
@@ -184,12 +241,16 @@ riduzione?
 Abbiamo che:
 \begin{itemize}
     \item $i \in K \implies \phi_{h(i)}(h(i)) = h(i) \implies h(i) \in A$
-    \item $i \notin K \implies \phi_{h(i)}$ diverge sempre, in particolare $\phi_{h(i)}(h(i)) \not= h(i) \implies
-    h(i) \notin K$
+    \item $i \notin K \implies \phi_{h(i)}$ diverge sempre, in particolare $\phi_{h(i)}(h(i)) \not=
+    h(i)$, essendo $h$ totale $ \implies h(i) \notin K$
 \end{itemize}
 
-Sia $A$ r.e. non ricorsivo. Sia $B$ finito. Consideriamo $A \cup B$. Dimostrare che è r.e. ma non
-ricorsivo.
+Abbiamo quindi che $A$ non è ricorsivo.
+
+\section{Differenza tra un insieme r.e. ed un insieme finito}
+
+Sia $A$ r.e. non ricorsivo. Sia $B$ finito. Consideriamo $A \cup B$. Vogliamo dimostrare che è r.e.
+ma non ricorsivo.
 
 L'ipotesi di finitezza di $B$ è fondamentale. Se avessi avuto solo $B$ ricorsivo avrei potuto prendere
 $\Nat$ e ottenere un insieme ricorsivo.
@@ -197,7 +258,7 @@ $\Nat$ e ottenere un insieme ricorsivo.
 Supponiamo di avere il decisore per $A \cup B$, $c_{A \cup B}(n)$. Quanto è diversa questa funzione dal
 semidecisore di $A$? È diversa per un sottoinsieme di $B$, ovvero un numero finito di punti.
 
-Consideriamo i punti in $B \setminus A = {b_{1},\dotsc,b_{k}}$. Posso ora costruire un decisore
+Consideriamo i punti in $B \setminus A = \set{b_{1},\dotsc,b_{k}}$. Posso ora costruire un decisore
 per $A$ nel seguente modo:
 \begin{python}
 def $c_{A}(x)$:
@@ -210,8 +271,38 @@ def $c_{A}(x)$:
         return $c_{A \cup B}(x)$
 \end{python}
 
+Ma quindi se $A \cup B$ fosse decidibile anche $A$ lo sarebbe. Ma questo è assurdo.
+
 Non è un problema la non calcolabilità di $B \setminus A$, l'importante è l'esistenza di questi
 punti.
 
-Un conto è quando non esiste un programma, un conto è quando un programma esiste ma non ho modo di
-calcolarlo a partire da certe informazioni.
+\section{Remark finale sulla calcolabilità di certe funzioni}
+
+Un conto è quando non esiste un programma, un conto è quando un programma esiste ma
+non ho modo di calcolarlo a partire da certe informazioni. Nel primo caso sto trattando un problema
+non calcolabile, come la terminazione generale, nel secondo caso il problema è calcolabile ma non è
+calcolabile l'indice del programma che mi calcola il mio problema sulla base di certe informazioni.
+
+Ad esempio, prendiamo la seguente famiglia di funzioni:
+\begin{equation*}
+    g(x) =
+    \begin{cases}
+        \case{1}{se $\phii(i) \converges$} \\
+        \case{0}{se $\phii(i) \diverges$} \\
+    \end{cases}
+\end{equation*}
+
+Qui $i$ è una variabile libera. Fissato un $i$ la funzione $g$ è calcolabile. Se ho che $\phii(i)
+\converges$ allora $g$ corrisponde alla costante $\bm{1}$. Altrimenti corrisponde alla costante
+$\bm{0}$. Queste sono due funzioni calcolabili. Quello che non posso calcolare sono gli indici $i$
+per cui $g$ corrisponde a una a all'altra funzione.
+
+In particolare non posso calcolare:
+\begin{equation*}
+    g(i,x) =
+    \begin{cases}
+        \case{1}{se $\phii(i) \converges$} \\
+        \case{0}{se $\phii(i) \diverges$} \\
+    \end{cases}
+\end{equation*}
+analogo della funzione precedente ma in cui $i$ è legata.
