@@ -185,7 +185,7 @@ Da qui in poi verrà usato il simbolo $\leq$ sottintendendo $\leq_{m}$. Vediamo 
 importante per gli insiemi produttivi
 
 \begin{thm}
-    Un insieme $A \subseteq \Nat$ è produttivo $\comp{K} \leq A$.
+    Un insieme $A \subseteq \Nat$ è produttivo sse $\comp{K} \leq A$.
 \end{thm}
 
 Questo implica come corollario che $A$ è creativo sse $A$ è r.e. e $K \leq A$. Di conseguenza
@@ -197,11 +197,12 @@ insiemi creativi ed insiemi completi coincidono.
 
     Sia quindi $\comp{K} \leq A$. Sia $f$ la funzione di riducibilità di $\comp{K}$ in $A$. Sappiamo anche che
     $\comp{K}$ è produttivo, con funzione di produzione uguale ad \textit{Id}. L'idea è di ritornare a
-    $\comp{K}$ da $A$ attraverso $f$. Dopodiché, utilizzando la funzione di produzione di $K$,
+    $\comp{K}$ da $A$ attraverso $f$. Dopodiché, utilizzando la funzione di produzione di
+    $\comp{K}$,
     troviamo un nuovo elemento che, attraverso alla funzione $f$, sta in $A$ e non in $W_{i}$.
 
     Ricordiamo che la controimmagine di una insieme $A$ attraverso una funzione $f$ è definita come
-    $f^{-1}: \Nat \to \Nat$ tale che $f^{-1}(A) = {x | f(x) \in A})$.
+    l'insieme $f^{-1}(A) = \set{x \mid f(x) \in A})$.
 
     Consideriamo $f^{-1}(W_{i})$, la controimmagine di $W_{i}$ via $f$. Abbiamo che sicuramente
     $f^{-1}(W_{i}) \subseteq \comp{K}$ e che è r.e. È importante che $f$ sia totale. Se calcolo la
@@ -211,7 +212,7 @@ insiemi creativi ed insiemi completi coincidono.
     $W_{h(i)}$. Pensiamo alla funzione $\phii(f(x)) = \phi_{h(i)}(x)$ per s-m-n. Dove sta $h(i)$?
     Sta in $\comp{K}$ ma non in $f^{-1}(W_{i})$, essendo $\comp{K}$ produttivo con funzione di
     produzione uguale a \textit{Id}. Passando quindi, attraverso $f$, al corrispondente in $A$
-    ($f(h(i))$) abbiamo che sta in $A$ ma non in $W_{i}$. Quindi $A$ è produttivo.
+    (ovvero $f(h(i))$) abbiamo che sta in $A$ ma non in $W_{i}$. Quindi $A$ è produttivo.
 
     La dimostrazione poteva essere fatta con un altro insieme produttivo. In particolare, se $B$ è
     produttivo e $B \leq A$ allora $A$ è produttivo.
@@ -244,17 +245,17 @@ insiemi creativi ed insiemi completi coincidono.
     \begin{equation*}
         g(i,z,x) =
         \begin{cases}
-            \case{1}{se $\phi(i) \converges \land x = f(z)$} \\
+            \case{1}{se $\phi(i) \converges \land$ $x = f(z)$} \\
             \case{\diverges}{se $\phii(i) \diverges$}
         \end{cases}
     \end{equation*}
     
     Per s-m-n esiste $h(i,z)$ tale che $\phi_{h(i,z)}(x)$ ha lo stesso comportamento. Esiste ora $s$ tale che
-    $\forall i \phi_{s(i)} = \phi_{h(i,s(i))}$. Abbiamo quindi che
+    $\forall i, \phi_{s(i)} = \phi_{h(i,s(i))}$. Abbiamo quindi che
     \begin{equation*}
         \phi_{s(i)}(x) = \phi_{h(i,s(i))}(x) = g(i,s(i),x) =
         \begin{cases}
-            \case{1}{se $\phii(i) \converges \land x = f(s(i))$} \\
+            \case{1}{se $\phii(i) \converges \land$ $x = f(s(i))$} \\
             \case{\diverges}{se $\phii(i) \diverges$}
         \end{cases}
     \end{equation*}
@@ -279,36 +280,47 @@ facile per un insieme r.e. essere completo che il contrario.
 
 Per rispondere a questa domanda abbiamo bisogno di due risultati intermedi.
 
-Sia $A$ un insieme r.e. infinito. Esiste $B$ ricorsivo infinito sottoinsieme di $A$? Sì. Una
-caratterizzazione degli insiemi ricorsivi è che sono enumerabili in maniera crescente. Se prendo
-l'enumerazione $f$ di $A$ e la ``taglio'' in pezzetti crescenti e li uso per definire la mia
-enumerazione di $B$ ho che questa è crescente, e quindi $B$ è ricorsivo infinito. Più
-precisamente, la mia enumeraziona $g$ di $B$ sarà fatta nel modo seguente, se $f$ è la mia
-enumerazione di $A$: $g(0) = f(0)$ e $g(x+1) = f(\mu y. f(y) \geq g(x))$.
+\begin{thm}
+    Sia $A$ un insieme r.e. infinito. Allora esiste $B$ ricorsivo infinito sottoinsieme di $A$.
+\end{thm}
+\begin{proof}
+    Una caratterizzazione degli insiemi ricorsivi è che sono enumerabili in maniera crescente. Se
+    prendo l'enumerazione $f$ di $A$ e la ``taglio'' in pezzetti crescenti e li uso per definire la
+    mia enumerazione di $B$ ho che questa è crescente, e quindi $B$ è ricorsivo infinito. 
 
+    Più precisamente, la mia enumeraziona $g$ di $B$ sarà fatta nel modo seguente, se $f$ è la mia
+    enumerazione di $A$: $g(0) = f(0)$ e $g(x+1) = f(\mu y. f(y) \geq g(x))$.
+\end{proof}
+
+\begin{thm}
+    Sia $A$ un insieme ricorsivo infinito. Allora $\exists B$ r.e. non ricorsivo tale che $B \subseteq
+    A$.
+\end{thm}
+%\begin{proof}
+%    Consideriamo una funzione di enumerazione $f$ per $A$ iniettiva. Consideriamo l'insieme $B$ così
+%    definito:
+%    \begin{equation*}
+%        B = \set{f(\phii(i)) \mid i \in \Nat}
+%    \end{equation*}
+%
+%    Abbiamo che $B$ è sottoinsieme di $A$ e che $B$ è r.e. non ricorsivo. Infatti se $B$ fosse decidibile lo
+%    sarebbe anche $K$. Infatti abbiamo che $i \in K \implies \phii(i) \converges \implies
+%    f(\phii(i)) \in B$. Viceversa supponiamo che $i \notin K$ e che $f(\phii(i)) \in B$. Ma la
+%    seconda ipotesi e' vera sse $\phi(i)\converges$, ovvero se $i \in K$. Ma questo e' assurdo.
+%    Quindi $f(\phii(i)) \notin B$.
+%\end{proof}
 
 Se vediamo l'estrazione di sottoinsiemi come un'operazione di focalizzazione possiamo focalizzarci
 su insiemi di complessità desiderata 
 
-//TODO RIPORTARE FIGURA DAL QUADERNO
-(vedi figura sul quaderno azzurro).
+\begin{figure}[h]
+    \centering
+    \includegraphics{img/SetsResolution.pdf}
+    \caption{Focalizzazione su insiemi}
+\end{figure}
 
-Sia $A$ un insieme ricorsivo infinito. Allora $\exists B$ r.e. non ricorsivo tale che $B \subseteq
-A$.
-
-Consideriamo una funzione di enumerazione $f$ per $A$ iniettiva. Consideriamo l'insieme $B$ così
-definito:
-\begin{equation*}
-    B = \set{f(\phii) \mid i \in \Nat}
-\end{equation*}
-$B$  è l'immagine di $K$ via $f$.
-
-Abbiamo che $B$ è sottoinsieme di $A$ e che $B$ è r.e.; è facile da vedere. Dobbiamo dimostrare
-che $B$ non è decidibile. Questo è vero perché altrimenti $K$ sarebbe decidibile. Per vederlo è
-sufficiente dimostrare che vale il sse $i \in K \iff f(\phii(i)) \in B$. È facile.
-
-Noi abbiamo intrapreso questo discorso perché cercavamo un insieme r.e. non completo. Una
-proprietà interessante degli insiemi produttivi è che ogni insieme produttivo contiene un
+%Noi abbiamo intrapreso questo discorso perché cercavamo un insieme r.e. non completo. 
+Una proprietà interessante degli insiemi produttivi è che ogni insieme produttivo contiene un
 sottoinsieme r.e. infinito.
 
 \begin{thm}
@@ -342,7 +354,7 @@ alcun sottoinsieme r.e. In pratica abbiamo un insieme tale che qualsiasi suo sos
     Possiamo ora costruire la mia sequenza di approssimazione. $W_{m} = \emptyset$. Sia $s$ la
     funzione di produzione per $A$. Ho che $s(m) \in A \setminus W_{m}$. Passo quindi a
     $W_{h(m,s(m))=m_{1}} = \set{s(m)}$. La mia seconda approssimazione sarà $W_{h(m_{1},s(m_{1}))} =
-    {s(m),s(m_{1})}$.
+    \set{s(m),s(m_{1})}$.
 
     Se definiamo $\textit{next}(x) = h(x,s(x))$ possiamo definire $g(x) = next^{x}(m_{0})$ e abbiamo
     che $B$ è uguale al codominio di $g$.
@@ -384,7 +396,7 @@ metodo generativo più breve dei dati stessi. È un approccio formale alla nozio
 alla comprimibilità del dato.
 
 Come l'abbiamo vista la nostra nozione di ``casualità'' dipende dalla nostra enumerazione dei programmi.
-Per numeri grandi però non dovrebbe cambiare niente se cambia la numerazione.
+Per numeri grandi però non dovrebbe cambiare niente se cambia l'enumerazione.
 
 Un'altra questione è che la nostra nozione di random va bene per sequenze finite. Noi in generale
 vorremmo idealmente una nozione che valga per sequenze infinite. In questo contesto però ci è
