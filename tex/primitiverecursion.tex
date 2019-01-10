@@ -48,10 +48,9 @@ problematica interessante.
 
 La ricorsione primitiva è un tipo di ricorsione simile a quella finora vista ma con dei limiti
 semantici. In particolare possiamo dare il vincolo: nel corpo della definizione di $f(n+1)$ ci si
-può richiamare ricorsivamente solo su $n$.  È equivalente limitare le chiamate ricorsive a oggetti
-più piccoli di $n+1$.
-%È equivalente ma più debole, dal punto di vista dell'espressività, limitare le chiamate ricorsive a
-%oggetti più piccoli di $n+1$. // ?? Equivalente ma piu' debole?
+può richiamare ricorsivamente solo su $n$. È equivalente dal punto di vista dell'espressività un
+indebolimento di questo vincolo, in cui si limitano invece le chiamate ricorsive a oggetti più
+piccoli di $n+1$.
 
 La ricorsione primitiva, per vincoli strutturali, garantisce la terminazione. Siamo interessati a
 questa classe di funzioni perché c'è un teorema che dice che le funzioni definibili in questo modo

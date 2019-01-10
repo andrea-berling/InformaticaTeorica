@@ -205,14 +205,12 @@ insiemi creativi ed insiemi completi coincidono.
     l'insieme $f^{-1}(A) = \set{x \mid f(x) \in A})$.
 
     Consideriamo $f^{-1}(W_{i})$, la controimmagine di $W_{i}$ via $f$. Abbiamo che sicuramente
-    $f^{-1}(W_{i}) \subseteq \comp{K}$ e che è r.e. È importante che $f$ sia totale. Se calcolo la
-    controimmagine di un insieme attraverso una funzione parziale potrei ottenere un insieme non
-    ricorsivamente enumerabile. L'indice di $f^{-1}(W_{i})$ può essere calcolato in maniera
-    effettiva attraverso una funzione totale calcolabile $h$.  Abbiamo quindi che corrisponde a
-    $W_{h(i)}$. Pensiamo alla funzione $\phii(f(x)) = \phi_{h(i)}(x)$ per s-m-n. Dove sta $h(i)$?
-    Sta in $\comp{K}$ ma non in $f^{-1}(W_{i})$, essendo $\comp{K}$ produttivo con funzione di
-    produzione uguale a \textit{Id}. Passando quindi, attraverso $f$, al corrispondente in $A$
-    (ovvero $f(h(i))$) abbiamo che sta in $A$ ma non in $W_{i}$. Quindi $A$ è produttivo.
+    $f^{-1}(W_{i}) \subseteq \comp{K}$ e che è r.e. L'indice di $f^{-1}(W_{i})$ può essere calcolato
+    in maniera effettiva attraverso una funzione totale calcolabile $h$.  Abbiamo quindi che
+    corrisponde a $W_{h(i)}$. Pensiamo alla funzione $\phii(f(x)) = \phi_{h(i)}(x)$ per s-m-n. Dove
+    sta $h(i)$?  Sta in $\comp{K}$ ma non in $f^{-1}(W_{i})$, essendo $\comp{K}$ produttivo con
+    funzione di produzione uguale a \textit{Id}. Passando quindi, attraverso $f$, al corrispondente
+    in $A$ (ovvero $f(h(i))$) abbiamo che sta in $A$ ma non in $W_{i}$. Quindi $A$ è produttivo.
 
     La dimostrazione poteva essere fatta con un altro insieme produttivo. In particolare, se $B$ è
     produttivo e $B \leq A$ allora $A$ è produttivo.
@@ -296,19 +294,18 @@ Per rispondere a questa domanda abbiamo bisogno di due risultati intermedi.
     Sia $A$ un insieme ricorsivo infinito. Allora $\exists B$ r.e. non ricorsivo tale che $B \subseteq
     A$.
 \end{thm}
-%\begin{proof}
-%    Consideriamo una funzione di enumerazione $f$ per $A$ iniettiva. Consideriamo l'insieme $B$ così
-%    definito:
-%    \begin{equation*}
-%        B = \set{f(\phii(i)) \mid i \in \Nat}
-%    \end{equation*}
-%
-%    Abbiamo che $B$ è sottoinsieme di $A$ e che $B$ è r.e. non ricorsivo. Infatti se $B$ fosse decidibile lo
-%    sarebbe anche $K$. Infatti abbiamo che $i \in K \implies \phii(i) \converges \implies
-%    f(\phii(i)) \in B$. Viceversa supponiamo che $i \notin K$ e che $f(\phii(i)) \in B$. Ma la
-%    seconda ipotesi e' vera sse $\phi(i)\converges$, ovvero se $i \in K$. Ma questo e' assurdo.
-%    Quindi $f(\phii(i)) \notin B$.
-%\end{proof}
+\begin{proof}
+    Consideriamo una funzione di enumerazione $f$ per $A$ iniettiva. Consideriamo l'insieme $B$ così
+    definito:
+    \begin{equation*}
+        B = \set{f(i) \mid i \in K}
+    \end{equation*}
+
+    Abbiamo che $B$ è sottoinsieme di $A$ e che $B$ è r.e. non ricorsivo. Infatti se $B$ fosse
+    decidibile lo sarebbe anche $K$. In particolare, abbiamo che $i \in K \implies f(i) \in B$.
+    Viceversa essendo $f$ iniettiva non è possibile che un elemento $i \notin K$ venga mappato da
+    $f$ in un elemento $f(i) \in B$. Di conseguenza $i \notin K \implies f(i) \notin B$.
+\end{proof}
 
 Se vediamo l'estrazione di sottoinsiemi come un'operazione di focalizzazione possiamo focalizzarci
 su insiemi di complessità desiderata 
