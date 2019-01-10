@@ -124,15 +124,16 @@ formalismi Turing completi.
 
 La proprietà che andiamo ora a considerare è la cosiddetta proprietà s-m-n. Supponiamo di avere
 una funzione calcolabile $g(x,y)$. Cosa posso dire delle sue istanze? Supponiamo di fissare $x$, ad
-esempio a 0. Ottengo $g(0,y)$, che è una funzione unaria che dipende solo da $y$. Possiamo indicare
+esempio a $0$. Ottengo $g(0,y)$, che è una funzione unaria che dipende solo da $y$. Possiamo indicare
 $g(0,y)$ come $f_{0}(y)$. In generale posso fare questo per $f_{k}(y) = g(k,y)$.
 
-Se tutte queste funzioni sono calcolabili per ognuna c'è una qualche funzione, delle mia
-enumerazione, che la calcola. Esisterà quindi un programma che la calcola. Esiste quindi
-$\phi_{h(k)}(y) = f_{k}(y) = g(k,y)$ che mi calcola $g(k,y)$. $h$ è una funzione che mi calcola
-l'indice del programma che calcola la $g$ che mi interessa. L'esistenza di $h$ è praticamente ovvia:
-se esiste un indice $k'$ per la funzione $g(k,y)$ allora questo $k'$ è calcolabile (mediante $h$).
-La domanda ora è: $h$ è calcolabile? La risposta è sì.
+Tutte queste funzioni sono calcolabili e quindi ognuna di esse farà parte della mia enumerazione
+delle funzioni calcolabili. Esisterà quindi, per ognuna, un programma che la calcola. Esiste quindi
+$\phi_{h(k)}(y) = f_{k}(y) = g(k,y)$ che mi calcola $g(k,y)$ per ogni $y$. $h$ è una funzione che
+mi restituisce l'indice dell'istanza di $g$ che mi interessa. L'esistenza di $h$ è praticamente
+ovvia: essendo tutte le istanze di $g$ relative a $k$ calcolabili avranno un indice nella mia
+enumerazione delle funzioni calcolabili e questo indice dipende da $k$. La domanda ora è: $h$ è
+calcolabile? La risposta è sì.
 
 Noi supporremo la proprietà s-m-n, ma questa è facilmente dimostrabile in tanti formalismi.
 \begin{thm}
@@ -210,7 +211,7 @@ $\textit{Term}_{i}$. Da lì poi dimostriamo la non calcolabilità di $\textit{Te
 Prendiamo $g(i,x) = \phii(i)$. Abbiamo due casi: o converge o diverge. Nel primo caso se fisso $i$
 la funzione curryficata che ottengo è totale. Nell'altro caso no.
 
-Per s-m-n abbiamo h totale e calcolabile tale che
+Per s-m-n abbiamo $h$ totale e calcolabile tale che
 \begin{equation*}
     \phi_{h(i)}(x) = g(i,x) = \phii(i)
 \end{equation*}
