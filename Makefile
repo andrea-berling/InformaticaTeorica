@@ -1,6 +1,6 @@
 NAME=main
 TEXFILES=numerability primitiverecursion turing undecidableproblems recursivesets rice fixedpoint\
-reducibility arithmetichierarchy excercises
+reducibility arithmetichierarchy excercises complexity_intro
 TEXDIR=tex
 TEXSRCS=$(patsubst %,$(TEXDIR)/%.tex,$(TEXFILES)) mystyle.sty
 USE_PDFLATEX=true
