@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\def\dist{1}
+
+\begin{document}
+    \begin{tikzpicture}
+    [   node distance=\dist cm,on grid,auto,
+        every node/.style= {circle,draw},
+    ]
+        \node (n1) at (0,\dist) {};
+        \node (n2) [below=of n1] {};
+        \node (n3) [right=of n1] {};
+        \node (n4) [below=of n3] {};
+        \node (n5) [right=of n3] {};
+        \node (n6) [below=of n5] {};
+        \draw (n1) -- (n3);
+        \draw (n1) -- (n4);
+        \draw (n2) -- (n3);
+        \draw (n2) -- (n4);
+        \draw (n3) -- (n5);
+        \draw (n3) -- (n6);
+        \draw (n4) -- (n5);
+        \draw (n4) -- (n6);
+        \draw (n5) -- +(\dist/1.75,0);
+        \draw (n6) -- +(\dist/1.75,0);
+        \foreach \x in {2.6,2.8,3}
+        {
+            \node[draw,inner sep=0mm] () at (\x,0.5) {};
+        }
+        \node (n7) [right=1.3cm of n5];
+        \node (n8) [right=1.3cm of n6];
+    \end{tikzpicture}
+\end{document}

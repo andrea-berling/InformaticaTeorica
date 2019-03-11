@@ -75,5 +75,27 @@
 \contentsline {subsection}{\numberline {10.2.4}Differenza tra un insieme r.e. ed un insieme finito}{76}{subsection.10.2.4}% 
 \contentsline {section}{\numberline {10.3}Remark finale sulla calcolabilit\IeC {\`a} di certe funzioni}{77}{section.10.3}% 
 \contentsline {part}{II\hspace {1em}Complessit\IeC {\`a}}{78}{part.2}% 
-\contentsline {chapter}{\numberline {11}Boh}{79}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Introduzione}{79}{section.11.1}% 
+\contentsline {chapter}{\numberline {11}Introduzione}{79}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Complessita', costi, analisi}{79}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Modelli di calcolo}{80}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}La classe $\mathbb {NP}$}{80}{section.11.3}% 
+\contentsline {section}{\numberline {11.4}Dimensione dei dati di input}{81}{section.11.4}% 
+\contentsline {section}{\numberline {11.5}Notazioni d'ordine}{82}{section.11.5}% 
+\contentsline {subsubsection}{Complessita' sublineari}{83}{section*.9}% 
+\contentsline {section}{\numberline {11.6}Grafi}{84}{section.11.6}% 
+\contentsline {subsection}{\numberline {11.6.1}Problemi tipici sui grafi}{84}{subsection.11.6.1}% 
+\contentsline {subsection}{\numberline {11.6.2}Rappresentazione di un grafo}{85}{subsection.11.6.2}% 
+\contentsline {subsection}{\numberline {11.6.3}Raggiungibilita'}{85}{subsection.11.6.3}% 
+\contentsline {section}{\numberline {11.7}Analisi di problemi}{87}{section.11.7}% 
+\contentsline {subsection}{\numberline {11.7.1}Colorabilita'}{88}{subsection.11.7.1}% 
+\contentsline {subsection}{\numberline {11.7.2}Problemi di flusso}{89}{subsection.11.7.2}% 
+\contentsline {section}{\numberline {11.8}Problemi decisionali}{90}{section.11.8}% 
+\contentsline {section}{\numberline {11.9}Problemi e linguaggi}{91}{section.11.9}% 
+\contentsline {section}{\numberline {11.10}Riduzioni}{91}{section.11.10}% 
+\contentsline {subsection}{\numberline {11.10.1}Matching bipartito}{91}{subsection.11.10.1}% 
+\contentsline {subsection}{\numberline {11.10.2}Riducibilita' e classi di complessita'}{93}{subsection.11.10.2}% 
+\contentsline {subsection}{\numberline {11.10.3}Complessita' di $f$}{94}{subsection.11.10.3}% 
+\contentsline {subsection}{\numberline {11.10.4}Colorabilita'}{94}{subsection.11.10.4}% 
+\contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{95}{subsection.11.10.5}% 
+\contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{95}{section.11.11}% 
+\contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessita'}{95}{section.11.12}% 

@@ -1,0 +1,15 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\begin{document}
+    \begin{tikzpicture}
+        \node (A) at (0,0) {$A$};
+        \node () [right=2pt of A] {$\leq$};
+        \draw (2,0) ellipse [x radius=1cm,y radius=1.2cm];
+        \node () at (2,0.75) {$\mathbb{C}$};
+        \node () at (2,-0.3) {$B$};
+        \node () at (1.5,-1.8) {$B \in \mathbb{C} \land A \leq B \implies A \in \mathbb{C}$};
+    \end{tikzpicture}
+\end{document}
