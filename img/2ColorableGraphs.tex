@@ -1,0 +1,32 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\def\dist{1}
+
+\begin{document}
+    \begin{tikzpicture}
+    [   node distance=\dist cm,on grid,auto,
+        every node/.style= {circle,draw},
+    ]
+    \node (g1n1) at (0,0) {};
+    \node[fill=black] (g1n2) [right= of g1n1] {};
+    \node (g1n3) [right= of g1n2] {};
+    \draw (g1n1) -- (g1n2) -- (g1n3);
+    \draw (g1n1) .. controls (0,-1) and (2,-1) .. (g1n3);
+
+    \node (g2n1) at (3.5,0) {};
+    \node (g2n2) [below right=of g2n1] {};
+    \node (g2n3) [below left=of g2n1] {};
+    \draw (g2n1) -- (g2n2) -- (g2n3) -- (g2n1);
+    
+    \node (g3n1) at (5,0) {};
+    \node (g3n2) [right=of g3n1] {};
+    \node (g3n3) [below=of g3n1] {};
+    \node (g3n4) [right=of g3n3] {};
+    \draw (g3n1) -- (g3n2) -- (g3n4) -- (g3n3) -- (g3n1);
+    \draw (g3n1) -- (g3n4);
+    \draw (g3n3) -- (g3n2);
+    \end{tikzpicture}
+\end{document}

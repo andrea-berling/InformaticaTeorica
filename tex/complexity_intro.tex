@@ -1,11 +1,14 @@
-\chapter{Boh}
+\chapter{Introduzione}
 
-\section{Introduzione}
+\section{Complessita', costi, analisi}
 
 In questa parte di corso siamo interessati a definire le classi di complessita'. Ci sono alcune
 differenze con la complessita' intesa in senso algoritmo.
 
-Come si valuta la complessita' computazionale (il costo di far funzionare dei programmi)?
+Siamo interessati a cosa siamo in grado di calcolare in tempi ragionevoli. La calcolabilita' di un
+problema in senso astratto non lo rende, da sola, pratico.
+
+Come si valuta la complessita' computazionale, ovvero il costo di far funzionare dei programmi?
 Tipicamente si misura il costo in funzione del consumo di una determinata risorsa. Abbiamo
 fondamentalmente due risorse principali di riferimento nella computazione: tempo e spazio.
 
@@ -15,19 +18,20 @@ esempio, sapendo quanto tempo richiede un programma per essere eseguito sappiamo
 sull'occupazione di memoria? Il viceversa e' un po' piu' delicato.
 
 Come misuriamo il costo computazionale? Tipicamente si e' interessati al comportamento asintotico di
-un programma, al crescere della dimensione degli input. Potrei avere un'analisi puntuale, e si puo'
-fare. Di solito e' il punto di partenza dell'analisi del costo. Si puo' pero' fare una
-considerazione diversa e chiedersi quanto scala il programma al crescere della dimensione dei dati
-di input.
+un programma, al crescere della dimensione degli input. Si protrebbe anche fare un'analisi puntuale.
+Di solito e' il punto di partenza dell'analisi del costo. Si puo' pero' fare una considerazione
+diversa e chiedersi quanto scala il programma al crescere della dimensione dei dati di input.
 
 Si possono ovviamente avere delle fluttuazioni nei dati e quindi nel comportamento del programma.
 Noi consideriamo di solito il caso pessimo. Questo e' utile perche' mi da' un limite al peggio che
 puo' succedere. Potrebbe a volte essere interessante fare un'analisi del caso medio, che pero' e' in
-genere molto piu' complessa della corrispettiva per il caso pessimo (bisogna conoscere la
-distribuzione dei dati di input ad esempio).
+genere molto piu' complessa della corrispettiva per il caso pessimo. Ad esempio e' necessario
+conoscere la distribuzione dei dati di input, il che non e' sempre semplice.
 
-Puo' succedere che un programma possa avere un comportamento ``pesante'' all'inizio e leggero al
-crescere dell'input. La nostra analisi ignora il primo aspetto.
+Puo' succedere che un programma abbia un comportamento ``pesante'' all'inizio e leggero al crescere
+dell'input. La nostra analisi ignora il primo aspetto.
+
+\section{Modelli di calcolo}
 
 Un'altra parte importante riguarda il meccanismo di calcolo.
 
@@ -36,15 +40,18 @@ computazionale che usiamo.
 
 Noi faremo analisi e prescidere dalle costanti. $1000*n^{2}$ e $10*n^{2}$ sono equivalenti per noi.
 E' un tentativo di dissociarsi dal particolare modello di calcolo usato. Ma funziona? O la nostra
-misura di complessita' rimane vincolata ad un particolare modello di calcolo. Ad esempio, abbiamo
-programmi con complessita' diverse a seconda dell'architettura ($n^{2}$ vs $n^{6}$ per esempio)?.
-Non e' nemmeno scontato che il processo di compilazione mantenga la complessita' del programma in
-codice sorgente (ad esempio per considerazioni legate all'implementazione del linguaggio). Noi
-faremo riferimento a macchine teoriche (Macchine di Turing). Ci chiederemo: data una macchina con
-$n$ nastri riusciamo a calcolare uno stesso algoritmo con la stessa complessita' che avremmo con una
-macchina con 1 nastro? La risposta sara' no. Questa e' una forte differenza rispetto alla teoria
-della complessita' (il numero di nastri non ha alcuna influenza sulla calcolabilita' di una
-funzione).
+misura di complessita' rimane vincolata ad un particolare modello di calcolo?
+
+Ad esempio, abbiamo programmi con complessita' diverse a seconda dell'architettura (e.g. $n^{2}$ vs
+$n^{6}$)? Non e' nemmeno scontato che il processo di compilazione mantenga la
+complessita' del programma in codice sorgente, ad esempio per considerazioni legate
+all'implementazione del linguaggio.
+
+Noi faremo riferimento a macchine teoriche (Macchine di Turing). Ci chiederemo: data una macchina
+con $n$ nastri riusciamo a calcolare uno stesso algoritmo con la stessa complessita' che avremmo con
+una macchina con 1 nastro? La risposta sara' no. Questa e' una forte differenza rispetto alla teoria
+della complessita', dove il numero di nastri non ha alcuna influenza sulla calcolabilita' di una
+funzione.
 
 Consideremo quanto sia significativo dire che un certo problema ha una data complessita'.
 
@@ -54,6 +61,15 @@ classe $\NPClass$, che contiene tanti problemi con una complessita' computaziona
 odierni e con delle buone euristiche. Non si e' ancora dimostrato che non esista un modo di
 risolvere questi problemi in tempo polinomiale con una macchina deterministica. Cercheremo di capire
 perche' e' cosi' complicato da dimostrare.
+
+Purtroppo in complessita' siamo dipendenti dal modello di calcolo (in particolare nella definizione
+del costo). E' importante capire quanto e' forte questa dipendenza.
+
+Siamo interessati inoltre a trasformazioni che ci portino da un modello di calcolo ad un altro.
+Siamo interessati anche a capire quanto ci costa simulare, in modo deterministico, modelli di
+calcolo non deterministici.
+
+\section{La classe $\NPClass$}
 
 Perche' $\NPClass$ e' cosi' interessante? Perche' e' la classe di problemi per i quali non sappiamo se
 abbiamo degli algoritmi efficienti per risolverli ma per i quali abbiamo metodi di verifica di una
@@ -81,19 +97,14 @@ gia' abbastanza bene. C'e' molto di peggio. Perfino in $\PClass$ ci sono problem
 ad esempio con complessita' superiore al $n^{3}$, molto peggiori dei piu' famosi problemi in
 $\NPClass$.
 
-In questa parte del corso siamo interessati a cosa siamo in grado di calcolare in tempi ragionevoli.
-La calcolabilita' in senso astratto non rende, da sola, un problema pratico.
-
-Purtroppo in complessita' siamo dipendenti dal modello di calcolo (nella definizione del costo). E'
-importante capire quanto dipendiamo.
-
-Siamo interessati a trasformazioni che ci portino da un modello di calcolo ad un altro. Siamo
-interessati anche a capire quanto ci costa simulare, in modo deterministico, modelli di calcolo non
-deterministici.
-
 Ci sono inclusioni che sono congetturate che tuttavia non sono facili da dimostrare. La piu' famosa
 e' la relazione tra $\PClass$ e $\NPClass$. Pare che manchi ancora la tecnica matematica corretta
 per affrontare queste problematiche, la scienza e' ancora incompleta.
+
+Molti problemi con algoritmi di complessita' esponenziale nel caso pessimo fanno anche parte di
+$\NPClass$. Quantomeno ci e' agevole verificare che una soluzione sia valida.
+
+\section{Dimensione dei dati di input}
 
 Noi misuriamo la complessita' computazionale in funzione della dimensione dei dati di input. Questo
 perche' di solito accettiamo stringhe di bit che rappresentano l'input in modo compatto. Con un
@@ -114,6 +125,8 @@ sicuramente non sara' costante.
 
 Noi siamo interessati a complessita' asintotiche, non possiamo assumere che i nostri interi abbiano
 dimensione fissata. Per noi possono avere dimensione arbitraria.
+
+\section{Notazioni d'ordine}
 
 Rispetto alle funzioni $f:\Nat \to \Nat$, che utilizziamo per misurare il costo di un'operazoine,
 possiamo fare una suddivisione in classi, dette \textbf{notazioni d'ordine}.
@@ -216,17 +229,18 @@ Nella tabella \ref{algocomp} e' possibile osservare le complessita' di alcuni al
 
 La tabella \ref{algocomp} considera complessita' in tempo.
 
-Ha senso di parlare di complessita' in tempo sublineari? Si potrebbe rispondere naturalmente di si',
-portando due esempi famosi (binary search e alberi bilanciati). Questo pero' ha senso se suppongo
-che la struttura che sto usando e' gia' data e non devo rileggerla ogni volta. Se dovessi leggere
-ogni volta una struttura dati di grandezza $n$ allora la complessita' sara' quantomeno lineare nella
-dimensione dell'input, poiche' l'input va letto.
+\subsubsection{Complessita' sublineari}
+
+Ha senso di parlare di complessita' in tempo sublineari? Si potrebbe rispondere istintivamente di
+si', portando due esempi famosi (binary search e alberi bilanciati). Questo pero' ha senso se
+suppongo che la struttura che sto usando e' gia' data e non devo rileggerla ogni volta. Se dovessi
+leggere ogni volta una struttura dati di grandezza $n$ allora la complessita' sara' quantomeno
+lineare nella dimensione dell'input, poiche' l'input va letto.
 
 Si suppone spesso che le complessita' in tempo sublineari non abbiano molto senso. Lo acquistano
 solo se facciamo significative assunzioni sul problema in questione.
 
-Molti problemi con algoritmi di complessita' esponenziale nel caso pessimo fanno anche parte di
-$\NPClass$. Quantomeno ci e' agevole verificare che una soluzione sia valida.
+\section{Grafi}
 
 Il grafo e' una struttura dati molto ricca in informatica. Ha inoltre una definizione matematica
 molto precisa.
@@ -256,6 +270,8 @@ Noi considereremo sempre grafi finiti ($V$ e $E$ finiti).
     \end{itemize}
 \end{defn}
 
+\subsection{Problemi tipici sui grafi}
+
 \begin{defn}
     Sia $G = (V,E)$ un grafo.
     \begin{itemize}
@@ -284,7 +300,7 @@ Un grafo ammette sempre anche degli insiemi indipendenti (ad esempio l'insieme v
 $\set{v}$, se $v \in V$). Inoltre se $I$ e' un insieme indipendente di $G$ ogni suo sottoinsieme lo
 e'. Siamo interessati a insiemi indipendenti significativi, ovvero massimi.
 
-Il complementare di un ricoprimento e' sempre un insieme dipendente, e viceversa. In particolare il
+Il complementare di un ricoprimento e' sempre un insieme indipendente, e viceversa. In particolare il
 complementare di un ricoprimento minimo e' un insieme indipendente massimo. Cercare uno e'
 equivalente a cercare l'altro.
 
@@ -299,8 +315,10 @@ Il problema della colorabilita' cambia complessita' in base al valore di $n$. Ad
 una tecnica comune quella di restringere un problema per diminuire la complessita'. A volte si
 riesce a ridursi ad un problema che ha algoritmi polinomiali (per casi particolari).
 
-C'e' un legame tra l'esistenza di un algoritmo di verifica polinomiale per la soluzione ad un
-problema e l'appartenenza alla classe $\NPClass$.
+%C'e' un legame tra l'esistenza di un algoritmo di verifica polinomiale per la soluzione ad un
+%problema e l'appartenenza alla classe $\NPClass$.
+
+\subsection{Rappresentazione di un grafo}
 
 E' importante fare delle considerazioni sulla rappresentazione che facciamo dei grafi. Questa
 infatti influenza l'analisi della complessita' che andremo a fare.
@@ -321,6 +339,8 @@ In questo caso la rappresentazione con matrice e' conveniente.
 Se il grafo e' sparso sono piu' convenienti altre rappresentazioni.
 
 La complessita' di solito e' data in funzione di $V$ e di $E$.
+
+\subsection{Raggiungibilita'}
 
 Un algoritmo molto importante sui grafi e' quello della raggiungibilita', ovvero determinare se
 esiste un cammino tra due nodi del grafo. Si puo' fare mediante una visita.
@@ -375,3 +395,477 @@ in $\NPClass$ (lo vedremo piu' avanti).
 In un certo senso il duale di un problema semplice e' un problema difficile (cammino minimo vs.
 cammino massimo). Non basta una semplice scansione dei cammini per trovare il piu' lungo, ma devo
 considerarli tutti. Questo rende piu' complessa la ricerca.
+
+Cercare cammini brevi e' un'operazione facile, cercare cammini lunghi e' difficile.
+
+\section{Analisi di problemi}
+
+Quando abbiamo un problema dobbiamo innanzitutto trovare un algoritmo stupido per dare un primo
+upper bound alla complessita' del problema. Gli algoritmi stupidi in genere fanno ricerche
+esaustive. L'algoritmo stupido aiuta a cominciare a comprendere il problema.
+
+Ad esempio, per trovare il cammino piu' lungo posso scansionare tutti i cammini semplici e dire qual
+e' il piu' lungo. Che upper bound abbiamo? Supponiamo di avere un grafo completamente connesso.
+Possiamo calcolare il numero di cammini con tutte le permutazioni possibili tra $u$ e $v$. Abbiamo
+quindi un numero fattoriale di cammini rispetto al numero dei nodi, e di conseguenza rispetto alla
+dimensione del grafo. Questa complessita' e' dell'ordine di $n^{n}$: $n! \sim n^{n}$. 
+
+Un grafo completamente connesso rappresenta un caso particolarmente sfavorevole. Tuttavia anche per
+i grafi sparsi abbiamo un numero notevole di cammini. Tipicamente il numero e' esponenziale o piu'
+che esponenziale. Ad esempio in un grafo come quello della figura \ref{PathsNumber} abbiamo un
+numero di archi che e' lineare nell'ordine dei nodi ma abbiamo comunque un numero esponenziale di
+cammini tra due nodi.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/ExponentialPathsNumber.pdf}
+    \end{center}
+    \caption{Esempio di grafo ``semplice'' con un grande numero di cammini possibili}
+    \label{PathsNumber}
+\end{figure}
+
+La ricerca esaustiva e' costosa. In linea di massima potrei dare lo stesso upper bound per la
+ricerca di cammini minimi. In realta' per fortuna con la ricerca breadth-first possiamo visitare i
+nodi in ``ordine di distanza''. In questo modo possiamo individuare in maniera semplice i cammini
+minimi. E' quasi un miracolo in considerazione dello spazio delle soluzioni esponenziale che
+abbiamo. 
+
+Accade spesso che algoritmi polinomiali derivino dal fatto che invece di una ricerca esaustiva
+possiamo farne una piu' mirata, grazie a particolari condizioni e risultati.
+
+L'altro test semplice che si deve sempre fare e': ``data una soluzione ho un modo semplice per
+verificare che una soluzione sia corretta in modo efficace''? Posso ``certificare'' in maniera
+semplice la mia soluzione?
+
+Il certificato per un cammino massimo non e' banale: come faccio a verificare che sia davvero il
+massimo in maniera efficiente? Viceversa e' invece banale il certificato per un cammino di lunghezza
+$k$. Questo ammmette una verifica semplice, e questo lo colloca in $\NPClass$, che e' una classe
+piccola di problemi esponenziali.
+
+Una volta che abbiamo capito che sta in $\NPClass$ possiamo passare a chiederci se sta anche in
+$\PClass$ e cominciare la ricerca di un algoritmo efficiente.
+
+\subsection{Colorabilita'}
+
+Un altro problema interessante sui grafi e' la colorabilita': capire se un dato grafo e' colorabile
+con meno di $n$ colori. La ``difficolta''' del problema problema dipende dal valore di $n$. La
+bicolorabilita' di un grafo e' un problema semplice. Non tutti i grafi sono bicolorabili (vedi
+Figura \ref{TwoColorableGraphs}). Un grafo puo' essere bicolorabile in piu' di un modo, a seconda di
+quale colore scelgo per iniziare la colorazione. Tuttavia questo non e' un problema, dato che posso
+passare da una coloraziona all'altra semplicemente complementando i colori.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/2ColorableGraphs.pdf}
+    \end{center}
+    \caption{Esempi di grafi bicolorabili e di grafi non bicolorabili}
+    \label{TwoColorableGraphs}
+\end{figure}
+
+Se ho una cricca di dimensione $n$ ho bisogno di almeno $n$ colori per colorarla, se questa e' in
+effetti colorabile. La colorabilita' di un grafo e' legata alla densita' degli archi del grafo.
+
+La bicolorabilita' e' facilmente risolvibile mediante una visita. Il procedimento e' a grandi linee
+questo:
+\begin{itemize}
+    \item Ci poniamo la seguente invariante: i nodi gia' visitati e i nodi nella frontiera sono gia'
+    stati colorati. Coloriamo quando aggiungiamo alla frontiera;
+    \item Nella frontiera corrente selezioniamo un nodo;
+    \item Andiamo a guardare i nodi connessi al corrente e facciamo la verifica di coerenza:
+    \begin{itemize}
+        \item Per ogni arco che ci riporta in Done verichiamo che i colori siano diversi, altrimenti
+        ci blocchiamo. Questo perche' il colore e' forzato, se troviamo un'incoerenza non e'
+        possibile procedere altrimenti;
+        \item Facciamo lo stesso controllo in Current.
+    \end{itemize}
+    \item Per i nodi in Todo li spostiamo in Current, assegnandoli un colore. Quale? Il colore
+    complementare del current.
+\end{itemize}
+
+Se l'algoritmo arriva a termine senza bloccarsi il grafo e' bicolorabile.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/2Coloration.pdf}
+    \end{center}
+    \caption{Esempio di bicolorazione di un grafo}
+\end{figure}
+
+Possiamo svolgere questo processo in una sola passata. Come mai? Perche' l'assegnazione di colore e'
+univoca. Questo non e' il caso con piu' di due colori: con tre colori potremmo scegliere tra due
+alternative, e dovremmo fare backtracking. Il backtracking puo' portare, e in genere porta, ad
+un'esplosione esponenziale.
+
+Gia' la 3-colorabilita' e' un problema $\NPClass$-completo. Perche' sta in $\NPClass$? Perche' e'
+facile verficare la correttezza della colorazione, con una semplice visita arbitraria. $\NPClass$ e'
+una classe ragionevolmente vicina a $\PClass$.
+
+\subsection{Problemi di flusso}
+
+Una classe di problemi tipici sui grafi e' quella dei problemi di flusso.
+
+\begin{defn}
+    Una rete $N$ e' un grafo orientato con una sorgente $s$, un pozzo $t$, e una capacita' $c(u,v)$
+    associata ad ogni arco.
+\end{defn}
+
+\begin{defn}
+    Un flusso in $N$ e' una funzione $f(u,v)$ che ad ogni arco $(u,v)$ associa un intero positivo
+    tale che
+    \begin{itemize}
+        \item $f(u,v) \leq c(u,v)$;
+        \item la somma dei flussi entranti in ogni nodo (esclusi $s$ e $t$) deve essere uguale alla
+        somma dei flusso uscenti.
+    \end{itemize}
+\end{defn}
+
+In complessita' bisogna stare attenti, specie quando abbiamo queste strutture etichettate. Il
+problema del flusso massimo e' capire qual e' il flusso massimo che la rete supporta, ovvero il
+flusso tale che la somma dei flussi uscenti da $s$ (o equivalentemente di quelli entranti in $t$)
+sia massima. Quando ``fluido'' riusciamo a far passare dalla sorgente al target. Un upper bound e'
+dato dal minimo tra la somma delle capacita' degli archi uscenti dalla sorgente e la somma di quelli
+entranti nel target.
+
+%Noi vedremo un algoritmo semplice pensato per un caso particolare e una data complessita'.
+Vediamo un algoritmo semplice per risolvere il problema.
+
+Per risolvere il problema inizialmente cerchiamo dei flussi banali, ovvero dei flussi lineari: la
+quantita' di fluido si incanala lungo un unico cammino. Quello che cerchiamo quindi e' un cammino
+qualunque tra sorgente e target. Lungo quel cammino cerco di capire quanto fluido riesco a far
+passare. Questo e' limitato dalla capacita' dell'arco di capacita' minima nel cammino. Si procede in
+questo modo finche' non ci sono piu' cammini tra $s$ e $t$, con l'accorgimento di fare degli
+``aggiustamenti'' alla rete legati al fatto che su alcuni archi sto gia' facendo passare del flusso.
+Un'operazione e' quella di diminuire la capacita' di un arco lungo cui stiamo facendo gia' passare
+del fluido, un'altra e' quella di diminuire il fluido lungo un arco per farlo passare lungo un
+altro.
+
+L'algoritmo e' dimostrabilmente corretto, andiamo a discutere la complessita' computazionale
+dell'algoritmo.
+
+La ricerca di flussi e la somma di flussi sono operazioni lineari nella dimensione del grafo.
+
+E' un'importante ipotesi che le capacita' siano intere.
+
+Quante iterazioni faremo al massimo? Con ogni operazione diminuiamo almeno di uno il flusso massimo
+che passa attraverso la rete. Usando gli upper bound sul flusso massimo dati prima abbiamo un
+upper bound alle iterazioni.
+
+Piu' formalmente procediamo per maggiorazioni. Indichiamo la capacita' massima degli archi nel grafo
+con $C$. Se supponiamo che tutti gli archi abbiano quella capacita' abbiamo un upper bound $nC$ al
+flusso massimo. La complessita' delle operazioni di ricerca del flusso e applicazione del flusso e'
+$n^{2}$, quindi abbiamo una complessita' dell'ordine $O(n^{3}C)$. E' una complessita' polinomiale?
+No, $C$ e' un numero. La complessita' dovrebbe essere un logaritmo di $C$ se volessimo un algoritmo
+polinomiale. In effetti esistono casi patologici che fanno esplodere la complessita' per via di $C$.
+
+Questa complicatezza non ci da' un algoritmo polinomiale. Da ricordare e' che la dimensione dei
+numeri e' logaritmica, la complessita' deve essere lineare nella dimensione dei dati.
+
+Possiamo migliorare l'algoritmo? Si', facendo una ricerca di cammino minimo quando andiamo a cercare
+dei flussi. In questo caso la complessita' diventa polinomiale. Possiamo risolvere il problema del
+flusso massimo con complessita' polinomiale.
+
+\section{Problemi decisionali}
+
+Un altro concetto importante e' la differenza tra problemi di ottimizzazione e problemi di
+decisione. Nel caso del flusso massimo abbiamo un problema di ottimizzazione. Abbiamo dei vincoli e
+cerchiamo la soluzione minima (o massima) che soddisfa tali vincoli. In teoria della complessita'
+siamo interessati a problemi decisionali, ovvero con soluzione booleana Si'/No.
+
+In un certo senso possiamo vedere i problemi di ottimizzazione come dei particolari problemi di
+decisione, specie per i problemi di ottimizzazione discreti. Il trucco e', invece di chiederci se
+esiste un flusso massimo ci chiediamo ``esiste un flusso maggiore di $n$?''. E' un problema meno
+informativo, ma se so risolvere il problema decisionale posso pensare ad un algoritmo efficiente per
+risolvere il problema di ottimizzazione. Ad esempio potremmo ciclare il problema di decisione fino a
+che non troviamo il massimo o minimo. Questo tuttavia non e' molto astuto come metodo, dovremmo
+usarne di altri.
+
+Di solito risolvendo il problema di ottimizzazione non abbiamo la soluzione in se', ma un valore
+numerico tramite cui possiamo risalire alla soluzione in modo agevole. In altri termini otteniamo la
+$x$ invece che la $f(x)$. Ma la $f$ e' facilmente calcolabile, di conseguenza questo non e' un
+problema.
+
+Restringersi a problemi decisionali non e' una decisione problematica, ed e' interessante a livello
+matematico. Percio' in complessita' di solito si fa questa assunzione. Per noi il problema della
+cricca sara' ``questo grafo ha una cricca di dimensione maggiore di $k$?''.
+
+\section{Problemi e linguaggi}
+
+Nel problema decisionale abbiamo delle stringhe che descrivono l'input, in un qualche alfabeto.  Per
+alcune stringhe la risposta al problema sara' Si', per altre No. Il problema mi da' quindi un
+linguaggio di stringhe che rappresentano input per cui la soluzione e' Si'. La teoria della
+complessita' si puo' ridurre al problema di riconoscere stringhe di un linguaggio. L'algoritmo di
+decisione del problema puo' essere visto come un algoritmo di riconoscimento del linguaggio delle
+stringhe corrette. Le classi di complessita' saranno quindi insiemi di linguaggi riconoscibili da
+una macchina di Turing deterministica o meno con una data complessita'.  Gli insiemi di linguaggi
+sono pensati senza un'architettura specifica in mente.
+
+\section{Riduzioni}
+
+Un'altra problematica importante in Complessita' e il problema della riduzione. Lo vediamo guardando
+il problema del matching bipartito.
+
+\subsection{Matching bipartito}
+
+\begin{defn}
+    Un grafo bipartito e' una tripla $B = (U,V,E)$ dove $U$ e $V$ sono insiemi di uguale
+    cardinalita' e $E \subseteq U \times V$ e' un insieme di archi.
+\end{defn}
+
+\begin{defn}
+    Un matching per un grafo bipartito $B = (U,V,E)$ e' un insieme $M \subseteq E$ che associa ad
+    ogni elemento in $U$ uno e un solo elemento in $V$.
+\end{defn}
+
+Un grafo puo' essere suddiviso, a livello dei nodi, in due insiemi, tipicamente dalla stessa
+cardinalita', i cui elementi non sono collegati. Otteniamo cosi' un grafo bipartito.
+
+Il problema del matching bipartito consiste nello stabilire se per un grafo bipartito esista o meno
+un matching.
+
+Non per tutti i grafi bipartiti esiste un accoppiamento, e non e' del tutto ovvio come van create le
+coppie.
+
+Come lo risolviamo? Un approccio possibile e' quello di sfruttare un algoritmo gia' noto e corretto
+per un altro problema simile. Nel nostro caso possiamo sfruttare l'algoritmo per il problema del
+flusso massimo. L'idea e' che possiamo ridurre il problema del matching bipartito ad un problema di
+flusso massimo.
+
+Per fare cio' facciamo la seguente trasformazione al grafo bipartito $B = (U,V,E)$, ottenendo quindi un grafo
+$B'$:
+\begin{itemize}
+    \item aggiungiamo un nodo $s$ ed un nodo $t$;
+    \item aggiungiamo un arco da $s$ ad ogni nodo in $U$;
+    \item aggiungiamo un arco da $t$ ad ogni nodo in $V$;
+    \item assegnamo ad ogni arco una capacita' unitaria.
+\end{itemize}
+
+A questo punto per $B$ esiste un matching bipartito se e solo se $B'$ ammette un flusso massimo di
+entita' $n = |U| = |V|$, ovvero tale che il flusso totale uscente da $s$ sia uguale a $n$.
+
+Questo e' un tipico esempio di riduzione. Ho un problema, il matching bipartito, e lo riduco ad un
+altro problema, che so gia' risolvere. Utilizzo il problema del flusso massimo per risolvere il mio
+nuovo problema. Che operazione faccio per fare cio'? L'unica cosa che faccio e' trasformare i dati
+di input in una rete di flusso. Dopodiche' lo do' in pasto al mio algoritmo per il flusso massimo.
+In base alla risposta del primo ho la risposta del secondo.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/Reducibility.pdf}
+    \end{center}
+    \caption{Schema di riduzione di un problema $A$ in un problema $B$}
+\end{figure}
+
+La tentazione di solito e' quella di cambiare un algoritmo per adattarlo ad un nuovo problema. In
+questo caso non facciamo quello; noi prendiamo i dati di input e li trasformiamo in modo che
+l'algoritmo iniziale lo possa accettare. L'algoritmo rimane lo stesso, quello che viene adattato e'
+l'input. Questo significa fare una riduzione.
+
+Avremo pero' qui dei vincoli in piu' rispetto alla riduzione della teoria della calcolabilita'. Ad
+esempio avremo vincoli sul costo computazionale di $f$. Qui e' in un certo senso piu' intuitivo
+rispetto alla teoria della calcolabilita', dato che facciamo trasformazioni da strutture dati a
+strutture dati (che per noi sono sempre stringhe), mentre in teoria della calcolabilita' si
+trasformano numeri in numeri.
+
+Esiste un'altra nozione di riducibilita', la Turing riducibilita'. Immaginiamo un oracolo che
+risolve $B$ e che posso interrogare quante volte voglio. Posso ora risolvere $A$? In questo caso
+avremmo che $A$ e' Turing-riducibile in $B$.
+
+Per quanto riguarda il concetto di riduzione possiamo pensare ad un problema $A$ e ad un problema
+$B$ come linguaggi. Con una riduzione da $A$ a $B$ abbiamo che $x \in A \iff f(x) \in B$. Questa e' una
+nozione di riducibilita', ce ne sono altre piu' potenti.
+
+\subsection{Riducibilita' e classi di complessita'}
+
+La riducibilita' e' interessante ai fini della complessita'. Supponiamo di avere una classe di
+complessita' $\CClass$ e supponiamo che $B \in \CClass$. Se riusciamo a ridurre $A$ a $B$ vorremmo
+poter concludere che anche $A \in \CClass$.
+
+Per fare cio' e' importante prendere una nozione di riducibilita' abbastanza fine per le classi a
+cui siamo interessanti. Una riduzione troppo forte, come la Turing-riducibilita', potrebbe dare
+problemi.
+
+Ad esempio pensiamo di poter complementare la risposta di un oracolo. In questo caso potremmo
+ridurre ogni linguaggio al suo complementare, che non e' sempre quello che vogliamo. Potremmo non
+essere in grado di osservare differenze tra classi con una nozione cosi' forte, mentre con una piu'
+debole (o fine) posso osservare certe differenze. Con riduzioni forti le classi in un certo senso
+collassano. Questo e' interessante se vogliamo studiare classi di complessita' (o linguaggi) che non
+sono chiuse per complementazioni.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/ReducibilityNotion.pdf}
+    \end{center}
+    \caption{Chiusura di classi di complessita' in base alla nozione di riducibilita'}
+    \label{ReducibilityNotion}
+\end{figure}
+
+Tutte le classi non deterministiche non sono chiuse per complementazione (come non lo erano insiemi
+r.e.). Ad esempio i complementari di linguaggi in $\NPClass$ stanno in $\CONPClass$. In questo caso
+non ha senso usare una nozione troppo forte di riducibilita'.
+
+Concludere l'appartenenza di $A$ in una classe $\CClass$ in base alla sua riducibilita' ad un
+problema $B$ in $\CClass$ non e' immediato e dipende dalla nozione di riducibilita'. In particolare
+andra' dimostrato.
+
+\subsection{Complessita' di $f$}
+
+La nozione di base di riducibilita' l'abbiamo data, ma non basta. Si pongono dei limiti su $f$: si
+richiede che $f$ abbia complessita' polinomiale. Questo perche' vogliamo la proprieta' di chiusura
+della figura \ref{ReducibilityNotion}. Infatti se risolviamo $B$ in tempo polinomiale e $f$ opera
+una trasformazione anch'essa polinomiale componendo i due algoritmi avrei un nuovo algoritmo
+polinomiale per risolvere $A$.
+
+Richiedere che $f$ sia addirittura lineare sarebbe troppo fine: sarebbero troppi pochi i problemi
+riducibili ad un dato problema. Un vincolo polinomiale sembra essere abbastanza ragionevole.
+Ammettere funzioni di riduzione esponenziali permetterebbere di ridurre fondamentalmente qualsiasi
+problema a qualsiasi altro.
+
+Problemi che appartengono apparentemente a domini completamente diversi possono essere agevolmente
+ridotti l'uno all'altro. Ad esempio SAT e' riducibilie alla copertura di vertici di un grafo. La
+soddisfacibilita' e' stato il primo problema ad essere stato dimostrato essere $\NPClass$-completo. Se
+abbiamo un problema $A$ che e' $\NPClass$-completo e abbiamo $B$ tale che $A \leq B$ diremo che $B$
+e' $\NPClass$-hard.
+
+Le riduzioni aiutano a vedere i problemi in un modo diverso dal solito.
+
+Vediamo alcuni esempi di riduzioni polinomiali tra problemi.
+
+\subsection{Colorabilita'}
+
+Vediamo ora che la $n$-colorabilita' e riducibile alla $n+1$-colorabilita': $n\textsc{-color} \leq
+n+1\textsc{-color}$.
+
+Cosa prende in input $n$\textsc{-color}? Un grafo e dice se e' $n$ colorabile. Fissiamo $n$ a 3 e dimostriamo
+che $3\textsc{-color} \leq 4\textsc{-color}$.
+
+Possiamo fare la riduzione con la nozione di riducibilita' che abbiamo visto prima?
+
+Bisogna fare attenzione a ``non dare per ovvia la soluzione''. Ad esempio e' sbagliato pensare
+sempre che la funzione di riduzione sia l'identita', dato che l'identita' solitamente permette solo
+di ridurre un linguaggio a se stesso. In questo caso avremmo un verso ma non avremmo l'altro: un
+grafo 3-colorabile e' sicuramente 4-colorabile ma non vale il viceversa, il che e' importante per la
+riduzione.
+
+Cosa dobbiamo fare? Dobbiamo prendere il grafo $G$ in input per 3\textsc{-color} e trasformarlo in
+un grafo $G'$ che soddisfi la condizione di riduzione. Prendiamo $G$ e aggiungiamo un nodo che
+colleghiamo a tutti i nodi di $G$. Per poter colorare questo nodo abbiamo bisogno di un colore nuovo
+non in $G$.  Se $G$ e' 3-colorabile allora $G'$ e' 4-colorabile. Viceversa se $G'$ e' 4-colorabile
+il colore usato dal nodo aggiunto deve essere diverso da quello dei nodi del sottografo che
+corrisponde a $G$, che quindi risulta 3-colorabile.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/3COL4COL.pdf}
+    \end{center}
+    \caption{Riduzione del problema della $n$-colorabilita' alla $n+1$-colorabilita'}
+\end{figure}
+
+\subsection{Cricca e insieme indipendente}
+
+Vediamo un altro esempio. Proviamo a ridurre il problema dell'insieme indipendente al problema della
+cricca: $\textsc{is} \leq \textsc{cricca}$.
+
+L'input di \textsc{is} e' una coppia $(G,k)$ e ci chiediamo se esista un insieme indipendente di
+dimensione $k$. L'input di CRICCA e' una coppia $(G,k)$ e chi chiediamo se esista una cricca di
+dimensione $k$.
+
+La trasformazione e' semplice: complementiamo il grafo. Dove c'era un insieme indipendente di nodi
+avremo tutti i collegamenti possibili tra di essi, e quindi una cricca.
+
+\section{Ricerca vs. Verifica}
+
+%// TODO
+%Slide 40
+
+Un conto e' cercare una soluzione, un conto e' verificare la corretteza di una soluzione.
+
+Di nuovo, quando incontriamo un problema bisogna pensare innanzitutto all'algoritmo stupido di
+ricerca esaustiva.
+
+La complessita' dell'algoritmo stupido per l'insieme indipendente e' polinomiale per $k$ fissato. Se $k$
+pero' fa parte del'input questo non e' piu' necessariamente vero. Con $k \in O(n)$ abbiamo un
+algoritmo esponenziale.
+
+Non sempre il certificato e' una soluzione al problema. E' un'informazione in piu' che ci viene data
+e che ci permette di verificare in modo agevole la correttezza della mia soluzione. Non per tutti i
+problemi e' possibile effettuare la verifica in tempo polinomiale (e.g. torri di Hanoi).
+
+$\NPClass$ e' una classe interessante perche' contiene problemi facilmente certificabili.
+
+\section{Relazioni tra alcune classi di complessita'}
+
+Cosa significa $A \in \NPClass$? Significa che $\exists B \exists p, B \in \PClass \land p\textit{ polinomio}$
+tale che
+\begin{equation*}
+    x \in A \iff \exists c_{x}, |c_{x}| \leq p(x) \land \pair{x}{c_{x}} \in B
+\end{equation*}
+
+La seconda parte dello statement mi dice che posso verificare che $c_{x}$ e' un buon certificato per
+$x$ in tempo polinomiale, la prima parte dice che il certificato deve avere dimensione polinomiale.
+
+Il linguaggio delle coppie $\pair{x}{c_{x}}$ deve far parte di $B$ sse $x \in A$. 
+
+C'e' una differenza tra parlare di linguaggi e di macchine. Un linguaggio appartiene ad una certa
+classe se esiste una MdT che lo riconosce secondo le condizioni della classe, ma non e' la macchina
+a far parte della classe. Le classi comprendono linguaggi, non macchine.
+
+Per tanti problemi possiamo certificare la correttezza con un certificato, per altri no. Ad esempio
+per la soddisfacibilita' si puo' fare, per la tautologicita' no. Il problema e' la dimensione del
+certificato.
+
+Per tutti i problemi abbiamo un algoritmo generate and test, il problema sta nella ricerca che e'
+costosa.
+
+%// TODO
+%Slide 43
+
+Ci sono alcuni problemi in $\NPClass$ di cui non si e' dimostrata la completezza ma di cui se si potesse
+dimostrare l'incompletezza avremmo $\PClass \not= \NPClass$. Finora non si e' dimostrata l'incompletezza di
+nessun problema in $\NPClass$.
+
+%A volte e' possibile verificare che una soluzione sia corretta mediante un certificato ma potrebbe
+%non essere possibile verificare che una solzuione si scorretta (sempre mediante certificato)
+
+Si congettura la gerarchia di classi di complessita' mostrata in figura \ref{ConjecturedHierarchy}.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{img/NPCONP.pdf}
+    \end{center}
+    \caption{Gerarchia congetturata di alcune classi di complessita'}
+    \label{ConjecturedHierarchy}
+\end{figure}
+
+Si congettura che $\NPClass$ sia diverso da $\PClass$, e che l'intersezione tra $\CONPClass$ e
+$\NPClass$ sia diversa da $\PClass$. Abbiamo che $\COPClass$ e' uguale a $\PClass$. Se si dimostra,
+come si congettura, che $\COPClass$ sia diverso da $\CONPClass$ allora avremmo anche che $\NPClass$
+sarebbe diverso da $\PClass$. Se si dimostra $\PClass = \NPClass$ allora
+collasserebbero tutte su $\PClass$. Abbiamo inoltre che ogni problema non banale in $\PClass$ e'
+$\PClass$-completo. Se si dimostrasse che esiste un problema in $\NPClass$ incompleto avremmo
+$\PClass \not= \NPClass$.
+
+Un problema molto studiato e' quello dell'isomorfismo tra grafi. Il problema e' capire se due grafi
+$G,G'$ sono isomorfi, ovvero hanno la stessa struttura topologica. E' un problema che ha un sacco di
+applicazioni concrete.
+
+Posso certificare una soluzione per questo problema? Si', con il mapping usato. Il numero di mapping
+e' esponenziale, percio' una ricerca esaustiva non e' un granche'. Di solito si cerca di pilotare la
+ricerca in modo da renderla piu' veloce, ad esempio sapendo che certi nodi non possono essere
+mappati in certi altri in base a certe condizioni.
+
+Si congettura che questo problema, in questa forma, non sia completo. Non se ne e' ancora dimostrata
+la completezza. C'e' un problema simile, che e' quello dell'isomorfismo di sottografo. Quello e' un
+problema completo. Questo perche' generalizza il problema della cricca.
+
+Vediamo un problema che sta in $\CONPClass \cap \NPClass$ che si congettura non essere completo
+(altrimenti collasserebbe tutto).
+
+Questo problema e' la fattorizzazione di un numero intero. La versione decisionale prende $(n,k)$ e
+ci chiediamo se $n$ e' fattorizzabile con meno di $k$ fattori. Sta in $\NPClass$? Si'. Non e' banale
+perche' fino a poco tempo fa non si sapeva se il test di primalita' fosse polinomiale. Ma sappiamo
+ora che lo e', quindi la verifica della fattorizzazione e' semplice.
+
+Ho un certificato per dire che un numero non e' fattorizzabile in meno di $k$ fattori? Si', sempre
+la fattorizzazione. Questo perche' la fattorizzazione e' unica.
+
+Il certificato va bene per entrambi i casi, basta cambiare il metodo di verifica.
