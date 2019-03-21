@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\newcommand\head[2]{%
+    \draw[xshift=#1 cm,yshift=#2 cm] (0,0) -- (-0.3,-0.3) -- (-0.3,-1) -- (0.3,-1) -- (0.3,-0.3) -- (0,0);%
+}
+
+\begin{document}
+    \begin{tikzpicture}
+        \path (0,0.5) -- (0,-4);
+        \draw (0,0) -- (7,0);
+        \draw (0,-1) -- (7,-1);
+        \node[draw, minimum size=1cm] () at (1,-0.5) {$x$};
+        \draw (5,0) -- (5,-1);
+        
+        \head{5.5}{-1};
+        \node () at (6.5,-1.5) {\textit{scrivi}};
+        \draw (0,-2.5) -- (7,-2.5);
+        \draw (0,-3.5) -- (7,-3.5);
+        \node[draw, minimum size=1cm] () at (1,-3) {$x$};
+        \head{1}{-3.5};
+        \node () at (2,-4.1) {\textit{leggi}};
+    \end{tikzpicture}
+\end{document}
