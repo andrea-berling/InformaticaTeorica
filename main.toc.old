@@ -81,7 +81,7 @@
 \contentsline {section}{\numberline {11.3}La classe $\mathbb {NP}$}{80}{section.11.3}% 
 \contentsline {section}{\numberline {11.4}Dimensione dei dati di input}{81}{section.11.4}% 
 \contentsline {section}{\numberline {11.5}Notazioni d'ordine}{82}{section.11.5}% 
-\contentsline {subsubsection}{Complessit\IeC {\`a} sublineari}{83}{section*.9}% 
+\contentsline {subsection}{\numberline {11.5.1}Complessit\IeC {\`a} sublineari}{83}{subsection.11.5.1}% 
 \contentsline {section}{\numberline {11.6}Grafi}{84}{section.11.6}% 
 \contentsline {subsection}{\numberline {11.6.1}Problemi tipici sui grafi}{84}{subsection.11.6.1}% 
 \contentsline {subsection}{\numberline {11.6.2}Rappresentazione di un grafo}{85}{subsection.11.6.2}% 
@@ -96,9 +96,9 @@
 \contentsline {subsection}{\numberline {11.10.2}Riducibilit\IeC {\`a} e classi di complessit\IeC {\`a}}{93}{subsection.11.10.2}% 
 \contentsline {subsection}{\numberline {11.10.3}Complessit\IeC {\`a} di $f$}{94}{subsection.11.10.3}% 
 \contentsline {subsection}{\numberline {11.10.4}Colorabilit\IeC {\`a}}{94}{subsection.11.10.4}% 
-\contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{94}{subsection.11.10.5}% 
+\contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{95}{subsection.11.10.5}% 
 \contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{95}{section.11.11}% 
-\contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{95}{section.11.12}% 
+\contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{96}{section.11.12}% 
 \contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{98}{chapter.12}% 
 \contentsline {section}{\numberline {12.1}Macchine di Turing}{98}{section.12.1}% 
 \contentsline {subsection}{\numberline {12.1.1}Convensioni di input output}{99}{subsection.12.1.1}% 
