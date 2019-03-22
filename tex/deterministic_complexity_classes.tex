@@ -43,10 +43,10 @@ computazione.
 
 \subsection{Convensioni di input output}
 
-Slide 47
+%Slide 47
 
 Si suppone in genere di avere un nastro di input sul quale possono essere effettuate solo letture e
-ci si può muovere in una sola direzione. Non è limitante dato che possiamo sempre copiare il
+su cui ci si può muovere in una sola direzione. Non è limitante dato che possiamo sempre copiare il
 nastro di input in un nastro di lavoro e fare quello che vogliamo sul nastro copia.
 
 Abbiamo anche un nastro di output, di sola scrittura, la cui testina avanza in una sola direzione.
@@ -96,7 +96,7 @@ La relazione $\vdash^{*}$ denota la chiusura transitiva e riflessiva della relaz
         q_{0}, (\varepsilon,\alpha),\dotsc,(\varepsilon,\varepsilon) \vdash^{*} q_{f},
         (\gamma_{1},\tau_{1}),\dotsc,(\gamma_{k},\tau_{k})
     \end{equation*}
-    e $f(\alpha)$ è il più lungo prefisso di $\gamma_{k}$ appartenente a $\sigma^{*}$
+    e $f(\alpha)$ è il più lungo prefisso di $\gamma_{k}$ appartenente a $\Sigma^{*}$
 \end{defn}
 
 Detto in altri termini una computazione parte dallo stato iniziale, con i nastri vuoti, con l'input
@@ -129,10 +129,10 @@ figura \ref{img:nondetcomp}.
 
 La computazione della macchina deterministica è un grafo con milioni di nodi. Inoltre questi nodi
 sono ``grossi'', un sacco di informazione è codificata in ogni nodo. Questo è un esempio vero di
-grafi ``grossi'' (Internet a confronto è un grafo piccolo).
+grafo ``grosso'' (Internet a confronto è un grafo piccolo).
 
 Questo è fondamentale per quanto riguarda la simulazione deterministica della macchina non
-deterministica. Fondamentalmente questo si riduce a visitare tutti i cammini del grafo della
+deterministica. In sostanza questa si riduce alla visita di tutti i cammini del grafo della
 computazione della macchina non deterministica.
 
 Il problema è che dobbiamo visitare tutti i cammini del grafo. Solitamente non basta una visita
@@ -175,7 +175,7 @@ analogo per lo spazio.
 \end{defn}
 
 Le classi di complessità sono classi definite in termini di funzioni. La funzione di input mi dà
-un ordine di grandezza, non una misura precisa. In altre parole sia interessati ad $O(f)$.
+un ordine di grandezza, non una misura precisa. In altre parole siamo interessati ad $O(f)$.
 
 \textbf{Nota bene:} le classi \textbf{non rappresentano tempi o spazi}. Rappresentano classi di
 problemi, o, più formalmente, insiemi di linguaggi.
@@ -192,22 +192,22 @@ Il teorema che vediamo ora è molto importante. È analogo, a livello di importa
 della terminazione della teoria della calcolabilità. Ci dice qualcosa sulla relazione tra
 complessità in tempo e complessità in spazio.
 
-Sapendo che un certo linguaggio ha una certa complessità in tempo posso dire qualcosa sulla sua
+Sapendo che un certo linguaggio ha una certa complessità in tempo possiamo dire qualcosa sulla sua
 complessità in spazio, e viceversa?
 
 Partiamo dalla parte più facile. Supponiamo di avere la complessità in tempo di un algoritmo.
 
-Che motivazioni abbiamo per voler sapere la complessità in tempo? Una è sicuramente che il tempo
-è una risora critica. Inoltre è una misura più fine di quella di spazio, ci dà un upper bound
-allo spazio. Questo perché se voglio aumentare l'occupazione di spazio, con la MdT, devo scrivere
-nuove celle. Sporcare una nuova cella richiede almeno un'unità di tempo. La complessità in tempo
-dà un upper bound stretto alla complessità in spazio.
+Che motivazioni abbiamo per voler sapere la complessità in tempo? Una è sicuramente che il tempo è
+una risora critica. Inoltre è una misura più fine di quella di spazio, ci dà un upper bound a
+quest'ultimo. Questo perché se vogliamo aumentare l'occupazione di spazio, con la MdT, dobbiamo
+scrivere nuove celle. Sporcare una nuova cella richiede almeno un'unità di tempo. La complessità in
+tempo dà un upper bound stretto alla complessità in spazio.
 
 Questo è importante, ed è anche una delle ragioni per cui il tempo è più interessante dello
 spazio.
 
 Questo discorso vale a meno di costanti, dato che definiamo noi l'unità di tempo e spazio. Ma una
-volta definite queste il discorso resta immutato.
+volta definite queste il ragionamento resta immutato.
 
 Abbiamo quindi che $\DTIME(f) \subseteq \DSPACE(f)$. A prima vista sembrerebbe un'``inversione''. In
 realtà se ci pensa se abbiamo un upper bound alla complessità in tempo richiesta per risolvere un
@@ -223,12 +223,12 @@ linguaggi di $\DTIME(f)$ fanno sicuramente parte di $\DSPACE(f)$.
     è un upper bound allo spazio. Ma quindi $\Lang \in \DSPACE(f)$.
 \end{proof}
 
-La D sta per deterministic in queste due classi sta per determinstic.
+La D in queste due classi sta per determinstic.
 
 Per dimostrare il teorema abbiamo svolto la nostra analisi sulla stessa macchina. Questo non è
-richiesto per la dimostrazione, dato che potrei immaginare di svolgere la dimostrazione con un'altra
-macchina per la parte della complessità in spazio. In questo caso non è stato necessario, il
-teorema è puntuale sulla macchina. Se una certa macchina ha una certa complessità in tempo ha la
+richiesto per la dimostrazione, dato che potremmo immaginare di svolgere la dimostrazione con
+un'altra macchina per la parte della complessità in spazio. In questo caso non è stato necessario,
+il teorema è puntuale sulla macchina. Se una certa macchina ha una certa complessità in tempo ha la
 stessa complessità, al più, in spazio.
 
 Si può occupare anche meno spazio, il tempo fa da upper bound.
@@ -237,7 +237,7 @@ Questa era la parte facile, ragioniamo ora sul viceversa. Data la complessità i
 qualcosa sulla complessità in tempo?
 
 Supponiamo ad esempio che una certa macchina di Turing lavori in spazio costante. Quando misuriamo
-la complessità in spazio di solito abbiamo macchine multinastro. Di solito non consideriamo lo
+la complessità in spazio in genere abbiamo macchine multinastro. Di solito non consideriamo lo
 spazio del nastro di input. Noi consideriamo solo lo spazio aggiuntivo di cui la macchina ha bisogno
 per svolgere la computazione.
 
@@ -270,14 +270,14 @@ Questa analisi vale in caso di complessità costante. Cambia qualcosa se la comp
 ha un ordine $O(s(n))$? No, basta che la mia $L$ diventi una $L(s(n))$. Il discorso si applica
 invariato. Sappiamo che o la macchina termina entro questo upper bound oppure è in loop.
 
-Anche qui l'analisi è puntuale. Data una macchina e una complessità in spazio posso dare una
-complessità in tempo sulla stessa macchina, non ne devo produrre un'altra.
+Anche qui l'analisi è puntuale. Data una macchina e una complessità in spazio possiamo dare una
+complessità in tempo sulla stessa macchina, non ne dobbiamo produrre un'altra.
 
 In un certo senso per alcuni programmi non possiamo decidere la terminazione perché non possiamo
-neanche decidere la quantità di spazio che verrà richiesto. Si può dimostrare che se è
-decidibile il problema di sapere qual è l'occupazione di una certa risora saprei qualcosa riguardo
-le altre risorse. Questo perché tutte le misure di complessità sono correlate. Questa correlazione
-può essere pessima a piacere, nel nostro caso era esponenziale.
+neanche decidere la quantità di spazio che verrà richiesto. Si può dimostrare che se è decidibile il
+problema di sapere qual è l'occupazione di una certa risora sarebbe decidibile il problema di sapere
+qualcosa per un altra risorsa. Questo perché tutte le misure di complessità sono correlate. Questa
+correlazione può essere pessima a piacere, nel nostro caso era esponenziale.
 
 In questa analisi stiamo dimenticando qualcosa. Sembrerebbe che se abbiamo una complessità in
 spazio costante avremmo una complessità in tempo costante, e quindi sublineare. Tuttavia in realtà
@@ -285,11 +285,11 @@ noi dobbiamo sapere anche fino a che punto siamo arrivati nell'input. Questo va 
 numero delle combinazioni. In particolare va aggiunta la lunghezza dell'input alla misura data
 prima.
 \begin{equation*}
-    n*L \times |Q| \times |\Sigma|^{L}
+    n\times L \times |Q| \times |\Sigma|^{L}
 \end{equation*}
 
 Quindi abbiamo che, se $M \in \DSPACE(f(n))$ allora $\exists c, M \in \DTIME(c^{f(n) + \log(n)})$.
-Ricordiamo che $n = c^{\log(n)}$.
+Ricordiamo che $n = c^{\log_{c}(n)}$.
 
 \begin{thm}
     Sia $f: \Nat \to \Nat$. Allora $\DSPACE(f) \subseteq \bigcup_{c \in \Nat}\DTIME(c^{log + f})$.
