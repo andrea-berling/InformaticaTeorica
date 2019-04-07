@@ -529,7 +529,7 @@ Sapendo qualcosa su due funzioni $f$ e $g$ sappiamo dire quanto ci costa calcola
 banale, perche' la complessita' la misuriamo rispetto alla dimensione dell'input. Ci chiediamo
 quindi prima quale l'ordine di grandezza degli output di $g$. Se lo sappiamo possiamo calcolare la
 complessita' di $f(g(x))$ usando la complessita' di $f$, altrimenti no. Se gli output di $g$ fossero
-costanti in dimensione non avrebbe neanche senso chiedersi quale sia la complessita' di $f \comp g$,
+costanti in dimensione non avrebbe neanche senso chiedersi quale sia la complessita' di $f \circ g$,
 dato che sarebbe sempre costante. A noi interessa la complessita' di funzioni che prendono input che
 possono crescere arbitrariamente.
 
@@ -542,7 +542,17 @@ Se noi conosciamo solo la complessita' in tempo possiamo dire qualcosa sulla dim
 output? Con il teorema tempo spazio sappiamo che gli output prodotti sono bound dal tempo richiesto
 dall'algoritmo. Non possiamo dare bound migliori per il caso pessimo.
 
-(Figura 7)
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics{./img/FunctionsComposition.pdf}
+        \caption{Per conoscere la complessita' di $f \circ g$ dobbiamo conoscere l'ordine di
+        grandezza degli output di $g$. Nel primo esempio abbiamo che l'output del depadding ha una
+        dimensione pari alla radice quadrata dell'input, mentre il riconoscimento ha complessita'
+        $O(2^{|x|^{2}})$, per una complessita' totale di $O(2^{|w|})$. Nel secondo esempio l'output
+        del padding ha dimensione $O(|x|^{2})$, mentre il riconoscimento di $\LPad$ ha una
+        complessita' in $\PSPACE$, per una complessita' totale in $\PSPACE$}
+    \end{center}
+\end{figure}
 
 Bisogna stare attenti a capire se gli algoritmi producono strutture dimaniche. In tal caso c'e' una
 complicazione nel calcolo della complessita' di una funzione composta. E' un'analisi delicata.
@@ -552,7 +562,7 @@ complicazione nel calcolo della complessita' di una funzione composta. E' un'ana
 Volendo riassumere i risultati noti riguardanti le relazioni tra alcune classi di complessita'
 possiamo utilizzare un diagramma come quello in figura $\ref{img:detclassesrelations}$. 
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \begin{center}
         \includegraphics{./img/ComplexityDiagram.pdf}
         \caption{Relazioni di inclusioni tra alcune classi di complessita'}

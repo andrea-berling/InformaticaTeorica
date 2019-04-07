@@ -62,7 +62,12 @@ abbiamo una scelta la nostra macchina fa quella giusta.
 
 La computazione della macchina puo' essere rappresentata da un grafo.
 
-(Figura 1 quad verde)
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/nondeterminism/MdTN.pdf}    
+        \caption{Grafo delle computazioni di una MdTN}
+    \end{center}
+\end{figure}
 
 Il grafo e' diretto non necessariamente aciclico. Il numero di scelte e' finito e definito dalla
 macchina (dal programma), che e' finita. Il grafo non e' neanche necessariamente finito, dato che
@@ -145,7 +150,7 @@ algoritmo deterministico di visita dei cammini del grafo. Dobbiamo fare un'esplo
 dato che possono esistere in generale cammini di riconoscimento migliori di uno gia' trovato.
 Dobbiamo fare una qualche visita astuta per effettuare la simulazione.
 
-Slide 89
+%Slide 89
 
 In generale quando vogliamo stabilire delle relazioni tra classi deterministiche e classi non
 deterministiche usiamo classi di risorse diverse. Ad esempio, avendo un bound di tempo alla
@@ -240,4 +245,9 @@ rifacciamo la computazione. L'occupazione di spazio rimane dell'ordine $O(f)$. D
 anche un timer per non sforare in tempo, ma questo ha occupazione logaritmica nel valore di $f$, di
 conseguenza l'occupazione di spazio non peggiora.
 
-(Figura 2 quad verde)
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.7]{./img/nondeterminism/Simulation.pdf}
+        \caption{Simulazione deterministica di una MdTN con memoriazzazione delle scelte}
+    \end{center}
+\end{figure}
