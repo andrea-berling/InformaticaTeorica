@@ -1,0 +1,22 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\newcommand{\gpoint}[2]{%
+\filldraw [gray] (#1,#2) circle [radius=2pt]
+}
+
+\newcommand{\bpoint}[2]{%
+\filldraw [black] (#1,#2) circle [radius=1pt]
+}
+
+\begin{document}
+    \begin{tikzpicture}
+        \draw[->] (0,-1) -- (0,5);
+        \draw[->] (-1,0) -- (8,0);
+        \draw (-1,0) .. controls (2,3) and (5,0.5) .. (8,2) node[pos=1.02] {$f'$}; %f'
+        \draw (-1,1) .. controls (2,-0.5) and (4,-0.5) .. (8,4.5) node[pos=1.02] {$f$}; %f
+        \draw (-0.3,0) .. controls (3,4) and (5,0) .. (8,3) node[pos=1.02] {$f\log(f)$}; %f\log(f)
+    \end{tikzpicture}
+\end{document}

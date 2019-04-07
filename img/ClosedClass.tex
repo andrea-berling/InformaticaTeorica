@@ -1,0 +1,16 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+\usetikzlibrary{automata}
+
+\newcommand{\gpoint}[2]{%
+\filldraw [gray] (#1,#2) circle [radius=2pt]
+}
+
+\begin{document}
+    \begin{tikzpicture}
+        \node[state,inner sep=1.5cm] (c) at (0,0) {$\mathbb{C}$};
+        \path[->] (c) edge [loop right,min distance=2cm] node {$T$} (c);
+    \end{tikzpicture}
+\end{document}
