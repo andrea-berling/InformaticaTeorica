@@ -1,0 +1,58 @@
+%% img/GraphVisit.tex
+%% Copyright 2019 Andrea Berlingieri
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Andrea Berlingieri.
+%
+% This work consists of all files listed in manifest.txt
+\documentclass{standalone}
+
+\usepackage{../TikzStyle}
+\usepackage{../mystyle}
+
+\begin{document}
+\begin{tikzpicture}[point/.style={draw,shape=circle,radius=1pt,inner
+sep=0pt,fill},vertex/.style={draw,shape=circle,radius=2pt,inner sep=1pt}]
+    \def\VertexSet{(0,0) circle [x radius=3cm,y radius=2cm]}
+    \draw\VertexSet;
+    \node () at (-2.7,1.5) {$G$};
+    \begin{scope}
+        \clip \VertexSet;
+        \draw[dashed] (-1,3) -- (-1,-3);
+        \draw[dashed] (1,3) -- (1,-3);
+    \end{scope}
+    \node () at (0,1.5) {$C$};
+    \node () at (-1.8,1) {$D$};
+    \node () at (1.8,1) {$T$};
+    \node[point] (u) at (-2,0) {};
+    \node () [below=0pt of u] {$u$};
+    \node[point] (v) at (2,0) {};
+    \node () [below=0pt of v] {$v$};
+    % dotted curved line between u and v
+    \draw[dashed,->] (u) .. controls (-1,1) and (1,1) .. (v);
+    \node[vertex,fill] (cur) at (-0.5,0) {};
+    \node[vertex] (todo) at (1.5,0) {};
+    \node[vertex] (done) at (-1.5,0) {};
+    \node[vertex] (cur2) at (0,-1) {};
+    \draw (done) .. controls (-1,0.5) and (-0.5,0.5) .. (cur);
+    \draw (cur) .. controls (0.5,0.5) and (1,0.5) .. (todo);
+    \draw (cur) -- (cur2);
+    % first half of the curve "including" the current node
+    \draw (-1,1.9) .. controls (-1,0.25) and (-0.3,0.25) .. (-0.3,0);
+    % second half
+    \draw (-1,-1.9) .. controls (-1,-0.25) and (-0.3,-0.25) .. (-0.3,0);
+    % first half of the curve "including" the todo node
+    \draw (1,1.9) .. controls (1,0.25) and (1.7,0.25) .. (1.7,0);
+    % second half
+    \draw (1,-1.9) .. controls (1,-0.25) and (1.7,-0.25) .. (1.7,0);
+\end{tikzpicture}
+\end{document}

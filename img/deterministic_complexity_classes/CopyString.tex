@@ -1,0 +1,35 @@
+%% img/CopyString.tex
+%% Copyright 2019 Andrea Berlingieri
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Andrea Berlingieri.
+%
+% This work consists of all files listed in manifest.txt
+\documentclass{standalone}
+
+\usepackage{../TikzStyle}
+\usepackage{../mystyle}
+
+\begin{document}
+    \begin{tikzpicture}
+        \draw (0,0) -- (12,0);
+        \draw (0,-1) -- (12,-1);
+        \node[draw, minimum size=1cm] () at (1,-0.5) {$x_{0}$};
+        \node () at (2,-0.5) {$\cdots$};
+        \node[draw, minimum size=1cm] () at (3,-0.5) {$x_{n}$};
+        \path (0,0.5) -- (0,-1.5);
+        \draw[->] (0.8,0.3) -- (3,0.3) node [pos=0.5, yshift = 0.3cm] {$l$};
+        \draw (10,0) -- (10,-1);
+        \draw[<->] (4.3,0.3) -- (9.3,0.3) node [pos=0.5, yshift = 0.3cm] {$d$};
+        \draw[->] (2,-1.3) .. controls (5,-3) and (8,-3) .. (11,-1.3);
+    \end{tikzpicture}
+\end{document}
