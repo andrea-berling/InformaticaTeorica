@@ -1,0 +1,14 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+\begin{document}
+    \begin{tikzpicture}
+        \node[inner sep=3pt,draw] (x) at (0,0) {$x$};
+        \node[inner sep=3pt] (xinL) at (3,0) {$x \in \Lang$};
+        \draw[->] (x) -- (xinL) node [pos=0.5,yshift=3mm] {$O(|x|^{2})$};
+        \node[inner sep=1cm,draw] (xp) at (0,-4) {$w = x\#^{p}$};
+        \draw[->] (xp) -- (x) node [pos=0.5,xshift=0.7cm] {$O(|w|)$};
+    \end{tikzpicture}
+\end{document}

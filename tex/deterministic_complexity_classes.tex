@@ -31,9 +31,10 @@ spostamento della testina verso destra o verso sinistra, e la modifica dello sta
 dell'automa.
 
 Per le misure di complessità in genere si tende sempre a prendere come riferimento la macchina di
-Turing. Questo perché con questo modello di calcolo sono ben chiari i concetti di unità di tempo e
-di unità di spazio, che corrispondono rispettivamente ad una transizione e ad una cella di memoria.
-Ci chiederemo quanti nastri ci permettiamo di usare. Vedremo che questo farà la differenza.
+Turing. Questo perché si tratta di un modello di calcolo semplice in cui sono ben chiari i concetti
+di unità di tempo e di unità di spazio, che corrispondono rispettivamente ad una transizione e ad
+una cella di memoria.  Ci chiederemo quanti nastri ci permettiamo di usare. Vedremo che questo farà
+la differenza.
 
 I nastri sono infiniti, ma in ogni momento si suppone che solo una parte finita del nastro sia stata
 scritta. I nastri partono blank, su di essi viene scritto l'input e su di essi si svolge la
@@ -310,6 +311,9 @@ Lo slowdown è lineare. Se passiamo, ad esempio, da ASCII a binario dovremo fare
 equivalente. Era di moda tempo fa la ricerca della macchina di Turing universale che minimizzasse la
 somma tra grandezza dell'alfabeto e numero di stati.
 
+
+\subsection{Riduzione dei nastri}
+
 Vediamo qualcosa di più importante, ovvero la riduzione dei nastri.
 
 Immaginiamo di passare da due nastri ad un solo nastro. Perché è problematico lavorare con un
@@ -347,3 +351,298 @@ questi slowdown restano però polinomiali.
 C'è una sottigliezza da considerare riguardo la macchina a due nastri. Le due testine possono
 essere lontane a piacere, e il tempo di trasmissione tra le due può quindi aumentare
 arbitrariamente. Non è sempre corretto considerare il costo della tramsissione pari ad 1.
+
+%Slide 50
+
+% TODO maybe move this to the part on the size of the input
+%Se pensiamo ad $x$ come una stringa $|x|$ corrisponde alla lunghezza della stringa; per i numeri,
+%usando una rappresentazione almeno binaria, abbiamo una dimensione $|x|$ uguale a $\log(x)$.
+
+%Slide 51
+
+% TODO move this somewhere more appropriate
+% Lo spazio mi da' un upper bound al tempo, ma questo e' molto piu' lasco.
+
+%Slide 52
+
+% TODO move this somewhere more appropriate
+%C'e' una dipendenza tra complessita' e modello di calcolo che usiamo.
+
+Generalizzando, proviamo a pensare ad una macchina a $k$ nastri e a come simularla con un nastro
+solo. Se avessimo un modo efficiente per fare cio' avremmo un modo generale per eseguire un qualsiasi
+algoritmo eseguito sulla macchina a $k$ nastri su un solo nastro. La complessita' dell'emulatore ci
+da' un upper bound alla complessita' legato dall'overhead richiesto per la simulazione.
+
+La prima ipotesi che facciamo e' la seguente: non poniamo restrizioni sull'alfabeto dei nastri.
+Possiamo pensare di avere un alfabeto molto ricco per la macchina ad un nastro. In particolare
+possiamo immaginare di avere a disposizione un alfabeto i cui simboli rappresentano l'unione di vari
+pezzi dell'alfabeto originale. E' in un certo senso analogo all'utilizzo di una parola di memoria a
+64 bit per memorizzare due parole di memoria a 32 bit. Come abbiamo visto cambiare l'alfabeto
+comporta un overhead lineare.
+
+Facciamo poi un'altra ipotesi: da qualche parte dobbiamo memorizzare la posizione della testina.
+
+Noi immaginiamo di simulare $k$ nastri su un nastro solo utilizzando un alfabeto per il nostro
+nastro in cui ogni simbolo rappresenta $k$ nastri e $k$ ``tracce''. I simboli sui nastri simulati
+sono simboli dell'alfabeto originale, e sulle ``tracce'' memorizziamo la posizione della testina di
+ogni nastro rispetto al nastro simulato. In figura \ref{img:KTapesToOne} e' possibile vedere una rappresentazione
+grafica di questo processo.
+
+\begin{figure}[h]
+    \begin{center}
+        % TODO Should probably remake it in Tikz
+        \includegraphics[scale=0.3]{./img/KTapesToOne.png}    
+        \caption{Simulazione su una MdT con un nastro di una MdT con piu' nastri}
+        \label{img:KTapesToOne}
+    \end{center}
+\end{figure}
+
+Se $\Sigma$ e' l'alfabeto originale, il nuovo alfabeto e' $\Sigma' = (\Sigma \times
+\set{*,B})^{k}$.
+
+Proviamo ora a capire quanto ci costa simulare una operazione della macchina a $k$ nastri su questa
+macchina.
+
+Ci sono dei piccoli accorgimenti che si possono fare per avere dei miglioramenti dal punto di vista
+della complessita' in tempo, a dispendio della memoria. Ad esempio potremmo immaginare di
+memorizzare dell'informazione ulteriore che ci dia una direzione nella quale dovremmo cercare la
+testina, in modo da non dover scansionare l'intero nastro. Tuttavia queste ottimizzazioni non sono
+significative a livello di complessita'.
+
+Supponiamo di avere due nastri per semplicita'. La nostra macchina sarebbe descritta da $n$-uple
+cosi' fatte:
+\begin{equation*}
+    ((a_{1},a_{2}),q,(a_{1}',a_{2}'),q',(M_{1},M_{2}))
+\end{equation*}
+dove $a_{1},a_{2}$ sono i caratteri in lettura, $M_{1}$ e $M_{2}$ sono le due mosse sulle testine,
+$a_{1}'$ e $a_{2}'$ sono i due nuovi caratteri da scrivere e $q$ e $q'$ rappresentano,
+rispettivamente, lo stato attuale e il nuovo stato. Questa e' una tipica istruzione della macchina a
+due nastri.
+
+Simulando questa macchina con un nastro solo abbiamo quindi bisogno di una prima passata del nastro
+per capire quali sono i caratteri in lettura e salvarli in uno stato interno. A questo punto
+riportiamo la testina all'``inizio'' del nastro e facciamo un'altra passata per scrivere i nuovi
+caratteri. Infine facciamo una terza passata per simulare la mossa sui nastri simulati.
+
+Sono quindi necessarie piu' passate per simulare un'operazione della macchina a piu' nastri.
+Un'operazione che aveva costo 1 ora ha un costo che dipende dall'occupazione di memoria. Possiamo
+dare un upper bound alla dimensione del nastro al tempo $t$?  Si', abbiamo un limite lineare in $t$.
+Siamo passati da costo 1 a costo $O(t)$. Inoltre il nostro upper bound non e' costante, peggiora col
+tempo.
+
+Qual e' il costo totale della simulazione? Abbiamo una somma di operazioni di costo lineare. Di
+conseguenza avremo un costo totale quadratico.
+
+Abbiamo quindi visto che con una simulazione fatta in questo modo abbiamo un overhead quadratico.
+Non abbiamo pero' dimostrato che passando da $n$ nastri ad un nastro abbiamo necessariamente un
+overhead quadratico. Ci potrebbe essere un modo migliore per fare simulazioni che non implica questo
+aggravio nella complessita'.
+
+Un altro modo in cui potremmo fare la nostra simulazione e' quello di utilizzare un alfabeto
+$\Sigma' = \Sigma^{k}$, se $\Sigma$ era l'alfabeto di partenza, e immaginare di tenere le testine
+tutte allineate e che siano i nastri a muoversi sotto le testine.
+
+Con una simulazione fatta in questo modo non dobbiamo piu' cercare la testina, i caratteri in
+lettura li troviamo subito, le scritture le facciamo immediatamente. Quello che diventa complicato
+e' fare la mossa. Dobbiamo fare una riscrittura dell'intero nastro per fare questo shift dei nastri
+simulati. Questo richiede quantomeno una scansione della memoria occupata.
+
+% TODO c'e' un discorso sul fatto che utilizzando 2 testine per la simulazione abbiamo un overhead
+% ammortizzato, ma non lo abbiamo visto approfonditamente in classe. Potrebbe essere interessante da
+% aggiungere
+%
+%Passando da $k$ nastri a 2 nastri abbiamo una versione ammortizzata, ma passando ad un nastro solo
+%non c'e' modo. (Slide 53)
+
+L'overhead di simulare una macchina a $k$ nastri con una macchina ad un nastro solo sembra quindi
+essere intrinsicamente quadratico.
+
+% TODO volendo si potrebbe approfondire il discorso su questo linguaggio non riconoscibile in
+% o(n^{2}). La dimostrazione e' interessante
+
+%Slide 59
+
+A riprova di questo fatto esistono linguaggi che sono riconoscibili in tempo lineare con una
+macchina a due nastri, in tempo quadratico con una macchina ad un nastro, ma che non sono
+riconoscibili in un tempo che sia un $o(n^{2})$ con una macchina ad un nastro. Un linguaggio con
+queste caratteristiche e' il seguente:
+\begin{equation*}
+    \Lang = \set{w\#^{|w|}w \mid w \in \set{0,1}^{*}}
+\end{equation*}
+
+La dimostrazione di questo fatto e' interessante perche' e' in generale difficile dimostrare che un
+certo problema non si possa risolvere con un algoritmo di complessita' migliore di una nota. La
+dimostrazione fa inoltre uso della complessita' di Kolmogorov.
+
+\subsubsection{Nota sugli slowdown}
+
+Nel calcolare gli slowdown prendiamo un'operazione di costo costante e vediamo quanto costa
+eseguirla in un altro modo. In questo modo la complessita' dell'altro modo corrisponde allo slowdown
+che abbiamo.
+
+Se non abbiamo costo costante dobbiamo fare un'analisi piu' sofisticata. O prendiamo il caso
+pessimo, e cosi' diamo un upper bound. Questo pero' potrebbe essere troppo esagerato, e sarebbe il
+caso di dare un upper bound definito meglio.
+
+\subsection{Random Access Machine}
+
+Quanto dipende la complessita' dalla modello che utlizziamo? Per rispondere a questa domanda vediamo
+un modello di calcolo molto piu' ``liberale'' della MdT: la Random Access Machine (RAM).
+
+In una RAM abbiamo delle celle di memoria tutte indirizzabili, come se fossero dei registri. Di
+queste ne abbiamo una quantita' numerabile. Possiamo accedere a queste mediante ``indirizzi'', che
+possiamo immaginare per semplicita' esssere dei numeri interi. L'ipotesi forte che facciamo e' che
+ogni registro possa avere dimensione illimitata: in ogni registro possiamo scrivere numeri
+arbitrariamente grandi.
+
+Abbiamo, tra i vari registri, il program counter, che e' un registro particolare che mantiene la
+prossima istruzione da eseguire.
+
+Non e' un modello realistico di complessita', proprio per via di questa ipotesi non realistica.
+
+Usiamo le seguenti notazioni:
+\begin{itemize}
+    \item $r_{i}$ rappresenta il contenuto del registro $i$-esimo. Utilizziamo il registro $r_{0}$
+    come accumulatore;
+    \item $i_{j}$ rappresenta il $j$-esimo input;
+    \item $k$ rappresenta il program counter.
+\end{itemize}
+Il comportamento della macchina e' descritto da programmi composti da una sequenza di istruzioni di
+uno dei seguenti tipi:
+\begin{itemize}
+    \item \textsc{read}, che ha due varianti:
+    \begin{itemize}
+        \item $\textsc{read }j$, con la seguente semantica: $r_{0} \gets i_{j}$ 
+        \item $\textsc{read }\uparrow j$, con la seguente semantica: $r_{0} \gets i_{r_{j}}$ 
+    \end{itemize}
+    \item \textsc{store}, che ha due varianti:
+    \begin{itemize}
+        \item $\textsc{store }j$, con la seguente semantica: $r_{j} \gets r_{0}$ 
+        \item $\textsc{store }\uparrow j$, con la seguente semantica: $r_{r_{j}} \gets r_{0}$ 
+    \end{itemize}
+    \item $\textsc{load }x$, con semantica $r_{0} \gets x$
+    \item $\textsc{add }x$, con semantica $r_{0} \gets r_{0} + x$
+    \item $\textsc{sub }x$, con semantica $r_{0} \gets r_{0} - x$
+    \item $\textsc{half}$, con semantica $r_{0} \gets r_{0} / 2$
+    \item $\textsc{jump }j$, con semantica $k \gets j$
+    \item $\textsc{jpos }j$, con semantica \textbf{if} $r_{0} > 0$ \textbf{then} $k \gets j$
+    \item $\textsc{jzero }j$, con semantica \textbf{if} $r_{0} = 0$ \textbf{then} $k \gets j$
+    \item $\textsc{halt}$, con semantica $k \gets 0$
+\end{itemize}
+
+E' molto simile ad un linguaggio Assembler di un tipico calcolatore. Questo e' un modello piu'
+vicino alla macchina di Von Neumann rispetto alla MdT. Consideriamo di costo 1 tutte le operazioni
+della RAM, indipendentemente dal fatto che lavorino su interi di grandezza arbitraria. Inoltre se
+immaginiamo di avere un problema per cui la dimensione dei nostri registri e' sufficiente il modello
+risulta abbastanza fedele a quello di Von Neumann, e quindi alla realta'.
+
+Questo e' un modello abbastanza flessibile e generale, e' difficile immaginare di meglio. Questo
+giustifica anche l'irrealta' di questo modello.
+
+Quanto ci costa simulare questa macchina con una MdT? 
+
+Abbiamo delle ipotesi. All'inizio della computazione e' caricato in un particolare registro con
+l'input, il PC e' settato all'inizio del nostro programma e tutte le altre celle sono memorizzate a
+vuoto, non contengono informazione.
+
+Il problema principale e' come gestiamo la memoria di questa macchina nella MdT. Immaginiamo di
+usare un nastro della MdT per la simulazione della memoria. Dobbiamo simulare, registro per
+registro, il contenuto dei registri. All'inizio abbiamo solo il registro di input con informazione
+interessante.
+
+Non sappiamo in che modo saranno scritti i registri della macchina. Ad esempio non possiamo supporre
+che avremo accessi sequenziali (prima il primo registro, poi il secondo, ecc.). Un modo semplice per
+simulare la memoria e' descrivere ogni registro con due campi: il nome (il numero) e il valore. Ogni
+registro corrisponde ad una coppia nome-valore.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/RAMsimulation.pdf}
+        \caption{Simulazione dei regisri di una RAM in una MdT}
+    \end{center}
+\end{figure}
+
+In generale non possiamo dare un upper bound ne' al numero dei registri ne' alla dimensione di
+questi. Potremmo avere un numero arbitrario di registri occupati con valori arbitrariamente grandi.
+
+Sul nastro della memoria memorizziamo le coppie in maniera sequenziale.
+
+Immaginiamo di voler simulare un'operazione, ad esempio la somma. Solitamente si immagina il
+registro $r_{0}$ come l'accumulatore utilizzato per le operazioni aritmetiche.
+
+Immaginiamo di sommare, ad esempio, al registro $r_{0}$ il valore del registro $r_{25}$. Dovremo
+fare una ricerca in memoria del registro $r_{25}$, leggere il valore e sommarlo al contenuto del
+registro $r_{0}$. Non abbiamo problemi di dimensione dell'accumulatore se ad esso dedichiamo un
+intero nastro.
+
+Non abbiamo limiti sul numero dei nastri, purche' sia finito. Non possiamo immaginare un nastro per
+registro.
+
+Immaginiamo di voler simulare una memorizzazione, magari del risultato della somma. Dobbiamo quindi
+scrivere un nuovo valore al posto del valore del registro $r_{0}$. Dovremmo quindi fare delle
+operazioni ulteroiri per simulare la memorizzazione, ad esempio uno shift delle coppie nome-valore
+verso destra per fare spazio.
+
+Quello che facciamo e' una cosa brutale: cancelliamo il registro (nome-valore) e lo riscriviamo in
+fondo. Ha lo stesso costo dello shift, ovvero quello di una scansione della memoria.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.75]{./img/RAMstore.pdf}
+        \caption{Simulazione di una memorizzazione in una MdT}
+    \end{center}
+\end{figure}
+
+Con questo approccio abbiamo problemi di frammentazione e un'occupazione di memoria maggiore
+rispetto a quella che avremmo con lo shift, ma in termini di complessita' questo non fa alcuna
+differenza.
+
+Cosa possiamo dire sulla dimensione della memoria al tempo $t$ della macchina simulata? Ci chiediamo
+quanti registri possiamo avere e quanto questi possono essere grandi.
+
+Il numero di registri referenziati e' limitato da $O(t)$. Quant'e' l'occupazione massima di questi
+registri? Sempre $O(t)$. Perche'? Abbiamo una sola operazione che aumenta i valori dei registri, e
+quindi l'occupazione di memoria: la somma. Abbiamo che la somma di due numeri di dimensione $n$ puo'
+avere al piu' dimensione $n+1$. Di conseguenza, al tempo $t$, abbiamo una occupazione al piu'
+quadratica della memoria della macchina simulata.
+
+Simulare una operazione della RAM ci costa quindi $O(t^{2})$. Il costo complessivo della somma sara'
+la somma dei $t^{2}$ per $t$ che va da 1 a $t_{\textit{fin}}$. Abbiamo quindi un costo totale
+$O(t^{3})$.
+
+Simulare una RAM con una MdT puo' portare ad uno slowdown cubico. Potrebbe andare meglio, ma nel
+caso pessimo abbiamo questa complessita'. Questa inoltre potrebbe peggiorare se facessimo la
+simulazione con un solo nastro.
+
+Possiamo vedere questo risultato in maniera positiva o negativa. Da un certo punto di vista questo
+slowdown e' gravoso. Dall'altro questo slowdown e' comunque polinomiale. In ogni caso un algoritmo
+che su RAM aveva complessita' polinomiale se simulato con una MdT continuera' ad avere una
+complessita' polinomiale.
+
+Questo e' vero per un modello di calcolo molto liberale. Di conseguenza la complessita'
+computazionale di un algoritmo dipende dal modello di calcolo, ma se un modello e' ``ragionevole''
+la complessita' dell'algoritmo rimarra' polinomiale anche su questo. La classe polinomiale dei
+problemi e' quindi una classe relativamente stabile rispetto al modello di calcolo con cui la
+studiamo.
+
+Questo e' vero entro i limiti di ragionevolezza. Cosa intendiamo? Supponiamo di avere come primitiva
+anche l'operazione di moltiplicazione. Quello che succede e' che nella simulazione l'occupazione di
+memoria esplode: diventa esponenziale. Questo perche' con la moltiplicazione l'occupazione di
+memoria puo' crescere di $n$ con un'operazione, dato che il prodotto di numeri di dimensione $n$ ha
+puo' avere dimensione $2n$. Avremmo un overhead esponenziale.
+
+E' quindi importante che il modello che utilizziamo abbia un minimo di ragionevolezza. Non ha senso
+contare 1 il costo dell'operazione di moltiplicazione. In un certo senso e' gia' strano che
+l'addizione abbia costo 1, ma nella RAM lo ammettiamo, e questo si rivela non causare problemi.
+
+Abbiamo quindi due conclusioni importanti:
+\begin{itemize}
+    \item la complessita' computazionale dipende dal modello di calcolo;
+    \item se usiamo modelli di calcolo ragionevoli la complessita' computazionale su di essi non
+    differisce piu' che polinomialmente.
+\end{itemize}
+
+C'e' chi parla di generalizzazione della tesi di Church, dove alla calcolabilita' corrisponde la
+complessita' polinomiale e ai modelli Turing completi corrispondono modelli di calcolo ragionevoli.
+Tuttavia questo dipende troppo dalle assunzioni che facciamo sul modello di calcolo, e quindi non ha
+la generalita' e lo spessore della tesi di Church.

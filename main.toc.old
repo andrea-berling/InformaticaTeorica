@@ -1,108 +1,123 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
-\contentsline {part}{I\hspace {1em}Calcolabilit\IeC {\`a}}{4}{part.1}% 
-\contentsline {chapter}{\numberline {1}Numerabilit\IeC {\`a} e funzioni}{5}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Finito vs. Infinito}{5}{section.1.1}% 
-\contentsline {section}{\numberline {1.2}Numerabilit\IeC {\`a}}{7}{section.1.2}% 
-\contentsline {section}{\numberline {1.3}Diagonalizzazione}{9}{section.1.3}% 
-\contentsline {section}{\numberline {1.4}Definibilit\IeC {\`a} vs. Calcolabilit\IeC {\`a}}{11}{section.1.4}% 
-\contentsline {subsection}{\numberline {1.4.1}Paradosso di Russel}{11}{subsection.1.4.1}% 
-\contentsline {subsection}{\numberline {1.4.2}Paradosso di Berry}{12}{subsection.1.4.2}% 
-\contentsline {chapter}{\numberline {2}Il formalismo primitivo ricorsivo}{14}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Ricorsione primitiva}{14}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Esempi di funzioni primitive ricorsive}{16}{subsection.2.1.1}% 
-\contentsline {section}{\numberline {2.2}Test di primalit\IeC {\`a}}{18}{section.2.2}% 
-\contentsline {section}{\numberline {2.3}Minimizzazione}{18}{section.2.3}% 
-\contentsline {section}{\numberline {2.4}Generazione numeri primi}{19}{section.2.4}% 
-\contentsline {section}{\numberline {2.5}Ricorsione multipla}{20}{section.2.5}% 
-\contentsline {section}{\numberline {2.6}Funzione di Ackermann}{21}{section.2.6}% 
-\contentsline {chapter}{\numberline {3}Altri formalisimi e Macchine di Turing}{23}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Formalismi totali e problema dell'interprete}{23}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Tesi di Church}{25}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Alcuni formalismi Turing completi}{26}{section.3.3}% 
-\contentsline {section}{\numberline {3.4}Macchine di Turing}{27}{section.3.4}% 
-\contentsline {section}{\numberline {3.5}Macchine universali}{30}{section.3.5}% 
-\contentsline {chapter}{\numberline {4}Problemi indecidibili}{32}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Note introduttive su programmi e funzioni}{32}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Il problema della fermata}{32}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Propriet\IeC {\`a} s-m-n}{33}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Il predicato $T$ di Kleene}{36}{section.4.4}% 
-\contentsline {chapter}{\numberline {5}Insiemi ricorsivi e ricorsivamente enumerabili}{38}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Relazione tra insiemi ricorsivi e r.e.}{38}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Enumerazioni iniettive e monotone}{42}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Insiemi r.e. e semidecisione}{44}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Caratterizzazioni alternative di un insieme r.e.}{44}{section.5.4}% 
-\contentsline {subsection}{\numberline {5.4.1}Teorema della proiezione}{46}{subsection.5.4.1}% 
-\contentsline {section}{\numberline {5.5}Ulteriori propriet\IeC {\`a} di chiusura degli insiemi r.e.}{47}{section.5.5}% 
-\contentsline {chapter}{\numberline {6}I teoremi di Rice e di Rice-Shapiro}{50}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Propriet\IeC {\`a} estensionali}{50}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Il teorema di Rice}{51}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Teorema di Rice-Shapiro}{51}{section.6.3}% 
-\contentsline {subsection}{\numberline {6.3.1}Propriet\IeC {\`a} compatte e monotone}{51}{subsection.6.3.1}% 
-\contentsline {subsection}{\numberline {6.3.2}Il teorema di Rice-Shapiro}{53}{subsection.6.3.2}% 
-\contentsline {chapter}{\numberline {7}Teorema del punto fisso}{56}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Il teorema del punto fisso di Kleene}{56}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Il secondo teorema del punto fisso}{57}{section.7.2}% 
-\contentsline {chapter}{\numberline {8}Riducibilit\IeC {\`a}}{59}{chapter.8}% 
-\contentsline {section}{\numberline {8.1}\emph {Many-to-one} reducibility}{59}{section.8.1}% 
-\contentsline {section}{\numberline {8.2}Completezza}{60}{section.8.2}% 
-\contentsline {section}{\numberline {8.3}Insiemi produttivi e creativi}{61}{section.8.3}% 
-\contentsline {section}{\numberline {8.4}Relazione tra creativit\IeC {\`a} e completezza}{62}{section.8.4}% 
-\contentsline {section}{\numberline {8.5}Insiemi r.e. non completi}{63}{section.8.5}% 
-\contentsline {subsection}{\numberline {8.5.1}Complessit\IeC {\`a} di Kolmogorov}{65}{subsection.8.5.1}% 
-\contentsline {subsection}{\numberline {8.5.2}Numeri random}{66}{subsection.8.5.2}% 
-\contentsline {chapter}{\numberline {9}La gerarchia aritmetica}{68}{chapter.9}% 
-\contentsline {section}{\numberline {9.1}Aritmetica e incompletezza}{68}{section.9.1}% 
-\contentsline {section}{\numberline {9.2}La gerarchia aritmetica}{70}{section.9.2}% 
-\contentsline {chapter}{\numberline {10}Esercizi svolti in classe}{72}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}Compito Parziale Gennaio 2018}{72}{section.10.1}% 
-\contentsline {subsection}{\numberline {10.1.1}Esercizio 1}{72}{subsection.10.1.1}% 
-\contentsline {subsubsection}{Soluzione}{72}{section*.2}% 
-\contentsline {subsubsection}{Approfondimento}{72}{section*.3}% 
-\contentsline {subsection}{\numberline {10.1.2}Esercizio 2}{73}{subsection.10.1.2}% 
-\contentsline {subsubsection}{Soluzione}{73}{section*.4}% 
-\contentsline {subsection}{\numberline {10.1.3}Esercizio 3}{73}{subsection.10.1.3}% 
-\contentsline {subsubsection}{Soluzione}{73}{section*.5}% 
-\contentsline {subsection}{\numberline {10.1.4}Esercizio 4}{73}{subsection.10.1.4}% 
-\contentsline {subsubsection}{Soluzione}{74}{section*.6}% 
-\contentsline {subsection}{\numberline {10.1.5}Esercizio 5}{74}{subsection.10.1.5}% 
-\contentsline {subsubsection}{Soluzione}{74}{section*.7}% 
-\contentsline {subsubsection}{Approfondimento}{74}{section*.8}% 
-\contentsline {section}{\numberline {10.2}Altri esercizi}{75}{section.10.2}% 
-\contentsline {subsection}{\numberline {10.2.1}Esecuzione parallela}{75}{subsection.10.2.1}% 
-\contentsline {subsection}{\numberline {10.2.2}Estensione totale di funzioni parziali}{75}{subsection.10.2.2}% 
-\contentsline {subsection}{\numberline {10.2.3}Classificazione di un insieme non estensionale}{76}{subsection.10.2.3}% 
-\contentsline {subsection}{\numberline {10.2.4}Differenza tra un insieme r.e. ed un insieme finito}{76}{subsection.10.2.4}% 
-\contentsline {section}{\numberline {10.3}Remark finale sulla calcolabilit\IeC {\`a} di certe funzioni}{77}{section.10.3}% 
-\contentsline {part}{II\hspace {1em}Complessit\IeC {\`a}}{78}{part.2}% 
-\contentsline {chapter}{\numberline {11}Introduzione}{79}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Complessit\IeC {\`a}, costi, analisi}{79}{section.11.1}% 
-\contentsline {section}{\numberline {11.2}Modelli di calcolo}{80}{section.11.2}% 
-\contentsline {section}{\numberline {11.3}La classe $\mathbb {NP}$}{80}{section.11.3}% 
-\contentsline {section}{\numberline {11.4}Dimensione dei dati di input}{81}{section.11.4}% 
-\contentsline {section}{\numberline {11.5}Notazioni d'ordine}{82}{section.11.5}% 
-\contentsline {subsection}{\numberline {11.5.1}Complessit\IeC {\`a} sublineari}{83}{subsection.11.5.1}% 
-\contentsline {section}{\numberline {11.6}Grafi}{84}{section.11.6}% 
-\contentsline {subsection}{\numberline {11.6.1}Problemi tipici sui grafi}{84}{subsection.11.6.1}% 
-\contentsline {subsection}{\numberline {11.6.2}Rappresentazione di un grafo}{85}{subsection.11.6.2}% 
-\contentsline {subsection}{\numberline {11.6.3}Raggiungibilit\IeC {\`a}}{85}{subsection.11.6.3}% 
-\contentsline {section}{\numberline {11.7}Analisi di problemi}{87}{section.11.7}% 
-\contentsline {subsection}{\numberline {11.7.1}Colorabilit\IeC {\`a}}{88}{subsection.11.7.1}% 
-\contentsline {subsection}{\numberline {11.7.2}Problemi di flusso}{89}{subsection.11.7.2}% 
-\contentsline {section}{\numberline {11.8}Problemi decisionali}{90}{section.11.8}% 
-\contentsline {section}{\numberline {11.9}Problemi e linguaggi}{91}{section.11.9}% 
-\contentsline {section}{\numberline {11.10}Riduzioni}{91}{section.11.10}% 
-\contentsline {subsection}{\numberline {11.10.1}Matching bipartito}{91}{subsection.11.10.1}% 
-\contentsline {subsection}{\numberline {11.10.2}Riducibilit\IeC {\`a} e classi di complessit\IeC {\`a}}{93}{subsection.11.10.2}% 
-\contentsline {subsection}{\numberline {11.10.3}Complessit\IeC {\`a} di $f$}{94}{subsection.11.10.3}% 
-\contentsline {subsection}{\numberline {11.10.4}Colorabilit\IeC {\`a}}{94}{subsection.11.10.4}% 
-\contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{95}{subsection.11.10.5}% 
-\contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{95}{section.11.11}% 
-\contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{96}{section.11.12}% 
-\contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{98}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Macchine di Turing}{98}{section.12.1}% 
-\contentsline {subsection}{\numberline {12.1.1}Convensioni di input output}{99}{subsection.12.1.1}% 
-\contentsline {subsection}{\numberline {12.1.2}Configurazioni}{99}{subsection.12.1.2}% 
-\contentsline {section}{\numberline {12.2}Classi di complessit\IeC {\`a}}{100}{section.12.2}% 
-\contentsline {section}{\numberline {12.3}Relazione tra spazio e tempo}{102}{section.12.3}% 
-\contentsline {section}{\numberline {12.4}Dipendenza dal modello di calcolo}{104}{section.12.4}% 
+\contentsline {part}{I\hspace {1em}Calcolabilit\IeC {\`a}}{6}{part.1}% 
+\contentsline {chapter}{\numberline {1}Numerabilit\IeC {\`a} e funzioni}{7}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Finito vs. Infinito}{7}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Numerabilit\IeC {\`a}}{9}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Diagonalizzazione}{11}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Definibilit\IeC {\`a} vs. Calcolabilit\IeC {\`a}}{13}{section.1.4}% 
+\contentsline {subsection}{\numberline {1.4.1}Paradosso di Russel}{13}{subsection.1.4.1}% 
+\contentsline {subsection}{\numberline {1.4.2}Paradosso di Berry}{14}{subsection.1.4.2}% 
+\contentsline {chapter}{\numberline {2}Il formalismo primitivo ricorsivo}{16}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Ricorsione primitiva}{16}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Esempi di funzioni primitive ricorsive}{18}{subsection.2.1.1}% 
+\contentsline {section}{\numberline {2.2}Test di primalit\IeC {\`a}}{20}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Minimizzazione}{20}{section.2.3}% 
+\contentsline {section}{\numberline {2.4}Generazione numeri primi}{21}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}Ricorsione multipla}{22}{section.2.5}% 
+\contentsline {section}{\numberline {2.6}Funzione di Ackermann}{23}{section.2.6}% 
+\contentsline {chapter}{\numberline {3}Altri formalisimi e Macchine di Turing}{25}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Formalismi totali e problema dell'interprete}{25}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Tesi di Church}{27}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Alcuni formalismi Turing completi}{28}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}Macchine di Turing}{29}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}Macchine universali}{32}{section.3.5}% 
+\contentsline {chapter}{\numberline {4}Problemi indecidibili}{34}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Note introduttive su programmi e funzioni}{34}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Il problema della fermata}{34}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Propriet\IeC {\`a} s-m-n}{35}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Il predicato $T$ di Kleene}{38}{section.4.4}% 
+\contentsline {chapter}{\numberline {5}Insiemi ricorsivi e ricorsivamente enumerabili}{40}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Relazione tra insiemi ricorsivi e r.e.}{40}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Enumerazioni iniettive e monotone}{44}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Insiemi r.e. e semidecisione}{46}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Caratterizzazioni alternative di un insieme r.e.}{46}{section.5.4}% 
+\contentsline {subsection}{\numberline {5.4.1}Teorema della proiezione}{48}{subsection.5.4.1}% 
+\contentsline {section}{\numberline {5.5}Ulteriori propriet\IeC {\`a} di chiusura degli insiemi r.e.}{49}{section.5.5}% 
+\contentsline {chapter}{\numberline {6}I teoremi di Rice e di Rice-Shapiro}{52}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Propriet\IeC {\`a} estensionali}{52}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Il teorema di Rice}{53}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Teorema di Rice-Shapiro}{53}{section.6.3}% 
+\contentsline {subsection}{\numberline {6.3.1}Propriet\IeC {\`a} compatte e monotone}{53}{subsection.6.3.1}% 
+\contentsline {subsection}{\numberline {6.3.2}Il teorema di Rice-Shapiro}{55}{subsection.6.3.2}% 
+\contentsline {chapter}{\numberline {7}Teorema del punto fisso}{58}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Il teorema del punto fisso di Kleene}{58}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Il secondo teorema del punto fisso}{59}{section.7.2}% 
+\contentsline {chapter}{\numberline {8}Riducibilit\IeC {\`a}}{61}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}\emph {Many-to-one} reducibility}{61}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}Completezza}{62}{section.8.2}% 
+\contentsline {section}{\numberline {8.3}Insiemi produttivi e creativi}{63}{section.8.3}% 
+\contentsline {section}{\numberline {8.4}Relazione tra creativit\IeC {\`a} e completezza}{64}{section.8.4}% 
+\contentsline {section}{\numberline {8.5}Insiemi r.e. non completi}{65}{section.8.5}% 
+\contentsline {subsection}{\numberline {8.5.1}Complessit\IeC {\`a} di Kolmogorov}{67}{subsection.8.5.1}% 
+\contentsline {subsection}{\numberline {8.5.2}Numeri random}{68}{subsection.8.5.2}% 
+\contentsline {chapter}{\numberline {9}La gerarchia aritmetica}{70}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}Aritmetica e incompletezza}{70}{section.9.1}% 
+\contentsline {section}{\numberline {9.2}La gerarchia aritmetica}{72}{section.9.2}% 
+\contentsline {chapter}{\numberline {10}Esercizi svolti in classe}{74}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Compito Parziale Gennaio 2018}{74}{section.10.1}% 
+\contentsline {subsection}{\numberline {10.1.1}Esercizio 1}{74}{subsection.10.1.1}% 
+\contentsline {subsubsection}{Soluzione}{74}{section*.2}% 
+\contentsline {subsubsection}{Approfondimento}{74}{section*.3}% 
+\contentsline {subsection}{\numberline {10.1.2}Esercizio 2}{75}{subsection.10.1.2}% 
+\contentsline {subsubsection}{Soluzione}{75}{section*.4}% 
+\contentsline {subsection}{\numberline {10.1.3}Esercizio 3}{75}{subsection.10.1.3}% 
+\contentsline {subsubsection}{Soluzione}{75}{section*.5}% 
+\contentsline {subsection}{\numberline {10.1.4}Esercizio 4}{75}{subsection.10.1.4}% 
+\contentsline {subsubsection}{Soluzione}{76}{section*.6}% 
+\contentsline {subsection}{\numberline {10.1.5}Esercizio 5}{76}{subsection.10.1.5}% 
+\contentsline {subsubsection}{Soluzione}{76}{section*.7}% 
+\contentsline {subsubsection}{Approfondimento}{76}{section*.8}% 
+\contentsline {section}{\numberline {10.2}Altri esercizi}{77}{section.10.2}% 
+\contentsline {subsection}{\numberline {10.2.1}Esecuzione parallela}{77}{subsection.10.2.1}% 
+\contentsline {subsection}{\numberline {10.2.2}Estensione totale di funzioni parziali}{77}{subsection.10.2.2}% 
+\contentsline {subsection}{\numberline {10.2.3}Classificazione di un insieme non estensionale}{78}{subsection.10.2.3}% 
+\contentsline {subsection}{\numberline {10.2.4}Differenza tra un insieme r.e. ed un insieme finito}{78}{subsection.10.2.4}% 
+\contentsline {section}{\numberline {10.3}Remark finale sulla calcolabilit\IeC {\`a} di certe funzioni}{79}{section.10.3}% 
+\contentsline {part}{II\hspace {1em}Complessit\IeC {\`a}}{80}{part.2}% 
+\contentsline {chapter}{\numberline {11}Introduzione}{81}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Complessit\IeC {\`a}, costi, analisi}{81}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Modelli di calcolo}{82}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}La classe $\mathbb {NP}$}{82}{section.11.3}% 
+\contentsline {section}{\numberline {11.4}Dimensione dei dati di input}{83}{section.11.4}% 
+\contentsline {section}{\numberline {11.5}Notazioni d'ordine}{84}{section.11.5}% 
+\contentsline {subsection}{\numberline {11.5.1}Complessit\IeC {\`a} sublineari}{85}{subsection.11.5.1}% 
+\contentsline {section}{\numberline {11.6}Grafi}{86}{section.11.6}% 
+\contentsline {subsection}{\numberline {11.6.1}Problemi tipici sui grafi}{86}{subsection.11.6.1}% 
+\contentsline {subsection}{\numberline {11.6.2}Rappresentazione di un grafo}{87}{subsection.11.6.2}% 
+\contentsline {subsection}{\numberline {11.6.3}Raggiungibilit\IeC {\`a}}{87}{subsection.11.6.3}% 
+\contentsline {section}{\numberline {11.7}Analisi di problemi}{89}{section.11.7}% 
+\contentsline {subsection}{\numberline {11.7.1}Colorabilit\IeC {\`a}}{90}{subsection.11.7.1}% 
+\contentsline {subsection}{\numberline {11.7.2}Problemi di flusso}{91}{subsection.11.7.2}% 
+\contentsline {section}{\numberline {11.8}Problemi decisionali}{92}{section.11.8}% 
+\contentsline {section}{\numberline {11.9}Problemi e linguaggi}{93}{section.11.9}% 
+\contentsline {section}{\numberline {11.10}Riduzioni}{93}{section.11.10}% 
+\contentsline {subsection}{\numberline {11.10.1}Matching bipartito}{93}{subsection.11.10.1}% 
+\contentsline {subsection}{\numberline {11.10.2}Riducibilit\IeC {\`a} e classi di complessit\IeC {\`a}}{95}{subsection.11.10.2}% 
+\contentsline {subsection}{\numberline {11.10.3}Complessit\IeC {\`a} di $f$}{96}{subsection.11.10.3}% 
+\contentsline {subsection}{\numberline {11.10.4}Colorabilit\IeC {\`a}}{96}{subsection.11.10.4}% 
+\contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{97}{subsection.11.10.5}% 
+\contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{97}{section.11.11}% 
+\contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{98}{section.11.12}% 
+\contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{100}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Macchine di Turing}{100}{section.12.1}% 
+\contentsline {subsection}{\numberline {12.1.1}Convensioni di input output}{101}{subsection.12.1.1}% 
+\contentsline {subsection}{\numberline {12.1.2}Configurazioni}{101}{subsection.12.1.2}% 
+\contentsline {section}{\numberline {12.2}Classi di complessit\IeC {\`a}}{102}{section.12.2}% 
+\contentsline {section}{\numberline {12.3}Relazione tra spazio e tempo}{104}{section.12.3}% 
+\contentsline {section}{\numberline {12.4}Dipendenza dal modello di calcolo}{106}{section.12.4}% 
+\contentsline {subsection}{\numberline {12.4.1}Riduzione dei nastri}{106}{subsection.12.4.1}% 
+\contentsline {subsubsection}{Nota sugli slowdown}{109}{section*.9}% 
+\contentsline {subsection}{\numberline {12.4.2}Random Access Machine}{109}{subsection.12.4.2}% 
+\contentsline {chapter}{\numberline {13}Gerarchie in spazio e tempo}{114}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}I teoremi della gerarchia}{114}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Il teorema della gerarchia in spazio}{114}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Il teorema della gerarchia in tempo}{118}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Alcune gerarchie di complessita'}{120}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}Padding}{121}{section.13.3}% 
+\contentsline {subsection}{\numberline {13.3.1}Complessita' della composizione di funzioni}{125}{subsection.13.3.1}% 
+\contentsline {section}{\numberline {13.4}Conclusioni}{125}{section.13.4}% 
+\contentsline {chapter}{\numberline {14}Complessita' non deterministica}{127}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Macchine di Turing non deterministiche}{127}{section.14.1}% 
+\contentsline {section}{\numberline {14.2}Complessita' non deterministica}{128}{section.14.2}% 
+\contentsline {section}{\numberline {14.3}Simulazione del non determinismo}{129}{section.14.3}% 

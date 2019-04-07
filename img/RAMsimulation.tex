@@ -1,0 +1,23 @@
+\documentclass{standalone}
+
+\usepackage{TikzStyle}
+\usepackage{mystyle}
+
+% pos, num
+\newcommand{\Cell}[2]{%
+    \draw[xshift=#1 cm,very thick] (0,0) -- (0,-1);
+    \node () at ([shift={(#1,0)}]0.7,-0.5) {$\textit{nome}_{#2}$};
+    \draw[xshift=#1 cm] (1.5,0) -- (1.5,-1);
+    \node () at ([shift={(#1,0)}]2.3,-0.5) {$\textit{valore}_{#2}$};
+    \draw[xshift=#1 cm,very thick] (3,0) -- (3,-1);
+}
+
+\begin{document}
+    \begin{tikzpicture}
+        \draw (0,0) -- (10,0);
+        \draw (0,-1) -- (10,-1);
+        \Cell{1}{1};
+        \Cell{4}{2};
+        \node () at (8,-0.5) {$\cdots$};
+    \end{tikzpicture}
+\end{document}
