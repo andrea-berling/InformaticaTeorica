@@ -1,0 +1,48 @@
+%% img/2ColorableGraphs.tex
+%% Copyright 2019 Andrea Berlingieri
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Andrea Berlingieri.
+%
+% This work consists of all files listed in manifest.txt
+\documentclass{standalone}
+
+\usepackage{../../TikzStyle}
+\usepackage{../../mystyle}
+
+\def\dist{1}
+
+\begin{document}
+    \begin{tikzpicture}
+    [   node distance=\dist cm,on grid,auto,
+        every node/.style= {circle,draw},
+    ]
+    \node (g1n1) at (0,0) {};
+    \node[fill=black] (g1n2) [right= of g1n1] {};
+    \node (g1n3) [right= of g1n2] {};
+    \draw (g1n1) -- (g1n2) -- (g1n3);
+    \draw (g1n1) .. controls (0,-1) and (2,-1) .. (g1n3);
+
+    \node (g2n1) at (3.5,0) {};
+    \node (g2n2) [below right=of g2n1] {};
+    \node (g2n3) [below left=of g2n1] {};
+    \draw (g2n1) -- (g2n2) -- (g2n3) -- (g2n1);
+    
+    \node (g3n1) at (5,0) {};
+    \node (g3n2) [right=of g3n1] {};
+    \node (g3n3) [below=of g3n1] {};
+    \node (g3n4) [right=of g3n3] {};
+    \draw (g3n1) -- (g3n2) -- (g3n4) -- (g3n3) -- (g3n1);
+    \draw (g3n1) -- (g3n4);
+    \draw (g3n3) -- (g3n2);
+    \end{tikzpicture}
+\end{document}

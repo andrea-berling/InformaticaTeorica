@@ -145,7 +145,7 @@ riusciamo a dimostrare, la piu' famosa delle quali e' la questione $\PClass$  vs
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/spacehierarchy.pdf}
+            \includegraphics{./img/timespacehierarchies/spacehierarchy.pdf}
             \caption{L'input $\code{M_{0}}$ potrebbe essere in una posizione sfortunata. In generale
             non possiamo fare assunzioni su dove si trovi. La soluzione e' usare un $x$ che sposti
             piu' in la' l'input, dove abbiamo la certezza che $f$ sia al di sopra di $f'$}
@@ -309,7 +309,7 @@ tempo $O(t)$.
 
 %\begin{figure}[h]
 %    \begin{center}
-%        \includegraphics{./img/timehierarchy.pdf}    
+%        \includegraphics{./img/timespacehierarchies/timehierarchy.pdf}    
 %        \caption{Affinche' un linguaggio sia riconoscibile in $O(f)$ ma non in $O(f')$ richiediamo
 %        che $f' \in o\left(\frac{f}{\log(f)}\right)$. Si congettura che questo gap logaritmico
 %        ulteriore non sia necessario, ma cio' non e' ancora stato dimostrato.}
@@ -414,7 +414,7 @@ discorso suppone che estrarre $x$ da $w$ sia un'operazione di costo lineare.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/PaddingSpeedup.pdf}    
+        \includegraphics{./img/timespacehierarchies/PaddingSpeedup.pdf}    
         \caption{Riconoscere $\LPad$ costa in genere di meno di riconoscere $\Lang$}
     \end{center}
 \end{figure}
@@ -436,7 +436,7 @@ la dimostrazione che le due classi sono diverse.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/ClosedClass.pdf}    
+        \includegraphics{./img/timespacehierarchies/ClosedClass.pdf}    
         \caption{La classe $\CClass$ in figura e' chiusa rispetto alla trasformazione $T$}
     \end{center}
 \end{figure}
@@ -456,7 +456,7 @@ rispetto ad un certo tipo di padding.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/ExpvsExppvsPSpace.pdf}
+        \includegraphics{./img/timespacehierarchies/ExpvsExppvsPSpace.pdf}
         \caption{Gerarchia congetturata tra le classi $\PSPACE$, $\EXP$ e $\EXP_{p}$}
     \end{center}
 \end{figure}
@@ -492,7 +492,7 @@ rispetto ad un certo tipo di padding.
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/PaddingCheat.pdf}
+            \includegraphics{./img/timespacehierarchies/PaddingCheat.pdf}
             \caption{Riconoscere $\LPad$ ha una complessita' che ci permette di posizionarlo in
             $\EXP$ grazie al padding quadratico}
         \end{center}
@@ -505,7 +505,7 @@ rispetto ad un certo tipo di padding.
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/LPadComplexity.pdf}
+            \includegraphics{./img/timespacehierarchies/LPadComplexity.pdf}
             \caption{Sapendo che $\LPad \in \PSPACE$ riusciamo a concludere che anche $\Lang$
             appartiene a $\PSPACE$}
         \end{center}
@@ -544,7 +544,7 @@ dall'algoritmo. Non possiamo dare bound migliori per il caso pessimo.
 
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics{./img/FunctionsComposition.pdf}
+        \includegraphics{./img/timespacehierarchies/FunctionsComposition.pdf}
         \caption{Per conoscere la complessita' di $f \circ g$ dobbiamo conoscere l'ordine di
         grandezza degli output di $g$. Nel primo esempio abbiamo che l'output del depadding ha una
         dimensione pari alla radice quadrata dell'input, mentre il riconoscimento ha complessita'
@@ -564,7 +564,7 @@ possiamo utilizzare un diagramma come quello in figura $\ref{img:detclassesrelat
 
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics{./img/ComplexityDiagram.pdf}
+        \includegraphics{./img/timespacehierarchies/ComplexityDiagram.pdf}
         \caption{Relazioni di inclusioni tra alcune classi di complessita'}
         \label{img:detclassesrelations}
     \end{center}
