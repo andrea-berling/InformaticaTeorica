@@ -1,0 +1,43 @@
+%% img/nondeterminism/MdTN.tex
+%% Copyright 2019 Andrea Berlingieri
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Andrea Berlingieri.
+%
+% This work consists of all files listed in manifest.txt
+\documentclass{standalone}
+
+\usepackage{../TikzStyle}
+\usepackage{../mystyle}
+\usetikzlibrary{automata}
+
+\begin{document}
+    \begin{tikzpicture}
+        \node (cx) at (0,0) {$c_{x}$};
+        \node (c1) at (1.5,1) {$c$};
+        \node (c2) at (1.5,-1) {$c$};
+        \node (c3) at (3,0) {$c$};
+        \draw[->] (cx) -- (c1);
+        \draw[->] (cx) -- (c2);
+        \draw[->] (c1) -- (c3);
+        \draw[->] (c2) -- (c3);
+        \node (c21) at (3,-1) {};
+        \node (c22) at (4,-1.5) {};
+        \node[state,accepting,minimum size=3mm] (final) at (5,-1.2) {};
+        \draw[->] (c2) -- (c21);
+        \draw[->] (c21) -- (c22);
+        \draw[->] (c22) -- (final);
+        \draw[->] (c2) -- +(1.5,-1);
+        \draw[->] (c1) edge [loop above] (c1);
+        \path[->] (c2) edge [bend left=60] (cx);
+    \end{tikzpicture}
+\end{document}

@@ -41,3 +41,6 @@ img/Reducibility.tex
 img/SetsResolution.tex
 img/spacehierarchy.tex
 img/timehierarchy.tex
+img/FunctionsComposition.tex
+img/nondeterminism/MdTN.tex
+img/nondeterminism/Simulation.tex
