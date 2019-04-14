@@ -121,3 +121,11 @@
 \contentsline {section}{\numberline {14.1}Macchine di Turing non deterministiche}{128}{section.14.1}% 
 \contentsline {section}{\numberline {14.2}Complessita' non deterministica}{130}{section.14.2}% 
 \contentsline {section}{\numberline {14.3}Simulazione del non determinismo}{130}{section.14.3}% 
+\contentsline {subsection}{\numberline {14.3.1}Simulazione di una macchina non deterministica con un bound al tempo}{131}{subsection.14.3.1}% 
+\contentsline {subsection}{\numberline {14.3.2}Simulazione di una macchina non deterministica con un bound allo spazio}{133}{subsection.14.3.2}% 
+\contentsline {subsection}{\numberline {14.3.3}Teorema di Savitch}{135}{subsection.14.3.3}% 
+\contentsline {subsection}{\numberline {14.3.4}Gerarchie di complessita'}{138}{subsection.14.3.4}% 
+\contentsline {section}{\numberline {14.4}La classe $\mathbb {NP}$}{139}{section.14.4}% 
+\contentsline {subsection}{\numberline {14.4.1}Teorema della proiezione}{139}{subsection.14.4.1}% 
+\contentsline {subsection}{\numberline {14.4.2}Riducibilita'}{140}{subsection.14.4.2}% 
+\contentsline {subsection}{\numberline {14.4.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{142}{subsection.14.4.3}% 

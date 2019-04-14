@@ -166,7 +166,7 @@ ricorsivo. $K$ è r.e.?
 
 Proviamo a scrivere una funzione di enumerazione per $K$:
 \begin{python}
-    def $e_{K}(<i,t>)$:
+    def $e_{K}(\pair{i}{t})$:
         if $T^{3}(i,i,t) = 1$:
             return i
         else:
@@ -185,7 +185,7 @@ Il dovetailing è al variare dell'input. Mi muovo sugli input e sul tempo di com
 
 Si potrebbe fare anche nel seguente modo:
 \begin{equation*}
-    e_{K}(c) = fst(\mu <i,t>, <i,t> \geq c \land T(i,i,t))
+    e_{K}(c) = fst(\mu \pair{i}{t}, \pair{i}{t} \geq c \land T(i,i,t))
 \end{equation*}
 
 Il risultato finale è che $K$ è ricorsivamente enumerabile.
@@ -333,7 +333,7 @@ Come facciamo per il viceversa? Abbiamo la procedura di semidecisione per $A$ e 
 funzione di enumerazione per $A$. $f$ è delicata perché potrebbe divergere. Dobbiamo essere più
 astuti. L'idea è muoversi mediante dove tailing sull'input e sul tempo di computazione.
 \begin{equation*}
-    f(<x,t>) =
+    f(\pair{x}{t}) =
     \begin{cases}
         \case{x}{se $s_{A}(x)$ termina nel tempo $t$} \\
         \case{a_{0}}{altrimenti}
@@ -362,7 +362,7 @@ Piccola nota sulla notazione. Noi consideriamo funzioni parziali da $\Nat$ a $\N
 \partialto \Nat$. Indichiamo, in maniera impropria, $\cod(f) = \{y \mid \exists x, y = f(x)\}$ e
 $\dom(f) = \{x \mid f(x) \converges\}$. Il nostro codominio in realtà è il \textit{Range} della
 funzione ed il nostro dominio è il dominio di congergenza (o co-\textit{Range}). In termini del grafo abbiamo che $\dom(f)
-= \{x \mid \exists y, <x,y> \in \textit{grafo}(f)\}$.
+= \{x \mid \exists y, \pair{x}{y} \in \textit{grafo}(f)\}$.
 
 \section{Caratterizzazioni alternative di un insieme r.e.}
 
@@ -427,7 +427,7 @@ Le tre definizioni sono equivalenti appena viste sono equivalenti.
 
         Se $A \not= \emptyset$ allora $\exists a \in A$. A questo punto definisco la mia $f$ come:
         \begin{equation*}
-            f(<x,t>) = 
+            f(\pair{x}{t}) = 
             \begin{cases}
                 \case{h(x)}{se $h(x)$ termina entro il tempo $t$}\\
                 \case{a}{altrimenti}
@@ -449,20 +449,20 @@ vuoto, che non ha implicazioni tecniche importanti.
 Un'ulteriore caratterizzazione degli insiemi r.e. è la seguente:
 
 \begin{thm}
-    $A$ è r.e. sse $\exists B$ ricorsivo tale che $A = \{x \mid \exists y, <x,y> \in B\}$.
+    $A$ è r.e. sse $\exists B$ ricorsivo tale che $A = \{x \mid \exists y, \pair{x}{y} \in B\}$.
 \end{thm}
 \begin{proof}
     Vediamo i due versi del $\iff$ separatamente:
     \begin{itemize}
         \item $\implies$ Sia $c_{B}$ la funzione caratteristica di $B$. Allora $A = \dom(f)$, con
         \begin{equation*}
-            f(m) = \mu n, c_{B}(<n,m>) = 1
+            f(m) = \mu n, c_{B}(\pair{n}{m}) = 1
         \end{equation*}
         \item $\implied$ Sia $A = \dom(\phii)$. Quindi $m \in A$ sse $\phii(m) \converges$, ovvero
         se $\exists t, T^{3}(i,m,t) = 1$, dove $T$ è il predicato ternario di Kleene.
         Basta quindi porre:
         \begin{equation*}
-            B = \set{<m,t> \mid \exists t, T^{3}(i,m,t)}
+            B = \set{\pair{m}{t} \mid \exists t, T^{3}(i,m,t)}
         \end{equation*}
     \end{itemize}
 \end{proof}
@@ -560,7 +560,7 @@ farlo ci servirà l'enumerazione degli insiemi r.e. indotta dai domini delle fun
         \item possiamo scrivere il semidecisore di $\displaystyle\bigcup_{i \in W_{x}}W_{i}$ come
         segue, mediante dove-tailing:
         \begin{equation*}
-            s_{\bigcup_{i \in W_{x}}W_{i}}(x) = \mu <i,t>, T(i,x,t)
+            s_{\bigcup_{i \in W_{x}}W_{i}}(x) = \mu \pair{i}{t}, T(i,x,t)
         \end{equation*}
         \item 
         Sia $g$ la funzione così definita:
