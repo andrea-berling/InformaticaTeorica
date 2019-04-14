@@ -485,10 +485,11 @@ rispetto ad un certo tipo di padding.
     di $\LPad$? Di quanto decrescera' la complessita' di riconoscere $\LPad$ rispetto alla
     complessita' di riconoscere $\Lang$? Per riconoscere $\LPad$ noi partiamo da una stringa $w$ con
     una certa dimensione $|w|$. Da questa estraiamo, con complessita' lineare, $x$, con lunghezza
-    $n$ (da cui $|w| = n^{2}$). Cosa dobbiamo fare per vedere se $w \in \LPad$?  Verificare se $x
-    \in \Lang$, con costo $O(2^{n^{2}})$. La complessita' complessiva diventa $O(2^{|w|})$, ovvero
-    con esponente lineare in $|w|$. Abbiamo quindi che $\LPad \in \DTIME(2^{n})$, il che implica che
-    $\LPad \in \EXP$. Ma questo implica  $\LPad \in \PSPACE$ per la nostra ipotesi di assurdo.
+    $n$ (da cui $|w| = n^{2}$). Cosa dobbiamo fare per verificare se $w \in \LPad$?  Dobbiamo
+    verificare se $x \in \Lang$, con costo $O(2^{n^{2}})$. La complessita' complessiva diventa
+    $O(2^{|w|})$, ovvero con esponente lineare in $|w|$. Abbiamo quindi che $\LPad \in
+    \DTIME(2^{n})$, il che implica che $\LPad \in \EXP$. Ma questo implica  $\LPad \in \PSPACE$ per
+    la nostra ipotesi di assurdo.
 
     \begin{figure}[h]
         \begin{center}
@@ -501,7 +502,8 @@ rispetto ad un certo tipo di padding.
     Cosa possiamo dire della complessita' in tempo di riconoscere $\Lang$ sapendo che $\LPad \in
     \PSPACE$? Cosa dobbiamo fare per riconoscere $\Lang$ sotto questa ipotesi? Ci basta prendere
     $x$, paddarlo e darlo in pasto all'algoritmo di riconoscimento di $\LPad$. Il padding richiede
-    tempo quadratico, il riconoscimento di $\LPad$ lo facciamo in uno spazio in $\PSPACE$.
+    tempo quadratico, il riconoscimento di $\LPad$ lo facciamo in uno spazio polinomiale, poiche'
+    $\LPad \in \PSPACE$.
 
     \begin{figure}[h]
         \begin{center}
@@ -514,7 +516,7 @@ rispetto ad un certo tipo di padding.
     Qua non possiamo fare il massimo tra le due operazioni per calcolare la complessita' totale,
     dato che la stringa da cui partiamo e' piu' piccola di quella paddata, e il padding ci costa.
     Cio' che conta pero' e' che la composizione di polinomi e' un polinomio, di conseguenza il
-    processo usa uno spazio in $\PSPACE$.
+    processo usa uno spazio polinomiale.
 
     Di conseguenza $\LPad \in \PSPACE \implies \Lang \in \PSPACE \implies \Lang \in \EXP$, il che
     contraddice la nostra ipotesi iniziale.
@@ -560,13 +562,13 @@ complicazione nel calcolo della complessita' di una funzione composta. E' un'ana
 \section{Conclusioni}
 
 Volendo riassumere i risultati noti riguardanti le relazioni tra alcune classi di complessita'
-possiamo utilizzare un diagramma come quello in figura $\ref{img:detclassesrelations}$. 
+possiamo utilizzare un diagramma come quello in figura $\ref{timespacehierarchies:img:detclassesrelations}$. 
 
 \begin{figure}[!h]
     \begin{center}
         \includegraphics{./img/timespacehierarchies/ComplexityDiagram.pdf}
         \caption{Relazioni di inclusioni tra alcune classi di complessita'}
-        \label{img:detclassesrelations}
+        \label{timespacehierarchies:img:detclassesrelations}
     \end{center}
 \end{figure}
 

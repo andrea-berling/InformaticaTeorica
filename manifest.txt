@@ -28,7 +28,10 @@ img/deterministic_complexity_classes/CopyString.tex
 img/deterministic_complexity_classes/NonDetComputation.tex
 img/deterministic_complexity_classes/RAMsimulation.tex
 img/deterministic_complexity_classes/RAMstore.tex
+img/nondeterminism/Canonicalization.tex
+img/nondeterminism/Hierarchies.tex
 img/nondeterminism/MdTN.tex
+img/nondeterminism/SavitchAlgorithm.tex
 img/nondeterminism/Simulation.tex
 img/numerability/LanguageExample.tex
 img/recursivesets/ExistentialProjection.tex
