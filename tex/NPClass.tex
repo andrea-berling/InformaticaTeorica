@@ -380,7 +380,7 @@ $\NPClass$-completezza di $\SAT$. Noi condurremo la dimostrazione come se questo
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/nondeterminism/SATproof1.pdf}
+            \includegraphics{./img/NPClass/SATproof1.pdf}
             \caption{Possiamo descrivere le possibili computazioni di una MdTN $M$ mediante una
             tabella cosi' fatta.}
         \end{center}
@@ -418,7 +418,7 @@ $\NPClass$-completezza di $\SAT$. Noi condurremo la dimostrazione come se questo
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/nondeterminism/SATproof2.pdf}
+            \includegraphics{./img/NPClass/SATproof2.pdf}
             \caption{Facciamo in modo che i bordi della tabella abbiano sempre il simbolo blank e
             che la prima riga corrisponda alla configurazione iniziale di $M$}
         \end{center}
@@ -479,7 +479,7 @@ $\NPClass$-completezza di $\SAT$. Noi condurremo la dimostrazione come se questo
 
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./img/nondeterminism/SATproof3.pdf}
+            \includegraphics{./img/NPClass/SATproof3.pdf}
             \caption{Le uniche celle che cambiano durante un passo di computazione sono le 6 celle
                 che comprendono quella con la testina e le altre 5 adiacenti. Avremo che $\beta = b$ e
                 $\gamma = (q,c)$ se la testina si muove a destra, oppure $\beta = (q,b)$ e $\gamma = c$
@@ -711,7 +711,7 @@ La costruzione e' rappresentata nelle figure \ref{img:SATtoVC1} e \ref{img:SATto
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[scale=0.75]{./img/nondeterminism/SATtoVC1.pdf}
+        \includegraphics[scale=0.75]{./img/NPClass/SATtoVC1.pdf}
         \caption{Strutture di base del grafo $G$: coppie e triangoli}
         \label{img:SATtoVC1}
     \end{center}
@@ -719,7 +719,7 @@ La costruzione e' rappresentata nelle figure \ref{img:SATtoVC1} e \ref{img:SATto
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[scale=0.75]{./img/nondeterminism/SATtoVC2.pdf}
+        \includegraphics[scale=0.75]{./img/NPClass/SATtoVC2.pdf}
         \caption{Aggiunta degli archi tra i vertici del grafo}
         \label{img:SATtoVC2}
     \end{center}
@@ -760,7 +760,7 @@ $\varphi$ corrispondente e' soddisfacibile.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[scale=0.75]{./img/nondeterminism/SATtoVC3.pdf}
+        \includegraphics[scale=0.75]{./img/NPClass/SATtoVC3.pdf}
         \caption{I nodi cerchiati nel grafo $G$ fanno parte del sottoinsieme $S$ di copertura dei
         vertici}
     \end{center}
@@ -787,7 +787,7 @@ Quello che facciamo e' aggiungere un nodo collegato a tutti i nodi del grafo $G$
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/nondeterminism/HAMPATHCYCLE.pdf}
+        \includegraphics{./img/NPClass/HAMPATHCYCLE.pdf}
         \caption{Aggiungendo un nodo collegato a tutti gli altri trasformiamo un qualsiasi cammino
         hamiltoniano esistente in $G$ in un circuito che passa per il nuovo nodo}
     \end{center}
@@ -827,15 +827,45 @@ Illustriamo questa trasformazione con l'esempio in figura \ref{img:HAMCYCLEPATH}
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/nondeterminism/HAMCYCLEPATH.pdf}
+        \includegraphics{./img/NPClass/HAMCYCLEPATH.pdf}
         \caption{Da un ciclo hamiltoniano in $G$ passiamo ad un cammino hamiltoniano in $G'$ e,
         viceversa, da un cammino hamiltoniano in $G'$ passiamo ad un ciclo in $G$}
         \label{img:HAMCYCLEPATH}
     \end{center}
 \end{figure}
 
-%Esercizio per la prossima volta. Prendiamo il problema del cammino ed il problema del cammino
-%puntato. Il problema del cammino prende un grafo. Il problema del cammino puntato prende un grafo e
-%due nodi. Il primo cerca di capire se esiste un cammino hamiltoniano. Il secondo cerca di capire se
-%esiste un cammino hamiltoniano che parte dal primo nodo al secondo. Quest'ultimo semrerebbe piu'
-%semplice. In realta' rimane NP-completo. Dimostrare una riduzione da CAM a CAM PUNTATO.
+\subsection{$\HAMPATH \leq \HAMPATH_{u,v}$}
+
+Vediamo ora una riduzione dal problema del cammino hamiltioniano al problema del cammino
+hamiltonianio puntato, che consiste nel trovare, se esiste, un cammino hamiltoniano in un grafo $G$
+tra due nodi $u, v$ dati in input.
+
+Apparentemente il secondo sembrerebbe piu' semplice del primo. In realta' cio' non e' vero, poiche'
+esiste una riduzione dal primo al secondo.
+
+La trasformazione $f$ funziona cosi': dato un grafo $G$ si crea un grafo $G'$ aggiundendo quattro
+nuovi nodi $n_{1}, n_{2}, n_{\textsc{start}}$ e $n_{\textsc{end}}$ e degli archi da tutti i nodi di
+$G$ a $n_{1}$ e $n_{2}$, da $n_{\textsc{start}}$ a $n_{1}$ e da $n_{\textsc{end}}$ a $n_{2}$. Il
+risultato della $f$ applicata a $G$ e' la tripla $\tuple{G,n_{\textsc{start}},n_{\textsc{end}}}$.
+
+Mostriamo ora che la riduzione data e' corretta. Supponiamo esista un cammino hamiltoniano $p$ in
+$G$. Allora esiste anche un cammino hamiltoniano puntato da $n_{\textsc{start}}$ a
+$n_{\textsc{end}}$ in $G'$. Infatti e' possibile estendere $p$ aggiungendo $n_{\textsc{start}}$ e
+$n_{1}$ all'inizio e $n_{2}$, $n_{\textsc{end}}$ alla fine. Cio' e' possibile perche' sia $n_{1}$
+che $n_{2}$ sono collegati a tutti i nodi di $G$; in particolare sono anche collegati agli eventuali
+estremi di un cammino hamiltoniano in $G$.
+
+Viceversa, supponiamo in $G'$ esista un cammino hamiltoniano $p'$ puntato da $n_{\textsc{start}}$ a
+$n_{\textsc{end}}$. Se questo esiste deve necessariamente passare per $n_{1}$ e $n_{2}$. Da $p'$
+possiamo ottenere un cammino hamiltoniano $p$ in $G$ semplicemente rimuovendo $n_{\textsc{start}}$,
+$n_{\textsc{end}}$, $n_{1}$ e $n_{2}$.
+
+E' inoltre facile verificare che la trasformazione $f$ richiede tempo polinomiale.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/HAM2PHAM.pdf}
+        \caption{Esempio di riduzione da $\HAMPATH$ a
+        $\HAMPATH_{n_{\textsc{start}},n_{\textsc{end}}}$}
+    \end{center}
+\end{figure}

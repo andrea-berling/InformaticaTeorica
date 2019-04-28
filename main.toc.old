@@ -134,3 +134,4 @@
 \contentsline {subsection}{\numberline {15.5.1}$\textsc {sat}\leq 3\textsc {sat}$}{151}{subsection.15.5.1}% 
 \contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{152}{subsection.15.5.2}% 
 \contentsline {subsection}{\numberline {15.5.3}$\textsc {hampath}\equiv \textsc {hamcycle}$}{155}{subsection.15.5.3}% 
+\contentsline {subsection}{\numberline {15.5.4}$\textsc {hampath}\leq \textsc {hampath}_{u,v}$}{157}{subsection.15.5.4}% 
