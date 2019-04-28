@@ -7,6 +7,7 @@ tex/disclaimer.tex
 tex/excercises.tex
 tex/fixedpoint.tex
 tex/nondeterminism.tex
+tex/NPClass.tex
 tex/numerability.tex
 tex/primitiverecursion.tex
 tex/recursivesets.tex
@@ -29,8 +30,16 @@ img/deterministic_complexity_classes/NonDetComputation.tex
 img/deterministic_complexity_classes/RAMsimulation.tex
 img/deterministic_complexity_classes/RAMstore.tex
 img/nondeterminism/Canonicalization.tex
+img/nondeterminism/HAMCYCLEPATH.tex
+img/nondeterminism/HAMPATHCYCLE.tex
 img/nondeterminism/Hierarchies.tex
 img/nondeterminism/MdTN.tex
+img/nondeterminism/SATproof1.tex
+img/nondeterminism/SATproof2.tex
+img/nondeterminism/SATproof3.tex
+img/nondeterminism/SATtoVC1.tex
+img/nondeterminism/SATtoVC2.tex
+img/nondeterminism/SATtoVC3.tex
 img/nondeterminism/SavitchAlgorithm.tex
 img/nondeterminism/Simulation.tex
 img/numerability/LanguageExample.tex

@@ -125,7 +125,12 @@
 \contentsline {subsection}{\numberline {14.3.2}Simulazione di una macchina non deterministica con un bound allo spazio}{133}{subsection.14.3.2}% 
 \contentsline {subsection}{\numberline {14.3.3}Teorema di Savitch}{135}{subsection.14.3.3}% 
 \contentsline {subsection}{\numberline {14.3.4}Gerarchie di complessita'}{138}{subsection.14.3.4}% 
-\contentsline {section}{\numberline {14.4}La classe $\mathbb {NP}$}{139}{section.14.4}% 
-\contentsline {subsection}{\numberline {14.4.1}Teorema della proiezione}{139}{subsection.14.4.1}% 
-\contentsline {subsection}{\numberline {14.4.2}Riducibilita'}{140}{subsection.14.4.2}% 
-\contentsline {subsection}{\numberline {14.4.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{142}{subsection.14.4.3}% 
+\contentsline {chapter}{\numberline {15}La classe $\mathbb {NP}$}{139}{chapter.15}% 
+\contentsline {section}{\numberline {15.1}Teorema della proiezione}{139}{section.15.1}% 
+\contentsline {section}{\numberline {15.2}Riducibilita'}{140}{section.15.2}% 
+\contentsline {section}{\numberline {15.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{142}{section.15.3}% 
+\contentsline {section}{\numberline {15.4}$\textsc {sat}$ e' $\mathbb {NP}$-completo}{144}{section.15.4}% 
+\contentsline {section}{\numberline {15.5}Riduzioni di problemi $\mathbb {NP}$-completi}{151}{section.15.5}% 
+\contentsline {subsection}{\numberline {15.5.1}$\textsc {sat}\leq 3\textsc {sat}$}{151}{subsection.15.5.1}% 
+\contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{152}{subsection.15.5.2}% 
+\contentsline {subsection}{\numberline {15.5.3}$\textsc {hampath}\equiv \textsc {hamcycle}$}{155}{subsection.15.5.3}% 
