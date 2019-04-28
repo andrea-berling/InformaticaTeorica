@@ -64,7 +64,7 @@ La computazione della macchina puo' essere rappresentata da un grafo.
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics{./img/nondeterminism/MdTN.pdf}    
+        \includegraphics{./img/nondeterminism/MdTN.pdf}
         \caption{Grafo delle computazioni di una MdTN}
     \end{center}
 \end{figure}
@@ -78,7 +78,7 @@ grafo delle computazioni.
 
 Alcuni cammini nel grafo portano a stati finali accettanti, altri no, altri possono andare avanti
 indefinitamente. A noi basta che esista un cammino che porti ad una configurazione di accettazione
-per riconoscere una stringa. 
+per riconoscere una stringa.
 
 %La nostra definizione di accettazione ci permettera' di avere delle relazioni con l'esistenza di un
 %certificato.
@@ -176,12 +176,12 @@ binaria avremmo $2^{n}$ nodi.
 
 Consideriamo una visita in profondita'. Esploriamo il primo cammino, con lunghezza $O(f(|x|))$.
 Quante configurazioni incontriamo? $O(f(|x|))$. Possiamo dire qualcosa sulla dimensione di queste
-configurazioni? 
+configurazioni?
 
 Abbiamo che anche per la MdTN il tempo fa da bound al tempo. Per ogni configurazione l'aspetto che
 influisce di piu' sull'occupazione di spazio e' la dimensione dei nastri. I nastri crescono, al
 massimo, in modo lineare rispetto al tempo. La dimensione dei nastri e' bound da $O(f(|x|))$. Per
-memorizzare la catena della configurazioni ci serve $O((f(|x|))^{2})$ spazio. 
+memorizzare la catena della configurazioni ci serve $O((f(|x|))^{2})$ spazio.
 
 Questo e' lo spazio richiesto per la visita di un ramo del grafo. Tuttavia il ramo che stiamo
 visitando potrebbe essere un ramo di fallimento, oppure un ramo che diverge. Nel caso fossimo in uno
@@ -427,7 +427,7 @@ Qual'e' la complessita' in tempo di questa procedura? Ricordiamo che abbiamo un 
 ottimizziamo lo spazio: questa operazione ci costa in tempo. Scriviamo la relazione di ricorrenza:
 il tempo $t$ richiesto al passo $i$ e' dato da:
 \begin{equation*}
-    t^{i} = 
+    t^{i} =
     \begin{cases}
         \case{d}{se $i = 0$}\\
         \case{N\cdot 2t^{i-1}}{altrimenti}\\
@@ -509,268 +509,3 @@ Sappiamo infine che $\PSPACE \subset \EXPSPACE$ per il teorema della gerarchia e
 L'inclusione stretta tra $\NPClass$ e $\NEXP$ non e' ovvia. In effetti si puo' dimostrare che i
 teoremi della gerarchia sono generalizzabili al caso non deterministico, e questo giustifica questa
 relazione tra le due classi.
-
-
-\section{La classe $\NPClass$}
-
-%Slide 105
-Vediamo ora due argomenti importanti concentrando la nostra attenzione su una classe di complessita'
-molto interessante: $\NPClass$. I due argomenti che trattiamo sono il teorema della proiezione e la
-nozione di riducibilita'.
-
-\subsection{Teorema della proiezione}
-
-Il teorema della proiezione e' importante perche' mette in relazione le due visioni della classe
-$\NPClass$: una, che la definisce, e' quella di insieme dei linguaggi riconoscibili da una macchina
-non deterministica, e l'altra, interessante a livello pratico, e' quella di insieme dei problemi per
-cui esistono algoritmi di verifica della soluzione che operano in tempo polinomiale.
-
-\begin{thm}
-    \textbf{(Teorema della proiezione).} Dato un linguaggio $A \subseteq \Sigma^{*}$, $A \in
-    \NPClass$ se e solo se esiste un linguaggio $B \in \PClass$ e un polinomio $p$ tale che per ogni
-    $x \in \Sigma^{*}$
-    \begin{equation*}
-        x \in A \iff \exists y, |y| \leq p(|x|) \land \pair{x}{y} \in B
-    \end{equation*}
-\end{thm}
-
-$y$ e' un certificato che dipende da $x$. E' un'informazione aggiuntiva rispetto ad $x$ che ci
-permette di fare una verifica veloce. E' una sorta di ``prova'' che $x$ appartiene in effetti al
-linguaggio $A$. L'utilita' di $B$ sta nel fatto che ci permette di verificare in tempo polinomiale
-l'autenticita' del certificato per $x$.
-
-Che cosa sia il cerficicato non e' ben definito: dipende dal problema e sta a noi definire cosa sia
-un buon cerificato. Dato che noi consideriamo solo problemi decisionali il certificato puo' essere
-qualunque informazione che ci permetta di verificare che la risposta sia ``Si'''.
-
-Chiediamo inoltre che la dimensione del certificato non cresca esponenzialmente. Il motivo e' che
-input grandi ci danno complessita' basse che sono tuttavia fittizie, un po' come accadeva per il
-padding.
-
-Ad esempio per il problema della tautologia abbiamo un algoritmo lineare nella dimensione di una
-tabella di verita' che verifica se la tabella e' ben formata, e quindi se una formula data e'
-tautologica. Tuttavia questa tabella ha dimensione esponenziale. L'algoritmo risulta efficiente se
-confrontato con la dimensione della tabella, ma risulta pessimo se confrontato con la dimensione del
-nostro input, ovvero la formula di partenza. Di conseguenza non si tratta di un buon certificato per
-noi.
-
-\begin{proof}
-
-    Sia $A \subseteq \Sigma^{*}$, $A \in \NPClass$ e sia $x$ una stringa in $A$. Abbiamo che $A \in
-    \NPClass$ sse esiste una MdTN $M$ che riconosce $A$. Che certificato possiamo dare per $x$?
-    Come certificato possiamo prendere la sequenza delle scelte prese da $M$ in una computazione che
-    riconosce $x$, insieme a $\code{M}$. Quanto e' grande questa sequenza? E' polinomiale in $|x|$,
-    essendo $A \in \NPClass$. Esiste quindi un cammino accettante polinomiale nel numero di passi.
-    Il codice di $M$ e' costante nella sua dimensione e non influisce a livello della complessita'.
-    Sia $B$ il linguaggio delle coppie $x$-certificato. Dato $x$ ed il suo certificato una macchina
-    deterministica $M'$ che riconosce il linguaggio $B$ effettua una simulazione di $M$ usando le scelte
-    fornite. Se la configurazione finale della simulazione di $M$ e' accettante la machina $M'$
-    accetta la coppia $x$-certificato; in caso contrario rifiuta. E' facile verificare il secondo $\iff$
-    dell'enunciato del teorema data questa definizione di $M'$ e $B$. Inoltre abbiamo che $B \in
-    \PClass$, dato che l'estrazione del certificato dalla coppia e' un'operazione con complessita'
-    lineare rispetto alla dimensione di questa e la simulazione di $M$ richiede un numero di passi
-    polinomiale in $|x|$.
-
-    Viceversa supponiamo ora di avere $B \in \PClass$. Vogliamo dimostrare che se prendiamo un
-    polinomio $p$ e facciamo la proiezione esistenziale bound da $p$ abbiamo che il linguaggio
-    ottenuto in questo modo sta in $\NPClass$. In particolare vogliamo dimostrare che il linguaggio
-    \begin{equation*}
-        A = \set{x \mid \exists y, y \leq p(|x|) \land \pair{x}{y} \in B}
-    \end{equation*}
-    fa parte di $\NPClass$.
-
-    Per mostrare cio' esibiamo una MdTN $M$ che ci permetta di riconoscere $A$. $M$ funziona nel
-    seguente modo: dato $x$ genera tutti i certificati $y$ di dimensione minore o uguale a $p(|x|)$
-    e testa l'appartenenza di $\pair{x}{y}$ a $B$ in tempo polinomiale per tutti. Se uno di questi
-    certificati risulta valido $M$ accetta $x$, altrimenti rifiuta. La quantita' di certificati da
-    testare e' esponenziale, dato che il numero di certificati diversi di lunghezza $p(|x|)$ e'
-    $|\Sigma|^{p(|x|)}$. Sfruttando il fatto che la macchina deterministica e' ``fortunata''
-    generiamo non deterministicamente il certificato corretto per $x$. $M$ riconosce quindi $x
-    \in A$ in tempo polinomiale non deterministico.
-
-\end{proof}
-
-Non e' restrittivo supporre, come abbiamo fatto implicitamente, che $B$ sia un linguaggio sullo
-stesso alfabeto $\Sigma$ di $A$.
-
-\subsection{Riducibilita'}
-
-%Slide 112
-
-La nozione di riducibilita' che vediamo e' molto simile a quella della teoria della complessita'.
-
-\begin{defn}
-    Siano $A,B \in \Sigma^{*}$ due linguaggi. Diremo che $A$ e' riducibile in tempo polinomiale a
-    $B$, $A \leq_{p} B$, se esiste $f \in \FP$ tale che per ogni $x \in \Sigma^{*}$, $x \in A \iff
-    f(x) \in B$.
-\end{defn}
-Se al vincolo polinomiale alla complessita' di $f$ andiamo a sostituire un diverso vincolo sulla
-complessita' in tempo o in spazio otteniamo una nozione di riducibilita' analoga a questa ma diversa
-nel numero e nella natura delle riduzioni.
-
-La nozione di riducibilita' e' many-to-one. Vogliamo che $f$ sia calcolabile in tempo polinomiale.
-Nella definizione di riducibilita' dobbiamo fare attenzione ad un dettaglio tecnico.  Dire che $f
-\in \PClass$ e' sbagliato perche' $f$ non e' un linguaggio, bensi' una funzione. Per questo motivo
-introduciamo $\FP$ come l'insieme delle funzioni calcolabili in tempo polinomiale, ovvero delle $f$
-per le quali esiste una MdT che calcola $f$ in tempo polinomiale.
-
-Qualunque tipo di nozione di riducibilita' e' ragionevole. Piu' sono deboli i vincoli che poniamo
-alla complessita' di $f$ piu' la nostra nozione di riduzione sara' lasca e maggiori saranno le
-riduzioni possibili. Intuitivamente se disponiamo di un numero elevato di risorse e' piu' facile
-ridurre un linguaggio ad un altro, mentre se le risorse disponibili sono limitate le riduzioni
-possibili diminuiscono. Ad esempio una riducibilita' esponenziale permetterebbe di ridurre molti
-problemi tra loro. Noi ci concentriamo unicamente sulla riducibilita' polinomiale in tempo. E'
-generalmente la piu' interessante.
-
-Le riducibilita' sono in genere dei preordini. Ricordiamo che un preordine e' una relazione binaria
-riflessiva e transitiva. Per la riducibilita' polinomiale in tempo la proprieta' riflessiva e'
-dimostrabile in maniera ovvia. Per la transitivita' supponiamo di avere $A,B,C$ con $A \leq_{p} B$
-attraverso $f$ e $B \leq_{p} C$ attraverso $g$. Ci basta comporre $f$ e $g$ per ottenere $h$
-calcolabile con complessita' polinomiale che riduce $A$ a $C$. Questa composizione ha complessita'
-polinomiale perche' la composizione di polinomi e' ancora un polinomio. Questo vale anche per
-$\leq_{L}$, la riducibilita' in $\LOGSPACE$.
-
-%Slide 113
-
-\begin{defn}
-    Sia $\CClass$ una classe di linguaggi e sia $\leq$ un qualche preordine. Diremo che $\CClass$ e'
-    chiusa rispetto a $\leq$ se
-    \begin{equation*}
-        A \leq B \land B \in \CClass \implies A \in \CClass
-    \end{equation*}
-\end{defn}
-
-Si puo' dimostrare che che $\PClass$, $\NPClass$ e $\PSPACE$ sono chiuse rispetto alla riduzione
-polinomiale.
-
-Supponiamo infatti di avere due linguaggi $A$ e $B$, con $B \in \PClass$, e di voler riconoscere il
-linguaggio $A$. Sia $x$ la stringa che vogliamo riconoscere. Se esiste una funzione di riduzione $f
-\in \FP$ da $A$ a $B$ possiamo calcolare la riduzione $f(x)$ in tempo polinomiale.  Sappiamo che la
-dimensione di $f(x)$ sara' polinomiale rispetto alla dimensione di $x$, dato che $f$ e' stata
-calcolata in tempo polinomiale e lo spazio e' bound dal tempo. Inoltre verificare che $f(x) \in B$
-richiede tempo polinomiale. Poiche' la composizione di polinomi rimane un polinomio questa procedura
-di riconoscimento di $A$ ha complessita' polinomiale. Lo stesso discorso si applica se al posto di
-$\PClass$ abbiamo $\NPClass$.
-
-Una classe come $\LOGSPACE$ non e' chiusa rispetto alla riducibilita' in tempo polinomiale. E'
-chiusa rispetto alla riducbilita' in spazio logaritmico. Supponiamo che $B \in \LOGSPACE$ e che $A
-\leq_{p} B$. Questo non implica che $A \in \LOGSPACE$. Gia' il valore di $f(x)$ puo' avere
-dimensione polinomiale, e lo spazio logaritmico non ci basta. Il problema e' che questa nozione di
-riducibilita' e' troppo lasca per la classe che vogliamo studiare e ne serve una piu' precisa.
-
-La classe $\PClass$ non e' chiusa rispetto alla riduzione esponenziale. Infatti possiamo ridurre un
-qualsiasi problema $A$ in tempo esponenziale ad uno piu' semplice $B \in \PClass$. Questo non
-implica che abbiamo un algoritmo per risolvere $A$ in tempo polinomiale e che quindi $A \in
-\PClass$.
-
-Vedremo che tutti i problemi non banali in $\PClass$ sono mutuamente riducibili con una riduzione
-polinomiale. Inoltre tutti i problemi in $\EXP$ sono $\EXP$-completi. Infine esiste una riduzione
-esponenziale da un problema in $\EXP$ ad uno in $\PClass$.
-
-%Slide 114
-
-\subsection{$\NPClass$-completezza e $\NPClass$-hardness}
-
-La definizione di problema arduo e problema completo puo' essere data per qualsiasi classe di
-complessita'. Noi siamo interessati a $\NPClass$.
-
-\begin{defn}
-    Sia $\CClass$ una classe di linguaggi e $\leq$ un preordine tra di essi. Sia $B$ un linguaggio.
-    Abbiamo che
-    \begin{itemize}
-        \item $B$ e $\CClass$-arduo rispetto a $\leq$ se ogni $A \in \CClass$ e' riducibile a $B$;
-        \item $B$ e $\CClass$-completo rispetto a $\leq$ se $B \in \CClass$ e $B$ e' $\CClass$-arduo;
-    \end{itemize}
-\end{defn}
-
-Un problema $\CClass$-arduo e' il problema piu' complicato della classe. Questa nozione di
-complicatezza pero' dipende dalla quantita' di risorse che diamo alla nozione di riducibilita.  Meno
-risorse diamo alla funzione di riduzione, meno sono le riduzioni possibili, e piu' fini sono le
-distinzioni tra classi, e analogamente con piu' risorse vale il contrario.
-
-\begin{defn}
-    Sia $B$ un linguaggio. Diciamo che $B$ e' $\NPClass$-hard se $\forall A \in \NPClass, A \leq_{p}
-    B$. Diciamo che $B$ e' $\NPClass$-completo se $B$ e' $\NPClass$-hard e inoltre $B \in \NPClass$.
-\end{defn}
-
-I problemi $\NPClass$-completi sono quei problemi a cui tutti gli altri sono riducibili. Se avessimo
-un modo efficiente per risolvere un problema $\NPClass$-completo $A$ sapremmo che, per ogni altro
-problema in $\NPClass$, esisterebbe un algoritmo efficiente di soluzione che utilizza una riduzione
-polinomiale dal problema da risolvere ad $A$ e l'algoritmo per $A$.
-
-L'$\NPClass$-completezza e' interessante a livello pratico. Un problema che sappiamo essere
-$\NPClass$-completo e' $\SAT$. Esistono algoritmi molto efficienti che possono risolvere $\SAT$ in
-maniera efficiente nonostante la loro complessita' nel caso pessimo rimanga esponenziale. Si
-utilizzano proprieta' di sottoclassi particolari di formule proposizionali che permettono di avere
-algoritmi di soluzione generalmente efficienti. Non e' una cattiva idea risolvere un problema
-trovando una riduzione polinomiale a $\SAT$ e usare un $\SAT$-solver, dato che $\SAT$ e' stato molto
-investigato ed esistono algoritmi ed euristiche efficienti. Si potrebbe fare la stessa cosa
-utilizzando altri problemi $\NPClass$-completi.
-
-Non si sa se tutti i problemi in $\NPClass$ sono $\NPClass$-completi. Per $\PClass$ questa cosa
-invece vale.  Se riusciamo a dimostrare che esiste un problema in $\NPClass$ non $\NPClass$-completo
-abbiamo come conseguenza che
-$\PClass \not= \NPClass$.
-
-%Uguaglianza di Leibniz: $x = y \iff \forall P, P(x) \iff P(y)$. Due oggetti sono uguali se qualsiasi
-%osservazione facciamo su di essi otteniamo lo stesso risultato. Se dimostriamo che c'e' qualche
-%proprieta' che vale per un $x$ ma non per un $y$ abbiamo che $x \not= y$.
-
-La questione $\PClass$ vs $\NPClass$, ovvero determinare se queste due classi coincidono o sono
-diverse, e' uno dei Millenium Problems. C'e' in palio un premio di 1 milione di dollari per chi
-fosse in grado di risolvere questo problema, o fare comunque passi importanti verso la risoluzione.
-Si congettura che $\PClass \not= \NPClass$.
-
-Una problematica ancora aperta e altrettanto interessante e' la dimostrazione che l'inclusione tra
-$\PClass$ e $\PSPACE$ e' stretta. $\PSPACE$ e' una classe molto grande, che contiene anche
-$\NPClass$, e molto distante da $\PClass$. Si congettura che l'inclusione sia stretta, ma non si e'
-ancora riusciti a dimostrarlo. Un problema con questa dimostrazione e' legato al fatto che le due
-classi sono definite da risorse diverse. Lavorare con risorse diverse a livello di complessita' e'
-sempre delicato e non banale.
-
-%Slide 116
-
-Vediamo un esempio di problema $\NPClass$-completo
-
-Dimostrare la completezza di un problema non e' ovvio. Infatti dobbiamo dimostrare che tutti i
-problemi in $\NPClass$ sono riducibili al problema che vogliamo dimostrare essere completo.
-
-Il problema che consideriamo e' il problema limitato della fermata con macchine non deterministiche.
-
-\begin{thm}
-    Sia $\BHP$ il linguaggio cosi' definito:
-    \begin{equation*}
-        \BHP = \set {\tuple{x,y,0^{t}} \mid \text{La MdTN $M$ accetta $y$ in tempo
-        $\textit{time}_{M_{x}}(y) \leq t$}}
-    \end{equation*}
-    $\BHP$ e' $\NPClass$-completo
-\end{thm}
-
-Il tempo e' dato in formato unario. Di solito si fa cosi' quando vogliamo una complessita' lineare
-in un dato tempo.  Se dessimo una rappresentazione logaritmica del tempo l'algoritmo che lavora con
-quel tempo risulterebbe avere complessita' esponenziale.
-
-\begin{proof}
-    La prima cosa da fare e' dimostrare che questo problema sta in $\NPClass$. Costruiamo una MdTN
-    $M$ che riconosce $\BHP$. $M$ opera nel seguente modo: verifica innanzitutto che la stringa in
-    input sia una tripla la cui prima componente sia il codice di una MdTN. Dopodiche' simula la
-    computazione della macchina $M_{x}$ su input $y$ con bound dato da $t$. Ad ogni scelta non
-    deterministica di $M_{x}$ corrisponde una scelta non deterministica di $M$. Se alla fine della
-    simulazione abbiamo che $M_{x}$ riconosce $y$ abbiamo che $M$ accetta, altrimenti rifiuta.
-    Rifiuta inoltre se la simulazione supera il bound in tempo. 
-    
-    Supponiamo ora di avere un linguaggio $A \in \NPClass$ e di volerlo riconoscere, ovvero decidere
-    $y \in A$.  Possiamo farlo con una riduzione polinomiale a $\BHP$: prendiamo il codice $x$ di
-    una MdTN $M$ che riconosce $A$ in tempo polinomiale, l'input $y$ da riconoscere e come tempo $t$
-    prendiamo $p(|y|)$, dove $p$ e' il polinomio che fa da bound alla complessita' di $M$. Abbiamo
-    che $y \in A \iff \tuple{x,y,0^{t}} \in \BHP$.
-\end{proof}
-
-$\BHP$ non e' stato molto investigato. Dal punto di vista pratico non e' il miglior problema a cui
-ridursi. La costruzione di $\BHP$ inoltre e' un po' artificiosa, serve giusto a dimostare che
-esistono problemi $\NPClass$-completi.
-
-Si poteva dimostrare inoltre che $\BHP \in \NPClass$ mostrando un certificato per esso ed un
-algoritmo efficiente di verifica. In questo caso un certicato poteva essere la sequenza delle
-decisioni prese dalla macchina $M_{x}$ su input $y$ e la verifica sarebbe consistita nella
-simulazione di $M_{x}$ su input $y$ seguendo la sequenza di istruzioni data dal certificato.
