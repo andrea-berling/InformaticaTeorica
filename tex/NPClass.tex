@@ -420,7 +420,7 @@ $\NPClass$-completezza di $\SAT$. Noi condurremo la dimostrazione come se questo
         \begin{center}
             \includegraphics{./img/NPClass/SATproof2.pdf}
             \caption{Facciamo in modo che i bordi della tabella abbiano sempre il simbolo blank e
-            che la prima riga corrisponda alla configurazione iniziale di $M$}
+            che la prima riga corrisponda alla configurazione iniziale di $M$.}
         \end{center}
     \end{figure}
 
@@ -483,7 +483,7 @@ $\NPClass$-completezza di $\SAT$. Noi condurremo la dimostrazione come se questo
             \caption{Le uniche celle che cambiano durante un passo di computazione sono le 6 celle
                 che comprendono quella con la testina e le altre 5 adiacenti. Avremo che $\beta = b$ e
                 $\gamma = (q,c)$ se la testina si muove a destra, oppure $\beta = (q,b)$ e $\gamma = c$
-            se la testina si muove a sinistra}
+            se la testina si muove a sinistra.}
         \end{center}
     \end{figure}
     %Slide 123
@@ -712,7 +712,7 @@ La costruzione e' rappresentata nelle figure \ref{img:SATtoVC1} e \ref{img:SATto
 \begin{figure}[h]
     \begin{center}
         \includegraphics[scale=0.75]{./img/NPClass/SATtoVC1.pdf}
-        \caption{Strutture di base del grafo $G$: coppie e triangoli}
+        \caption{Strutture di base del grafo $G$: coppie e triangoli.}
         \label{img:SATtoVC1}
     \end{center}
 \end{figure}
@@ -720,7 +720,7 @@ La costruzione e' rappresentata nelle figure \ref{img:SATtoVC1} e \ref{img:SATto
 \begin{figure}[h]
     \begin{center}
         \includegraphics[scale=0.75]{./img/NPClass/SATtoVC2.pdf}
-        \caption{Aggiunta degli archi tra i vertici del grafo}
+        \caption{Aggiunta degli archi tra i vertici del grafo.}
         \label{img:SATtoVC2}
     \end{center}
 \end{figure}
@@ -762,7 +762,7 @@ $\varphi$ corrispondente e' soddisfacibile.
     \begin{center}
         \includegraphics[scale=0.75]{./img/NPClass/SATtoVC3.pdf}
         \caption{I nodi cerchiati nel grafo $G$ fanno parte del sottoinsieme $S$ di copertura dei
-        vertici}
+        vertici.}
     \end{center}
 \end{figure}
 
@@ -789,7 +789,7 @@ Quello che facciamo e' aggiungere un nodo collegato a tutti i nodi del grafo $G$
     \begin{center}
         \includegraphics{./img/NPClass/HAMPATHCYCLE.pdf}
         \caption{Aggiungendo un nodo collegato a tutti gli altri trasformiamo un qualsiasi cammino
-        hamiltoniano esistente in $G$ in un circuito che passa per il nuovo nodo}
+        hamiltoniano esistente in $G$ in un circuito che passa per il nuovo nodo.}
     \end{center}
 \end{figure}
 
@@ -829,7 +829,7 @@ Illustriamo questa trasformazione con l'esempio in figura \ref{img:HAMCYCLEPATH}
     \begin{center}
         \includegraphics{./img/NPClass/HAMCYCLEPATH.pdf}
         \caption{Da un ciclo hamiltoniano in $G$ passiamo ad un cammino hamiltoniano in $G'$ e,
-        viceversa, da un cammino hamiltoniano in $G'$ passiamo ad un ciclo in $G$}
+        viceversa, da un cammino hamiltoniano in $G'$ passiamo ad un ciclo in $G$.}
         \label{img:HAMCYCLEPATH}
     \end{center}
 \end{figure}
@@ -843,22 +843,21 @@ tra due nodi $u, v$ dati in input.
 Apparentemente il secondo sembrerebbe piu' semplice del primo. In realta' cio' non e' vero, poiche'
 esiste una riduzione dal primo al secondo.
 
-La trasformazione $f$ funziona cosi': dato un grafo $G$ si crea un grafo $G'$ aggiundendo quattro
-nuovi nodi $n_{1}, n_{2}, n_{\textsc{start}}$ e $n_{\textsc{end}}$ e degli archi da tutti i nodi di
-$G$ a $n_{1}$ e $n_{2}$, da $n_{\textsc{start}}$ a $n_{1}$ e da $n_{\textsc{end}}$ a $n_{2}$. Il
-risultato della $f$ applicata a $G$ e' la tripla $\tuple{G,n_{\textsc{start}},n_{\textsc{end}}}$.
+La trasformazione $f$ funziona cosi': dato un grafo $G$ si crea un grafo $G'$ aggiundendo due nuovi
+nodi $n_{\textsc{start}}$ e $n_{\textsc{end}}$ e degli archi da tutti i nodi di $G$ a
+$n_{\textsc{start}}$ e $n_{\textsc{end}}$. Il risultato della trasformazione $f$ applicata a $G$ e'
+la tripla $\tuple{G',n_{\textsc{start}},n_{\textsc{end}}}$.
 
 Mostriamo ora che la riduzione data e' corretta. Supponiamo esista un cammino hamiltoniano $p$ in
 $G$. Allora esiste anche un cammino hamiltoniano puntato da $n_{\textsc{start}}$ a
 $n_{\textsc{end}}$ in $G'$. Infatti e' possibile estendere $p$ aggiungendo $n_{\textsc{start}}$ e
-$n_{1}$ all'inizio e $n_{2}$, $n_{\textsc{end}}$ alla fine. Cio' e' possibile perche' sia $n_{1}$
-che $n_{2}$ sono collegati a tutti i nodi di $G$; in particolare sono anche collegati agli eventuali
-estremi di un cammino hamiltoniano in $G$.
+$n_{\textsc{end}}$ alla fine. Cio' e' possibile perche' sia $n_{\textsc{start}}$ che
+$n_{\textsc{end}}$ sono collegati a tutti i nodi di $G$, e in particolare sono anche collegati agli
+eventuali estremi di un cammino hamiltoniano in $G$.
 
 Viceversa, supponiamo in $G'$ esista un cammino hamiltoniano $p'$ puntato da $n_{\textsc{start}}$ a
-$n_{\textsc{end}}$. Se questo esiste deve necessariamente passare per $n_{1}$ e $n_{2}$. Da $p'$
-possiamo ottenere un cammino hamiltoniano $p$ in $G$ semplicemente rimuovendo $n_{\textsc{start}}$,
-$n_{\textsc{end}}$, $n_{1}$ e $n_{2}$.
+$n_{\textsc{end}}$. Da $p'$ possiamo ottenere un cammino hamiltoniano $p$ per il sottografo di $G'$
+che corrisponde a $G$ semplicemente rimuovendo $n_{\textsc{start}}$ e $n_{\textsc{end}}$.
 
 E' inoltre facile verificare che la trasformazione $f$ richiede tempo polinomiale.
 
@@ -866,6 +865,239 @@ E' inoltre facile verificare che la trasformazione $f$ richiede tempo polinomial
     \begin{center}
         \includegraphics{./img/NPClass/HAM2PHAM.pdf}
         \caption{Esempio di riduzione da $\HAMPATH$ a
-        $\HAMPATH_{n_{\textsc{start}},n_{\textsc{end}}}$}
+        $\HAMPATH_{n_{\textsc{start}},n_{\textsc{end}}}$.}
     \end{center}
 \end{figure}
+
+\subsection{$\SAT \leq \dHAM$}
+
+Vediamo ora un'altra riduzione classica e non del tutto ovvia.
+
+Questa ci permette di dimostrare che l'esistenza di un cammino hamiltoniano e' un problema
+$\NPClass$-completo. Lo dimostreremo nel caso di grafi orientati, ma in realta' e dimostrabile anche
+per grafi non orientati.
+
+$\dHAM$ e' il problema decisionale dell'esistenza di un cammino hamiltoniano in un grafo orientato.
+
+Vediamo la riduzione per un esempio semplice. Il procedimento e' tuttavia generale e vale per
+qualsiasi formula in forma a clausole (senza vincoli sul numero di letterali nelle clausole).
+
+Consideriamo la formula proposizionale $\varphi$ espressa dalla congiunzione delle due clausole
+$\set{A,B}$ e $\set{\lnot A}$.
+
+Costruiamo un grafo diretto $G$ a partire da $\varphi$ in cui esiste un cammino hamiltoniano sse la
+$\varphi$ e' soddisfacibile. In $\varphi$ abbiamo 2 clausole e 2 variabili proposizionali. Per ogni
+variabile proposizionale costruiamo una catena con 6 nodi. 2 di questi rappresentano le estremita'
+della catena e ogni coppia di nodi consecutivi nella catena (escludendo gli estremi) corrisponde ad
+una clausola.  Nel caso generale in cui $\varphi$ ha $m$ clausole e $n$ variabili costruiremmo $n$
+catene, con $2m + 2$ nodi ciascuna. 
+
+Su ciascuna catena fissiamo due versi di attraversamento, aggiungendo, per ogni coppia di nodi della
+catena (estremi inclusi) una coppia di archi: un arco dal primo al secondo ed un arco dal secondo al
+primo.
+
+Concettualmente ad ogni clausola e' associata una ``colonna'', ovvero una coppia di nodi ``interna''
+alla catena.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/SATdHAM1.pdf}
+        \caption{Costruzione delle catene nella riduzione da $\SAT$ a $\dHAM$.}
+    \end{center}
+\end{figure}
+
+Aggiungiamo un nodo di partenza e uno di arrivo. Dal nodo di partenza aggiungiamo due archi, uno che
+va al nodo iniziale della catena di $A$ e uno che va al nodo finale della stessa catena. Dagli
+estremi della catena di $B$ aggiungiamo due archi che vanno al nodo di arrivo. Collegiamo poi le
+catene in cascata, aggiungendo da entrambi i nodi all'estremita' di una catena degli archi che vanno
+alle estremita' della catena successiva. L'idea e' che nel percorrere una catena possiamo uscire da
+uno qualsiasi dei due lati, e quando usciamo vogliamo passare a quella successiva.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/SATdHAM2.pdf}
+        \caption{Aggiunta di nodi di partenza/arrivo e link tra questi e le catene e tra le catene.}
+    \end{center}
+\end{figure}
+
+Aggiungiamo poi un nodo per ogni clausola. Il verso di attraversamento di una catena in un cammino
+hamiltoniano in $G$ ci dira' quale sara' il valore di verita' associato alla variabile a cui la
+catena fa riferimento. Inoltre nell'attraversare le catene vogliamo ``toccare'' la clausola che
+viene soddisfatta da quell'assegnamento di verita'. Supponiamo di avere una clausola $a$ che
+contiene $A$. Aggiungiamo quindi nella catena di $A$ un arco dal nodo di sinistra della colonna
+associata ad $a$ al nodo di $a$ ed un link dal nodo di $a$ al nodo di destra della colonna associata
+ad $a$. Per le clausole $a'$ che contengono $\lnot A$ aggiungiamo un arco dal nodo di destra della
+colonna associata ad $a'$ al nodo di $a'$ e aggiungiamo un arco dal nodo di $a'$ al nodo di sinistra
+della colonna associata ad $a'$.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/SATdHAM3.pdf}
+        \caption{Aggiunta dei nodi delle clausole e dei relativi link.}
+    \end{center}
+\end{figure}
+
+Se $\varphi$ e' soddisfacibile allora il grafo $G$ cosi' costruito contiene un cammino hamiltoniano,
+e viceversa se $G$ ammette un cammino hamiltoniano $\varphi$ e' soddisfacibile.
+
+Infatti, supponiamo che $\varphi$ sia soddisfacibile. In tal caso abbiamo un assegnamento di valori
+di verita' alle variabili proposizionali che la soddisfa. Per ogni variabile $A$ attraversiamo la
+catena corrispondente nel verso da sinistra a destra se $A$ ha valore \textit{true}, e in verso
+opposto se $A$ ha valore \textit{false}. Inoltre nel cammino tocchiamo tutte le clausole che non
+sono gia' state toccate.  Questo e' possibile grazie ai link alle clausole. Partendo da
+$\textsc{start}$, seguendo le direzioni degli assegnamenti, toccando le clausole e finendo in
+$\textsc{end}$ otteniamo un cammino hamiltoniano in $G$.
+
+Cosa ci obbliga ad attraversare una catena secondo la nostra convenzione sul verso di
+attraversamento? La direzione dei link alle clausole. Se infatti, ad esempio, attraversassimo la
+catena di $A$ da destra verso sinistra, ovvero in verso opposto rispetto a quello dettato dalla
+convenzione sul valore di verita' di $A$, non riusciremmo a toccare il nodo corrispondente alla
+clasuola $\set{\lnot A}$, e non avremmo un cammino hamiltoniano.
+
+Vediamo ora il verso opposto della riduzione, leggermente meno intuitivo. Supponiamo che $G$ abbia
+un cammino hamiltoniano. Quello che vogliamo dimostrare e' che se cominciamo ad attraversare una
+catena in una direzione giungeremo alla fine della catena seguendo la stessa direzione. In altri
+termini non possiamo ``tornare indietro'' lungo una catena.
+
+Abbiamo sicuramente che non possiamo invertire la direzione dell'attraversamento usando gli archi
+inversi tra i nodi della catena. Quello che e' meno evidente e' che non possiamo avere un percorso
+diverso sfruttano i link alle clausole. In realta' questo non e' possibile, poiche' se prendiamo uno
+degli archi che collega alle clausole l'unica mossa successiva possibile e' quella di scendere al
+nodo successivo della catena. Infatti, supponiamo di essere al nodo $n$ della catena di $A$, di
+passare al nodo della clausola $\set{A,B}$ e di passare al nodo della catena di $B$.  Abbiamo che,
+poiche' dobbiamo passare per tutti i nodi nel cammino hamiltoniano, se mai arrivassimo al nodo $n+1$
+saremmo bloccati, dato che tutti i nodi adiacenti ad $n+1$ sarebbero gia' stati toccati. L'unico
+modo in cui si potrebbe avere un cammino hamiltoniano in questo modo e' se $n+1$ fosse l'ultimo nodo
+del cammino. Ma questo e' impossibile, dato che, per come e' fatto $G$, un qualsiasi cammino
+hamiltoniano in $G$ deve necessariamente finire nel nodo $\textsc{end}$. Di conseguenza non
+esisterebbe in $G$ un cammino hamiltoniano, e questo contraddice la nostra ipotesi.
+
+Percio' in un cammino hamiltoniano $p$ in $G$ consumiamo tutte le catene una alla volta seguendo una
+determinata direzione. A questo punto attribuiamo un valore di verita' alle variabili proposizionali
+in base alla direzione di attraversamento della catena corrispondente. Ad esempio, da sinistra a
+destra corrisponde a vero e il verso opposto corrisponde a falso. Questo assegnamento soddisfa le
+clausole perche' le clausole devono essere toccate nel cammino $p$. Ma toccare una clausola
+corrisponde a soddisfarla con un determinato assegnamento di verita' ad una variabile
+proposizionale.
+
+Abbiamo che il grafo $G$ e' abbastanza sparso. Abbiamo che il fattore di branching del grafo e'
+abbastanza piccolo. Di conseguenza e' facile verificare che la dimensione del grafo e' polinomiale
+nella dimensione della formula. Questo ci mostra che un fattore di branching di valore costante e
+basso in un grafo $G$ non semplifica il problema della ricerca di un cammino hamiltoniano in $G$.
+
+\subsection{$\HAMPATH \leq \TSP$}
+
+Vediamo un'altra riduzione interessante. Consideriamo il problema del commesso viaggiatore
+(Traveling Salesperson Problem, $\TSP$). Abbiamo un grafo non orientato completo $G$ i cui archi
+$(u,v)$ sono etichettati da un valore $d_{u,v}$. Supponiamo che la ``distanza'' $d$ sia simmetrica:
+$d_{u,v} = d_{v,u}$. Ci chiediamo se esiste un cammino in $G$ che ci permette di toccare tutti i
+nodi con una somma dei valori degli archi (``distanza complessiva'') minore o uguale ad un certo
+$k$.
+
+\begin{equation*}
+    \TSP = \set{\tuple{G,k,d} \mid G = (V,V^{2}) \land \exists p. \sum_{(u,v)\in p}d_{u,v} \leq k}
+\end{equation*}
+
+Sappiamo gia' che questo problema e' in $\NPClass$. Infatti esiste un certificato polinomiale per
+una soluzione a questo problema: il percorso del commesso viaggiatore.
+
+Vediamo che $\TSP$ e' $\NPClass$-completo riducendo il problema del cammino hamiltoniano a $\TSP$.
+Infatti dato un grafo $G$ con $n$ nodi passiamo ad un grafo completo $G'$ con i seguenti
+assegnamenti di peso agli archi:
+\begin{itemize}
+    \item se $(u,v) \in G$, $d_{u,v} = 1$ 
+    \item se $(u,v) \notin G$, $d_{u,v} = 2$ 
+\end{itemize}
+Come valore per $k$ scegliamo $n-1$.
+
+Agli archi che non esistevano in $G$ diamo un peso abbastanza grande da renderli non convenienti da
+attraversare. Infatti se vogliamo un cammino che tocchi tutti i nodi di distanza complessiva $n-1$
+non potremmo mai passare per un arco di peso maggiore di 1.
+
+In figura \ref{img:HAMTSP} e' rappresentato un esempio con un grafo con 4 nodi.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/HAMTSP.pdf}
+        \caption{Esempio di riduzione da cammino hamiltoniano a commesso viaggiatore.}
+        \label{img:HAMTSP}
+    \end{center}
+\end{figure}
+
+% TODO add proof of correctness
+
+Abbiamo quindi che $\TSP$ e' NP-completo.
+
+\subsection{$\VC \leq \HIT$}
+
+Vediamo un'altra riduzione. Supponiamo di avere un insieme $S$ di individui. Questi sono raggruppati
+in classi $A_{1},\dotsc,A_{n} \subseteq S$. Possiamo supporre che l'unione degli $A_{i}$ sia uguale
+ad $S$. Ci chiediamo se esiste un insieme $H \subseteq S$ tale che $\forall i, H \cap A_{i} \not=
+\emptyset$. Chiediamo inoltre che $|H| \leq k$. Questo $H$ e' solitamente detto \textit{hitting
+set}. L'input del problema e' $S$, la famiglia $\set{A_{i}}$ e l'intero $k$.
+
+A priori $H$ potrebbe essere un qualsiasi sottoinsieme di $S$. Potremmo quindi fare una ricerca
+esaustiva per trovare $H$. Questo ci permette di definire lo spazio di ricerca, che ha dimensione
+esponenziale nel numero degli elementi di $S$. Sappiamo quindi che questo problema e' in $\NPClass$.
+In maniera analoga potremmo trarre la stessa conclusione se pensiamo ad un semplice algoritmo di
+verifica per il problema, che esiste: dato un $H$ basta verificare che ha intersezione nulla con gli
+$A_{i}$ e cardinalita' $\leq k$.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/HIT.pdf}
+        \caption{Esempio di problema di ricerca dell'hitting set}
+    \end{center}
+\end{figure}
+
+Questo problema rappresenta una generalizzazione del problema della copertura di vertici. Possiamo
+pensare ad ogni sottoinsieme come ad un iperarco, ovvero un arco che collega piu' di due nodi.
+Possiamo immaginare di avere un ``hub'' centrale che collega tutti i nodi collegati dall'iperarco
+mediante archi normali.
+
+Andando a sostituire in $S$ gli $A_{i}$ con insiemi di nodi collegati da iperarchi otteniamo un
+ipergrafo, e il problema dell'hitting set si riduce alla ricerca di una copertura di vertici di
+dimensione minore uguale a $k$ in questo ipergrafo.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/HYPERGRAPH.pdf}
+        \caption{Il problema dell'hitting set puo' essere visto come un problema di copertura di
+        vertici su un ipergrafo.}
+    \end{center}
+\end{figure}
+
+Vediamo quindi una riduzione da $\VC$ a $\HIT$. Supponiamo di lavorare con un grafo $G$ non
+orientato.
+
+Supponiamo di avere una coppia $(G,k) \in \VC$ e costruiamo una funzione $f$ che mappi $(G,k)$ in
+$(S,\set{A_{i}},k)$. Supponendo che $G = (V,E)$, poniamo $S = V$, $\set{A_{i}} = \set{\set{\set{u,v}
+\mid (u,v) \in E}}$ e $k$ rimane invariato. Intuitivamente cerchiamo un hitting set nell'insieme dei
+nodi di $G$ supponendo di avere un sottoinsieme $A_{i}$ per ogni coppia di nodi $(u,v)$ di
+cardinalita' $\leq k$, che corrisponde ad una copertura di vertici in $G$.
+
+% TODO add proof of correctness
+
+\subsection{$\HAMPATH \leq k-\ST$}
+
+Dato un grafo $G = (V,E)$ uno spanning tree $T$ e' uno sottografo connesso di $G$ con gli stessi
+nodi di $G$ e con $n-1$ archi. Un grafo ammette uno spanning tree se e solo se e' connesso.
+
+Esistono vari problemi al riguardo agli spanning tree su grafi. Ad esempio l'esistenza di uno
+spanning tree in $G$, che si riduce a capire se il grafo e' connesso, che e' un problema semplice.
+Infatti ogni visita del grafo definisce implicitamente uno spanning tree. 
+
+Il problema diventa interessante se poniamo vincoli allo spanning tree. Un vincolo interessante e',
+ad esempio, dare un limite $k$ al numero delle estremita' dello spanning tree, ovvero dei nodi da
+cui parte un unico arco nello spanning tree.
+
+Lo spazio di ricerca del problema e' grande. Esiste un algoritmo di verifica veloce: dato uno
+spanning tree verifichiamo che contiene tutti i vertici e contiamo le estremita'. Ci verrebbe il
+sospetto che sia $\NPClass$-completo. Cerchiamo quindi un problema $\NPClass$-completo che gli
+somigli. 
+
+Se fissiamo $k$ a 2 abbiamo che lo spanning tree corrisponde ad un cammino hamiltoniano. Il cammino
+hamiltoniano e' quindi un ``caso particolare'' di spanning tree. Quest'ultimo problema e' quindi
+piu' complicato del problema del cammino hamiltoniano.
+
+% TODO add proof of correctness

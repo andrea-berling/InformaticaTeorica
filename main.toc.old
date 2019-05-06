@@ -135,3 +135,7 @@
 \contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{152}{subsection.15.5.2}% 
 \contentsline {subsection}{\numberline {15.5.3}$\textsc {hampath}\equiv \textsc {hamcycle}$}{155}{subsection.15.5.3}% 
 \contentsline {subsection}{\numberline {15.5.4}$\textsc {hampath}\leq \textsc {hampath}_{u,v}$}{157}{subsection.15.5.4}% 
+\contentsline {subsection}{\numberline {15.5.5}$\textsc {sat}\leq d\textsc {ham}$}{157}{subsection.15.5.5}% 
+\contentsline {subsection}{\numberline {15.5.6}$\textsc {hampath}\leq \textsc {tsp}$}{160}{subsection.15.5.6}% 
+\contentsline {subsection}{\numberline {15.5.7}$\textsc {vc}\leq \textsc {hit}$}{161}{subsection.15.5.7}% 
+\contentsline {subsection}{\numberline {15.5.8}$\textsc {hampath}\leq k-\textsc {st}$}{163}{subsection.15.5.8}% 

@@ -1,4 +1,4 @@
-%% img/NPClass/HAM2PHAM.tex
+%% img/NPClass/HIT.tex
 %% Copyright 2019 Andrea Berlingieri
 %
 % This work may be distributed and/or modified under the
@@ -31,17 +31,23 @@
 
 \begin{document}
     \begin{tikzpicture}[point/.style={draw,circle,inner sep=0cm,fill=black,minimum size=2pt}]
-        \GraphG{0}{0}{G}
-        \draw[decorate,decoration=snake,->] (3,-1) -- (4,-1);
-        \GraphG{5}{0}{G2}
-        \node[point] (start) at (6,1) {};
-        \node[point] (end) at (6,-3) {};
-        \node () [above=2pt of start] {$n_{\textsc{start}}$};
-        \node () [below=2pt of end] {$n_{\textsc{end}}$};
-        \foreach \n in {1,...,4}
-        {
-            \draw (start) -- (G2_m\n);
-            \draw (end) -- (G2_m\n);
-        }
+        \draw (0,0) circle [radius=3cm];
+        \draw (-1,1) circle [radius=1cm];
+        \draw (-0.25,0) circle [radius=1.2cm];
+        \draw (0.5,1) circle [radius=1.2cm];
+        \draw (1.25,-0.25) circle [radius=1cm];
+        \node[point] () at (-1.4,1.4) {};
+        \node[point] () at (-1,1.6) {};
+        \node[point] () at (-1.6,0.75) {};
+        \node[point] () at (-0.35,0.75) {};
+        \node[point] () at (0.2,1.75) {};
+        \node[point] () at (0.6,1.9) {};
+        \node[point] () at (1,1.4) {};
+        \node[point] () at (0.75,1.2) {};
+        \node[point] () at (0.75,0.25) {};
+        \node[point] () at (1.25,-0.25) {};
+        \node[point] () at (-0.75,-0.25) {};
+        \node[point] () at (-1,-0.7) {};
+        \node[point] () at (0.2,-0.7) {};
     \end{tikzpicture}
 \end{document}
