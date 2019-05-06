@@ -37,6 +37,12 @@ img/nondeterminism/Simulation.tex
 img/NPClass/HAM2PHAM.tex
 img/NPClass/HAMCYCLEPATH.tex
 img/NPClass/HAMPATHCYCLE.tex
+img/NPClass/HAMTSP.tex
+img/NPClass/HIT.tex
+img/NPClass/HYPERGRAPH.tex
+img/NPClass/SATdHAM1.tex
+img/NPClass/SATdHAM2.tex
+img/NPClass/SATdHAM3.tex
 img/NPClass/SATproof1.tex
 img/NPClass/SATproof2.tex
 img/NPClass/SATproof3.tex
