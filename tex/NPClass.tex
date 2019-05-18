@@ -950,7 +950,7 @@ $\textsc{end}$ otteniamo un cammino hamiltoniano in $G$.
 
 Cosa ci obbliga ad attraversare una catena secondo la nostra convenzione sul verso di
 attraversamento? La direzione dei link alle clausole. Se infatti, ad esempio, attraversassimo la
-catena di $A$ da destra verso sinistra, ovvero in verso opposto rispetto a quello dettato dalla
+catena di $A$ da sinistra verso destra, ovvero in verso opposto rispetto a quello dettato dalla
 convenzione sul valore di verita' di $A$, non riusciremmo a toccare il nodo corrispondente alla
 clasuola $\set{\lnot A}$, e non avremmo un cammino hamiltoniano.
 
@@ -1101,3 +1101,174 @@ hamiltoniano e' quindi un ``caso particolare'' di spanning tree. Quest'ultimo pr
 piu' complicato del problema del cammino hamiltoniano.
 
 % TODO add proof of correctness
+
+\subsection{$k-\CLIQUE \in \PClass$}
+
+% ripetizione su fatto, 
+Per tanti dei problemi che abbiamo visto il fatto che uno di questi sia in $\NPClass$, e che,
+presumibilmente, non sia in $\PClass$, e' una conseguenza del fatto che stiamo cercando un algoritmo
+che lavori in maniera uniforme su input arbitrari. Ci chiediamo quindi se indebolire un problema,
+mediante, ad esempio, dei vincoli sull'input, possa produrre un problema che sta in $\PClass$. La
+risposta e' positiva, quantomeno per certi problemi e per certi vincoli.
+
+Prendiamo in considerazione il problema della Cricca. L'input e' un grafo $G$, un intero $k$, e ci
+chiediamo se esiste una cricca di dimensione $k$ in $G$. Sappiamo che, nella sua forma generale, e'
+un problema $\NPClass$-completo.
+
+Supponiamo di fissare $k$ a priori, ad esempio a 7. Quello che prendiamo in input in questo caso
+e' solamente $G$ e ci chiediamo se esiste una cricca di dimensione 7 in $G$. Qual e' la classe di
+complessita' a cui appartiene questo problema?
+
+La prima cosa da fare per rispondere a questa domanda e' definire lo spazio di ricerca, usando un
+algoritmo banale che provi tutte le combinazioni di 7 nodi. Consideriamo tutti i possibili candidati
+e li testiamo per vedere se un certo candidato e' una cricca. E' un algoritmo brutale, ma ci
+permette di dare un upper bound allo spazio di ricerca. Supponiamo che $G=(V,E)$ e $|V| = n$.
+Dobbiamo calcolare il numero di combinazioni diverse di 7 nodi. Questo valore e' dato da:
+\begin{equation*}
+    \binom{n}{7} = \frac{n!}{(n-7)!7!} = \frac{n\cdot (n-1) \cdots (n-6)}{7!} \in O(n^{7})
+\end{equation*}
+
+Abbiamo quindi che lo spazio di ricerca ha dimensione polinomiale. L'algoritmo che verifica se una
+data tupla di nodi e' una cricca ha complessita' in tempo costante, dato che abbiamo fissato $k$ a
+$7$. Di conseguenza la complessita' dell'algoritmo stupido e' polinomiale. In generale la ricerca di
+una cricca di dimensione fissata a priori ha una complessita' polinomiale in tempo. Si tratta quindi
+di un problema in $\PClass$, per ogni istanza di $k$.
+
+Ci si potrebbe chiedere a questo punto, perche' l'algoritmo generale ha complessita' piu' che
+polinomiale? Perche' nel caso generale non riusciamo a fissare il grado di un polinomio che faccia
+da upperbound alla complessita' di un qualche algoritmo che risolva il problema. Al contrario, per
+la $k-\CLIQUE$, con $k$ fissato, riusciamo sempre a farlo: abbiamo un upper bound $O(n^{k})$ per
+l'algoritmo di forza bruta. Infatti l'analisi che abbiamo fatto per la $7-\CLIQUE$ e' del tutto
+generale, e vale per qualsiasi sia il $k$ fissato ($\leq n$). In generale se non possiamo fissare il
+grado del polinomio che fa da upper bound ad un algoritmo non abbiamo una complessita' polinomiale.
+
+E' il solito problema della parametricita'. Solo perche' riusciamo a risolvere un caso particolare
+di un problema con una certa complessita' non e' detto che possiamo risolvere il problema nel caso
+generale con la stessa complessita' (o comunque con complessita' polinomiale).
+
+\subsection{$\CLIQUE \leq \HALFCLIQUE$}
+
+Consideriamo un altro caso particolare del problema della cricca. Preso in input un grafo $G=(V,E)$,
+con $|V| = 2n$, ci chiediamo se esiste una cricca di dimensione $\geq n$. Sembrerebbe simile al caso
+precedente, ma in realta' non sappiamo a priori quale sia la dimensione della cricca, poiche'
+dipende dal grafo.
+
+Al solito possiamo calcolare un upper bound alla dimensione dello spazio di ricerca, mediante il
+solito algoritmo di forza bruta. Questa e' data da:
+\begin{equation*}
+    \binom{2n}{n} = \frac{(2n)!}{n!n!} \sim 2n^{n} \in O(n^{n})
+\end{equation*}
+Questo ordine di grandezza si dimostra con le disuguaglianze di Stirling.
+
+Abbiamo che lo spazio di ricerca non cresce in maniera polinomiale rispetto alla dimensione
+dell'input. Se lo spazio di ricerca non e' polinomiale si potrebbe supporre che il problema non sia
+in $\PClass$. Sicuramente sta in $\NPClass$, e si dimostra con un semplice algoritmo di verifica. Ci
+viene il sospetto che sia $\NPClass$-completo.
+
+Cerchiamo quindi una riduzione. Il problema piu' simile che abbiamo e' quello della cricca generale.
+Vogliamo quindi una riduzione da $\CLIQUE$ a $\HALFCLIQUE$. La riduzione non e' ovvia. Questa
+riduzione ci mostra come a volte risolvere certi casi particolari di un problema ci permette di
+risolvere lo stesso problema nel caso generale, modificando opportunamente i dati di ingresso.
+
+Da $(G,k)$ vogliamo passare a $G'$ in modo che se in $G$ avevamo una cricca di dimenisone $k$ in
+$G'$ avremo una cricca di dimensione $\geq n'/2$, se $G'$ ha $n'$ nodi.
+
+Nella nostra riduzione procediamo per casi. Supponiamo che $G$ abbia $m$ nodi. Un caso e' dato da $k
+= m/2$, ma questo non richiede modifiche dell'input e quindi lo ignoriamo.
+
+Il primo caso che abbiamo e' se $k \geq m/2$.  In tal caso aggiungiamo dei nodi indipendenti a $G$
+in modo che $G'$ abbia dimensione $n' = 2k$. Poiche' questi nodi sono isolati non vanno ad
+influenzare l'eventuale esistenza di cricche in $G$ di dimensione $k$. La ricerca di una cricca di
+dimensione $n'/2 = k$ in $G'$ corrisponde alla ricerca di una cricca in $G$ di dimensione $k$. I
+nodi da aggiungere sono $2k - m$.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/CLIHCLI1.pdf}
+        \caption{Supponiamo che $k=3$ e $n=4$. Aggiungiamo $2k-n = 2$ nodi indipendenti. Questi non
+        andranno ad influenzare l'esistenza di cricche in $G'$.}
+    \end{center}
+\end{figure}
+
+Per il caso in cui $k < m$ dobbiamo fare una cosa complementare al caso precedente, dove
+aggiungievamo dei nodi per aumentare la dimensione del grafo per raggiungere una dimensione doppia
+rispetto a $k$. In questo caso vogliamo ``aumentare $k$ in $G'$'', ovvero aumentare il numero di
+nodi in $G$ di un fattore $p$, in modo che $(m+p)$ sia uguale a $2(k+p)$. In questo modo $k + p$
+rappresenterebbe il ``$k$ aumentato'' in $G'$, e con $k+p = (m+p)/2 = n'/2$ potremmo dare in input
+$G'$ all'algoritmo per $\HALFCLIQUE$. I nuovi $p$ nodi devono essere collegati opportunamente, in
+modo che l'esistenza di una cricca di dimensione $k+p$ in $G'$ corrisponda all'esistenza di una
+cricca di dimensione $k$ in $G$. Per garantire cio' questi nodi vengono collegati a tutti i nodi di
+$G$ e ai nuovi nodi aggiunti. In questo modo non influiscono sull'esistenza di cricche in $G$.
+
+Quanti nodi dobbiamo aggiungere a $G$? Cerchiamo un valore $p$ tale che la dimensione di $G'$, data
+da $m + p$, coincida con $2(k + p)$. Di conseguenza doppiamo aggiungere un numero di nodi uguale a
+$m - 2k$, connessi a tutti gli altri nodi del grafo. I nodi aggiunti fanno sicuramente parte di una
+qualsiasi cricca di $G$. Inoltre se $G'$ ha una cricca di dimensione $k+p$ togliendo i nodi aggiunti
+otteniamo una cricca di dimensione $k$.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/CLIHCLI2.pdf}
+        \caption{Supponiamo che $k=3$ e $n=8$. Aggiungiamo $n-2k = 2$ nodi che formano una cricca e
+            li colleghiamo agli altri nodi di $G$}
+    \end{center}
+\end{figure}
+
+Con questo esempio abbiamo modo di vedere una proprieta' generale dei problemi $\NPClass$-completi:
+per i problemi $\NPClass$-completi esistono in genere dei casi particolari patologici che catturano
+l'essenza del problema sua versione generale.
+
+\subsection{$\LIP$ e' $\NPClass$-completo}
+
+Consideriamo un'altra classe di problemi importanti $\NPClass$-completi: i problemi di
+programmazione intera. Abbiamo un sistema di disequazioni lineari, con variabili
+$x_{1},\dotsc,x_{n}$, e ci chiediamo se questo sistema ha una soluzione intera. Il vincolo di
+interezza complica il problema, poiche' sappiamo che la versione di questo problema che ammette
+soluzioni in $\Real$ ha come algoritmo risolutivo l'algoritmo del simplesso, di complessita' cubica
+(e quindi $\LP \in \PClass$) . $\LIP$ (Linear Integer Programming) e' in in $\NPClass$, poiche' la
+verifica di una soluzione e' banale.
+
+Cosa possiamo ridurre a $\LIP$ per dimostrare la sua completezza? In principio possiamo ridurre
+tutto, dato che la programmazione lineare intera e' molto flessibile e permette di modellare molti
+problemi. Vediamo una riduzione da $\SAT$.
+
+Supponiamo, per esempio, di avere tre clausole: $\set{A,\lnot B},\set{A,\lnot C},\set{\lnot A,B}$.
+Come variabili per $\LIP$ prendiamo le variabili proposizionali. Dopodiche' dobbiamo limitare il
+range di queste due variabili a 0 e 1: $A \geq 0$, $A \leq 1$, $B \geq 0$, $B \leq 1$, e cosi' via.
+A questo punto dobbiamo imporre che le clausole siano soddisfatte. Di conseguenza vogliamo che i
+valori numerici associati alle clausole siano $\geq 1$. Ogni clausola puo' essere espressa come
+somma dei valori dei letterali. Per esprimere la negazione di un letterale $B$ usiamo $1 - B$.
+Questo procedimento, che puo' essere generalizzato a formule arbitrarie in CNF, e' illustrato in
+Figura \ref{img:SATLIP}.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{./img/NPClass/SATLIP.pdf}
+        \caption{Esprimiamo i vincoli di $\SAT$ mediante semplici disequazioni.}
+        \label{img:SATLIP}
+    \end{center}
+\end{figure}
+
+\subsection{$\HAMPATH \leq \LIP$}
+
+Per dare un'idea della flessibilita' di $\LIP$ nel modellare i problemi vediamo una riduzione da
+$\HAMPATH$ a $\LIP$.
+
+Definiamo delle variabili $X_{n,u}$, che esprimono il fatto che il nodo $n$-esimo del cammino
+hamiltoniano sia $u$. Vogliamo imporre che i nodi del cammino siano adiacenti in $G$. Esprimiamo
+cio' con il seguente vincolo lineare:
+\begin{equation*}
+    \forall u,v.(u,v) \notin E. X_{i,u} + X_{i+1,v} \leq 1
+\end{equation*}
+che significa, letteralmente, se due nodi $u$ e $v$ non sono adiacenti in $G$, se al passo $i$
+scelgo $u$ al passo $i+1$ non scelgo $v$, e, viceversa, se al passo $i+1$ scelgo $v$ al passo $i$
+non scelgo $u$. Ovviamente e' lecito che ai passi $i$ e $i+1$ non scelga nessuno dei due.
+
+Vogliamo inoltre che ogni nodo sia toccato una sola volta. Esprimiamo questa condizione con il
+seguente vincolo:
+\begin{equation*}
+    \forall i,n \sum_{i}X_{i,n} = 1
+\end{equation*}
+
+Queste due equazioni di vincolo sono sufficienti (insieme alle soliti vincoli di range sulle
+variabili a $\set{0,1}$) a modellare $\HAMPATH$.
