@@ -1,8 +1,3 @@
-% This file has been copied here because the original mystyle defines a theorems numbering based on
-% the chapter counter. As in the image files' tex code, which uses the standalone package, a chapter
-% counter was not defined this would give an error at compilation time. This is a patch, a better
-% solution is needed
-
 \ProvidesPackage{mystyle}
 
 \usepackage{amsmath}
@@ -16,9 +11,12 @@
 
 \usepackage{bm}
 
+\usepackage[T1]{fontenc}
+
 \usepackage{tikz}
 
 \newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Real}{\mathbb{R}}
 \newcommand{\StdNat}{\mathcal{N}}
 \newcommand{\Parts}{\mathscr{P}}
 \newcommand{\Lang}{\mathcal{L}}
@@ -44,10 +42,45 @@
 \newcommand{\dom}{\textit{dom}}
 \newcommand{\PClass}{\mathbb{P}}
 \newcommand{\NPClass}{\mathbb{NP}}
+\newcommand{\CONPClass}{\textbf{CO-}\mathbb{NP}}
+\newcommand{\COPClass}{\textbf{CO-}\mathbb{P}}
+\newcommand{\CClass}{\mathbb{C}}
 \newcommand{\case}[2]{#1 \quad &\text{#2}}
-\newcommand{\set}[1]{\{#1\}}
+\newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\ie}{\emph{i.e.}}
+\newcommand{\implied}{\Longleftarrow}
+\newcommand{\col}{\textit{col}}
 \newcommand{\pair}[2]{\langle #1, #2 \rangle}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\newcommand{\SAT}{\textsc{sat}}
+\newcommand{\COSAT}{\textbf{co-}\textsc{sat}}
+\newcommand{\VC}{\textsc{vc}}
+\newcommand{\HIT}{\textsc{hit}}
+\newcommand{\ST}{\textsc{st}}
+\newcommand{\dHAM}{d\textsc{ham}}
+\newcommand{\TSP}{\textsc{tsp}}
+\newcommand{\HAMPATH}{\textsc{hampath}}
+\newcommand{\HAMCYCLE}{\textsc{hamcycle}}
+\newcommand{\CLIQUE}{\textsc{clique}}
+\newcommand{\HALFCLIQUE}{\textsc{halfclique}}
+\newcommand{\LIP}{\textsc{lip}}
+\newcommand{\LP}{\textsc{lp}}
+\newcommand{\DTIME}{\textsc{dtime}}
+\newcommand{\DSPACE}{\textsc{dspace}}
+\newcommand{\PSPACE}{\textsc{pspace}}
+\newcommand{\PH}{\textsc{ph}}
+\newcommand{\LOGSPACE}{\textsc{logspace}}
+\newcommand{\EXPSPACE}{\textsc{expspace}}
+\newcommand{\NTIME}{\textsc{ntime}}
+\newcommand{\NSPACE}{\textsc{nspace}}
+\newcommand{\EXP}{\textsc{exp}}
+\newcommand{\NEXP}{\textsc{nexp}}
+\newcommand{\NPSPACE}{\textsc{npspace}}
+\newcommand{\NLOGSPACE}{\textsc{nlogspace}}
+\newcommand{\BHP}{\textsc{bhp}}
+\newcommand{\code}[1]{\lceil #1 \rceil}
+\newcommand{\LPad}{\Lang^{\textsc{pad}}}
+\newcommand{\FP}{\textsc{fp}}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,allcolors=black}
@@ -108,6 +141,8 @@ showstringspaces=false            %
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
-\usetikzlibrary{patterns}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\overequalto}[2]{\overset{\scriptstyle\underset{\mkern4mu\verteq}{#2}}{#1}}
 
-\newcommand\graypoint[2]{\filldraw [gray] (#1,#2) circle [radius=2pt]}
+\usepackage[vlined]{algorithm2e}
+\newcommand{\REACH}{\textsc{reach}}
