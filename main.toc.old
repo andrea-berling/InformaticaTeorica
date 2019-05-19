@@ -101,14 +101,14 @@
 \contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{98}{section.11.12}% 
 \contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{100}{chapter.12}% 
 \contentsline {section}{\numberline {12.1}Macchine di Turing}{100}{section.12.1}% 
-\contentsline {subsection}{\numberline {12.1.1}Convensioni di input output}{101}{subsection.12.1.1}% 
+\contentsline {subsection}{\numberline {12.1.1}Convenzioni di input output}{101}{subsection.12.1.1}% 
 \contentsline {subsection}{\numberline {12.1.2}Configurazioni}{101}{subsection.12.1.2}% 
 \contentsline {section}{\numberline {12.2}Classi di complessit\IeC {\`a}}{102}{section.12.2}% 
 \contentsline {section}{\numberline {12.3}Relazione tra spazio e tempo}{104}{section.12.3}% 
 \contentsline {section}{\numberline {12.4}Dipendenza dal modello di calcolo}{106}{section.12.4}% 
 \contentsline {subsection}{\numberline {12.4.1}Riduzione dei nastri}{106}{subsection.12.4.1}% 
 \contentsline {subsubsection}{Nota sugli slowdown}{109}{section*.9}% 
-\contentsline {subsection}{\numberline {12.4.2}Random Access Machine}{109}{subsection.12.4.2}% 
+\contentsline {subsection}{\numberline {12.4.2}Random Access Machine}{110}{subsection.12.4.2}% 
 \contentsline {chapter}{\numberline {13}Gerarchie in spazio e tempo}{114}{chapter.13}% 
 \contentsline {section}{\numberline {13.1}I teoremi della gerarchia}{114}{section.13.1}% 
 \contentsline {subsection}{\numberline {13.1.1}Il teorema della gerarchia in spazio}{114}{subsection.13.1.1}% 
