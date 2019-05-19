@@ -18,12 +18,12 @@
 
 \section{Complessità, costi, analisi}
 
-In questa parte di corso siamo interessati a definire le classi di complessità. Ci sono alcune
+In questa parte di corso siamo interessati a definire classi di complessità. Ci sono alcune
 differenze rispetto alla complessità intesa in senso algoritmo.
 
-Siamo interessati a cosa siamo in grado di calcolare in tempi ragionevoli. Il fatto che un problema
-sia calcolabile non implica necessariamente che si tratti di un problema risolvibile in modo
-pratico.
+Siamo interessati a cosa siamo in grado di calcolare in termini ragionevoli. Il fatto che un
+problema sia calcolabile non implica necessariamente che si tratti di un problema risolvibile in
+modo pratico.
 
 Come si valuta la complessità computazionale, ovvero il costo di far funzionare dei programmi?
 Tipicamente si misura il costo in funzione del consumo di una determinata risorsa. Abbiamo
@@ -31,7 +31,7 @@ fondamentalmente due risorse principali di riferimento nella computazione: tempo
 
 Perché non usiamo altre risorse, come ad esempio il consumo di energia elettrica o la temperatura
 della CPU? Potremmo. Ciò pone una questione interessante: che relazione c'è tra queste risorse? Ad
-esempio, sapendo quanto tempo richiede un programma per essere eseguito sappiamo qualcosa
+esempio, sapendo quanto tempo richiede un programma per essere eseguito, sappiamo qualcosa
 sull'occupazione di memoria?% Il viceversa è un pò più delicato.
 
 Come misuriamo il costo computazionale? Tipicamente si è interessati al comportamento asintotico di
@@ -40,10 +40,10 @@ Di solito questa è il punto di partenza dell'analisi del costo. Si può però f
 diversa e chiedersi quanto scala il programma al crescere della dimensione dei dati di input.
 
 Si possono ovviamente avere delle fluttuazioni nei dati e quindi nel comportamento del programma.
-Noi consideriamo di solito il caso pessimo. Questo è utile perché mi dà un limite al peggio che
-può succedere. Potrebbe a volte essere interessante fare un'analisi del caso medio, che però è in
-genere molto più complessa della corrispettiva per il caso pessimo. Ad esempio è necessario
-conoscere la distribuzione dei dati di input, il che non è sempre semplice.
+Noi consideriamo di solito il caso pessimo. Questo è utile perché ci dà un limite al peggio che può
+succedere. Potrebbe a volte essere interessante fare un'analisi del caso medio, che però è in genere
+molto più complessa della corrispettiva per il caso pessimo. Questo perché, ad esempio, potrebbe
+essere necessario conoscere la distribuzione dei dati di input, il che non è banale.
 
 Può succedere che un programma abbia un comportamento ``pesante'' all'inizio e leggero al crescere
 dell'input. La nostra analisi ignora il primo aspetto.
@@ -55,7 +55,7 @@ Un'altra parte importante riguarda il meccanismo di calcolo.
 Ci chiediamo anche quanto la misura del tempo e dello spazio dipenda dal particolare modello
 computazionale che usiamo.
 
-Noi faremo analisi e prescidere dalle costanti. $1000\cdot n^{2}$ e $10\cdot n^{2}$ sono equivalenti per noi.
+Noi faremo analisi e prescindere dalle costanti. $1000\cdot n^{2}$ e $10\cdot n^{2}$ sono equivalenti per noi.
 È un tentativo di dissociarsi dal particolare modello di calcolo usato. Ma funziona? O la nostra
 misura di complessità rimane vincolata ad un particolare modello di calcolo?
 
@@ -65,10 +65,10 @@ programma scritto in codice sorgente, ad esempio per considerazioni legate all'i
 linguaggio.
 
 Noi faremo riferimento a macchine teoriche (Macchine di Turing). Ci chiederemo: data una macchina
-con $n$ nastri riusciamo ad eseguire uno stesso algoritmo con la stessa complessità che avremmo con
-una macchina con 1 nastro? La risposta sarà no. Questa è una forte differenza rispetto alla teoria
-della complessità, dove il numero di nastri non ha alcuna influenza sulla calcolabilità di una
-funzione.
+con $n$ nastri ed un algoritmo eseguibile da questa con una certa complessità in tempo, riusciamo
+ad eseguire lo stesso algoritmo con la stessa complessità con una macchina con un solo nastro? La
+risposta sarà no. Questa è una forte differenza rispetto alla teoria della complessità, dove il
+numero di nastri non ha alcuna influenza sulla calcolabilità di una funzione.
 
 Consideremo quanto sia significativo dire che un certo problema ha una data complessità.
 
@@ -97,11 +97,17 @@ Prendiamo ad esempio il problema della soddisfacibilità proposizionale. Come ta
 vedremo è un problema decisionale (risposta sì/no). Il nostro programma deve dirmi sì se una data
 formula è soddisfacibile e no altrimenti. È possibile avere un certificato che ``giustifichi'' la
 risposta. Per $\SAT$ questo certificato può essere l'assegnazione di valori alle variabili che
-soddisfa la proposizione. In tempo lineare posso fare la sostituzione e verificare se la formula
+soddisfa la proposizione. In tempo lineare possiamo fare la sostituzione e verificare se la formula
 ottenuta è valida.
 
-Il problema della tautologicità non è di questa categoria. Si può dare un certificato compatto
-per questo problema? Si direbbe di no, ma non si è ancora dimostrato il contrario.
+Il problema della tautologicità non è di questa categoria. Si può dare un certificato compatto per
+questo problema? Si direbbe di no, dato che un possibile certificato per questo problema sarebbe
+l'intera tabella di verità di una formula, e la verifica consisterebbe nel verificare che questa
+contenga solo valori true. Questa tabella ha dimensione esponenziale nella dimensione della formula.
+Di conseguenza un certificato compatto per il problema della tautologicità dovrebbe, in un certo
+senso, codificare un'informazione esponenziale in una stringa di dimensione polinomiale. Tuttavia
+non è ancora stato dimostrato che non esiste un certificato compatto per il problema della
+tautologicità.
 
 Il certificato per essere compatto deve avere dimensione polinomiale.
 
@@ -133,7 +139,7 @@ logaritmica. Se l'input è $n$ e la complessità è lineare in $n$ la complessit
 non è lineare, bensì esponenziale nella dimensione dell'input.
 
 Qui c'è una leggera differenza tra la teoria della complessità e la teoria algoritmica della
-complessità. In algoritmica si considera cosatante il costo delle operazioni artimetiche. Ciò non è
+complessità. In algoritmica si considera costante il costo delle operazioni artimetiche. Ciò non è
 necessariamente sbagliato, dato che si considerano interi con una dimensione massima (limitata dalla
 grandezza della parola di memoria). Fintanto che esiste un bound alla dimensione dei dati tutte le
 operazioni hanno costo costante. Se facessimo operazioni su interi di grandezza arbitraria queste
@@ -187,12 +193,12 @@ Sia $g(n) > 0$ per ogni $n$. Valgono le seguenti proposizioni:
 
 $f \in o(g)$ implica $f \in O(g)$, ma non vale il viceversa.
 
-Scrivere $g \in O(f)$ è equivalente a scrivfere $O(g) \subseteq O(f)$.
+Scrivere $g \in O(f)$ è equivalente a scrivere $O(g) \subseteq O(f)$.
 
 Se il limite all'infinito del rapporto tra $f$ e $g$ è uguale ad una costante diversa da 0 abbiamo che
 $f$ e $g$ hanno lo stesso comportamento asintotico.
 
-Quando cerchiamo l'ordine di grandezza cerchiamo la funzione più semplice che mi indichi il
+Quando cerchiamo l'ordine di grandezza cerchiamo la funzione più semplice che ci indichi il
 comportamento asintotico della mia funzione. Un polinomio di quarto grado è sicuramente $O(n^{5})$,
 ma l'ordine più semplice che useremmo è $O(n^{4})$.
 
@@ -251,8 +257,8 @@ La tabella \ref{algocomp} considera complessità in tempo.
 Ha senso di parlare di complessità in tempo sublineari? Si potrebbe rispondere istintivamente di sì,
 portando due esempi famosi (binary search e alberi bilanciati). Questo però ha senso se supponiamo
 che la struttura dati che stiamo usando è già data e non dobbiamo rileggerla ogni volta. Se
-dovessimo leggere ogni volta una struttura dati di grandezza $n$ allora la complessità sarà
-quantomeno lineare nella dimensione dell'input, poichè l'input va letto.
+dovessimo leggere ogni volta una struttura dati di grandezza $n$ allora la complessità sarebbe
+quantomeno lineare nella dimensione dell'input, poichè l'input andrebbe letto.
 
 Si suppone spesso che le complessità in tempo sublineari non abbiano molto senso. Lo acquistano
 solo se facciamo significative assunzioni sul problema in questione.
@@ -292,7 +298,7 @@ Noi considereremo sempre grafi finiti ($V$ e $E$ finiti).
 \begin{defn}
     Sia $G = (V,E)$ un grafo.
     \begin{itemize}
-        \item Un cammino (ciclo) Hamiltoniano in $G$ è un cammingo (ciclo) che comprende ciascun
+        \item Un cammino (ciclo) Hamiltoniano in $G$ è un cammino (ciclo) che comprende ciascun
         vertice del grafo una sola volta;
         \item Un ricoprimento di vertici per $G$ è un sottoinsieme $V_{0} \subseteq V$ tale che
         ogni arco $e \in E$ ha almeno un'estremità in $V$;
@@ -408,7 +414,7 @@ grafo. La ricerca di un cammino minimo tra due nodi è un'operazione semplice.
 È semplice calcolare il cammino più lungo in un grafo? Se lo fosse potremmo controllare la sua
 lunghezza. Se questa fosse uguale a $n$ allora avremmo anche un cammino hamiltoniano. La ricerca di
 un cammino lungo è quindi equivalente alla ricerca di un cammino hamiltoniano. E quindi è anche un
-problema in $\NPClass$ (lo vedremo più avanti).
+problema $\NPClass$-completo (lo vedremo più avanti).
 
 In un certo senso il duale di un problema semplice è un problema difficile (cammino minimo vs.
 cammino massimo). Non basta una semplice scansione dei cammini per trovare il più lungo, ma bisogna
@@ -467,11 +473,11 @@ $\PClass$ e cominciare la ricerca di un algoritmo efficiente.
 \subsection{Colorabilità}
 
 Un altro problema interessante sui grafi è la colorabilità: capire se un dato grafo è colorabile con
-meno di $n$ colori. La ``difficoltà'' del problema problema dipende dal valore di $n$. La
-bicolorabilità di un grafo è un problema semplice. Non tutti i grafi sono bicolorabili (vedi Figura
+$n$ colori. La ``difficoltà'' del problema problema dipende dal valore di $n$. La bicolorabilità di
+un grafo è un problema semplice. Non tutti i grafi sono bicolorabili (vedi Figura
 \ref{TwoColorableGraphs}). Un grafo può essere bicolorabile in più di un modo, a seconda di quale
 colore scegliamo per iniziare la colorazione. Tuttavia questo non è un problema, dato che possiamo
-sempre passare da una coloraziona all'altra semplicemente complementando i colori.
+sempre passare da una colorazione all'altra semplicemente complementando i colori.
 
 \begin{figure}[h]
     \begin{center}
@@ -594,11 +600,12 @@ siamo interessati a problemi decisionali, ovvero con soluzione booleana Sì/No.
 
 In un certo senso possiamo vedere i problemi di ottimizzazione come dei particolari problemi di
 decisione, specie per i problemi di ottimizzazione discreti. Il trucco è, invece di chiederci se
-esiste un flusso massimo ci chiediamo ``esiste un flusso maggiore di $n$?''. È un problema meno
-informativo, ma se so risolvere il problema decisionale posso pensare ad un algoritmo efficiente per
-risolvere il problema di ottimizzazione. Ad esempio potremmo creare un loop che esegue il nostro
-algoritmo per il problema decisionale per valori diversi dell'input finchè non troviamo il massimo o
-minimo. Questo tuttavia non è molto astuto come metodo, ne esistono di migliori.
+esiste un flusso massimo, ci chiediamo ``esiste un flusso maggiore di $n$?''. È un problema meno
+informativo, ma se sappiamo risolvere il problema decisionale possiamo pensare ad un algoritmo
+efficiente per risolvere il problema di ottimizzazione. Ad esempio potremmo creare un loop che
+esegue il nostro algoritmo per il problema decisionale per valori diversi dell'input finchè non
+troviamo il massimo o minimo. Questo tuttavia non è molto astuto come metodo, ne esistono di
+migliori.
 
 Di solito risolvendo il problema di ottimizzazione non abbiamo la soluzione in sè, ma un valore
 numerico tramite cui possiamo risalire alla soluzione in modo agevole. In altri termini otteniamo la
@@ -614,7 +621,7 @@ cricca sarà ``questo grafo ha una cricca di dimensione $k$?''.
 \section{Problemi e linguaggi}
 
 Nel problema decisionale abbiamo delle stringhe che descrivono l'input, in un qualche alfabeto.  Per
-alcune stringhe la risposta al problema sarà Sì, per altre No. Il problema mi dà quindi un
+alcune stringhe la risposta al problema sarà Sì, per altre No. Il problema ci dà quindi un
 linguaggio di stringhe che rappresentano input per cui la soluzione è Sì. La teoria della
 complessità si può ridurre al problema di riconoscere stringhe di un linguaggio. L'algoritmo di
 decisione del problema può essere visto come un algoritmo di riconoscimento del linguaggio delle
@@ -668,8 +675,8 @@ entità $n = |U| = |V|$, ovvero tale che il flusso totale uscente da $s$ sia ugu
 Questo è un tipico esempio di riduzione. Abbiamo un problema, il matching bipartito, e lo riduciamo
 ad un altro problema, che sappiamo già risolvere. Utilizziamo il problema del flusso massimo per risolvere
 il nuovo problema. Che operazione facciamo per fare ciò? L'unica cosa che facciamo è trasformare
-i dati di input in una rete di flusso. Dopodiché li diamo in pasto al mio algoritmo per il flusso
-massimo.  In base alla risposta del primo abbiamo automaticamente la risposta del secondo.
+i dati di input in una rete di flusso. Dopodiché li diamo in input all'algoritmo per il flusso
+massimo. In base alla risposta del primo abbiamo automaticamente la risposta del secondo.
 
 \begin{figure}[h]
     \begin{center}
@@ -690,8 +697,8 @@ strutture dati (che per noi sono sempre stringhe), mentre in teoria della calcol
 trasformano numeri in numeri.
 
 Esiste un'altra nozione di riducibilità, la Turing riducibilità. Immaginiamo un oracolo che risolve
-$B$ e che possiamo interrogare quante volte vogliamo. Possiamo ora risolvere $A$? In questo caso
-avremmo che $A$ è Turing-riducibile in $B$.
+$B$ e che possiamo interrogare quante volte vogliamo. Possiamo ora risolvere un dato problema $A$?
+In questo caso avremmo che $A$ è Turing-riducibile a $B$.
 
 Per quanto riguarda il concetto di riduzione possiamo pensare ad un problema $A$ e ad un problema
 $B$ come linguaggi. Con una riduzione da $A$ a $B$ abbiamo che $x \in A \iff f(x) \in B$. Questa è una
@@ -733,10 +740,10 @@ andrà dimostrato.
 \subsection{Complessità di $f$}
 
 La nozione di base di riducibilità l'abbiamo data, ma non basta. Si pongono dei limiti su $f$: si
-richiede che $f$ abbia complessità polinomiale. Questo perché vogliamo la proprietà di chiusura
-della figura \ref{ReducibilityNotion}. Infatti se risolviamo $B$ in tempo polinomiale e $f$ opera
-una trasformazione anch'essa polinomiale componendo i due algoritmi avremmo un nuovo algoritmo
-polinomiale per risolvere $A$.
+richiede che $f$ abbia complessità polinomiale in tempo. Questo perché vogliamo che valga la
+proprietà di chiusura della figura \ref{ReducibilityNotion}. Infatti se risolviamo $B$ in tempo
+polinomiale e $f$ opera una trasformazione anch'essa polinomiale in tempo, componendo i due
+algoritmi avremmo un nuovo algoritmo polinomiale in tempo per risolvere $A$.
 
 Richiedere che $f$ sia addirittura lineare sarebbe più fine di quanto ci interessa: sarebbero troppi
 pochi i problemi riducibili ad un dato problema. Un vincolo polinomiale sembra essere abbastanza
@@ -763,11 +770,11 @@ che $3\textsc{-color} \leq 4\textsc{-color}$.
 
 Possiamo fare la riduzione con la nozione di riducibilità che abbiamo visto prima?
 
-Bisogna fare attenzione a ``non dare per ovvia la soluzione''. Ad esempio è sbagliato pensare
-sempre che la funzione di riduzione sia l'identità, dato che l'identità solitamente permette solo
-di ridurre un linguaggio a se stesso. In questo caso avremmo un verso ma non avremmo l'altro: un
-grafo 3-colorabile è sicuramente 4-colorabile ma non vale il viceversa, il che è importante per la
-riduzione.
+Bisogna fare attenzione a ``non dare per ovvia la soluzione''. Ad esempio è pressocchè sempre
+sbagliato pensare che la funzione di riduzione sia l'identità, dato che l'identità solitamente
+permette solo di ridurre un linguaggio a se stesso. In questo caso avremmo un verso ma non avremmo
+l'altro: un grafo 3-colorabile è sicuramente 4-colorabile ma non vale il viceversa, il che è
+importante per la riduzione.
 
 Cosa dobbiamo fare? Dobbiamo prendere il grafo $G$ in input per 3\textsc{-color} e trasformarlo in
 un grafo $G'$ che soddisfi la condizione di riduzione. Prendiamo $G$ e aggiungiamo un nodo che
@@ -800,7 +807,7 @@ avremo tutti i collegamenti possibili tra di essi, e quindi una cricca.
 %// TODO
 %Slide 40
 
-Un conto è cercare una soluzione, un conto è verificare la corretteza di una soluzione.
+Un conto è cercare una soluzione, un conto è verificare la correttezza di una soluzione.
 
 Di nuovo, quando incontriamo un problema bisogna pensare innanzitutto all'algoritmo stupido di
 ricerca esaustiva.
@@ -809,8 +816,8 @@ ricerca esaustiva.
 %però fa parte del'input questo non è più necessariamente vero. Con $k \in O(n)$ abbiamo un
 %algoritmo esponenziale.
 
-Non sempre il certificato è una soluzione al problema. È un'informazione in più che ci viene data
-e che ci permette di verificare in modo agevole la correttezza della mia soluzione. Non per tutti i
+Non sempre il certificato è una soluzione al problema. È un'informazione in più che ci viene data e
+che ci permette di verificare in modo agevole la correttezza di una data soluzione. Non per tutti i
 problemi è possibile effettuare la verifica in tempo polinomiale (e.g. torri di Hanoi).
 
 $\NPClass$ è una classe interessante perché contiene problemi facilmente certificabili.
@@ -830,7 +837,7 @@ Il linguaggio delle coppie $\pair{x}{c_{x}}$ deve far parte di $B$ sse $x \in A$
 
 C'è una differenza tra parlare di linguaggi e di macchine. Un linguaggio appartiene ad una certa
 classe se esiste una MdT che lo riconosce secondo le condizioni della classe, ma non è la macchina
-a far parte della classe. Le classi comprendono linguaggi, non macchine.
+a far parte della classe. Le classi di complessità comprendono linguaggi, non macchine.
 
 Per tanti problemi possiamo certificare la correttezza con un certificato, per altri no. Ad esempio
 per la soddisfacibilità si può fare, per la tautologicità no. Il problema è la dimensione del
