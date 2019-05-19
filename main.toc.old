@@ -82,22 +82,22 @@
 \contentsline {section}{\numberline {11.4}Dimensione dei dati di input}{83}{section.11.4}% 
 \contentsline {section}{\numberline {11.5}Notazioni d'ordine}{84}{section.11.5}% 
 \contentsline {subsection}{\numberline {11.5.1}Complessit\IeC {\`a} sublineari}{85}{subsection.11.5.1}% 
-\contentsline {section}{\numberline {11.6}Grafi}{86}{section.11.6}% 
+\contentsline {section}{\numberline {11.6}Grafi}{85}{section.11.6}% 
 \contentsline {subsection}{\numberline {11.6.1}Problemi tipici sui grafi}{86}{subsection.11.6.1}% 
 \contentsline {subsection}{\numberline {11.6.2}Rappresentazione di un grafo}{87}{subsection.11.6.2}% 
-\contentsline {subsection}{\numberline {11.6.3}Raggiungibilit\IeC {\`a}}{87}{subsection.11.6.3}% 
+\contentsline {subsection}{\numberline {11.6.3}Raggiungibilit\IeC {\`a}}{88}{subsection.11.6.3}% 
 \contentsline {section}{\numberline {11.7}Analisi di problemi}{89}{section.11.7}% 
 \contentsline {subsection}{\numberline {11.7.1}Colorabilit\IeC {\`a}}{90}{subsection.11.7.1}% 
 \contentsline {subsection}{\numberline {11.7.2}Problemi di flusso}{91}{subsection.11.7.2}% 
-\contentsline {section}{\numberline {11.8}Problemi decisionali}{92}{section.11.8}% 
+\contentsline {section}{\numberline {11.8}Problemi decisionali}{93}{section.11.8}% 
 \contentsline {section}{\numberline {11.9}Problemi e linguaggi}{93}{section.11.9}% 
-\contentsline {section}{\numberline {11.10}Riduzioni}{93}{section.11.10}% 
-\contentsline {subsection}{\numberline {11.10.1}Matching bipartito}{93}{subsection.11.10.1}% 
+\contentsline {section}{\numberline {11.10}Riduzioni}{94}{section.11.10}% 
+\contentsline {subsection}{\numberline {11.10.1}Matching bipartito}{94}{subsection.11.10.1}% 
 \contentsline {subsection}{\numberline {11.10.2}Riducibilit\IeC {\`a} e classi di complessit\IeC {\`a}}{95}{subsection.11.10.2}% 
 \contentsline {subsection}{\numberline {11.10.3}Complessit\IeC {\`a} di $f$}{96}{subsection.11.10.3}% 
-\contentsline {subsection}{\numberline {11.10.4}Colorabilit\IeC {\`a}}{96}{subsection.11.10.4}% 
+\contentsline {subsection}{\numberline {11.10.4}Colorabilit\IeC {\`a}}{97}{subsection.11.10.4}% 
 \contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{97}{subsection.11.10.5}% 
-\contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{97}{section.11.11}% 
+\contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{98}{section.11.11}% 
 \contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{98}{section.11.12}% 
 \contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{100}{chapter.12}% 
 \contentsline {section}{\numberline {12.1}Macchine di Turing}{100}{section.12.1}% 
