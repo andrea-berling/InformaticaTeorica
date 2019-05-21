@@ -127,9 +127,10 @@
 \contentsline {subsection}{\numberline {14.3.4}Gerarchie di complessit\IeC {\`a}}{138}{subsection.14.3.4}% 
 \contentsline {chapter}{\numberline {15}La classe $\mathbb {NP}$}{139}{chapter.15}% 
 \contentsline {section}{\numberline {15.1}Teorema della proiezione}{139}{section.15.1}% 
-\contentsline {section}{\numberline {15.2}Riducibilita'}{140}{section.15.2}% 
+\contentsline {section}{\numberline {15.2}Riducibilit\IeC {\`a}}{140}{section.15.2}% 
 \contentsline {section}{\numberline {15.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{142}{section.15.3}% 
-\contentsline {section}{\numberline {15.4}$\textsc {sat}$ e' $\mathbb {NP}$-completo}{144}{section.15.4}% 
+\contentsline {subsection}{\numberline {15.3.1}Problemi $\mathbb {NP}$-completi}{143}{subsection.15.3.1}% 
+\contentsline {section}{\numberline {15.4}$\textsc {sat}$ \IeC {\`e} $\mathbb {NP}$-completo}{144}{section.15.4}% 
 \contentsline {section}{\numberline {15.5}Riduzioni di problemi $\mathbb {NP}$-completi}{151}{section.15.5}% 
 \contentsline {subsection}{\numberline {15.5.1}$\textsc {sat}\leq 3\textsc {sat}$}{151}{subsection.15.5.1}% 
 \contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{152}{subsection.15.5.2}% 
@@ -141,7 +142,7 @@
 \contentsline {subsection}{\numberline {15.5.8}$\textsc {hampath}\leq k-\textsc {st}$}{163}{subsection.15.5.8}% 
 \contentsline {subsection}{\numberline {15.5.9}$k-\textsc {clique}\in \mathbb {P}$}{163}{subsection.15.5.9}% 
 \contentsline {subsection}{\numberline {15.5.10}$\textsc {clique}\leq \textsc {halfclique}$}{164}{subsection.15.5.10}% 
-\contentsline {subsection}{\numberline {15.5.11}$\textsc {lip}$ e' $\mathbb {NP}$-completo}{166}{subsection.15.5.11}% 
+\contentsline {subsection}{\numberline {15.5.11}$\textsc {lip}$ \IeC {\`e} $\mathbb {NP}$-completo}{166}{subsection.15.5.11}% 
 \contentsline {subsection}{\numberline {15.5.12}$\textsc {hampath}\leq \textsc {lip}$}{167}{subsection.15.5.12}% 
 \contentsline {chapter}{\numberline {16}Calcolabilita' relativa e gerarchia polinomiale}{168}{chapter.16}% 
 \contentsline {section}{\numberline {16.1}Macchine di Turing con Oracolo}{169}{section.16.1}% 
