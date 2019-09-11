@@ -1176,10 +1176,10 @@ risolvere lo stesso problema nel caso generale, modificando opportunamente i dat
 Da $(G,k)$ vogliamo passare a $G'$ in modo che se in $G$ avevamo una cricca di dimensione $k$ in
 $G'$ avremo una cricca di dimensione $\geq n'/2$, se $G'$ ha $n'$ nodi.
 
-Nella nostra riduzione procediamo per casi. Supponiamo che $G$ abbia $m$ nodi. Un caso è dato da $k
-= m/2$, ma questo non richiede modifiche dell'input e quindi lo ignoriamo.
+Nella nostra riduzione procediamo per casi. Supponiamo che $G$ abbia $m$ nodi. Ignoriamo il caso in
+cui $k = m/2$, poiché questo non richiederebbe modifiche all'input.
 
-Il primo caso che abbiamo è se $k \geq m/2$.  In tal caso aggiungiamo dei nodi indipendenti a $G$
+Il primo caso che abbiamo è se $k > m/2$.  In tal caso aggiungiamo dei nodi indipendenti a $G$
 in modo che $G'$ abbia dimensione $n' = 2k$. Poichè questi nodi sono isolati non vanno ad
 influenzare l'eventuale esistenza di cricche in $G$ di dimensione $k$. La ricerca di una cricca di
 dimensione $n'/2 = k$ in $G'$ corrisponde alla ricerca di una cricca in $G$ di dimensione $k$. I
@@ -1193,7 +1193,7 @@ nodi da aggiungere sono $2k - m$.
     \end{center}
 \end{figure}
 
-Per il caso in cui $k \leq m/2$ dobbiamo fare una cosa complementare al caso precedente, dove
+Per il caso in cui $k < m/2$ dobbiamo fare una cosa complementare al caso precedente, dove
 aggiungievamo dei nodi per aumentare la dimensione del grafo per raggiungere una dimensione doppia
 rispetto a $k$. In questo caso vogliamo ``aumentare $k$ in $G'$'', ovvero aumentare il numero di
 nodi in $G$ di un fattore $p$, in modo che $(m+p)$ sia uguale a $2(k+p)$. In questo modo $k + p$
