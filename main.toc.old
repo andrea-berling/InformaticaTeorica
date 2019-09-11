@@ -99,53 +99,53 @@
 \contentsline {subsection}{\numberline {11.10.5}Cricca e insieme indipendente}{97}{subsection.11.10.5}% 
 \contentsline {section}{\numberline {11.11}Ricerca vs. Verifica}{98}{section.11.11}% 
 \contentsline {section}{\numberline {11.12}Relazioni tra alcune classi di complessit\IeC {\`a}}{98}{section.11.12}% 
-\contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{100}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Macchine di Turing}{100}{section.12.1}% 
-\contentsline {subsection}{\numberline {12.1.1}Convenzioni di input output}{101}{subsection.12.1.1}% 
-\contentsline {subsection}{\numberline {12.1.2}Configurazioni}{101}{subsection.12.1.2}% 
-\contentsline {section}{\numberline {12.2}Classi di complessit\IeC {\`a}}{102}{section.12.2}% 
-\contentsline {section}{\numberline {12.3}Relazione tra spazio e tempo}{104}{section.12.3}% 
-\contentsline {section}{\numberline {12.4}Dipendenza dal modello di calcolo}{106}{section.12.4}% 
-\contentsline {subsection}{\numberline {12.4.1}Riduzione dei nastri}{106}{subsection.12.4.1}% 
-\contentsline {subsubsection}{Nota sugli slowdown}{109}{section*.9}% 
-\contentsline {subsection}{\numberline {12.4.2}Random Access Machine}{110}{subsection.12.4.2}% 
-\contentsline {chapter}{\numberline {13}Gerarchie in spazio e tempo}{114}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}I teoremi della gerarchia}{114}{section.13.1}% 
-\contentsline {subsection}{\numberline {13.1.1}Il teorema della gerarchia in spazio}{114}{subsection.13.1.1}% 
-\contentsline {subsection}{\numberline {13.1.2}Il teorema della gerarchia in tempo}{118}{subsection.13.1.2}% 
-\contentsline {section}{\numberline {13.2}Alcune gerarchie di complessit\IeC {\`a}}{120}{section.13.2}% 
-\contentsline {section}{\numberline {13.3}Padding}{121}{section.13.3}% 
-\contentsline {subsection}{\numberline {13.3.1}Complessit\IeC {\`a} della composizione di funzioni}{125}{subsection.13.3.1}% 
-\contentsline {section}{\numberline {13.4}Conclusioni}{125}{section.13.4}% 
-\contentsline {chapter}{\numberline {14}Complessit\IeC {\`a} non deterministica}{128}{chapter.14}% 
-\contentsline {section}{\numberline {14.1}Macchine di Turing non deterministiche}{128}{section.14.1}% 
-\contentsline {section}{\numberline {14.2}Complessit\IeC {\`a} non deterministica}{130}{section.14.2}% 
-\contentsline {section}{\numberline {14.3}Simulazione del non determinismo}{130}{section.14.3}% 
-\contentsline {subsection}{\numberline {14.3.1}Simulazione di una macchina non deterministica con un bound al tempo}{131}{subsection.14.3.1}% 
-\contentsline {subsection}{\numberline {14.3.2}Simulazione di una macchina non deterministica con un bound allo spazio}{133}{subsection.14.3.2}% 
-\contentsline {subsection}{\numberline {14.3.3}Teorema di Savitch}{135}{subsection.14.3.3}% 
-\contentsline {subsection}{\numberline {14.3.4}Gerarchie di complessit\IeC {\`a}}{138}{subsection.14.3.4}% 
-\contentsline {chapter}{\numberline {15}La classe $\mathbb {NP}$}{139}{chapter.15}% 
-\contentsline {section}{\numberline {15.1}Teorema della proiezione}{139}{section.15.1}% 
-\contentsline {section}{\numberline {15.2}Riducibilit\IeC {\`a}}{140}{section.15.2}% 
-\contentsline {section}{\numberline {15.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{142}{section.15.3}% 
-\contentsline {subsection}{\numberline {15.3.1}Problemi $\mathbb {NP}$-completi}{143}{subsection.15.3.1}% 
-\contentsline {section}{\numberline {15.4}$\textsc {sat}$ \IeC {\`e} $\mathbb {NP}$-completo}{144}{section.15.4}% 
-\contentsline {section}{\numberline {15.5}Riduzioni di problemi $\mathbb {NP}$-completi}{151}{section.15.5}% 
-\contentsline {subsection}{\numberline {15.5.1}$\textsc {sat}\leq 3\textsc {sat}$}{151}{subsection.15.5.1}% 
-\contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{152}{subsection.15.5.2}% 
-\contentsline {subsection}{\numberline {15.5.3}$\textsc {hampath}\equiv \textsc {hamcycle}$}{155}{subsection.15.5.3}% 
-\contentsline {subsection}{\numberline {15.5.4}$\textsc {hampath}\leq \textsc {hampath}_{u,v}$}{157}{subsection.15.5.4}% 
-\contentsline {subsection}{\numberline {15.5.5}$\textsc {sat}\leq d\textsc {ham}$}{157}{subsection.15.5.5}% 
-\contentsline {subsection}{\numberline {15.5.6}$\textsc {hampath}\leq \textsc {tsp}$}{160}{subsection.15.5.6}% 
-\contentsline {subsection}{\numberline {15.5.7}$\textsc {vc}\leq \textsc {hit}$}{161}{subsection.15.5.7}% 
-\contentsline {subsection}{\numberline {15.5.8}$\textsc {hampath}\leq k-\textsc {st}$}{163}{subsection.15.5.8}% 
-\contentsline {subsection}{\numberline {15.5.9}$k-\textsc {clique}\in \mathbb {P}$}{163}{subsection.15.5.9}% 
-\contentsline {subsection}{\numberline {15.5.10}$\textsc {clique}\leq \textsc {halfclique}$}{164}{subsection.15.5.10}% 
-\contentsline {subsection}{\numberline {15.5.11}$\textsc {lip}$ \IeC {\`e} $\mathbb {NP}$-completo}{166}{subsection.15.5.11}% 
-\contentsline {subsection}{\numberline {15.5.12}$\textsc {hampath}\leq \textsc {lip}$}{167}{subsection.15.5.12}% 
-\contentsline {chapter}{\numberline {16}Calcolabilit\IeC {\`a} relativa e gerarchia polinomiale}{168}{chapter.16}% 
-\contentsline {section}{\numberline {16.1}Macchine di Turing con Oracolo}{169}{section.16.1}% 
-\contentsline {section}{\numberline {16.2}Classi di complessit\IeC {\`a} con oracolo}{169}{section.16.2}% 
-\contentsline {section}{\numberline {16.3}Propriet\IeC {\`a} delle classi con oracolo}{171}{section.16.3}% 
-\contentsline {section}{\numberline {16.4}Gerarchia polinomiale}{173}{section.16.4}% 
+\contentsline {chapter}{\numberline {12}Classi deterministiche di complessit\IeC {\`a}}{101}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Macchine di Turing}{101}{section.12.1}% 
+\contentsline {subsection}{\numberline {12.1.1}Convenzioni di input output}{102}{subsection.12.1.1}% 
+\contentsline {subsection}{\numberline {12.1.2}Configurazioni}{102}{subsection.12.1.2}% 
+\contentsline {section}{\numberline {12.2}Classi di complessit\IeC {\`a}}{103}{section.12.2}% 
+\contentsline {section}{\numberline {12.3}Relazione tra spazio e tempo}{105}{section.12.3}% 
+\contentsline {section}{\numberline {12.4}Dipendenza dal modello di calcolo}{107}{section.12.4}% 
+\contentsline {subsection}{\numberline {12.4.1}Riduzione dei nastri}{107}{subsection.12.4.1}% 
+\contentsline {subsubsection}{Nota sugli slowdown}{110}{section*.9}% 
+\contentsline {subsection}{\numberline {12.4.2}Random Access Machine}{111}{subsection.12.4.2}% 
+\contentsline {chapter}{\numberline {13}Gerarchie in spazio e tempo}{115}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}I teoremi della gerarchia}{115}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Il teorema della gerarchia in spazio}{115}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Il teorema della gerarchia in tempo}{119}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Alcune gerarchie di complessit\IeC {\`a}}{121}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}Padding}{122}{section.13.3}% 
+\contentsline {subsection}{\numberline {13.3.1}Complessit\IeC {\`a} della composizione di funzioni}{126}{subsection.13.3.1}% 
+\contentsline {section}{\numberline {13.4}Conclusioni}{126}{section.13.4}% 
+\contentsline {chapter}{\numberline {14}Complessit\IeC {\`a} non deterministica}{129}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Macchine di Turing non deterministiche}{129}{section.14.1}% 
+\contentsline {section}{\numberline {14.2}Complessit\IeC {\`a} non deterministica}{131}{section.14.2}% 
+\contentsline {section}{\numberline {14.3}Simulazione del non determinismo}{131}{section.14.3}% 
+\contentsline {subsection}{\numberline {14.3.1}Simulazione di una macchina non deterministica con un bound al tempo}{132}{subsection.14.3.1}% 
+\contentsline {subsection}{\numberline {14.3.2}Simulazione di una macchina non deterministica con un bound allo spazio}{134}{subsection.14.3.2}% 
+\contentsline {subsection}{\numberline {14.3.3}Teorema di Savitch}{136}{subsection.14.3.3}% 
+\contentsline {subsection}{\numberline {14.3.4}Gerarchie di complessit\IeC {\`a}}{139}{subsection.14.3.4}% 
+\contentsline {chapter}{\numberline {15}La classe $\mathbb {NP}$}{140}{chapter.15}% 
+\contentsline {section}{\numberline {15.1}Teorema della proiezione}{140}{section.15.1}% 
+\contentsline {section}{\numberline {15.2}Riducibilit\IeC {\`a}}{141}{section.15.2}% 
+\contentsline {section}{\numberline {15.3}$\mathbb {NP}$-completezza e $\mathbb {NP}$-hardness}{143}{section.15.3}% 
+\contentsline {subsection}{\numberline {15.3.1}Problemi $\mathbb {NP}$-completi}{144}{subsection.15.3.1}% 
+\contentsline {section}{\numberline {15.4}$\textsc {sat}$ \IeC {\`e} $\mathbb {NP}$-completo}{145}{section.15.4}% 
+\contentsline {section}{\numberline {15.5}Riduzioni di problemi $\mathbb {NP}$-completi}{152}{section.15.5}% 
+\contentsline {subsection}{\numberline {15.5.1}$\textsc {sat}\leq 3\textsc {sat}$}{152}{subsection.15.5.1}% 
+\contentsline {subsection}{\numberline {15.5.2}$3\textsc {sat}\leq \textsc {vc}$}{153}{subsection.15.5.2}% 
+\contentsline {subsection}{\numberline {15.5.3}$\textsc {hampath}\equiv \textsc {hamcycle}$}{156}{subsection.15.5.3}% 
+\contentsline {subsection}{\numberline {15.5.4}$\textsc {hampath}\leq \textsc {hampath}_{u,v}$}{158}{subsection.15.5.4}% 
+\contentsline {subsection}{\numberline {15.5.5}$\textsc {sat}\leq d\textsc {ham}$}{158}{subsection.15.5.5}% 
+\contentsline {subsection}{\numberline {15.5.6}$\textsc {hampath}\leq \textsc {tsp}$}{161}{subsection.15.5.6}% 
+\contentsline {subsection}{\numberline {15.5.7}$\textsc {vc}\leq \textsc {hit}$}{162}{subsection.15.5.7}% 
+\contentsline {subsection}{\numberline {15.5.8}$\textsc {hampath}\leq k-\textsc {st}$}{164}{subsection.15.5.8}% 
+\contentsline {subsection}{\numberline {15.5.9}$k-\textsc {clique}\in \mathbb {P}$}{164}{subsection.15.5.9}% 
+\contentsline {subsection}{\numberline {15.5.10}$\textsc {clique}\leq \textsc {halfclique}$}{165}{subsection.15.5.10}% 
+\contentsline {subsection}{\numberline {15.5.11}$\textsc {lip}$ \IeC {\`e} $\mathbb {NP}$-completo}{167}{subsection.15.5.11}% 
+\contentsline {subsection}{\numberline {15.5.12}$\textsc {hampath}\leq \textsc {lip}$}{168}{subsection.15.5.12}% 
+\contentsline {chapter}{\numberline {16}Calcolabilit\IeC {\`a} relativa e gerarchia polinomiale}{169}{chapter.16}% 
+\contentsline {section}{\numberline {16.1}Macchine di Turing con Oracolo}{170}{section.16.1}% 
+\contentsline {section}{\numberline {16.2}Classi di complessit\IeC {\`a} con oracolo}{170}{section.16.2}% 
+\contentsline {section}{\numberline {16.3}Propriet\IeC {\`a} delle classi con oracolo}{172}{section.16.3}% 
+\contentsline {section}{\numberline {16.4}Gerarchia polinomiale}{174}{section.16.4}% 
